@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>6 Symptoms Most Dog Owners Chalk Up To "Just How Their Dog Is" — RealDogNutrition.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700;900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00CC3B;
+      --forest: #005005;
+      --cream: #FCF6E8;
+      --pale: #CAF7C0;
+      --ink: #005005;
+      --ink-mid: #005005;
+      --ink-muted: #4A7A4A;
+      --border: #E0EAD8;
+      --white: #FFFFFF;
+      --warn: #F5A623;
+      --red-soft: #F2E8E8;
+      --red: #C0392B;
+      --item-bg: #F8FCF6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--forest);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 60% 0%, rgba(0,204,59,0.18) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-site {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pale);
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .hero h1 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(36px, 6vw, 62px);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em {
+      color: var(--green);
+      font-style: normal;
+    }
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.75);
+      max-width: 560px;
+      margin: 0 auto 28px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.04em;
+    }
+    .hero-meta span { display: flex; align-items: center; gap: 5px; }
+
+    /* ── TLDR TABLE ── */
+    .tldr-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      transform: translateY(-28px);
+    }
+    .tldr {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+    .tldr-header {
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 24px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tldr-header span { color: var(--pale); font-size: 13px; font-family: 'DM Sans', sans-serif; font-weight: 400; letter-spacing: 0.03em; text-transform: none; }
+    .tldr-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .tldr-row:last-child { border-bottom: none; }
+    .tldr-cell {
+      padding: 13px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      border-right: 1px solid var(--border);
+      line-height: 1.45;
+    }
+    .tldr-cell:last-child { border-right: none; }
+    .tldr-cell.label { font-weight: 500; color: var(--ink-mid); background: #FAFAFA; }
+    .tldr-cell.dismissed { color: var(--red); }
+    .tldr-cell.real { color: var(--forest); font-weight: 500; }
+    .tldr-col-header {
+      background: #F5F5F5;
+      padding: 10px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      border-right: 1px solid var(--border);
+    }
+    .tldr-col-header:last-child { border-right: none; }
+
+    /* ── PAGE BODY ── */
+    .page-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    /* ── INTRO ── */
+    .intro {
+      padding: 12px 0 40px;
+    }
+    .intro p {
+      font-size: 17px;
+      color: var(--ink-mid);
+      margin-bottom: 18px;
+      line-height: 1.75;
+    }
+    .intro strong { color: var(--ink); }
+
+    /* ── SECTION DIVIDER ── */
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      margin-top: 8px;
+    }
+    .section-label-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .section-label-line {
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── ITEM CARD ── */
+    .item {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    /* IMAGE HERO — top of every item, full width, visually dominant */
+    .item-img {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      background: #D4E8D0;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+    }
+    .item-img img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    /* Gradient overlay so number/caption read over photo */
+    .item-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.55) 100%);
+      pointer-events: none;
+    }
+    .item-img-placeholder-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.55);
+      text-align: center;
+      padding: 20px;
+      line-height: 1.5;
+      z-index: 1;
+    }
+    .item-img-placeholder-inner em { font-style: normal; font-size: 11px; opacity: 0.7; margin-top: 4px; display: block; }
+    /* Number badge overlaid bottom-left on image */
+    .item-num-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 18px;
+      z-index: 2;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .item-num-badge .num {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      opacity: 0.95;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .item-num-badge .category-pill {
+      background: var(--green);
+      color: var(--forest);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    /* Image caption strip */
+    .item-img-caption {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.6);
+      padding: 10px 14px;
+      font-style: italic;
+    }
+
+    .item-header {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .item-category {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--green);
+      margin-bottom: 6px;
+    }
+    .item-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .item-body {
+      padding: 20px 22px;
+    }
+
+    /* DISMISSAL BLOCK */
+    .dismissal {
+      background: var(--red-soft);
+      border-left: 3px solid var(--red);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+      color: var(--red);
+    }
+    .dismissal-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      opacity: 0.7;
+      margin-bottom: 3px;
+    }
+    .dismissal-quote {
+      font-style: italic;
+      font-size: 15px;
+    }
+
+    /* REFRAME BLOCK */
+    .reframe {
+      background: #F0FAF0;
+      border-left: 3px solid var(--green);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 14px;
+    }
+    .reframe-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest);
+      opacity: 0.7;
+      margin-bottom: 3px;
+    }
+    .reframe-text {
+      color: var(--forest);
+      font-size: 15px;
+      line-height: 1.55;
+    }
+
+    .item-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.7;
+      margin-bottom: 16px;
+    }
+
+    /* THE TELL */
+    .the-tell {
+      background: var(--item-bg);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 16px;
+    }
+    .the-tell-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+    .the-tell-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--ink-mid);
+      line-height: 1.6;
+    }
+    .the-tell-text strong { color: var(--ink); }
+
+    /* IMAGE PLACEHOLDER — product section only */
+    .img-placeholder {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.4);
+      text-align: center;
+      line-height: 1.5;
+    }
+    .img-placeholder em { font-style: italic; }
+
+    /* ── CONNECTIVE TISSUE ── */
+    .connective {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      padding: 32px 28px;
+      margin: 8px 0 32px;
+    }
+    .connective h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .connective p {
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+      margin-bottom: 14px;
+    }
+    .connective p:last-child { margin-bottom: 0; }
+    .connective strong { color: var(--ink); }
+
+    /* ── PRODUCT SECTION ── */
+    .product-section {
+      background: var(--forest);
+      border-radius: 14px;
+      padding: 40px 32px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .product-section h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--pale);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+    .product-section .product-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 24px;
+      line-height: 1.6;
+    }
+    .feature-list {
+      list-style: none;
+      margin-bottom: 28px;
+    }
+    .feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .check { color: var(--green); font-size: 16px; margin-top: 1px; flex-shrink: 0; font-weight: 700; }
+
+    /* OFFER BOX */
+    .offer-box {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 24px;
+      color: var(--ink);
+    }
+    .offer-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+    .offer-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+    .offer-table-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      background: var(--forest);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border-radius: 6px 6px 0 0;
+    }
+    .offer-table-head .val { color: var(--pale); }
+    .offer-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: #FAFAFA;
+      gap: 12px;
+    }
+    .offer-row:last-of-type { border-bottom: none; border-radius: 0 0 6px 6px; }
+    .offer-row-name {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--ink);
+      margin-bottom: 1px;
+    }
+    .offer-row-note { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--ink-muted); }
+    .badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-free { background: var(--pale); color: var(--forest); }
+    .badge-excl { background: var(--green); color: var(--forest); }
+    .badge-val { background: var(--pale); color: var(--forest); }
+    .badge-inc { background: #E8F5E8; color: var(--forest); }
+    .price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 18px 0 4px;
+    }
+    .price-was { font-size: 15px; color: var(--ink-muted); text-decoration: line-through; font-family: 'DM Sans', sans-serif; }
+    .price-now { font-size: 48px; font-weight: 800; color: var(--forest); font-family: 'Work Sans', sans-serif; line-height: 1; }
+    .price-label { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink-mid); }
+    .price-note { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); font-style: italic; margin-bottom: 18px; }
+
+    .cta-btn {
+      display: block;
+      background: var(--green);
+      color: var(--forest);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 18px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 16px 0 8px;
+    }
+    .cta-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* TESTIMONIALS */
+    .testimonials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .tcard {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 18px;
+    }
+    .tcard .stars { color: var(--warn); font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
+    .tcard .tquote { font-style: italic; font-size: 14px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
+    .tcard .tname { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); }
+
+    /* GUARANTEE */
+    .guarantee {
+      background: var(--pale);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      border: 1.5px solid rgba(0,80,5,0.15);
+    }
+    .guarantee-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .guarantee p { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+    /* FINAL CTA */
+    .final-cta {
+      text-align: center;
+      padding: 8px 0 20px;
+    }
+
+    /* FOOTER */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .item-top { grid-template-columns: 60px 1fr; }
+      .item-number { font-size: 36px; }
+      .tldr-row { grid-template-columns: 1fr; }
+      .tldr-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .tldr-col-header { display: none; }
+      .testimonials { grid-template-columns: 1fr; }
+      .product-section { padding: 28px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-site">RealDogNutrition.com · Dog Health</div>
+    <h1>6 Symptoms Most Dog Owners Chalk Up To <em>"Just How Their Dog Is"</em></h1>
+    <p class="hero-sub">They're not personality quirks. They're your dog's gut telling you something isn't working — in the only language it has.</p>
+    <div class="hero-meta">
+      <span>🐾 Deep Dive</span>
+      <span>·</span>
+      <span>8 min read</span>
+      <span>·</span>
+      <span>Dog Nutrition &amp; Gut Health</span>
+    </div>
+  </div>
+
+  <!-- TLDR TABLE -->
+  <div class="tldr-wrap">
+    <div class="tldr">
+      <div class="tldr-header">
+        The Quick Version <span>What owners say vs. what it usually means</span>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-col-header">Symptom</div>
+        <div class="tldr-col-header">What Most Owners Say</div>
+        <div class="tldr-col-header">What It Usually Means</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Dull coat</div>
+        <div class="tldr-cell dismissed">"She's just not a show dog."</div>
+        <div class="tldr-cell real">The label has the nutrients. The gut isn't using them.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Low energy</div>
+        <div class="tldr-cell dismissed">"He's calming down with age."</div>
+        <div class="tldr-cell real">The floor dropped. It's not aging — it's the gut.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Sensitive stomach</div>
+        <div class="tldr-cell dismissed">"She's always been this way."</div>
+        <div class="tldr-cell real">The gut was never fixed. Just managed.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Picky eating</div>
+        <div class="tldr-cell dismissed">"He's not food motivated."</div>
+        <div class="tldr-cell real">Food doesn't smell like food to him anymore.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Itching (no allergy)</div>
+        <div class="tldr-cell dismissed">"Allergy tests came back clear."</div>
+        <div class="tldr-cell real">The gut lining has a leak. Inflammation follows.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell label">Disengaged</div>
+        <div class="tldr-cell dismissed">"Dogs sleep a lot, it's normal."</div>
+        <div class="tldr-cell real">The gut is using energy the dog should have.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAGE BODY -->
+  <div class="page-body">
+
+    <!-- INTRO -->
+    <div class="intro">
+      <p>
+        Most dog owners who eventually switch their dog's food weren't looking for a solution. They didn't think they had a problem. Their dog was eating. The vet said things looked fine at the last checkup. Nothing was visibly wrong.
+      </p>
+      <p>
+        They just had a nagging feeling they couldn't shake — that their dog was <strong>fine</strong>, but not the version of fine they'd imagined when they first brought her home.
+      </p>
+      <p>
+        The six things below are the most common signs of that gap. None of them will show up on a bloodwork panel. None of them are diseases. That's exactly why they persist for years before owners realize they weren't just personality quirks — they were signals.
+      </p>
+    </div>
+
+    <!-- SECTION LABEL -->
+    <div class="section-label">
+      <span class="section-label-text">The 6 Symptoms</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <!-- ITEM 1 -->
+    <div class="item">
+      <div class="item-img" style="background: #C8DCCA;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Split shot — left dog with flat dull coat, right same breed with full gleaming coat<br>
+          <em>Warm natural light · lifestyle photography</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">01</span>
+          <span class="category-pill">Coat &amp; Skin</span>
+        </div>
+        <div class="item-img-caption">Same breed. Different gut health.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">The Coat That's Fine But Not Remarkable</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"She's just not a show dog. Some dogs have that coat, some don't."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">The gut isn't absorbing fat-soluble nutrients — Omega-3s, Vitamin E, Vitamin A — at the level it should be. Coat quality is one of the most direct visible outputs of what's happening inside the gut. A dog whose gut is functioning well produces a coat people notice.</div>
+        </div>
+        <p class="item-desc">
+          The label on the food has the nutrients. The question is whether the gut is in a state to absorb and use them. When the microbiome is imbalanced — which happens gradually and invisibly — fat-soluble nutrient absorption drops. The coat doesn't fall out. It just stops being remarkable.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">Strangers don't stop to comment. Brushing produces <strong>more shedding than it should</strong>. The ends look slightly dull even right after a bath. You've accepted this as your dog's coat — but it may just be your dog's gut.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="item">
+      <div class="item-img" style="background: #B8D4B8;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog alert and engaged — ears forward, eyes bright, pulling on leash, clearly present and full of drive<br>
+          <em>Active outdoor lifestyle · Golden/Lab breed ideal</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">02</span>
+          <span class="category-pill">Energy &amp; Vitality</span>
+        </div>
+        <div class="item-img-caption">This is what gut health looks like from the outside.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">The Energy That "Settled With Age"</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"He's calming down. He's three now. They all slow down a little."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">There's a difference between a dog maturing and a dog whose baseline vitality has dropped. A healthy three-year-old dog should still have significant drive. If the drop happened gradually and now feels normal, that's worth examining — not accepting.</div>
+        </div>
+        <p class="item-desc">
+          The gut produces a significant portion of the body's serotonin and plays a direct role in energy regulation. A gut that's chronically under-supported doesn't produce the same output. The dog still has energy — it just doesn't sustain it the way it once did. The ceiling hasn't dropped. The floor has.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">Your dog still gets excited when <strong>something specific happens</strong> — a leash, a known word — but the excitement doesn't last. The baseline between bursts is noticeably lower than it was at one. She watches more than she participates.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="item">
+      <div class="item-img" style="background: #C2D8C2;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog eating calmly and enthusiastically — head fully in bowl, clean relaxed posture<br>
+          <em>Kitchen setting · warm natural light</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">03</span>
+          <span class="category-pill">Digestion</span>
+        </div>
+        <div class="item-img-caption">Stable digestion isn't a bonus. It's the baseline.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">The Stomach That's "Always Been Sensitive"</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"She's always had a sensitive stomach. Some breeds are just like that. We manage it."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">Chronic inconsistency isn't a breed trait — it's a gut microbiome that's never been properly supported. Most owners manage it because it never gets bad enough to alarm a vet. But "managed" and "resolved" are not the same thing.</div>
+        </div>
+        <p class="item-desc">
+          A healthy gut microbiome produces stable, predictable digestion. When the microbiome is imbalanced — missing the right bacterial populations, or lacking the compounds that maintain the gut lining — digestion becomes variable. Not dramatically. Just never fully right. For years.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">You know which foods to avoid. You've mapped the triggers. But even on a <strong>controlled diet, it's still not consistent</strong>. You've accepted the variability as part of owning this dog. It may just be part of what this dog has been eating.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="item">
+      <div class="item-img" style="background: #BDD4C0;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog absolutely committed to bowl — head fully in, tail up, clearly excited about the food<br>
+          <em>Contrast with a disinterested dog standing back from bowl</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">04</span>
+          <span class="category-pill">Appetite</span>
+        </div>
+        <div class="item-img-caption">Food motivation isn't a personality trait. It's a smell thing.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">Eating Like It's A Chore</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"He's just not food motivated. Never has been. Some dogs are like that."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">Dogs are biologically wired for food motivation. A dog who eats without enthusiasm isn't indifferent — he's not receiving a strong enough sensory signal that what's in the bowl is worth getting excited about. That signal is mostly smell, and smell is a function of what's actually in the food.</div>
+        </div>
+        <p class="item-desc">
+          High-heat processing destroys the volatile aromatic compounds that make food smell like food to a dog. A dog who grew up on cooked or kibble food may have adapted to low aromatic signals. Freeze-dried raw food retains those compounds — and most "non-food-motivated" dogs respond to it in a way that surprises their owners.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">He finishes the bowl — but he <strong>checks around it first</strong>, as if something better might appear. No excitement during meal prep. He eats because it's there, not because he wants it. That's not a personality type. That's a mismatch between the food and what the dog is designed to respond to.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 5 -->
+    <div class="item">
+      <div class="item-img" style="background: #C8D8C0;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog relaxed and content — healthy skin visible in coat, no scratching posture, calm and present<br>
+          <em>Close-up coat detail · warm studio or outdoor light</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">05</span>
+          <span class="category-pill">Skin &amp; Immune</span>
+        </div>
+        <div class="item-img-caption">When the gut lining seals, the inflammation stops. It's that direct.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">The Itch That Isn't Allergies</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"We had her tested. The panel didn't show anything significant. The vet said it might be environmental."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">When allergy testing comes back inconclusive and the scratching persists, the source is often the gut lining — not an allergen. A compromised gut lining allows inflammatory compounds to pass into the bloodstream, producing systemic inflammation that shows up as skin symptoms. It's not an allergy. It's a barrier problem.</div>
+        </div>
+        <p class="item-desc">
+          The gut lining is maintained by postbiotic compounds — specifically short-chain fatty acids like butyrate — produced when healthy gut bacteria ferment fiber. When the bacterial population is underpowered, production drops, the lining becomes permeable, and the immune system responds. The result looks like allergies. The cause is upstream.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">Paws, ears, and base of tail — <strong>the classic triangle</strong>. Seasonal but not fully seasonal. You've eliminated food after food without resolution. The allergy panel came back negative or borderline. The scratching is still there.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ITEM 6 -->
+    <div class="item">
+      <div class="item-img" style="background: #B8CEB8;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog alert, ears forward, eyes engaged — clearly present and curious, not watching from couch<br>
+          <em>Contrast: not resting — actively present</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">06</span>
+          <span class="category-pill">Mental Engagement</span>
+        </div>
+        <div class="item-img-caption">Not resting. Present.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-title">The Sleep That Looks Like More Than Sleep</div>
+      </div>
+      <div class="item-body">
+        <div class="dismissal">
+          <div class="dismissal-label">What most owners say</div>
+          <div class="dismissal-quote">"Dogs sleep a lot. That's just what they do. She's relaxed, that's a good thing."</div>
+        </div>
+        <div class="reframe">
+          <div class="reframe-label">What it usually means</div>
+          <div class="reframe-text">There's a difference between a dog who rests between activity and a dog who is disengaged during activity. The first is healthy. The second is a dog whose energy budget is running low — not from exertion, but from a gut that's working harder than it should just to process and absorb.</div>
+        </div>
+        <p class="item-desc">
+          Chronic low-grade gut inflammation is metabolically expensive. The body diverts energy to manage it. What reads as calm or laziness can be a dog who is simply spending most of her energy budget on something that shouldn't be costing her anything at all.
+        </p>
+        <div class="the-tell">
+          <div class="the-tell-label">The tell</div>
+          <div class="the-tell-text">She's <strong>present but not quite there</strong>. Watching more than participating. Happy to observe from the couch instead of being in the middle of it. This is the symptom that's easiest to explain away — and often the one owners look back on and recognize first, after the switch.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONNECTIVE TISSUE -->
+    <div class="connective">
+      <h2>The Thread That Connects All Six</h2>
+      <p>
+        None of these are diseases. None of them will show up on a standard bloodwork panel. Your vet will look at your dog and say she's healthy — because by every clinical measure, she is.
+      </p>
+      <p>
+        But there's a gap between <strong>not sick</strong> and <strong>actually thriving</strong> — and most dogs are living somewhere in that gap for years before their owners realize the floor is lower than it should be.
+      </p>
+      <p>
+        All six of these symptoms trace back to the same place: the gut. More specifically, to what the gut is — or isn't — receiving to maintain itself. The microbiome, the gut lining, the absorption machinery — all of it depends on inputs that most dog food, even premium dog food, stops delivering the moment it's cooked.
+      </p>
+      <p>
+        <strong>Not because the ingredients are bad. Because the temperature that kills pathogens also destroys the bacterial populations, live enzymes, and precursor compounds the gut needs to function at the level that produces those visible results.</strong>
+      </p>
+      <p>
+        Freeze-dried raw food bypasses that problem entirely. No heat — moisture removed at sub-zero temperatures in a vacuum. What's in the food stays in the food, and gets to the gut intact. That's the input that's been missing.
+      </p>
+    </div>
+
+    <!-- SECTION LABEL -->
+    <div class="section-label">
+      <span class="section-label-text">What Get Joy Does Differently</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <!-- PRODUCT SECTION -->
+    <div class="product-section">
+      <h2>The Only Freeze-Dried Formula Built Around The Complete Gut System</h2>
+      <p class="product-sub">
+        Most freeze-dried brands solve the heat problem and stop there. Get Joy adds Belly Biotics™ — the only complete pre + pro + postbiotic system in freeze-dried dog food. Prebiotics feed the gut bacteria. Probiotics populate the microbiome. Postbiotics seal the gut lining and produce the compounds that drive every visible result on this list.
+      </p>
+
+      <div class="img-placeholder">
+        IMAGE: Get Joy product — freeze-dried bag, clean lifestyle shot. Multiple flavors visible.<br>
+        <em>Premium feel · dog eating in background ideal</em>
+      </div>
+
+      <ul class="feature-list">
+        <li><span class="check">✓</span> Freeze-dried at -40°F — no heat, 97% nutrient retention, gut bacteria arrive intact</li>
+        <li><span class="check">✓</span> Belly Biotics™ — complete pre + pro + postbiotic system, exclusive to Get Joy</li>
+        <li><span class="check">✓</span> Postbiotics produce butyrate — seals the gut lining, regulates inflammation, drives coat + energy results</li>
+        <li><span class="check">✓</span> Shelf-stable — no freezer, no disruption, consistent daily input to the microbiome</li>
+        <li><span class="check">✓</span> Even picky eaters eat it — freeze-drying preserves raw flavor that cooking destroys</li>
+        <li><span class="check">✓</span> 24/7 TeleVet access included with every order ($240 value)</li>
+      </ul>
+
+      <!-- OFFER BOX -->
+      <div class="offer-box">
+        <div class="offer-title">Try It Free — Just Pay Shipping</div>
+        <div class="offer-desc">The bag is on us. Cover the $4.95 shipping and let your dog try it. No subscription required, no commitment, 30-day guarantee.</div>
+
+        <div class="offer-table-head">
+          <span>Your Trial Includes</span>
+          <span class="val">$252+ Value</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Free 4oz Freeze-Dried Sample Bag</div>
+            <div class="offer-row-note">97% nutrients intact · raw benefits, zero mess</div>
+          </div>
+          <span class="badge badge-free">FREE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Belly Biotics™ Gut System</div>
+            <div class="offer-row-note">Pre + pro + postbiotics — in every bite</div>
+          </div>
+          <span class="badge badge-excl">EXCLUSIVE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">24/7 TeleVet Access</div>
+            <div class="offer-row-note">Unlimited on-demand vet care, any question, anytime</div>
+          </div>
+          <span class="badge badge-val">$240 VALUE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Personalized Feeding Guide</div>
+            <div class="offer-row-note">Tailored to your dog's size, breed and age</div>
+          </div>
+          <span class="badge badge-free">FREE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">30-Day Happiness Guarantee</div>
+            <div class="offer-row-note">Full refund if your dog doesn't love it — no hoops</div>
+          </div>
+          <span class="badge badge-inc">INCLUDED</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-was">$12.95</span>
+          <span class="price-now">$4.95</span>
+          <span class="price-label">shipping only</span>
+        </div>
+        <div class="price-note">The bag is free. You only pay to ship it.</div>
+
+        <a href="#" class="cta-btn">Get Your Free Bag — $4.95 Shipping →</a>
+        <div class="cta-sub">No subscription required · Cancel anytime · 30-Day Money-Back Guarantee</div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS -->
+    <div class="testimonials">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"Four weeks in and the 'sensitive stomach' my dog had for three years is just gone. My vet said he looked great at his last checkup."</div>
+        <div class="tname">— James T., French Bulldog owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"The coat difference was obvious by week six. But honestly the energy shift was what got me — he's back to the dog he was at one."</div>
+        <div class="tname">— Michelle R., Golden Retriever owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"I was the most skeptical person. The trial bag was $4.95. Two weeks later I was on subscription. The paw chewing alone was worth it."</div>
+        <div class="tname">— Sarah K., Labrador owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"My neighbors asked if I'd gotten a new dog. Same dog — just a gut that's finally getting what it needed."</div>
+        <div class="tname">— Dan P., German Shepherd owner</div>
+      </div>
+    </div>
+
+    <!-- GUARANTEE -->
+    <div class="guarantee">
+      <div class="guarantee-title">30-Day Happiness Guarantee</div>
+      <p>If your dog doesn't love it — or you don't see a difference — Get Joy refunds every penny. No questions, no return shipping, no hoops.</p>
+    </div>
+
+    <!-- FINAL CTA -->
+    <div class="final-cta">
+      <a href="#" class="cta-btn" style="max-width:560px; margin: 0 auto 10px; display:block;">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
+      <div class="cta-sub">No subscription · 30-Day Money-Back Guarantee · Free TeleVet access included</div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+      © 2025 RealDogNutrition.com &nbsp;·&nbsp; This article contains affiliate content. Individual results may vary. This content does not constitute veterinary advice.
+    </div>
+
+  </div><!-- /page-body -->
+</body>
+</html>

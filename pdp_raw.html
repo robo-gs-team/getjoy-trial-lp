@@ -1,0 +1,863 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!doctype html>
+<html class="no-js" lang="en">
+  <head>
+    <!-- Google Tag Manager -->
+    <script>
+      (function (w, d, s, l, i) {
+        w[l] = w[l] || [];
+        w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+        var f = d.getElementsByTagName(s)[0],
+          j = d.createElement(s),
+          dl = l != 'dataLayer' ? '&l=' + l : '';
+        j.async = true;
+        j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
+        f.parentNode.insertBefore(j, f);
+      })(window, document, 'script', 'dataLayer', 'GTM-NZ9XMJFD');
+    </script>
+    <!-- End Google Tag Manager -->
+
+    <script>
+(function () {
+  // --- Helper utilities (ES5-safe) ---
+  function toInt(x) { var n = parseInt(x, 10); return isNaN(n) ? null : n; }
+  function toCents(n) { return Math.round(Number(n) * 100); }
+
+
+  // Main class
+  function growthshop_dataLayer() {
+    // Ensure dataLayer exists
+    window.dataLayer = window.dataLayer || [];
+
+
+    // ========= Configuration (you can edit this block) =========
+    this.eventSuffix = '_updated';                // Optional prefix for all event names
+    this.formattedItemId = true;          // true => shopify_{CC}_{productId}_{variantId}; false => productId only
+
+
+    this.dataSchema = {
+      ecommerce: { show: true },
+      dynamicRemarketing: {
+        show: false,
+        business_vertical: 'retail'
+      }
+    };
+
+
+    this.addToWishListSelectors = {
+      addWishListIcon: '',
+      gridItemSelector: '',
+      productLinkSelector: 'a[href*="/products/"]'
+    };
+
+
+    this.quickViewSelector = {
+      quickViewElement: '',
+      gridItemSelector: '',
+      productLinkSelector: 'a[href*="/products/"]'
+    };
+
+
+    this.miniCartButton = ['a[href="/cart"]'];
+    this.miniCartAppersOn = 'click';
+
+
+    // Direct checkout (Shopify dynamic checkout)
+    this.shopifyDirectCheckoutButton = ['.shopify-payment-button'];
+
+
+    this.isAddToCartRedirect = false;         // If true, forms redirect to cart page immediately
+    this.isAjaxCartIncrementDecrement = true; // If false, cart page reloads on +/-/remove
+    // ===========================================================
+
+
+    // -------- Liquid bootstrap --------
+    this.cart = {"note":null,"attributes":{},"original_total_price":0,"total_price":0,"total_discount":0,"total_weight":0.0,"item_count":0,"items":[],"requires_shipping":false,"currency":"USD","items_subtotal_price":0,"cart_level_discount_applications":[],"checkout_charge_amount":0};
+    this.countryCode = "US";
+    this.storeURL = "https://getjoyfood.com";
+    localStorage.setItem('shopCountryCode', this.countryCode);
+
+
+    // Collect listeners/initial pushes
+    this.collectData();
+  }
+
+
+  growthshop_dataLayer.prototype.updateCart = function () {
+    var self = this;
+    fetch("/cart.js")
+      .then(function (r) { return r.json(); })
+      .then(function (data) { self.cart = data; })
+      .catch(function () {});
+  };
+
+
+  growthshop_dataLayer.prototype.debounce = function (delay) {
+    var timeoutId;
+    return function (func) {
+      var context = this;
+      var args = arguments;
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(function () {
+        func.apply(context, args);
+      }, delay);
+    };
+  };
+
+
+  growthshop_dataLayer.prototype.collectData = function () {
+    this.customerData();
+    this.ajaxRequestData();
+    this.searchPageData();
+    this.miniCartData();
+
+
+    
+
+
+    
+      this.productSinglePage();
+    
+
+
+    
+
+
+    this.addToWishListData();
+    this.quickViewData();
+    this.formData();
+    this.phoneClickData();
+    this.emailClickData();
+  };
+
+
+  // ========== Logged-in customer data ==========
+  growthshop_dataLayer.prototype.customerData = function () {
+    var currentUser = {};
+    
+
+
+    
+    
+
+
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({ customer: currentUser });
+  };
+
+
+  // ========== Intercept AJAX/XHR for add_to_cart, remove_from_cart, search ==========
+  growthshop_dataLayer.prototype.ajaxRequestData = function () {
+    var self = this;
+
+
+    // Non-ajax cart add (if merchant wants to intercept and still track)
+    if (this.isAddToCartRedirect) {
+      document.addEventListener('submit', function (event) {
+        var addToCartForm = event.target && event.target.closest && event.target.closest('form[action="/cart/add"]');
+        if (addToCartForm) {
+          event.preventDefault();
+          var formData = new FormData(addToCartForm);
+          fetch(window.Shopify.routes.root + 'cart/add.js', { method: 'POST', body: formData })
+            .then(function () {
+              window.location.href = "/cart";
+            })
+            .catch(function (e) { console.error('Error:', e); });
+        }
+      });
+    }
+
+
+    // Debouncer for search
+    var debounced = this.debounce(800);
+
+
+    // ---- fetch override ----
+    var originalFetch = window.fetch;
+    if (originalFetch) {
+      window.fetch = function () {
+        var args = arguments;
+        return originalFetch.apply(this, args).then(function (response) {
+          try {
+            if (response && response.ok) {
+              var clone = response.clone();
+              var requestURL = args[0] && args[0].toString ? args[0].toString() : '';
+
+
+              // Search autosuggest
+              if (/.*\/search\/?.*\?.*q=.+/.test(requestURL) && requestURL.indexOf('&requestFrom=uldt') === -1) {
+                var qs = requestURL.split('?')[1] || '';
+                var urlParams = new URLSearchParams(qs);
+                var search_term = urlParams.get("q") || '';
+                debounced(function () { self._fireSuggestSearch(search_term); });
+              }
+              // Add to cart
+              else if (requestURL.indexOf("/cart/add") > -1) {
+                clone.text().then(function (text) {
+                  var data;
+                  try { data = JSON.parse(text); } catch (e) { data = null; }
+                  if (!data) return;
+                  if (data.items && Object.prototype.toString.call(data.items) === '[object Array]') {
+                    for (var i = 0; i < data.items.length; i++) {
+                      self.ecommerceDataLayer('add_to_cart', { items: [data.items[i]] });
+                    }
+                  } else {
+                    self.ecommerceDataLayer('add_to_cart', { items: [data] });
+                  }
+                  self.updateCart();
+                });
+              }
+              // Cart change/update (increment/decrement/remove)
+              else if (requestURL.indexOf("/cart/change") > -1 || requestURL.indexOf("/cart/update") > -1) {
+                clone.text().then(function (text) {
+                  var newCart;
+                  try { newCart = JSON.parse(text); } catch (e) { newCart = null; }
+                  if (!newCart || !newCart.items || !self.cart || !self.cart.items) return;
+
+
+                  var newCartItems = newCart.items.slice();
+                  var oldCartItems = self.cart.items.slice();
+
+
+                  for (var i = 0; i < oldCartItems.length; i++) {
+                    var oldIt = oldCartItems[i];
+                    var newIt = null;
+                    for (var j = 0; j < newCartItems.length; j++) {
+                      if (newCartItems[j].id === oldIt.id) { newIt = newCartItems[j]; break; }
+                    }
+                    if (newIt) {
+                      if (newIt.quantity > oldIt.quantity) {
+                        var incQty = (newIt.quantity - oldIt.quantity);
+                        var updatedItemInc = JSON.parse(JSON.stringify(oldIt));
+                        updatedItemInc.quantity = incQty;
+                        self.ecommerceDataLayer('add_to_cart', { items: [updatedItemInc] });
+                        self.updateCart();
+                      } else if (newIt.quantity < oldIt.quantity) {
+                        var decQty = (oldIt.quantity - newIt.quantity);
+                        var updatedItemDec = JSON.parse(JSON.stringify(oldIt));
+                        updatedItemDec.quantity = decQty;
+                        self.ecommerceDataLayer('remove_from_cart', { items: [updatedItemDec] });
+                        self.updateCart();
+                      }
+                    } else {
+                      self.ecommerceDataLayer('remove_from_cart', { items: [oldIt] });
+                      self.updateCart();
+                    }
+                  }
+                });
+              }
+            }
+          } catch (e) {}
+          return response;
+        });
+      };
+    }
+
+
+    // ---- XHR override ----
+    var OrigXHR = window.XMLHttpRequest;
+    if (OrigXHR) {
+      window.XMLHttpRequest = function () {
+        var requestURL = '';
+        var xhr = new OrigXHR();
+        var origOpen = xhr.open;
+        var origSend = xhr.send;
+
+
+        xhr.open = function (method, url) {
+          requestURL = url || '';
+          return origOpen.apply(xhr, arguments);
+        };
+
+
+        xhr.send = function () {
+          if (requestURL.indexOf("/cart/add") > -1 ||
+              requestURL.indexOf("/cart/change") > -1 ||
+              /.*\/search\/?.*\?.*q=.+/.test(requestURL)) {
+
+
+            xhr.addEventListener('load', function () {
+              if (xhr.readyState === 4 && xhr.status >= 200 && xhr.status < 400) {
+                try {
+                  // Search autosuggest
+                  if (/.*\/search\/?.*\?.*q=.+/.test(requestURL) && requestURL.indexOf('&requestFrom=uldt') === -1) {
+                    var qs = requestURL.split('?')[1] || '';
+                    var urlParams = new URLSearchParams(qs);
+                    var search_term = urlParams.get("q") || '';
+                    debounced(function () { self._fireSuggestSearch(search_term); });
+                  }
+                  // Add to cart
+                  else if (requestURL.indexOf("/cart/add") > -1) {
+                    var data = JSON.parse(xhr.responseText || '{}');
+                    if (data.items && Object.prototype.toString.call(data.items) === '[object Array]') {
+                      for (var i = 0; i < data.items.length; i++) {
+                        self.ecommerceDataLayer('add_to_cart', { items: [data.items[i]] });
+                      }
+                    } else {
+                      self.ecommerceDataLayer('add_to_cart', { items: [data] });
+                    }
+                    self.updateCart();
+                  }
+                  // Change cart
+                  else if (requestURL.indexOf("/cart/change") > -1) {
+                    var nCart = JSON.parse(xhr.responseText || '{}');
+                    if (!nCart || !nCart.items || !self.cart || !self.cart.items) return;
+
+
+                    var newCartItems = nCart.items.slice();
+                    var oldCartItems = self.cart.items.slice();
+
+
+                    for (var i2 = 0; i2 < oldCartItems.length; i2++) {
+                      var oItem = oldCartItems[i2];
+                      var nItem = null;
+                      for (var j2 = 0; j2 < newCartItems.length; j2++) {
+                        if (newCartItems[j2].id === oItem.id) { nItem = newCartItems[j2]; break; }
+                      }
+
+
+                      if (nItem) {
+                        if (nItem.quantity > oItem.quantity) {
+                          var qInc = (nItem.quantity - oItem.quantity);
+                          var incItem = JSON.parse(JSON.stringify(oItem));
+                          incItem.quantity = qInc;
+                          self.ecommerceDataLayer('add_to_cart', { items: [incItem] });
+                          self.updateCart();
+                        } else if (nItem.quantity < oItem.quantity) {
+                          var qDec = (oItem.quantity - nItem.quantity);
+                          var decItem = JSON.parse(JSON.stringify(oItem));
+                          decItem.quantity = qDec;
+                          self.ecommerceDataLayer('remove_from_cart', { items: [decItem] });
+                          self.updateCart();
+                        }
+                      } else {
+                        self.ecommerceDataLayer('remove_from_cart', { items: [oItem] });
+                        self.updateCart();
+                      }
+                    }
+                  }
+                } catch (e) {}
+              }
+            });
+          }
+          return origSend.apply(xhr, arguments);
+        };
+
+
+        return xhr;
+      };
+    }
+  };
+
+
+  // Helper to fetch suggest results and push a search event
+  growthshop_dataLayer.prototype._fireSuggestSearch = function (search_term) {
+    var self = this;
+    if (!search_term) {
+      self.ecommerceDataLayer('search', { search_term: '', items: [] });
+      return;
+    }
+    fetch(self.storeURL + "/search/suggest.json?q=" + encodeURIComponent(search_term) + "&resources[type]=product&requestFrom=uldt")
+      .then(function (res) { return res.json(); })
+      .then(function (data) {
+        var products = data && data.resources && data.resources.results && data.resources.results.products ? data.resources.results.products : [];
+        if (!products || !products.length) {
+          self.ecommerceDataLayer('search', { search_term: search_term, items: [] });
+          return;
+        }
+        var promises = [];
+        for (var i = 0; i < products.length; i++) {
+          var prod = products[i];
+          var cleanUrl = (prod.url || '').split('?')[0];
+          if (cleanUrl) {
+            promises.push(fetch(self.storeURL + cleanUrl + ".js").then(function (r) { return r.json(); }).catch(function () { return null; }));
+          }
+        }
+        Promise.all(promises).then(function (prods) {
+          var items = [];
+          for (var j = 0; j < prods.length; j++) {
+            var p = prods[j];
+            if (!p || !p.variants || !p.variants.length) continue;
+            items.push({
+              product_id: p.id,
+              product_title: p.title,
+              variant_id: p.variants[0].id,
+              variant_title: p.variants[0].title,
+              vendor: p.vendor,
+              total_discount: 0,
+              final_price: p.price_min,
+              product_type: p.type,
+              quantity: 1
+            });
+          }
+          self.ecommerceDataLayer('search', { search_term: search_term, items: items });
+        });
+      })
+      .catch(function () {
+        self.ecommerceDataLayer('search', { search_term: search_term, items: [] });
+      });
+  };
+
+
+  // ========== Search page ==========
+  growthshop_dataLayer.prototype.searchPageData = function () {
+    var self = this;
+    var href = (window.location && window.location.href) || '';
+    if (/.+\/search\?.*\&?q=.+/.test(href)) {
+      var qs = href.split('?')[1] || '';
+      var urlParams = new URLSearchParams(qs);
+      var search_term = urlParams.get("q") || '';
+      self._fireSuggestSearch(search_term);
+    }
+  };
+
+
+  // ========== Mini cart -> view_cart ==========
+  growthshop_dataLayer.prototype.miniCartData = function () {
+    if (!this.miniCartButton || !this.miniCartButton.length) return;
+    var self = this;
+    var evt = (this.miniCartAppersOn === 'hover') ? 'mouseenter' : this.miniCartAppersOn;
+
+
+    for (var i = 0; i < this.miniCartButton.length; i++) {
+      var selector = this.miniCartButton[i];
+      var nodes = document.querySelectorAll(selector);
+      for (var j = 0; j < nodes.length; j++) {
+        nodes[j].addEventListener(evt, function () {
+          self.ecommerceDataLayer('view_cart', self.cart || {});
+        });
+      }
+    }
+  };
+
+
+  // ========== Cart page ==========
+  growthshop_dataLayer.prototype.viewCartPageData = function () {
+    this.ecommerceDataLayer('view_cart', this.cart || {});
+    if (!this.isAjaxCartIncrementDecrement) {
+      var self = this;
+      document.addEventListener('pointerdown', function (event) {
+        var target = event.target && event.target.closest && event.target.closest('a[href*="/cart/change?"]');
+        if (target) {
+          var linkUrl = target.getAttribute('href') || '';
+          var qs = linkUrl.split("?")[1] || '';
+          var urlParams = new URLSearchParams(qs);
+          var newQuantity = toInt(urlParams.get("quantity"));
+          var line = toInt(urlParams.get("line"));
+          var cart_id = urlParams.get("id");
+          if (newQuantity != null && (line || cart_id)) {
+            var item = line ? JSON.parse(JSON.stringify((self.cart && self.cart.items && self.cart.items[line - 1]) || {}))
+                            : ((self.cart && self.cart.items) ? (function () {
+                                for (var i = 0; i < self.cart.items.length; i++) {
+                                  if (self.cart.items[i].key === cart_id) return JSON.parse(JSON.stringify(self.cart.items[i]));
+                                }
+                                return null;
+                              })() : null);
+            if (!item) return;
+            var eventName = 'add_to_cart';
+            if (newQuantity < item.quantity) eventName = 'remove_from_cart';
+            var qDiff = Math.abs(newQuantity - item.quantity);
+            item.quantity = qDiff;
+            self.ecommerceDataLayer(eventName, { items: [item] });
+          }
+        }
+      });
+    }
+  };
+
+
+  // ========== Product page ==========
+  growthshop_dataLayer.prototype.productSinglePage = function () {
+    
+      var baseItem = {
+        product_id: 7532572311598,
+        variant_id: 42144044875822,
+        product_title: "Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS",
+        line_level_total_discount: 0,
+        vendor: "Get Joy",
+        sku: null,
+        product_type: "Freeze Dried Dog Food",
+        item_list_id: 262728187950,
+        item_list_name: "All Products",
+        
+          variant_title: "Chicken \/ Trial (4 oz)",
+        
+        final_price: 1999,
+        quantity: 1
+      };
+
+
+      var variants = [{"id":42144044875822,"title":"Chicken \/ Trial (4 oz)","option1":"Chicken","option2":"Trial (4 oz)","option3":null,"sku":"FD-chicken-4oz","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Chicken \/ Trial (4 oz)","public_title":"Chicken \/ Trial (4 oz)","options":["Chicken","Trial (4 oz)"],"price":1999,"weight":113,"compare_at_price":null,"inventory_management":"shopify","barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":42144044908590,"title":"Chicken \/ Small (16 oz)","option1":"Chicken","option2":"Small (16 oz)","option3":null,"sku":"FD-CHICKEN-16","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Chicken \/ Small (16 oz)","public_title":"Chicken \/ Small (16 oz)","options":["Chicken","Small (16 oz)"],"price":3495,"weight":454,"compare_at_price":null,"inventory_management":"shopify","barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":42144044941358,"title":"Chicken \/ Large (32 oz)","option1":"Chicken","option2":"Large (32 oz)","option3":null,"sku":"FD-CHICKEN-32","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Chicken \/ Large (32 oz)","public_title":"Chicken \/ Large (32 oz)","options":["Chicken","Large (32 oz)"],"price":5995,"weight":907,"compare_at_price":null,"inventory_management":"shopify","barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":42144044974126,"title":"Beef \/ Trial (4 oz)","option1":"Beef","option2":"Trial (4 oz)","option3":null,"sku":"FD-beef-4oz","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Beef \/ Trial (4 oz)","public_title":"Beef \/ Trial (4 oz)","options":["Beef","Trial (4 oz)"],"price":1999,"weight":113,"compare_at_price":null,"inventory_management":"shopify","barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":42144045006894,"title":"Beef \/ Small (16 oz)","option1":"Beef","option2":"Small (16 oz)","option3":null,"sku":"FD-BEEF-16","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Beef \/ Small (16 oz)","public_title":"Beef \/ Small (16 oz)","options":["Beef","Small (16 oz)"],"price":3495,"weight":454,"compare_at_price":null,"inventory_management":null,"barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}},{"id":42144045039662,"title":"Beef \/ Large (32 oz)","option1":"Beef","option2":"Large (32 oz)","option3":null,"sku":"FD-BEEF-32","requires_shipping":true,"taxable":true,"featured_image":null,"available":true,"name":"Freeze Dried Raw Meals (Fresh Meals (Trial Offer Offline Copy) - GS - Beef \/ Large (32 oz)","public_title":"Beef \/ Large (32 oz)","options":["Beef","Large (32 oz)"],"price":5995,"weight":907,"compare_at_price":null,"inventory_management":null,"barcode":null,"requires_selling_plan":false,"selling_plan_allocations":[],"quantity_rule":{"min":1,"max":null,"increment":1}}];
+      this.ecommerceDataLayer('view_item', { items: [baseItem] });
+
+
+      if (this.shopifyDirectCheckoutButton && this.shopifyDirectCheckoutButton.length) {
+        var self = this;
+        document.addEventListener('pointerdown', function (event) {
+          var checkoutButton = event.target && event.target.closest && event.target.closest(self.shopifyDirectCheckoutButton.join(', '));
+          if (!checkoutButton) return;
+
+
+          var variant_id = null;
+          var form = checkoutButton.closest('form[action*="/cart/add"]');
+          if (form) {
+            var input = form.querySelector('input[name="id"]');
+            var fromURL = new URLSearchParams(window.location.search).get('variant');
+            var firstVarId = baseItem.variant_id;
+            if (input && input.value) variant_id = input.value;
+            else if (fromURL) variant_id = fromURL;
+            else if (firstVarId) variant_id = firstVarId;
+          }
+          variant_id = toInt(variant_id);
+
+
+          if (variant_id) {
+            var quantity = 1;
+            var formId = form && form.getAttribute('id');
+            if (formId) {
+              var qInput = document.querySelector('input[name="quantity"][form="' + formId + '"]');
+              if (qInput && qInput.value) quantity = parseInt(qInput.value, 10) || 1;
+            }
+            var v = null;
+            for (var i = 0; i < variants.length; i++) { if (variants[i].id === variant_id) { v = variants[i]; break; } }
+            var item = JSON.parse(JSON.stringify(baseItem));
+            if (v) {
+              item.variant_id = variant_id;
+              item.variant_title = v.title;
+              item.final_price = v.price;
+              item.quantity = quantity;
+              self.ecommerceDataLayer('add_to_cart', { items: [item] });
+            } else if (self.quickViewedItem && self.quickViewVariants) {
+              // fallback for quick view
+              for (var j = 0; j < self.quickViewVariants.length; j++) { if (self.quickViewVariants[j].id === variant_id) { v = self.quickViewVariants[j]; break; } }
+              if (v) {
+                var qi = JSON.parse(JSON.stringify(self.quickViewedItem));
+                qi.variant_id = variant_id;
+                qi.variant_title = v.title;
+                qi.final_price = toCents(v.price);
+                qi.quantity = quantity;
+                self.ecommerceDataLayer('add_to_cart', { items: [qi] });
+              }
+            }
+          }
+        });
+      }
+    
+  };
+
+
+  // ========== Collections page ==========
+  growthshop_dataLayer.prototype.collectionsPageData = function () {
+    var ecommerce = { items: [
+      
+    ]};
+
+
+    ecommerce.item_list_id = null;
+    ecommerce.item_list_name = null;
+    this.ecommerceDataLayer('view_item_list', ecommerce);
+  };
+
+
+  // ========== Wishlist ==========
+  growthshop_dataLayer.prototype.addToWishListData = function () {
+    if (!this.addToWishListSelectors || !this.addToWishListSelectors.addWishListIcon) return;
+    var self = this;
+    document.addEventListener('pointerdown', function (event) {
+      var target = event.target;
+      if (!target || !target.closest || !target.closest(self.addToWishListSelectors.addWishListIcon)) return;
+
+
+      var pageURL = (window.location && window.location.href ? window.location.href : '').replace(/\?.+/, '');
+      var requestURL;
+
+
+      if (/\/products\/[^/]+$/.test(pageURL)) {
+        requestURL = pageURL;
+      } else if (self.addToWishListSelectors.gridItemSelector && self.addToWishListSelectors.productLinkSelector) {
+        var itemEl = target.closest(self.addToWishListSelectors.gridItemSelector);
+        if (itemEl) {
+          var linkEl = itemEl.querySelector(self.addToWishListSelectors.productLinkSelector);
+          if (linkEl) {
+            var link = (linkEl.getAttribute('href') || '').replace(/\?.+/, '');
+            if (link && /\/products\/[^/]+$/.test(link)) requestURL = link;
+          }
+        }
+      }
+
+
+      if (requestURL) {
+        fetch(requestURL + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (result) {
+            var d = result && result.product;
+            if (!d || !d.variants || !d.variants.length) return;
+            var it = {
+              product_id: d.id,
+              variant_id: d.variants[0].id,
+              product_title: d.title,
+              quantity: 1,
+              final_price: toCents(d.variants[0].price),
+              total_discount: 0,
+              product_type: d.product_type,
+              vendor: d.vendor,
+              variant_title: (d.variants[0].title !== 'Default Title') ? d.variants[0].title : undefined,
+              sku: d.variants[0].sku
+            };
+            self.ecommerceDataLayer('add_to_wishlist', { items: [it] });
+          })
+          .catch(function () {});
+      }
+    });
+  };
+
+
+  // ========== Quick View ==========
+  growthshop_dataLayer.prototype.quickViewData = function () {
+    if (!this.quickViewSelector || !this.quickViewSelector.quickViewElement || !this.quickViewSelector.gridItemSelector || !this.quickViewSelector.productLinkSelector) return;
+    var self = this;
+
+
+    document.addEventListener('pointerdown', function (event) {
+      var target = event.target;
+      if (!target || !target.closest || !target.closest(self.quickViewSelector.quickViewElement)) return;
+
+
+      var requestURL;
+      var itemEl = target.closest(self.quickViewSelector.gridItemSelector);
+      if (itemEl) {
+        var linkEl = itemEl.querySelector(self.quickViewSelector.productLinkSelector);
+        if (linkEl) {
+          var link = (linkEl.getAttribute('href') || '').replace(/\?.+/, '');
+          if (link && /\/products\/[^/]+$/.test(link)) requestURL = link;
+        }
+      }
+
+
+      if (requestURL) {
+        fetch(requestURL + '.json')
+          .then(function (r) { return r.json(); })
+          .then(function (res) {
+            var d = res && res.product;
+            if (!d || !d.variants || !d.variants.length) return;
+            var it = {
+              product_id: d.id,
+              variant_id: d.variants[0].id,
+              product_title: d.title,
+              quantity: 1,
+              final_price: toCents(d.variants[0].price),
+              total_discount: 0,
+              product_type: d.product_type,
+              vendor: d.vendor,
+              variant_title: (d.variants[0].title !== 'Default Title') ? d.variants[0].title : undefined,
+              sku: d.variants[0].sku
+            };
+            self.ecommerceDataLayer('view_item', { items: [it] });
+            self.quickViewVariants = d.variants;
+            self.quickViewedItem = it;
+          })
+          .catch(function () {});
+      }
+    });
+
+
+    
+  };
+
+
+  // ========== Push ecommerce events ==========
+  growthshop_dataLayer.prototype.ecommerceDataLayer = function (eventName, data) {
+    var self = this;
+    window.dataLayer.push({ ecommerce: null });
+
+
+    var items = (data && data.items && data.items.length) ? data.items : [];
+    var currency = (this.cart && this.cart.currency) ? this.cart.currency : 'USD';
+
+
+    var dlItems = [];
+    for (var i = 0; i < items.length; i++) {
+      var it = items[i] || {};
+      var entry = {
+        index: i,
+        item_id: this.formattedItemId ? ('shopify_' + this.countryCode + '_' + it.product_id + '_' + it.variant_id) : String(it.product_id || ''),
+        id:      this.formattedItemId ? ('shopify_' + this.countryCode + '_' + it.product_id + '_' + it.variant_id) : String(it.product_id || ''),
+        product_id: String(it.product_id || ''),
+        variant_id: String(it.variant_id || ''),
+        item_name: it.product_title,
+        quantity: Number(it.quantity || 1),
+        price: Number(((Number(it.final_price || 0) / 100).toFixed(2))),
+        discount: it.total_discount ? Number(((Number(it.total_discount) / 100).toFixed(2))) : 0
+      };
+      if (it.product_type) entry.item_category = it.product_type;
+      if (it.vendor) entry.item_brand = it.vendor;
+      if (it.variant_title && it.variant_title !== 'Default Title') entry.item_variant = it.variant_title;
+      if (it.sku) entry.sku = it.sku;
+      if (it.item_list_name) entry.item_list_name = it.item_list_name;
+      if (it.item_list_id != null) entry.item_list_id = String(it.item_list_id);
+      dlItems.push(entry);
+    }
+
+
+    var value;
+    if (data && data.total_price != null) {
+      value = Number(((Number(data.total_price) / 100).toFixed(2)));
+    } else {
+      var sum = 0;
+      for (var k = 0; k < dlItems.length; k++) {
+        sum += (Number(dlItems[k].price) * Number(dlItems[k].quantity));
+      }
+      value = Number(sum.toFixed(2));
+    }
+
+
+    var payload = {
+      event: eventName + this.eventSuffix,
+      ecommerce: {
+        currency: currency,
+        items: dlItems,
+        value: value
+      }
+    };
+
+
+    if (data && data.item_list_id != null) payload.ecommerce.item_list_id = data.item_list_id;
+    if (data && data.item_list_name != null) payload.ecommerce.item_list_name = data.item_list_name;
+    if (data && data.search_term != null) payload.search_term = data.search_term;
+
+
+    if (self.dataSchema.dynamicRemarketing && self.dataSchema.dynamicRemarketing.show) {
+      window.dataLayer.push({ dynamicRemarketing: null });
+      payload.dynamicRemarketing = {
+        value: value,
+        items: (function () {
+          var arr = [];
+          for (var i2 = 0; i2 < dlItems.length; i2++) {
+            arr.push({ id: dlItems[i2].item_id, google_business_vertical: self.dataSchema.dynamicRemarketing.business_vertical });
+          }
+          return arr;
+        })()
+      };
+    }
+
+
+    if (!self.dataSchema.ecommerce || !self.dataSchema.ecommerce.show) {
+      delete payload.ecommerce;
+    }
+
+
+    window.dataLayer.push(payload);
+  };
+
+
+  // ========== Forms ==========
+  growthshop_dataLayer.prototype.formData = function () {
+    var self = this;
+    document.addEventListener('submit', function (event) {
+      var form = event.target && event.target.closest && event.target.closest('form[action^="/contact"]');
+      if (!form) return;
+
+
+      var formData = {
+        form_location: (window.location && window.location.href) || '',
+        form_id: form.getAttribute('id'),
+        form_classes: form.getAttribute('class')
+      };
+      var formType = form.querySelector('input[name="form_type"]');
+      var inputs = form.querySelectorAll("input:not([type=hidden]):not([type=submit]), textarea, select");
+
+
+      for (var i = 0; i < inputs.length; i++) {
+        var input = inputs[i], name = input && input.name, val = input && input.value;
+        if (name && val) {
+          var m = name.match(/\[(.*?)\]/);
+          if (m && m.length > 1) formData[m[1]] = val;
+        }
+      }
+
+
+      if (formType && formType.value === 'customer') {
+        window.dataLayer.push({ event: self.eventPrefix + 'newsletter_signup' , form_location: formData.form_location, form_id: formData.form_id, form_classes: formData.form_classes });
+      } else if (formType && formType.value === 'contact') {
+        window.dataLayer.push({ event: self.eventPrefix + 'contact_form_submit', form_location: formData.form_location, form_id: formData.form_id, form_classes: formData.form_classes });
+      }
+    });
+  };
+
+
+  // ========== Phone click ==========
+  growthshop_dataLayer.prototype.phoneClickData = function () {
+    var self = this;
+    document.addEventListener('click', function (event) {
+      var target = event.target && event.target.closest && event.target.closest('a[href^="tel:"]');
+      if (!target) return;
+      var phone_number = (target.getAttribute('href') || '').replace('tel:', '');
+      window.dataLayer.push({
+        event: self.eventPrefix + 'phone_number_click',
+        page_location: (window.location && window.location.href) || '',
+        link_classes: target.getAttribute('class'),
+        link_id: target.getAttribute('id'),
+        phone_number: phone_number
+      });
+    });
+  };
+
+
+  // ========== Email click ==========
+  growthshop_dataLayer.prototype.emailClickData = function () {
+    var self = this;
+    document.addEventListener('click', function (event) {
+      var target = event.target && event.target.closest && event.target.closest('a[href^="mailto:"]');
+      if (!target) return;
+      var email_address = (target.getAttribute('href') || '').replace('mailto:', '');
+      window.dataLayer.push({
+        event: self.eventPrefix + 'email_click',
+        page_location: (window.location && window.location.href) || '',
+        link_classes: target.getAttribute('class'),
+        link_id: target.getAttribute('id'),
+        email_address: email_address
+      });
+    });
+  };
+
+
+  // ========== Bootstrap ==========
+  document.addEventListener('DOMContentLoaded', function () {
+    try {
+      new growthshop_dataLayer(); // fixed: correct class name
+    } catch (error) {
+      console.log(error);
+    }
+  });
+})();
+</script>
+
+
+    <script>
+      // Store referrer to session storage before Shoplift resets it
+      if (!sessionStorage.getItem('sessionReferrer')) {
+        sessionStorage.setItem('sessionReferrer', document.referrer);
+      }
+    </script>
+    <!-- Start of Shoplift scripts -->
+    <!-- 2025-04-08T19:38:30.6037960Z -->
+<style>.shoplift-hide { opacity: 0 !important; }</style>
+<style id="sl-preview-bar-hide">#preview-bar-iframe, #PBarNextFrameWrapper { display: none !important; }</style>
+<script type="text/javascript">(function(rootPath, template, themeRole, themeId, isThemePreview){ /* Generated on 2026-03-10T23:47:50.9154759Z */(function(){"use strict";var $=document.createElement("style");$.textContent=`#shoplift-preview-control{position:fixed;max-width:332px;height:56px;background-color:#141414;z-index:9999;bottom:20px;display:flex;border-radius:8px;box-shadow:13px 22px 7px #0000,9px 14px 7px #00000003,5px 8px 6px #0000000d,2px 4px 4px #00000017,1px 1px 2px #0000001a,0 0 #0000001a;align-items:center;margin:0 auto;left:16px;right:16px;opacity:0;transform:translateY(20px);visibility:hidden;transition:opacity .4s ease-in-out,transform .4s ease-in-out,visibility 0s .4s}#shoplift-preview-control.visible{opacity:1;transform:translateY(0);visibility:visible;transition:opacity .4s ease-in-out,transform .4s ease-in-out,visibility 0s 0s}#shoplift-preview-control *{font-family:Inter,sans-serif;color:#fff;box-sizing:border-box;font-size:16px}#shoplift-preview-variant-title{font-weight:400;line-height:140%;font-size:16px;text-align:start;letter-spacing:-.16px;flex-grow:1;text-wrap:nowrap;overflow:hidden;text-overflow:ellipsis}#shoplift-preview-variant-selector{position:relative;display:block;padding:6px 0;height:100%;min-width:0;flex:1 1 auto}#shoplift-preview-variant-menu-trigger{border:none;cursor:pointer;width:100%;background-color:transparent;padding:0 16px;border-left:1px solid #333;border-right:1px solid #333;height:100%;display:flex;align-items:center;justify-content:start;gap:8px}#shoplift-preview-variant-selector .menu-variant-label{width:24px;height:24px;border-radius:50%;padding:6px;display:flex;justify-content:center;align-items:center;font-size:12px;font-style:normal;font-weight:600;line-height:100%;letter-spacing:-.12px;flex-shrink:0}#shoplift-preview-variant-selector .preview-variant-menu{position:absolute;bottom:110%;transform:translate3d(0,20px,0);visibility:hidden;pointer-events:none;opacity:0;cursor:pointer;background-color:#141414;border:1px solid #141414;border-radius:6px;width:100%;max-height:156px;overflow-y:auto;box-shadow:0 8px 16px #0003;z-index:1;transition:opacity .3s ease-in-out,transform .3s ease-in-out,visibility 0s .3s}#shoplift-preview-variant-selector .preview-variant-menu.preview-variant-menu__visible{visibility:visible;pointer-events:auto;opacity:100;transform:translateZ(0);transition:opacity .3s ease-in-out,transform .3s ease-in-out,visibility 0s 0s}@media screen and (max-width:400px){#shoplift-preview-variant-selector .preview-variant-menu{position:fixed;left:0;right:0;width:auto;bottom:110%}}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item{padding:12px 16px;display:flex;overflow:hidden}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item .menu-variant-label{margin-right:6px}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item span{overflow:hidden;text-overflow:ellipsis;text-wrap:nowrap;white-space:nowrap;color:#f6f6f6;font-size:14px;font-style:normal;font-weight:500}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item:hover{background-color:#545454}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item:last-of-type{border-bottom-left-radius:6px;border-bottom-right-radius:6px}#shoplift-preview-variant-selector .preview-variant-menu .preview-variant-menu--item:first-of-type{border-top-left-radius:6px;border-top-right-radius:6px}#shoplift-preview-control div:has(#shoplift-exit-preview-button){padding:0 16px}#shoplift-exit-preview-button{padding:6px 8px;font-weight:500;line-height:75%;border-radius:4px;background-color:transparent;border:none;text-decoration:none}#shoplift-exit-preview-button:hover{cursor:pointer;background-color:#333}/*$vite$:1*/`,document.head.appendChild($);var B=" daum[ /]| deusu/| yadirectfetcher|(?:^|[^g])news(?!sapphire)|(?<! (?:channel/|google/))google(?!(app|/google| pixel))|(?<! cu)bots?(?:\\b|_)|(?<!(?: ya| yandex|^job|inapp;) ?)search|(?<!(?:lib))http|(?<![hg]m)score|@[a-z][\\w-]+\\.|\\(\\)|\\.com|\\b\\d{13}\\b|^<|^[\\w \\.\\-\\(?:\\):]+(?:/v?\\d+(?:\\.\\d+)?(?:\\.\\d{1,10})*?)?(?:,|$)|^[^ ]{50,}$|^\\d+\\b|^\\w+/[\\w\\(\\)]*$|^active|^ad muncher|^amaya|^avsdevicesdk/|^biglotron|^bot|^bw/|^clamav[ /]|^client/|^cobweb/|^custom|^ddg[_-]android|^discourse|^dispatch/\\d|^downcast/|^duckduckgo|^facebook|^getright/|^gozilla/|^hobbit|^hotzonu|^hwcdn/|^jeode/|^jetty/|^jigsaw|^microsoft bits|^movabletype|^mozilla/\\d\\.\\d \\(compatible;?\\)$|^mozilla/\\d\\.\\d \\w*$|^navermailapp|^netsurf|^offline|^owler|^postman|^python|^rank|^read|^reed|^rest|^rss|^snapchat|^space bison|^svn|^swcd |^taringa|^thumbor/|^track|^valid|^w3c|^webbandit/|^webcopier|^wget|^whatsapp|^wordpress|^xenu link sleuth|^yahoo|^yandex|^zdm/\\d|^zoom marketplace/|^{{.*}}$|admin|analyzer|archive|ask jeeves/teoma|bit\\.ly/|bluecoat drtr|browsex|burpcollaborator|capture|catch|check|chrome-lighthouse|chromeframe|classifier|clean|cloud|crawl|cypress/|dareboost|datanyze|dejaclick|detect|dmbrowser|download|evc-batch/|feed|firephp|gomezagent|headless|httrack|hubspot marketing grader|hydra|ibisbrowser|images|insight|inspect|iplabel|ips-agent|java(?!;)|library|mail\\.ru/|manager|measure|neustar wpm|node|nutch|offbyone|optimize|pageburst|pagespeed|parser|perl|phantomjs|pingdom|powermarks|preview|proxy|ptst[ /]\\d|reputation|resolver|retriever|rexx;|rigor|rss\\b|scan|scrape|server|sogou|sparkler/|speedcurve|spider|splash|statuscake|synapse|synthetic|tools|torrent|trace|transcoder|url|virtuoso|wappalyzer|watch|webglance|webkit2png|whatcms/|zgrab",G=/bot|spider|crawl|http|lighthouse/i,V;function K(){if(V instanceof RegExp)return V;try{V=new RegExp(B,"i")}catch{V=G}return V}function j(l){return!!l&&K().test(l)}class L{timestamp;constructor(){this.timestamp=new Date}}class W extends L{type;testId;hypothesisId;constructor(t,e,i){super(),this.type=3,this.testId=t,this.hypothesisId=e,this.timestamp=i}}class J extends L{type;path;constructor(t){super(),this.type=4,this.path=t}}class Y extends L{type;cart;constructor(t){super(),this.type=5,this.cart=t}}class D extends Error{isBot;constructor(){super(),this.isBot=!0}}function Z(l,t,e){for(const i of t.selectors){const s=l.querySelectorAll(i.cssSelector);for(let r=0;r<s.length;r++)e(t.testId,t.hypothesisId)}H(l,t,(i,s,r,o,n)=>n(s,r),e)}function x(l,t,e){for(const i of t.selectors)F(l,t.testId,t.hypothesisId,i,e??(()=>{}));H(l,t,F,e??(()=>{}))}function M(l){return l.urlPatterns.reduce((t,e)=>{switch(e.operator){case"contains":return t+`.*${e}.*`;case"endsWith":return t+`.*${e}`;case"startsWith":return t+`${e}.*`}},"")}function H(l,t,e,i){new MutationObserver(()=>{for(const r of t.selectors)e(l,t.testId,t.hypothesisId,r,i)}).observe(l.documentElement,{childList:!0,subtree:!0})}function F(l,t,e,i,s){const r=l.querySelectorAll(i.cssSelector);for(let o=0;o<r.length;o++){let n=r.item(o);if(n instanceof HTMLElement&&n.dataset.shoplift!==""){n.dataset.shoplift="";for(const a of i.actions.sort(ot))n=Q(l,i.cssSelector,n,a)}}return r.length>0&&s?(s(t,e),!0):!1}function Q(l,t,e,i){switch(i.type){case"innerHtml":e.innerHTML=i.value;break;case"attribute":X(e,i.scope,i.value);break;case"css":tt(l,t,i.value);break;case"js":et(l,e,i);break;case"copy":return it(e);case"remove":st(e);break;case"move":rt(e,parseInt(i.value));break}return e}function X(l,t,e){l.setAttribute(t,e)}function tt(l,t,e){const i=l.createElement("style");i.innerHTML=`${t} { ${e} }`,l.getElementsByTagName("head")[0]?.appendChild(i)}function et(l,t,e){Function("document","element",`"use strict"; ${e.value}`)(l,t)}function it(l){const t=l.cloneNode(!0);if(!l.parentNode)throw"Can't copy node outside of DOM";return l.parentNode.insertBefore(t,l.nextSibling),t}function st(l){l.remove()}function rt(l,t){if(t===0)return;const e=Array.prototype.slice.call(l.parentElement.children).indexOf(l),i=Math.min(Math.max(e+t,0),l.parentElement.children.length-1);l.parentElement.children.item(i).insertAdjacentElement(t>0?"afterend":"beforebegin",l)}function ot(l,t){return N(l)-N(t)}function N(l){return l.type==="copy"||l.type==="remove"?0:1}var P=(l=>(l[l.Template=0]="Template",l[l.Theme=1]="Theme",l[l.UrlRedirect=2]="UrlRedirect",l[l.Script=3]="Script",l[l.Dom=4]="Dom",l[l.Price=5]="Price",l))(P||{});const nt="data:image/svg+xml,%3csvg%20width='12'%20height='12'%20viewBox='0%200%2012%2012'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M9.96001%207.90004C9.86501%207.90004%209.77001%207.86504%209.69501%207.79004L6.43501%204.53004C6.19501%204.29004%205.80501%204.29004%205.56501%204.53004L2.30501%207.79004C2.16001%207.93504%201.92001%207.93504%201.77501%207.79004C1.63001%207.64504%201.63001%207.40504%201.77501%207.26004L5.03501%204.00004C5.56501%203.47004%206.43001%203.47004%206.96501%204.00004L10.225%207.26004C10.37%207.40504%2010.37%207.64504%2010.225%207.79004C10.15%207.86004%2010.055%207.90004%209.96001%207.90004Z'%20fill='white'/%3e%3c/svg%3e",at="data:image/svg+xml,%3csvg%20width='14'%20height='24'%20viewBox='0%200%2014%2024'%20fill='none'%20xmlns='http://www.w3.org/2000/svg'%3e%3cpath%20d='M12.3976%2014.5255C12.2833%2013.8788%2012.0498%2013.3024%2011.6952%2012.7961C11.3416%2012.2898%2010.9209%2011.8353%2010.4353%2011.4317C9.94868%2011.0291%209.43546%2010.6488%208.89565%2010.292C8.48487%2010.049%208.09577%209.78565%207.72637%209.50402C7.35697%209.2224%207.08016%208.89503%206.89694%208.51987C6.71273%208.14471%206.67826%207.69533%206.79055%207.1697C6.86345%206.83216%206.97476%206.54647%207.12351%206.31162C7.27324%206.07778%207.47124%205.89986%207.7175%205.77684C7.96377%205.65483%208.21989%205.59383%208.48389%205.59383C8.88087%205.59383%209.17639%205.7016%209.3734%205.91714C9.56943%206.13268%209.68271%206.42345%209.71424%206.78946C9.74576%207.15547%209.72015%207.55401%209.63839%207.98509C9.55663%208.41617%209.43645%208.84724%209.27687%209.27934L13.5127%208.80149C13.9638%207.52656%2014.1017%206.42447%2013.9264%205.49725C13.751%204.56901%2013.2664%203.85122%2012.4724%203.34491C12.239%203.19648%2011.9779%203.07041%2011.6893%202.96569L12.0026%201.50979L9.86397%200L7.3875%201.50979L7.11169%202.78878C6.65166%202.8874%206.21724%203.01957%205.8114%203.19038C4.85292%203.594%204.06684%204.15115%203.45117%204.86385C2.83452%205.57655%202.42571%206.40108%202.22378%207.33847C2.06616%208.06947%202.04942%208.70796%202.17551%209.25087C2.30061%209.7948%202.52028%2010.2828%202.8355%2010.7139C3.14974%2011.145%203.51816%2011.5344%203.93977%2011.881C4.36039%2012.2288%204.782%2012.5521%205.20164%2012.851C5.68334%2013.1702%206.13844%2013.5169%206.56497%2013.8921C6.99052%2014.2672%207.31954%2014.7125%207.55004%2015.228C7.78055%2015.7445%207.81502%2016.3769%207.65347%2017.1262C7.56482%2017.5389%207.43676%2017.8765%207.27028%2018.1388C7.10381%2018.4011%206.89596%2018.5983%206.64772%2018.7295C6.3985%2018.8606%206.12071%2018.9267%205.8114%2018.9267C5.21641%2018.9267%204.79776%2018.6034%204.62833%2018.1632C4.4589%2017.7229%204.47367%2017.2583%204.60075%2016.5639C4.72782%2015.8705%205.05092%2015.1395%205.37107%2014.3699H1.17665C1.17665%2014.3699%200.207341%2016.1115%200.0310135%2017.6762C-0.0655232%2018.5302%200.0635208%2019.2653%200.41519%2019.8844C0.76686%2020.5036%201.33032%2020.9814%202.10655%2021.319C2.39222%2021.443%202.7104%2021.5447%203.05813%2021.623L2.54589%2024H7.17473L7.7047%2021.5386C8.08493%2021.442%208.43857%2021.3231%208.76562%2021.1787C9.73985%2020.7476%2010.52%2020.1427%2011.1071%2019.3649C11.6932%2018.5871%2012.0873%2017.7291%2012.2892%2016.7917C12.4744%2015.9295%2012.5099%2015.1741%2012.3966%2014.5275L12.3976%2014.5255Z'%20fill='white'/%3e%3c/svg%3e";async function lt(l){let t=l.replace(/-/g,"+").replace(/_/g,"/");for(;t.length%4;)t+="=";const e=atob(t),i=Uint8Array.from(e,o=>o.charCodeAt(0)),s=new Blob([i]).stream().pipeThrough(new DecompressionStream("gzip")),r=await new Response(s).text();return JSON.parse(r)}function _(l,t){return typeof t=="string"&&/\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}.\d+(?:Z|[+-]\d+)/.test(t)?new Date(t):t}function O(l,t){return t}function k(l,t=!1,e=!1,i=","){const s=l/100;if(e){const o=Math.round(s).toLocaleString("en-US");return i!==","?o.replace(/,/g,i):o}else{const r=t?",":".",o=s.toFixed(2).split("."),n=parseInt(o[0],10),a=o[1]??"00",c=n.toLocaleString("en-US");return i!==","?`${c.replace(/,/g,i)}${r}${a}`:t?`${c.replace(/,/g,".")}${r}${a}`:`${c}${r}${a}`}}function R(l,t,e,i){const s=t.replace("{{amount}}",k(l,!1,!1)).replace("{{amount_no_decimals}}",k(l,!1,!0)).replace("{{amount_with_comma_separator}}",k(l,!0,!1)).replace("{{amount_no_decimals_with_comma_separator}}",k(l,!0,!0)).replace("{{amount_with_space_separator}}",k(l,!1,!1," ")).replace("{{amount_no_decimals_with_space_separator}}",k(l,!1,!0," ")).replace("{{amount_with_apostrophe_separator}}",k(l,!1,!1,"'")).replace("{{amount_no_decimals_with_apostrophe_separator}}",k(l,!1,!0,"'")).replace("{{amount_with_period_and_space_separator}}",k(l,!1,!1,". ")).replace("{{amount_no_decimals_with_period_and_space_separator}}",k(l,!1,!0,". "));return i?`${s} ${e}`:s}function q(l){return l.replace(/[^\d.,\s-]/g,"").trim()}function ct(l){const t=new Map;for(const[e,i,s]of l.v)t.set(e,{priceInCents:i,compareAtPriceInCents:s});return t}function dt(l,t,e,i){const{priceInCents:s,compareAtPriceInCents:r}=e,{mf:o,c:n,cce:a}=i;if(l.getAttribute("data-sl-attribute-p")===t)l.innerHTML=R(s,o,n,a);else if(l.getAttribute("data-sl-attribute-cap")===t)r<=0||r<=s?l.remove():l.innerHTML=R(r,o,n,a);else if(l.getAttribute("data-sl-attribute-discount")===t&&!(r<=0||r<=s)){const h=Math.round((r-s)/r*100),u=q(R(r-s,o,n,!1)),p=l.getAttribute("data-sl-format")||"percent";p==="percent"?l.textContent=`-${h}%`:p==="amount"?l.textContent=`-${u}`:p==="both"&&(l.textContent=`-${h}% (-${u})`)}}function ht(l){const t=[],e={id:"url-pattern",operator:"contains",value:"/"};for(const[i,s,r]of l.v){t.push({id:`p-${i}`,cssSelector:`[data-sl-attribute-p="${i}"]`,urlPatterns:[e],actions:[{id:`p-action-${i}`,type:"innerHtml",scope:"price",value:R(s,l.mf,l.c,l.cce)}]});const o=r<=0||r<=s;if(t.push({id:`cap-${i}`,cssSelector:`[data-sl-attribute-cap="${i}"]`,urlPatterns:[e],actions:[{id:`cap-action-${i}`,type:o?"remove":"innerHtml",scope:"compare-at-price",value:o?"":R(r,l.mf,l.c,l.cce)}]}),!o&&r>s){const n=Math.round((r-s)/r*100),a=q
+
+[... content truncated at 50,000 chars ...]

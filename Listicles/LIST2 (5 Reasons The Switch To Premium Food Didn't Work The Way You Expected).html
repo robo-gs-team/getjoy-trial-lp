@@ -1,0 +1,883 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>5 Reasons The Switch To Premium Food Didn't Work The Way You Expected - RealDogNutrition.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #00CC3B;
+      --forest: #005005;
+      --cream: #FCF6E8;
+      --pale: #CAF7C0;
+      --ink: #005005;
+      --ink-mid: #005005;
+      --ink-muted: #4A7A4A;
+      --border: #E0EAD8;
+      --white: #FFFFFF;
+      --warn: #F5A623;
+      --red-soft: #F2E8E8;
+      --red: #C0392B;
+      --item-bg: #F8FCF6;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 17px;
+      line-height: 1.7;
+      color: var(--ink);
+      background: var(--cream);
+    }
+
+    .hero {
+      background: var(--forest);
+      color: #fff;
+      padding: 56px 24px 48px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 40% 0%, rgba(0,204,59,0.15) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-site {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--pale);
+      margin-bottom: 20px;
+      opacity: 0.8;
+    }
+    .hero h1 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: clamp(34px, 5.5vw, 58px);
+      font-weight: 900;
+      line-height: 1.05;
+      text-transform: uppercase;
+      letter-spacing: -0.01em;
+      margin-bottom: 20px;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .hero h1 em { color: var(--green); font-style: normal; }
+    .hero-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      color: rgba(255,255,255,0.72);
+      max-width: 580px;
+      margin: 0 auto 28px;
+      line-height: 1.55;
+      font-style: italic;
+    }
+    .hero-meta {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: rgba(255,255,255,0.45);
+      letter-spacing: 0.04em;
+    }
+
+    .tldr-wrap {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px;
+      transform: translateY(-28px);
+    }
+    .tldr {
+      background: var(--white);
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.12);
+    }
+    .tldr-header {
+      background: var(--ink);
+      color: #fff;
+      padding: 14px 24px;
+      font-family: 'Work Sans', sans-serif;
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .tldr-header span {
+      color: var(--pale);
+      font-size: 13px;
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 400;
+      letter-spacing: 0.03em;
+      text-transform: none;
+    }
+    .tldr-cols {
+      display: grid;
+      grid-template-columns: 1.4fr 1.2fr 1.2fr;
+    }
+    .tldr-col-header {
+      padding: 10px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: #F8F8F6;
+    }
+    .tldr-col-header:last-child { border-right: none; }
+    .tldr-row {
+      display: grid;
+      grid-template-columns: 1.4fr 1.2fr 1.2fr;
+      border-bottom: 1px solid var(--border);
+    }
+    .tldr-row:last-child { border-bottom: none; }
+    .tldr-cell {
+      padding: 13px 18px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      border-right: 1px solid var(--border);
+      line-height: 1.5;
+    }
+    .tldr-cell:last-child { border-right: none; }
+    .tldr-cell.belief { font-weight: 600; color: var(--ink); background: #FAFAF8; font-style: italic; }
+    .tldr-cell.why-wrong { color: var(--red); font-weight: 500; }
+    .tldr-cell.whats-real { color: var(--forest); font-weight: 500; }
+
+    .page-body {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 20px 60px;
+    }
+
+    .intro { padding: 12px 0 40px; }
+    .intro p { font-size: 17px; color: var(--ink-mid); margin-bottom: 18px; line-height: 1.75; }
+    .intro strong { color: var(--ink); }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      margin-top: 8px;
+    }
+    .section-label-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--green);
+      white-space: nowrap;
+    }
+    .section-label-line { flex: 1; height: 1px; background: var(--border); }
+
+    .item {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .item-img {
+      position: relative;
+      width: 100%;
+      height: 260px;
+      overflow: hidden;
+    }
+    .item-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.04) 0%, rgba(0,0,0,0.62) 100%);
+      pointer-events: none;
+    }
+    .item-img-placeholder-inner {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.45);
+      text-align: center;
+      padding: 20px;
+      line-height: 1.5;
+      z-index: 1;
+    }
+    .item-img-placeholder-inner em { font-size: 11px; opacity: 0.65; margin-top: 4px; display: block; font-style: normal; }
+    .item-num-badge {
+      position: absolute;
+      bottom: 16px;
+      left: 18px;
+      z-index: 2;
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+    }
+    .item-num-badge .num {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 72px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1;
+      opacity: 0.95;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .item-num-badge .category-pill {
+      background: var(--green);
+      color: var(--forest);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-bottom: 8px;
+    }
+    .item-img-caption {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      color: rgba(255,255,255,0.5);
+      padding: 10px 14px;
+      font-style: italic;
+    }
+    .item-header {
+      padding: 20px 22px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .item-belief-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+    .item-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--ink);
+      text-transform: uppercase;
+      letter-spacing: 0.01em;
+    }
+    .item-body { padding: 20px 22px; }
+
+    .belief-block {
+      background: var(--red-soft);
+      border-left: 3px solid var(--red);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .belief-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+      opacity: 0.75;
+      margin-bottom: 3px;
+    }
+    .belief-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--red);
+      font-style: italic;
+      line-height: 1.5;
+    }
+
+    .reality-block {
+      background: #F0FAF0;
+      border-left: 3px solid var(--green);
+      border-radius: 0 6px 6px 0;
+      padding: 12px 16px;
+      margin-bottom: 16px;
+    }
+    .reality-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--forest);
+      opacity: 0.75;
+      margin-bottom: 3px;
+    }
+    .reality-text {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: var(--forest);
+      line-height: 1.55;
+    }
+
+    .item-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      color: var(--ink-mid);
+      line-height: 1.75;
+    }
+
+    .connective {
+      background: var(--white);
+      border-radius: 14px;
+      border: 1.5px solid var(--border);
+      padding: 32px 28px;
+      margin: 8px 0 32px;
+    }
+    .connective h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin-bottom: 16px;
+      line-height: 1.1;
+    }
+    .connective p { font-size: 16px; color: var(--ink-mid); line-height: 1.75; margin-bottom: 14px; }
+    .connective p:last-child { margin-bottom: 0; }
+    .connective strong { color: var(--ink); }
+
+    .product-section {
+      background: var(--forest);
+      border-radius: 14px;
+      padding: 40px 32px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .product-section h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: var(--pale);
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+    }
+    .product-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 24px;
+      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .feature-list { list-style: none; margin-bottom: 28px; }
+    .feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+    }
+    .feature-list li:last-child { border-bottom: none; }
+    .check { color: var(--green); font-size: 16px; margin-top: 1px; flex-shrink: 0; font-weight: 700; }
+
+    .offer-box { background: var(--white); border-radius: 10px; padding: 24px; color: var(--ink); }
+    .offer-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 4px;
+    }
+    .offer-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: var(--ink-muted);
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+    .offer-table-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      background: var(--forest);
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border-radius: 6px 6px 0 0;
+    }
+    .offer-table-head .val { color: var(--pale); }
+    .offer-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border);
+      background: #FAFAFA;
+      gap: 12px;
+    }
+    .offer-row:last-of-type { border-bottom: none; border-radius: 0 0 6px 6px; }
+    .offer-row-name { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: var(--ink); margin-bottom: 1px; }
+    .offer-row-note { font-family: 'DM Sans', sans-serif; font-size: 11px; color: var(--ink-muted); }
+    .badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .badge-free { background: var(--pale); color: var(--forest); }
+    .badge-excl { background: var(--green); color: var(--forest); }
+    .badge-val { background: var(--pale); color: var(--forest); }
+    .badge-inc { background: #E8F5E8; color: var(--forest); }
+    .price-row { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 4px; }
+    .price-was { font-size: 15px; color: var(--ink-muted); text-decoration: line-through; font-family: 'DM Sans', sans-serif; }
+    .price-now { font-size: 48px; font-weight: 800; color: var(--forest); font-family: 'Work Sans', sans-serif; line-height: 1; }
+    .price-label { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--ink-mid); }
+    .price-note { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); font-style: italic; margin-bottom: 18px; }
+    .cta-btn {
+      display: block;
+      background: var(--green);
+      color: var(--forest);
+      font-family: 'Work Sans', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      text-align: center;
+      padding: 18px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      margin: 16px 0 8px;
+    }
+    .cta-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); text-align: center; line-height: 1.5; }
+
+    .prod-img-placeholder {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 24px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: rgba(255,255,255,0.38);
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    .testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    .tcard { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 18px; }
+    .tcard .stars { color: var(--warn); font-size: 13px; letter-spacing: 2px; margin-bottom: 8px; }
+    .tcard .tquote { font-style: italic; font-size: 14px; color: var(--ink-mid); line-height: 1.6; margin-bottom: 10px; font-family: 'DM Sans', sans-serif; }
+    .tcard .tname { font-family: 'DM Sans', sans-serif; font-size: 12px; color: var(--ink-muted); }
+
+    .guarantee {
+      background: var(--pale);
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      border: 1.5px solid rgba(0,80,5,0.15);
+    }
+    .guarantee-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--forest);
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .guarantee p { font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--ink-mid); line-height: 1.6; }
+
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 20px 0 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: var(--ink-muted);
+      text-align: center;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 600px) {
+      .tldr-cols { grid-template-columns: 1fr; }
+      .tldr-row { grid-template-columns: 1fr; }
+      .tldr-cell { border-right: none; border-bottom: 1px solid var(--border); }
+      .tldr-col-header { display: none; }
+      .testimonials { grid-template-columns: 1fr; }
+      .product-section { padding: 28px 20px; }
+      .item-num-badge .num { font-size: 52px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <div class="hero-site">RealDogNutrition.com · Dog Nutrition</div>
+    <h1>5 Reasons The Switch To Premium Food <em>Didn't Work</em> The Way You Expected</h1>
+    <p class="hero-sub">The food was better. The label was cleaner. Something still wasn't right - and the reason isn't what most people assume.</p>
+    <div class="hero-meta">
+      <span>🐾 Analysis</span>
+      <span>·</span>
+      <span>7 min read</span>
+      <span>·</span>
+      <span>Dog Nutrition · Gut Health</span>
+    </div>
+  </div>
+
+  <div class="tldr-wrap">
+    <div class="tldr">
+      <div class="tldr-header">
+        The Quick Version <span>The belief, why it fell short, and what's actually happening</span>
+      </div>
+      <div class="tldr-cols">
+        <div class="tldr-col-header">The Belief</div>
+        <div class="tldr-col-header">Why It Fell Short</div>
+        <div class="tldr-col-header">What You're Actually Seeing</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell belief">"Better ingredients = better absorption"</div>
+        <div class="tldr-cell why-wrong">Absorption is a gut function, not an ingredient function</div>
+        <div class="tldr-cell whats-real">Doesn't matter what's in the food. If the gut can't use it, it goes right through - and lands in your front lawn.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell belief">"Gently cooked means closer to raw"</div>
+        <div class="tldr-cell why-wrong">"Gentle" describes sourcing, not temperature</div>
+        <div class="tldr-cell whats-real">Same coat. Same energy. Same everything - because both crossed the temperature that decides what the gut actually gets.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell belief">"A probiotic supplement will fill the gap"</div>
+        <div class="tldr-cell why-wrong">Introducing bacteria into a system that can't sustain them</div>
+        <div class="tldr-cell whats-real">Some improvement, never complete. You're adding one piece to a three-part system and wondering why it's not working.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell belief">"The vet said everything looks fine"</div>
+        <div class="tldr-cell why-wrong">Standard panels don't measure gut health</div>
+        <div class="tldr-cell whats-real">"Fine" means the organs are functional. It doesn't mean the dog is running well. There's a gap between the two that bloodwork doesn't catch.</div>
+      </div>
+      <div class="tldr-row">
+        <div class="tldr-cell belief">"It just takes time to show results"</div>
+        <div class="tldr-cell why-wrong">Time doesn't fix it - the right daily input does</div>
+        <div class="tldr-cell whats-real">Three months later, same food, same results. Because nothing changed about what the gut was actually receiving.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-body">
+
+    <div class="intro">
+      <p>Most people who switch their dog to a premium food do everything right. They research the ingredients. They compare protein sources. They pay more. Then they wait for the coat to improve, the digestion to settle, the energy to come back.</p>
+      <p>Sometimes it helps a little. Rarely does it fix it completely. And most owners eventually land on some version of the same conclusion: this is just how my dog is.</p>
+      <p><strong>It usually isn't. The ingredient upgrade was real. But ingredient quality is only one variable - and it's not the one that was causing the problem.</strong></p>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">The 5 Beliefs</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <!-- ITEM 1 -->
+    <div class="item">
+      <div class="item-img" style="background: #B8C8B0;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Close-up of premium dog food label - clean ingredient list, high protein content visible<br>
+          <em>Clinical feel · the promise vs. the reality</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">01</span>
+          <span class="category-pill">The Label</span>
+        </div>
+        <div class="item-img-caption">The ingredients improved. The gut didn't get the memo.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-belief-label">The belief</div>
+        <div class="item-title">"Better Ingredients Meant Better Absorption"</div>
+      </div>
+      <div class="item-body">
+        <div class="belief-block">
+          <div class="belief-label">What most owners assumed</div>
+          <div class="belief-text">"If I switch to higher-quality protein and cleaner ingredients, my dog's body will use them better. The coat will improve. The digestion will settle."</div>
+        </div>
+        <div class="reality-block">
+          <div class="reality-label">What's actually true</div>
+          <div class="reality-text">Absorption is a gut function, not an ingredient function. How much of what's on the label reaches the bloodstream depends on the state of the microbiome - not the quality of the food entering it. A depleted microbiome absorbs poorly regardless of what it's given.</div>
+        </div>
+        <p class="item-desc">Omega-3s, fat-soluble vitamins, and high-quality proteins all require functional gut activity to be absorbed at meaningful levels. When the microbiome is compromised - which it is in most dogs eating any form of cooked food long-term - those nutrients pass through at reduced efficiency. The label is accurate. The gut isn't equipped to act on it.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 2 -->
+    <div class="item">
+      <div class="item-img" style="background: #A8BCA8;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Fresh dog food being prepared - warm kitchen, premium sourcing feel<br>
+          <em>The "gently cooked" aesthetic · aspirational but the temperature problem is invisible</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">02</span>
+          <span class="category-pill">The Process</span>
+        </div>
+        <div class="item-img-caption">"Gently cooked" is a sourcing claim. Not a temperature.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-belief-label">The belief</div>
+        <div class="item-title">"Gently Cooked Meant Closer To Raw"</div>
+      </div>
+      <div class="item-body">
+        <div class="belief-block">
+          <div class="belief-label">What most owners assumed</div>
+          <div class="belief-text">"Fresh delivery is a step toward raw. Less processing, more nutrients preserved. Better for the gut than anything that comes in a bag."</div>
+        </div>
+        <div class="reality-block">
+          <div class="reality-label">What's actually true</div>
+          <div class="reality-text">"Gently cooked" describes sourcing care and preparation - not cooking temperature. For any food to be commercially sold, it must reach temperatures that kill pathogens. Those are the same temperatures that kill beneficial gut bacteria. Every fresh-delivery brand crosses that threshold. It has to, by law.</div>
+        </div>
+        <p class="item-desc">The ingredients in a premium fresh-cooked meal are genuinely better than kibble - cleaner sourcing, higher protein quality, fewer additives. But from the microbiome's perspective, both arrive at the same place: sterile. The food is safe. The bacteria that would have supported digestion didn't survive the process.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 3 -->
+    <div class="item">
+      <div class="item-img" style="background: #B4C4B0;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Probiotic supplement bottle next to a dog bowl<br>
+          <em>Well-intentioned · the supplement-on-top-of-cooked-food gap</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">03</span>
+          <span class="category-pill">The Supplement</span>
+        </div>
+        <div class="item-img-caption">Bacteria were introduced. The environment couldn't support them.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-belief-label">The belief</div>
+        <div class="item-title">"A Probiotic Supplement Would Fill The Gap"</div>
+      </div>
+      <div class="item-body">
+        <div class="belief-block">
+          <div class="belief-label">What most owners assumed</div>
+          <div class="belief-text">"If the food is missing gut bacteria, I'll add them separately. A good probiotic should cover what the cooking process removes."</div>
+        </div>
+        <div class="reality-block">
+          <div class="reality-label">What's actually true</div>
+          <div class="reality-text">A probiotic introduces bacteria. A functional gut system feeds, sustains, and maintains them. When a probiotic is added to a cooked-food diet, the bacteria arrive into an environment without the prebiotic substrate to support them or the postbiotic compounds to maintain the gut lining they depend on. Most don't colonize. Many don't survive.</div>
+        </div>
+        <p class="item-desc">The supplement approach adds one component to a system that's missing all three. The complete gut input - prebiotics that feed the bacteria, probiotics that populate the microbiome, postbiotics that maintain the lining - has to work together and arrive through the food itself, consistently, at every meal. Adding bacteria on top of food that delivers none of it produces limited results.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 4 -->
+    <div class="item">
+      <div class="item-img" style="background: #C0CEBC;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog at vet - calm exam table, owner present, results being reviewed<br>
+          <em>Reassuring but inconclusive · the "everything looks fine" moment</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">04</span>
+          <span class="category-pill">The Vet Visit</span>
+        </div>
+        <div class="item-img-caption">Normal bloodwork doesn't mean the gut is working well.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-belief-label">The belief</div>
+        <div class="item-title">"The Vet Said Everything Looked Fine"</div>
+      </div>
+      <div class="item-body">
+        <div class="belief-block">
+          <div class="belief-label">What most owners assumed</div>
+          <div class="belief-text">"I had bloodwork done. The vet reviewed everything and said it came back normal. If there were a real problem, it would have shown up."</div>
+        </div>
+        <div class="reality-block">
+          <div class="reality-label">What's actually true</div>
+          <div class="reality-text">Standard veterinary panels measure organ function, cell counts, and specific markers - not microbiome diversity or gut lining integrity. A dog can read as completely normal on bloodwork while running on a significantly depleted microbiome. The panel wasn't designed to detect what's happening in the gut. "Normal" means organs are functioning within range, not that the gut is working optimally.</div>
+        </div>
+        <p class="item-desc">This is one of the more disorienting stops on the upgrade cycle. The owner has done the responsible thing - seen a vet, run tests, gotten professional input - and been told there's nothing wrong. So the assumption shifts from "something is wrong" to "this is just how my dog is." In most cases, something is still wrong. The diagnostic tools just aren't measuring the right thing.</p>
+      </div>
+    </div>
+
+    <!-- ITEM 5 -->
+    <div class="item">
+      <div class="item-img" style="background: #B0C4B0;">
+        <div class="item-img-placeholder-inner">
+          IMAGE: Dog resting - calm but low-energy, owner nearby looking thoughtful<br>
+          <em>The resigned acceptance moment · quiet, warm</em>
+        </div>
+        <div class="item-num-badge">
+          <span class="num">05</span>
+          <span class="category-pill">The Wait</span>
+        </div>
+        <div class="item-img-caption">Time passes. The microbiome doesn't recover on its own.</div>
+      </div>
+      <div class="item-header">
+        <div class="item-belief-label">The belief</div>
+        <div class="item-title">"It Just Takes Time To See Results"</div>
+      </div>
+      <div class="item-body">
+        <div class="belief-block">
+          <div class="belief-label">What most owners assumed</div>
+          <div class="belief-text">"The food is better now. Give it a few months. The body needs time to adjust and the results will come."</div>
+        </div>
+        <div class="reality-block">
+          <div class="reality-label">What's actually true</div>
+          <div class="reality-text">Time doesn't rebuild a microbiome - consistent daily inputs do. A dog's gut won't gradually improve on premium cooked food because the food isn't delivering what the microbiome needs to repopulate. Three months on the same food produces the same result as one month. The input is identical. The microbiome stays the same.</div>
+        </div>
+        <p class="item-desc">This is usually where the upgrade cycle ends. The owner tried, waited, saw limited results, and concluded either the food wasn't right for their dog or the dog simply doesn't respond to food changes. Neither conclusion is necessarily accurate. The more likely explanation is that the food was better - but the variable driving the symptoms was never addressed by the switch.</p>
+      </div>
+    </div>
+
+    <!-- CONNECTIVE TISSUE -->
+    <div class="connective">
+      <h2>The Same Gap Behind Every Belief</h2>
+      <p>Each of these stopping points makes sense given what most people know about dog nutrition. The reasoning is sound. The problem is that the conventional framework for evaluating dog food - ingredients, protein quality, sourcing, vet approval - doesn't include the variable that determines whether any of it works.</p>
+      <p>The microbiome is the system that absorbs nutrients, regulates inflammation, maintains the gut lining, and produces the visible outcomes owners are trying to achieve. Every cooked food, regardless of ingredient quality, arrives at the gut with the same limitation: the bacteria that support that system didn't survive the process.</p>
+      <p><strong>Freeze-dried raw is the only format where the food itself delivers a complete, intact gut input - bacteria, enzymes, and the prebiotic substrate - at every meal.</strong> Get Joy adds the postbiotic layer on top of that: the compounds that maintain the gut lining and produce the results the ingredient upgrades alone were supposed to deliver.</p>
+    </div>
+
+    <div class="section-label">
+      <span class="section-label-text">What Get Joy Does Differently</span>
+      <div class="section-label-line"></div>
+    </div>
+
+    <div class="product-section">
+      <h2>The Format That Addresses What Every Upgrade Missed</h2>
+      <p class="product-sub">Freeze-dried at -40°F - no heat, gut bacteria survive intact. Belly Biotics™ adds the complete pre + pro + postbiotic system that makes the difference visible.</p>
+
+      <div class="prod-img-placeholder">
+        IMAGE: Get Joy freeze-dried bag - clean product shot, multiple flavors.<br>
+        Dog eating with interest in background ideal.
+      </div>
+
+      <ul class="feature-list">
+        <li><span class="check">✓</span> Freeze-dried at -40°F - no heat applied, 97% nutrient retention, beneficial bacteria survive to the bowl</li>
+        <li><span class="check">✓</span> Belly Biotics™ - complete pre + pro + postbiotic system, exclusive to Get Joy</li>
+        <li><span class="check">✓</span> Postbiotics produce butyrate - maintains gut lining integrity, addresses inflammation at the source</li>
+        <li><span class="check">✓</span> Shelf-stable - no freezer required, consistent daily gut input without disruption</li>
+        <li><span class="check">✓</span> Freeze-drying preserves raw flavor - dogs that have refused cooked food consistently accept it</li>
+        <li><span class="check">✓</span> 24/7 TeleVet access included with every order ($240 value)</li>
+      </ul>
+
+      <div class="offer-box">
+        <div class="offer-title">Try It Free - Just Pay Shipping</div>
+        <div class="offer-desc">The bag is on us. Cover $4.95 shipping and see what a complete gut input does for your dog. No subscription required.</div>
+
+        <div class="offer-table-head">
+          <span>Your Trial Includes</span>
+          <span class="val">$252+ Value</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Free 4oz Freeze-Dried Sample Bag</div>
+            <div class="offer-row-note">97% nutrients intact · beneficial bacteria survive the process</div>
+          </div>
+          <span class="badge badge-free">FREE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Belly Biotics™ Gut System</div>
+            <div class="offer-row-note">Pre + pro + postbiotics - complete system, in every meal</div>
+          </div>
+          <span class="badge badge-excl">EXCLUSIVE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">24/7 TeleVet Access</div>
+            <div class="offer-row-note">Unlimited on-demand vet care, any question, anytime</div>
+          </div>
+          <span class="badge badge-val">$240 VALUE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">Personalized Feeding Guide</div>
+            <div class="offer-row-note">Tailored to your dog's size, breed and age</div>
+          </div>
+          <span class="badge badge-free">FREE</span>
+        </div>
+        <div class="offer-row">
+          <div>
+            <div class="offer-row-name">30-Day Money-Back Guarantee</div>
+            <div class="offer-row-note">Full refund if you don't see a difference - no return required</div>
+          </div>
+          <span class="badge badge-inc">INCLUDED</span>
+        </div>
+
+        <div class="price-row">
+          <span class="price-was">$12.95</span>
+          <span class="price-now">$4.95</span>
+          <span class="price-label">shipping only</span>
+        </div>
+        <div class="price-note">The bag is free. You only pay to ship it.</div>
+
+        <a href="#" class="cta-btn">Get Your Free Bag - $4.95 Shipping →</a>
+        <div class="cta-sub">No subscription required · 30-Day Money-Back Guarantee</div>
+      </div>
+    </div>
+
+    <div class="testimonials">
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"I'd been on a fresh-delivery service for two years, convinced I was doing everything right. Six weeks on Get Joy and I finally understood what I'd been missing."</div>
+        <div class="tname">- Michelle R., Golden Retriever owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"We'd tried every premium food, added probiotics, done elimination diets. The digestion issues cleared up within a week. I wish someone had explained the temperature thing earlier."</div>
+        <div class="tname">- James T., French Bulldog owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"The coat change was significant. But the energy difference is what really got me - she's moving the way she did two years ago."</div>
+        <div class="tname">- Sarah K., Labrador owner</div>
+      </div>
+      <div class="tcard">
+        <div class="stars">★★★★★</div>
+        <div class="tquote">"I'd spent $140 a month on premium kibble for three years. Get Joy costs less and addressed what none of it could."</div>
+        <div class="tname">- Dan P., German Shepherd owner</div>
+      </div>
+    </div>
+
+    <div class="guarantee">
+      <div class="guarantee-title">30-Day Money-Back Guarantee</div>
+      <p>If your dog doesn't respond - or you don't see a difference - Get Joy refunds the order in full. No return shipping required.</p>
+    </div>
+
+    <a href="#" class="cta-btn" style="max-width:560px; margin: 0 auto 10px; display:block;">Get Your Free Bag - Just Pay $4.95 Shipping →</a>
+    <div class="cta-sub" style="margin-bottom:44px;">No subscription · 30-Day Money-Back Guarantee · Free TeleVet access included</div>
+
+    <div class="footer">
+      © 2025 RealDogNutrition.com &nbsp;·&nbsp; This article contains affiliate content. Individual results may vary. This content does not constitute veterinary advice.
+    </div>
+
+  </div>
+</body>
+</html>

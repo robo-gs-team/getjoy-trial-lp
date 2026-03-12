@@ -1,0 +1,920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I Fed My Dog Premium Food For 4 Years — RealDogNutrition.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-cream:      #FCF6E8;
+      --color-pale-green: #CAF7C0;
+      --color-green:      #00CC3B;
+      --color-forest:     #005005;
+      --font-headline:    'Work Sans', sans-serif;
+      --font-display:     'Literata', serif;
+      --font-body:        'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--color-forest);
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background: var(--color-cream);
+    }
+
+    /* HEADER / NAV */
+    .site-header {
+      border-bottom: 2px solid var(--color-forest);
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .site-name {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      color: var(--color-forest);
+    }
+    .site-nav {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    .breadcrumb span {
+      margin: 0 4px;
+    }
+
+    /* ARTICLE HEADLINE */
+    .article-category {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-headline);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin: 0 0 12px 0;
+      color: var(--color-forest);
+    }
+    .article-subheadline {
+      font-size: 20px;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .divider {
+      border: none;
+      border-top: 2px solid #e8e8e8;
+      margin: 20px 0;
+    }
+
+    /* AUTHOR BIO */
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-pale-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      overflow: hidden;
+    }
+    .author-info .name {
+      font-family: Arial, sans-serif;
+      font-weight: bold;
+      font-size: 15px;
+      color: #111;
+    }
+    .author-info .title {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* IMAGE PLACEHOLDERS */
+    .image-placeholder {
+      background: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+      padding: 40px 20px;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #888;
+      margin: 28px 0;
+      font-style: italic;
+    }
+
+    /* BODY COPY */
+    p {
+      margin: 0 0 20px 0;
+    }
+    h2 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      color: var(--color-forest);
+      margin: 36px 0 14px 0;
+      line-height: 1.3;
+    }
+    h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--color-forest);
+      margin: 28px 0 10px 0;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 4px solid var(--color-green);
+      padding: 16px 20px;
+      margin: 28px 0;
+      font-size: 20px;
+      font-style: italic;
+      font-family: var(--font-display);
+      color: var(--color-forest);
+      background: var(--color-pale-green);
+    }
+
+    /* STAT CALLOUT */
+    .stat-callout {
+      background: var(--color-pale-green);
+      border: 1px solid var(--color-green);
+      border-radius: 6px;
+      padding: 20px 24px;
+      margin: 28px 0;
+      font-family: var(--font-body);
+    }
+    .stat-callout .stat-number {
+      font-size: 36px;
+      font-weight: 700;
+      color: var(--color-forest);
+    }
+    .stat-callout .stat-label {
+      font-size: 15px;
+      color: #555;
+      margin-top: 4px;
+    }
+
+    /* TEMPERATURE TABLE */
+    .temp-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 28px 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .temp-table th {
+      background: var(--color-forest);
+      color: #fff;
+      padding: 10px 14px;
+      text-align: left;
+      font-size: 13px;
+      letter-spacing: 0.5px;
+    }
+    .temp-table td {
+      padding: 10px 14px;
+      border-bottom: 1px solid #e8e8e8;
+      vertical-align: top;
+    }
+    .temp-table tr:nth-child(even) td {
+      background: #f9f9f9;
+    }
+    .temp-table tr.highlight td {
+      background: #edf7ed;
+      font-weight: bold;
+    }
+    .badge-bad { color: #c0392b; font-weight: bold; }
+    .badge-ok { color: #e67e22; font-weight: bold; }
+    .badge-good { color: var(--color-green); font-weight: bold; }
+
+    /* PRODUCT SECTION */
+    .product-section {
+      background: var(--color-forest);
+      color: #fff;
+      border-radius: 8px;
+      padding: 32px;
+      margin: 40px 0;
+    }
+    .product-section h2 {
+      font-family: var(--font-headline);
+      color: var(--color-green);
+      font-size: 28px;
+      font-weight: 900;
+      margin-top: 0;
+    }
+    .product-section p {
+      color: var(--color-pale-green);
+      font-size: 17px;
+    }
+    .product-section .tagline {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #C3F54A;
+      margin-bottom: 8px;
+    }
+
+    /* FEATURES LIST */
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0;
+    }
+    .features-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #333;
+      color: #ddd;
+      font-family: Arial, sans-serif;
+      font-size: 16px;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .features-list li:last-child {
+      border-bottom: none;
+    }
+    .features-list li .check {
+      color: #7dcc7d;
+      font-size: 18px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    /* CTA BUTTON */
+    .cta-button {
+      display: block;
+      background: var(--color-green);
+      color: var(--color-forest);
+      text-align: center;
+      padding: 18px 32px;
+      font-family: var(--font-body);
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 24px 0 12px 0;
+      letter-spacing: 0.5px;
+    }
+    .cta-subtext {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #aaa;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .testimonial-card {
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .testimonial-card .stars {
+      color: #f0a500;
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+    .testimonial-card .quote {
+      color: #333;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .testimonial-card .reviewer {
+      color: #888;
+      font-size: 13px;
+    }
+
+    /* GUARANTEE */
+    .guarantee-box {
+      border: 2px solid var(--color-green);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 28px 0;
+      text-align: center;
+      font-family: var(--font-body);
+      background: var(--color-pale-green);
+    }
+    .guarantee-box .guarantee-title {
+      font-family: var(--font-headline);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-forest);
+      margin-bottom: 8px;
+    }
+    .guarantee-box p {
+      font-size: 15px;
+      color: #555;
+      margin: 0;
+    }
+
+    /* FOOTER */
+    .article-footer {
+      border-top: 1px solid #e8e8e8;
+      margin-top: 48px;
+      padding-top: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* OFFER BOX */
+    .offer-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 28px 0 0;
+    }
+    .offer-box-title {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #005005;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .offer-box-subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .offer-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #005005;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      padding: 10px 14px;
+      border-radius: 6px 6px 0 0;
+    }
+    .offer-value-total {
+      color: #C3F54A;
+    }
+    .offer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+    }
+    .offer-row:last-of-type { border-bottom: none; border-radius: 0 0 6px 6px; }
+    .offer-row-left { flex: 1; padding-right: 12px; }
+    .offer-row-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .offer-row-desc {
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      color: #888;
+    }
+    .offer-badge {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .offer-badge.free { background: #C3F54A; color: #005005; }
+    .offer-badge.exclusive { background: #C3F54A; color: #005005; }
+    .offer-badge.value { background: #C3F54A; color: #005005; }
+    .offer-badge.included { background: #e8f5e8; color: #005005; }
+    .offer-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 20px 0 4px;
+      font-family: Arial, sans-serif;
+    }
+    .offer-price-was {
+      font-size: 16px;
+      color: #aaa;
+      text-decoration: line-through;
+    }
+    .offer-price-now {
+      font-size: 48px;
+      font-weight: 900;
+      color: #005005;
+      line-height: 1;
+    }
+    .offer-price-label {
+      font-size: 16px;
+      color: #555;
+    }
+    .offer-price-note {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    @media (max-width: 600px) {
+      .offer-price-now { font-size: 36px; }
+    }
+    .temp-sequence {
+      margin: 24px 0;
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+    .temp-row {
+      display: flex;
+      gap: 0;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      align-items: flex-start;
+    }
+    .temp-row:last-child { border-bottom: none; }
+    .temp-row.bad { background: #fdf0f0; }
+    .temp-row.warning { background: #fdf6ed; }
+    .temp-row.good { background: var(--color-pale-green); }
+    .temp-label {
+      font-weight: bold;
+      min-width: 180px;
+      flex-shrink: 0;
+      font-size: 14px;
+      padding-top: 2px;
+    }
+    .temp-row.bad .temp-label { color: #c0392b; }
+    .temp-row.warning .temp-label { color: #b7770d; }
+    .temp-row.good .temp-label { color: var(--color-green); }
+    .temp-desc {
+      color: #444;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    /* BEFORE / AFTER */
+    .before-after-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .before-after-col {
+      display: flex;
+      flex-direction: column;
+    }
+    .before-after-caption {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      text-align: center;
+      padding: 10px 8px;
+      line-height: 1.4;
+      border-radius: 0 0 6px 6px;
+    }
+    .before-caption {
+      background: #f5f5f5;
+      color: #888;
+    }
+    .after-caption {
+      background: var(--color-pale-green);
+      color: var(--color-forest);
+      font-weight: bold;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .product-section { padding: 24px 18px; }
+      .before-after-container { grid-template-columns: 1fr; }
+      .temp-label { min-width: 120px; font-size: 13px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="site-name" href="#">RealDogNutrition.com</a>
+    <div class="site-nav">Dog Health · Nutrition · Gut Health</div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    Home <span>›</span> Nutrition <span>›</span> Dog Gut Health
+  </div>
+
+  <!-- ARTICLE CATEGORY -->
+  <div class="article-category">Dog Nutrition · Gut Health</div>
+
+  <!-- HEADLINE -->
+  <h1>I Spent 4 Years Buying The Best Dog Food Money Could Buy.<br>It Still Wasn't Doing What I Thought It Was.</h1>
+
+  <div class="article-subheadline">
+    Every upgrade I made fixed the label. None of them fixed what was actually happening once the food got there.
+  </div>
+
+  <hr class="divider">
+
+  <!-- AUTHOR -->
+  <div class="author-row">
+    <div class="author-avatar">
+      <!-- IMAGE OF NATALIE: warm headshot, casual, with her Shiba Inu -->
+      🐕
+    </div>
+    <div class="author-info">
+      <div class="name">By Natalie C.</div>
+      <div class="title">Dog Mom · Shiba Inu Owner · Picky Eater Survivor</div>
+    </div>
+  </div>
+
+  <!-- IMAGE 1 -->
+  <div class="image-placeholder">
+    IMAGE OF NATALIE WITH KODA (her Shiba Inu) — candid, at home, natural light.<br>
+    Dog looks healthy but not obviously thriving. Natalie relaxed, not distressed.
+  </div>
+
+  <!-- STORY OPENS -->
+  <p>
+    For four years, I did everything the right way. I researched. I read labels. I switched from regular kibble to premium kibble to one of those human-grade fresh delivery services — the kind that arrives in a little cooler bag and costs more per week than my own groceries. I felt like I was doing right by my dog.
+  </p>
+
+  <p>
+    And for four years, small things kept showing up that I couldn't quite explain away. His digestion was never fully consistent. His coat was decent but never remarkable — I'd see other dogs online with this almost unreal shine and assume it was genetics. By year three, his energy had quietly dropped. Walks got shorter. He'd slow down earlier, less interested in the world around him.
+  </p>
+
+  <p>
+    None of it felt like a crisis. That was the problem. It felt like just… him. The normal I'd built up slowly enough that I'd stopped questioning whether it was actually normal at all.
+  </p>
+
+  <p>
+    Koda is a Shiba Inu, by the way. Dramatic, particular, deeply offended by anything he's decided isn't good enough. Getting him to finish a bowl had always been a negotiation — so when I finally found a food he'd eat consistently, I held onto it and didn't look too hard at whether it was actually working.
+  </p>
+
+  <h2>The Excuses I Made Without Realizing I Was Making Them</h2>
+
+  <p>
+    His stools were never quite right. Not sick-wrong — just never fully consistent. The vet said some dogs just have sensitive stomachs. Okay. Fine. That's just Koda.
+  </p>
+
+  <p>
+    His coat was decent. Not remarkable. I'd seen other Shibas online with this almost unreal shine to their fur and assumed it was genetics, or lighting, or someone with more time than me. Koda looked fine.
+  </p>
+
+  <p>
+    By year three, the walks got shorter. He'd slow down earlier, less interested in exploring. I told myself he was just maturing. Shibas calm down. That's what happens.
+  </p>
+
+  <!-- IMAGE 2 -->
+  <div class="image-placeholder">
+    IMAGE: Koda on a walk, slightly low energy, not engaged.<br>
+    Caption: "I told myself this was just him getting older."
+  </div>
+
+  <p>
+    None of it felt like a crisis. That's the thing. It was just… Koda. His normal. The normal I'd built up slowly enough that I stopped questioning it.
+  </p>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    "I'd spent four years and probably close to $4,000 on food I believed was giving him the best. It turns out I was solving the wrong problem the entire time."
+  </div>
+
+  <h2>The Comment That Stopped Me Cold</h2>
+
+  <p>
+    I was in a dog nutrition group online — one of those late-night rabbit holes you fall into when you're convinced something is slightly off but can't name it. Someone posted about their dog: sensitive stomach that never fully resolved, coat that was fine but not great, energy that had quietly dropped over a couple of years. Premium food the whole time.
+  </p>
+
+  <p>
+    The replies were mostly what you'd expect. Try a different protein. Add a probiotic. Check for allergies.
+  </p>
+
+  <p>
+    But one reply stopped me. It said something like: <em>"The issue probably isn't the food quality. It's what the food does to the gut after it gets there. Most premium brands fix the ingredients. Almost none of them fix the gut."</em>
+  </p>
+
+  <p>
+    I read it three times. Then I kept reading.
+  </p>
+
+  <h2>What I Found Out That I Genuinely Wish Someone Had Told Me Earlier</h2>
+
+  <p>
+    I spent the next few hours going down that thread, then reading everything I could find on dog gut health. Your dog's gut is where almost everything happens — digestion, immunity, coat, energy. When it's working properly, your dog absorbs what they eat and runs well. When it's quietly compromised, everything downstream is slightly off in ways that are easy to write off as just personality, or breed, or age.
+  </p>
+
+  <p>
+    The thing I kept landing on was this: the problem with most dog food isn't the ingredients. It's what happens to those ingredients during processing. The good bacteria, the natural enzymes, the compounds the gut needs to function — they don't survive the heat required to make food shelf-stable. They're gone before the bag is sealed. The label looks great. The gut gets almost none of what it needs.
+  </p>
+
+  <p>
+    Someone in the thread had shared a breakdown. I kept coming back to it:
+  </p>
+
+  <div class="temp-sequence">
+    <div class="temp-row bad">
+      <span class="temp-label">Kibble</span>
+      <span class="temp-desc">Cooked at 250–300°F+. Everything the gut needs — the bacteria, the enzymes, the living compounds — destroyed before it leaves the factory. Every bag. Even the $90 one.</span>
+    </div>
+    <div class="temp-row warning">
+      <span class="temp-label">"Gently cooked" fresh food</span>
+      <span class="temp-desc">Still has to hit food-safe temperatures. Still crosses the damage threshold. "Gentle" is a brand word, not a temperature. Better ingredients. Same gap in the gut.</span>
+    </div>
+    <div class="temp-row good">
+      <span class="temp-label">Freeze-dried</span>
+      <span class="temp-desc">No heat at all. The food is frozen, moisture removed in a vacuum. What goes in is what arrives in the bowl — intact.</span>
+    </div>
+  </div>
+
+  <p>
+    I stared at that for a while. Four years of upgrades. Kibble to premium kibble to fresh-cooked delivery service. I had moved down that list exactly once — and stopped one row too early the entire time.
+  </p>
+
+  <!-- IMAGE 3 -->
+  <div class="image-placeholder">
+    IMAGE: Visual of whole raw ingredients (meat, vegetables) next to a bowl of processed kibble.<br>
+    Simple, clean. No text overlay needed — the contrast does the work.<br>
+    Caption: "Same ingredients on the label. Very different story in the gut."
+  </div>
+
+  <h2>The Only Format That Doesn't Do This</h2>
+
+  <p>
+    Freeze-drying uses no heat at all. The food is frozen, then the moisture is removed in a vacuum — nothing gets cooked, nothing gets destroyed. What goes in is what arrives in the bowl. The enzymes, the bacteria, the gut-supporting compounds — all of it intact.
+  </p>
+
+  <p>
+    I'd honestly never considered it before. Freeze-dried always seemed like a treat format, not a real meal. I didn't understand that the process itself was the point.
+  </p>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    "I wasn't looking for a new brand. I was looking for an explanation. The explanation just happened to come with one."
+  </div>
+
+  <h2>Why I Ended Up Specifically On Get Joy</h2>
+
+  <p>
+    Once I understood the processing issue, I started looking at freeze-dried options. Most of them solve the heat problem — and stop there. Get Joy was the first one I found that had actually built their formula around the gut itself, not just around clean ingredients.
+  </p>
+
+  <p>
+    They call it Belly Biotics™ — a system that's designed to support the whole gut environment, not just add a probiotic and call it a day. I didn't need to understand all of it to decide to try it. The $4.95 sample made that easy.
+  </p>
+
+  <p>
+    I ordered it mostly out of curiosity. I'd been wrong before. I fully expected to be wrong again.
+  </p>
+
+  <!-- IMAGE 4 -->
+  <div class="image-placeholder">
+    IMAGE: Get Joy bag arriving — unboxing, natural home setting.<br>
+    Caption: "The sample bag was $4.95. I figured worst case, I'd wasted $4.95."
+  </div>
+
+  <h2>What Actually Happened</h2>
+
+  <p>
+    First thing: Koda ate it. Without the usual performance. He walked up, sniffed it, and finished the bowl. For a Shiba, that alone was worth noting.
+  </p>
+
+  <p>
+    By the end of the first week, his digestion had changed. Not dramatically — but the inconsistency I'd accepted as his normal was just… gone. Predictable. Easy. The thing the vet had told me was just his sensitive stomach.
+  </p>
+
+  <p>
+    By month one, his coat was different. That shine I'd spent years assuming was genetics — it was there. I sent a photo to my sister and she asked if I'd taken him to a groomer.
+  </p>
+
+  <p>
+    By month two, the walks changed. He started pulling again. Interested in things again. The dog who'd been quietly winding down over three years had shifted back up without me doing anything differently except changing what was in his bowl.
+  </p>
+
+  <!-- BEFORE / AFTER IMAGE — emotional peak -->
+  <div class="before-after-container">
+    <div class="before-after-col">
+      <div class="image-placeholder" style="margin:0;">
+        IMAGE: Koda — coat dull, posture low, not engaged.<br>
+        Same location as after photo if possible.
+      </div>
+      <div class="before-after-caption before-caption">Year 3. Premium food the whole time.<br>I thought he looked fine.</div>
+    </div>
+    <div class="before-after-col">
+      <div class="image-placeholder" style="margin:0;">
+        IMAGE: Koda — coat visibly different, alert ears, engaged eyes, upright posture.
+      </div>
+      <div class="before-after-caption after-caption">Month 2 on Get Joy.<br>My sister asked if I'd taken him to a groomer.</div>
+    </div>
+  </div>
+
+  <p>
+    I'm not going to oversell this. I'm also not going to pretend the difference wasn't obvious. The version of Koda I'd accepted as his normal wasn't his normal at all. It was what four years of the wrong kind of food had quietly created — and it turned out to be reversible.
+  </p>
+
+  <!-- DIVIDER -->
+  <hr class="divider">
+
+  <!-- ===================== PRODUCT SECTION (BOTTOM 40%) ===================== -->
+
+  <div class="product-section">
+    <h2>What Get Joy Does Differently</h2>
+    <p>
+      Most freeze-dried brands solve the heat problem and stop there. Get Joy is the only one I found that actually built their formula around the gut — a system called Belly Biotics™ that supports the whole gut environment, not just the ingredients going into it.
+    </p>
+
+    <div class="image-placeholder" style="background:#2a2a2a; border-color:#444; color:#888;">
+      IMAGE: Get Joy product — freeze-dried bag, clean brand photography.<br>
+      Multiple flavor options visible.
+    </div>
+
+    <p style="color:#bbb; font-size:15px;">
+      Used daily by 150,000+ dog owners who made the switch and didn't go back.
+    </p>
+
+    <ul class="features-list">
+      <li><span class="check">✓</span> Freeze-dried at -40°F — no heat, 97% nutrient retention, gut bacteria survive to the bowl</li>
+      <li><span class="check">✓</span> Belly Biotics™ — the only complete pre + pro + postbiotic system in freeze-dried dog food</li>
+      <li><span class="check">✓</span> Postbiotics produce butyrate — seals the gut lining, regulates inflammation, visible coat and energy results</li>
+      <li><span class="check">✓</span> Shelf-stable — no freezer required, no disruption to the gut microbiome from food rotation</li>
+      <li><span class="check">✓</span> Even picky eaters eat it — freeze-drying preserves raw flavor that cooking destroys</li>
+      <li><span class="check">✓</span> Free 24/7 TeleVet access included with every order</li>
+    </ul>
+
+    <!-- OFFER BOX -->
+    <div class="offer-box">
+      <div class="offer-box-title">FREE TRIAL BAG</div>
+      <div class="offer-box-subtitle">The bag is completely on us. Just cover $4.95 shipping — and let your dog be the judge. No subscription. No commitment. No risk. Ever.</div>
+
+      <div class="offer-table-header">
+        <span>YOUR TRIAL INCLUDES</span>
+        <span class="offer-value-total">$252+ in value</span>
+      </div>
+
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Free 4oz Freeze-Dried Sample</div>
+          <div class="offer-row-desc">97% nutrients preserved · raw benefits, zero mess</div>
+        </div>
+        <span class="offer-badge free">FREE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Belly Biotics™ Gut System</div>
+          <div class="offer-row-desc">Pre + pro + postbiotics — built into every bite</div>
+        </div>
+        <span class="offer-badge exclusive">EXCLUSIVE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">24/7 TeleVet Access</div>
+          <div class="offer-row-desc">Unlimited on-demand vet care — any question, anytime</div>
+        </div>
+        <span class="offer-badge value">$240 VALUE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Personalized Feeding Guide</div>
+          <div class="offer-row-desc">Tailored to your dog's size, breed and age</div>
+        </div>
+        <span class="offer-badge free">FREE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">30-Day Happiness Guarantee</div>
+          <div class="offer-row-desc">Full refund if your dog doesn't love it — zero hoops</div>
+        </div>
+        <span class="offer-badge included">INCLUDED</span>
+      </div>
+
+      <div class="offer-price-row">
+        <span class="offer-price-was">$12.95</span>
+        <span class="offer-price-now">$4.95</span>
+        <span class="offer-price-label">shipping only</span>
+      </div>
+      <div class="offer-price-note">The bag is free. You only pay to ship it.</div>
+
+      <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
+      <div class="cta-subtext">No subscription required · Cancel anytime · 30-Day Money-Back Guarantee</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <h2>What Dog Owners Are Saying After The Switch</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"After two years on a fresh-cooked delivery service, I thought I was doing everything right. Kinda devastated to find out I wasn't. Get Joy has been a completely different result."</div>
+      <div class="reviewer">— Michelle R., Golden Retriever owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"My vet kept saying sensitive stomach was just her breed. Four weeks on Get Joy and the issues I'd dealt with for three years are basically gone."</div>
+      <div class="reviewer">— James T., French Bulldog owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"I was the most skeptical person about switching again after spending so much on premium food. The sample bag was $4.95. Within two weeks I was on subscription."</div>
+      <div class="reviewer">— Sarah K., Labrador owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"The coat difference alone would have sold me. But it's the energy that really got me. My 7-year-old dog acts like he's 3 again."</div>
+      <div class="reviewer">— Dan P., German Shepherd owner</div>
+    </div>
+  </div>
+
+  <!-- IMAGE 5 -->
+  <div class="image-placeholder">
+    IMAGE: Grid of UGC — real dogs, real owners, diverse breeds.<br>
+    Before/after coat photos if available. Lifestyle shots of happy dogs eating Get Joy.
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-box">
+    <div class="guarantee-title">30-Day Happiness Guarantee</div>
+    <p>If your dog doesn't love it — or you don't see a difference — Get Joy will refund every penny. No questions, no hoops.</p>
+  </div>
+
+  <!-- PRICE REVEAL -->
+  <h2>What It Actually Costs To Find Out</h2>
+
+  <p>
+    Get Joy is running a trial offer right now: the first bag is free. You cover $4.95 shipping. That's it. No subscription required to claim it, no commitment, no hoops.
+  </p>
+
+  <p>
+    What you get for that $4.95: a full 4oz freeze-dried bag, a personalized feeding guide for your dog's size and breed, 24/7 TeleVet access ($240 value), and a 30-Day Happiness Guarantee — full refund if your dog doesn't respond the way I've described.
+  </p>
+
+  <p>
+    I spent four years and close to $4,000 upgrading to the wrong solution. The trial bag costs less than a cup of coffee and tells you in a week whether any of this is real.
+  </p>
+
+  <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
+  <div style="text-align:center; font-family:Arial,sans-serif; font-size:13px; color:#888; margin-bottom:40px;">
+    No subscription required  ·  30-Day Money-Back Guarantee  ·  Free TeleVet access included
+  </div>
+
+  <!-- IMAGE 6 -->
+  <div class="image-placeholder">
+    IMAGE: Koda eating from his bowl — Get Joy bag visible in background.<br>
+    Caption: "He actually finishes the bowl now. Every time."
+  </div>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <p>© 2025 RealDogNutrition.com  ·  This article contains affiliate content. Natalie was compensated to share her experience with Get Joy. Individual results may vary.</p>
+  </div>
+
+</body>
+</html>

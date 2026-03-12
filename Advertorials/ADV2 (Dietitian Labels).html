@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>I'm A Dietitian. I Read Every Label. I Still Couldn't Figure Out Why My Dog's Health Was Falling Short. — RealDogNutrition.com</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --color-cream:      #FCF6E8;
+      --color-pale-green: #CAF7C0;
+      --color-green:      #00CC3B;
+      --color-forest:     #005005;
+      --font-headline:    'Work Sans', sans-serif;
+      --font-display:     'Literata', serif;
+      --font-body:        'DM Sans', sans-serif;
+    }
+
+    body {
+      font-family: var(--font-body);
+      font-size: 18px;
+      line-height: 1.7;
+      color: var(--color-forest);
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 0 20px;
+      background: var(--color-cream);
+    }
+
+    /* HEADER / NAV */
+    .site-header {
+      border-bottom: 2px solid var(--color-forest);
+      padding: 14px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 32px;
+    }
+    .site-name {
+      font-family: var(--font-headline);
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      text-decoration: none;
+      color: var(--color-forest);
+    }
+    .site-nav {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #666;
+    }
+
+    /* BREADCRUMB */
+    .breadcrumb {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      margin-bottom: 24px;
+    }
+    .breadcrumb span { margin: 0 4px; }
+
+    /* ARTICLE HEADLINE */
+    .article-category {
+      font-family: var(--font-body);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--color-green);
+      margin-bottom: 12px;
+    }
+    h1 {
+      font-family: var(--font-headline);
+      font-size: 38px;
+      font-weight: 900;
+      line-height: 1.2;
+      margin: 0 0 12px 0;
+      color: var(--color-forest);
+    }
+    .article-subheadline {
+      font-size: 20px;
+      color: #444;
+      line-height: 1.5;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+    .divider {
+      border: none;
+      border-top: 2px solid #e8e8e8;
+      margin: 20px 0;
+    }
+
+    /* AUTHOR BIO */
+    .author-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 28px;
+    }
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--color-pale-green);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+    }
+    .author-info .name {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      color: #1a1a1a;
+    }
+    .author-info .title {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+    }
+
+    /* BODY */
+    p { margin: 0 0 20px 0; }
+    h2 {
+      font-family: var(--font-display);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.3;
+      margin: 36px 0 16px;
+      color: var(--color-forest);
+    }
+
+    /* PULL QUOTE */
+    .pull-quote {
+      border-left: 4px solid var(--color-green);
+      padding: 14px 20px;
+      margin: 28px 0;
+      font-size: 20px;
+      font-style: italic;
+      font-family: var(--font-display);
+      color: var(--color-forest);
+      line-height: 1.5;
+      background: var(--color-pale-green);
+    }
+
+    /* IMAGE PLACEHOLDER */
+    .image-placeholder {
+      background: #f0f0f0;
+      border: 2px dashed #ccc;
+      border-radius: 6px;
+      padding: 24px;
+      margin: 24px 0;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* MECHANISM BREAKDOWN */
+    .mechanism-box {
+      background: var(--color-pale-green);
+      border: 1px solid var(--color-green);
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 28px 0;
+    }
+    .mechanism-box .mechanism-title {
+      font-family: var(--font-body);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-forest);
+      margin-bottom: 16px;
+    }
+    .mechanism-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 18px;
+      align-items: flex-start;
+    }
+    .mechanism-row:last-child { margin-bottom: 0; }
+    .mechanism-icon {
+      font-size: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .mechanism-row-title {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 3px;
+    }
+    .mechanism-row-desc {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #555;
+      line-height: 1.5;
+    }
+    .mechanism-row-desc em {
+      color: #c0392b;
+      font-style: normal;
+      font-weight: bold;
+    }
+
+    /* TEMPERATURE SEQUENCE */
+    .temp-sequence {
+      margin: 24px 0;
+      border-radius: 6px;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+    }
+    .temp-row {
+      display: flex;
+      padding: 14px 18px;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      align-items: flex-start;
+    }
+    .temp-row:last-child { border-bottom: none; }
+    .temp-row.bad { background: #fdf0f0; }
+    .temp-row.warning { background: #fdf6ed; }
+    .temp-row.good { background: var(--color-pale-green); }
+    .temp-label {
+      font-weight: bold;
+      min-width: 180px;
+      flex-shrink: 0;
+      font-size: 14px;
+      padding-top: 2px;
+    }
+    .temp-row.bad .temp-label { color: #c0392b; }
+    .temp-row.warning .temp-label { color: #b7770d; }
+    .temp-row.good .temp-label { color: var(--color-green); }
+    .temp-desc { color: #444; line-height: 1.5; font-size: 14px; }
+
+    /* POSTBIOTIC EXPLAINER */
+    .postbiotic-chain {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      margin: 24px 0;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      flex-wrap: wrap;
+    }
+    .chain-step {
+      background: var(--color-pale-green);
+      border: 1px solid var(--color-green);
+      border-radius: 6px;
+      padding: 12px 16px;
+      text-align: center;
+      flex: 1;
+      min-width: 120px;
+    }
+    .chain-step .step-label {
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-forest);
+      margin-bottom: 4px;
+    }
+    .chain-step .step-name {
+      font-size: 15px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 3px;
+    }
+    .chain-step .step-desc {
+      font-size: 12px;
+      color: #666;
+      line-height: 1.3;
+    }
+    .chain-arrow {
+      font-size: 20px;
+      color: var(--color-green);
+      padding: 0 8px;
+      flex-shrink: 0;
+    }
+    .chain-step.highlight {
+      background: #005005;
+      border-color: #005005;
+    }
+    .chain-step.highlight .step-label { color: #C3F54A; }
+    .chain-step.highlight .step-name { color: #fff; }
+    .chain-step.highlight .step-desc { color: #aaa; }
+
+    /* BEFORE / AFTER */
+    .before-after-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 28px 0;
+    }
+    .before-after-col { display: flex; flex-direction: column; }
+    .before-after-caption {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      text-align: center;
+      padding: 10px 8px;
+      line-height: 1.4;
+      border-radius: 0 0 6px 6px;
+    }
+    .before-caption { background: #f5f5f5; color: #888; }
+    .after-caption { background: var(--color-pale-green); color: var(--color-forest); font-weight: bold; }
+
+    /* PRODUCT SECTION */
+    .product-section {
+      background: var(--color-forest);
+      color: var(--color-pale-green);
+      padding: 36px 32px;
+      border-radius: 10px;
+      margin: 48px 0 36px;
+    }
+    .product-section h2 { font-family: var(--font-headline); font-weight: 900; color: var(--color-green); font-size: 28px; margin-top: 0; }
+    .product-section p { color: var(--color-pale-green); }
+    .features-list {
+      list-style: none;
+      padding: 0;
+      margin: 20px 0 24px;
+    }
+    .features-list li {
+      font-family: Arial, sans-serif;
+      font-size: 15px;
+      color: #ddd;
+      padding: 8px 0;
+      border-bottom: 1px solid #2a2a2a;
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+    }
+    .features-list li:last-child { border-bottom: none; }
+    .check { color: #C3F54A; font-weight: bold; flex-shrink: 0; }
+
+    /* OFFER BOX */
+    .offer-box {
+      background: #fff;
+      border-radius: 8px;
+      padding: 24px;
+      margin: 28px 0 0;
+    }
+    .offer-box-title {
+      font-family: Arial, sans-serif;
+      font-size: 22px;
+      font-weight: 900;
+      color: #005005;
+      margin-bottom: 6px;
+      letter-spacing: 0.02em;
+    }
+    .offer-box-subtitle {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+    .offer-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #005005;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 0.08em;
+      padding: 10px 14px;
+      border-radius: 6px 6px 0 0;
+    }
+    .offer-value-total { color: #C3F54A; }
+    .offer-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+    }
+    .offer-row:last-of-type { border-bottom: none; border-radius: 0 0 6px 6px; }
+    .offer-row-left { flex: 1; padding-right: 12px; }
+    .offer-row-title {
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+      font-weight: bold;
+      color: #1a1a1a;
+      margin-bottom: 2px;
+    }
+    .offer-row-desc { font-family: Arial, sans-serif; font-size: 12px; color: #888; }
+    .offer-badge {
+      font-family: Arial, sans-serif;
+      font-size: 11px;
+      font-weight: bold;
+      padding: 4px 10px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.04em;
+    }
+    .offer-badge.free { background: #C3F54A; color: #005005; }
+    .offer-badge.exclusive { background: #C3F54A; color: #005005; }
+    .offer-badge.value { background: #C3F54A; color: #005005; }
+    .offer-badge.included { background: #e8f5e8; color: #005005; }
+    .offer-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      margin: 20px 0 4px;
+      font-family: Arial, sans-serif;
+    }
+    .offer-price-was { font-size: 16px; color: #aaa; text-decoration: line-through; }
+    .offer-price-now { font-size: 48px; font-weight: 900; color: #005005; line-height: 1; }
+    .offer-price-label { font-size: 16px; color: #555; }
+    .offer-price-note {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      font-style: italic;
+      margin-bottom: 20px;
+    }
+
+    /* CTA */
+    .cta-button {
+      display: block;
+      background: #00CC3B;
+      color: #fff;
+      font-family: Arial, sans-serif;
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      padding: 18px 24px;
+      border-radius: 6px;
+      text-decoration: none;
+      margin: 20px 0 10px;
+      letter-spacing: 0.02em;
+    }
+    .cta-subtext {
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #888;
+      text-align: center;
+      margin-bottom: 12px;
+    }
+
+    /* TESTIMONIALS */
+    .testimonial-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin: 28px 0;
+    }
+    .testimonial-card {
+      background: #f7f7f7;
+      border-radius: 6px;
+      padding: 18px;
+      font-family: Arial, sans-serif;
+      font-size: 14px;
+    }
+    .testimonial-card .stars { color: #f0a500; font-size: 16px; margin-bottom: 8px; }
+    .testimonial-card .quote {
+      color: #333;
+      line-height: 1.5;
+      font-style: italic;
+      margin-bottom: 10px;
+    }
+    .testimonial-card .reviewer { color: #888; font-size: 13px; }
+
+    /* GUARANTEE */
+    .guarantee-box {
+      border: 2px solid var(--color-green);
+      border-radius: 8px;
+      padding: 24px;
+      margin: 28px 0;
+      text-align: center;
+      font-family: var(--font-body);
+      background: var(--color-pale-green);
+    }
+    .guarantee-box .guarantee-title {
+      font-family: var(--font-headline);
+      font-size: 20px;
+      font-weight: 900;
+      color: var(--color-forest);
+      margin-bottom: 8px;
+    }
+    .guarantee-box p { font-size: 15px; color: #555; margin: 0; }
+
+    /* FOOTER */
+    .article-footer {
+      border-top: 1px solid #e8e8e8;
+      margin-top: 48px;
+      padding-top: 20px;
+      font-family: Arial, sans-serif;
+      font-size: 13px;
+      color: #aaa;
+      text-align: center;
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 28px; }
+      .testimonial-grid { grid-template-columns: 1fr; }
+      .product-section { padding: 24px 18px; }
+      .before-after-container { grid-template-columns: 1fr; }
+      .temp-label { min-width: 120px; font-size: 13px; }
+      .postbiotic-chain { flex-direction: column; }
+      .chain-arrow { transform: rotate(90deg); align-self: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- SITE HEADER -->
+  <header class="site-header">
+    <a class="site-name" href="#">RealDogNutrition.com</a>
+    <div class="site-nav">Dog Health · Nutrition · Gut Health</div>
+  </header>
+
+  <!-- BREADCRUMB -->
+  <div class="breadcrumb">
+    Home <span>›</span> Nutrition <span>›</span> Dog Gut Health
+  </div>
+
+  <!-- ARTICLE CATEGORY -->
+  <div class="article-category">Dog Nutrition · Gut Health · Belly Biotics™</div>
+
+  <!-- HEADLINE -->
+  <h1>I'm A Dietitian. I Read Every Label. I Still Couldn't Figure Out Why My Dog's Health Was Falling Short.</h1>
+
+  <div class="article-subheadline">
+    I know more about food science than most people will ever want to. It still took me three years to figure out why none of it was working for my dog — because the answer wasn't on any label.
+  </div>
+
+  <hr class="divider">
+
+  <!-- AUTHOR -->
+  <div class="author-row">
+    <div class="author-avatar">
+      <!-- IMAGE: Maya Chen headshot — professional but warm, with her dog -->
+      🥗
+    </div>
+    <div class="author-info">
+      <div class="name">By Maya Chen, RD</div>
+      <div class="title">Registered Dietitian · Dog Mom · Nutrition Researcher</div>
+    </div>
+  </div>
+
+  <!-- IMAGE 1 -->
+  <div class="image-placeholder">
+    IMAGE: Maya with her dog — professional setting, warm. Dog looks healthy but not obviously thriving.<br>
+    Caption: "Three years of doing everything right. The results told a different story."
+  </div>
+
+  <!-- STORY OPENS — Identity dissonance hook. She should know. She doesn't. That's the engine. -->
+  <p>
+    I spend my days telling people how to read food labels. How processing affects nutrient bioavailability. Why ingredient quality matters but isn't the whole story. I've been doing this for eleven years. I've sat across from patients who were eating what looked like a perfect diet and still couldn't understand why they weren't feeling better.
+  </p>
+
+  <p>
+    I thought I understood nutrition. Then I got a dog.
+  </p>
+
+  <p>
+    His name is Mochi. Shih Tzu mix, four years old, terminally enthusiastic about food. From the beginning, I applied everything I knew. I read the labels. I avoided the fillers and the vague protein sources. I went premium — then more premium — and when the fresh-cooked delivery services started showing up, I was first in line. If there was a "right" way to feed a dog, I was doing it.
+  </p>
+
+  <p>
+    For three years, Mochi had soft stools. Not sick-soft — just never right. His coat was fine. Not the kind of fine that makes people stop you on the street, just… adequate. He had less energy at three than he'd had at one, and every vet visit came back clean. "Some dogs just have sensitive stomachs," they'd say. I heard that enough times that I started to believe it.
+  </p>
+
+  <p>
+    I was a dietitian blaming genetics for a nutrition problem. It took me an embarrassingly long time to realize that's exactly what I was doing.
+  </p>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    "I was applying human nutrition principles to my dog's food. The labels looked right. The ingredients checked out. What I didn't understand was that the label was never the issue — and nothing in my training had prepared me to see that."
+  </div>
+
+  <h2>What I Got Wrong — And Why Almost Every Dog Owner Gets It Wrong Too</h2>
+
+  <p>
+    The instinct, when a dog has persistent digestive issues, is to go after the ingredients. Different protein. Fewer additives. Simpler formula. Higher quality sourcing. That's the human nutrition playbook and it's not wrong — ingredient quality matters. But it's incomplete in a way I didn't understand for longer than I should have.
+  </p>
+
+  <p>
+    The gap isn't in what goes into the food. It's in what the food does to the gut once it gets there. And that's determined almost entirely by something you can't read on any label: what the processing did to the living components before the bag was sealed.
+  </p>
+
+  <p>
+    Here's what I've learned working in nutrition: a functional gut needs ongoing inputs that most people never think about. Beneficial bacteria to populate and maintain the microbiome. Enzymes to help break food down and actually absorb it. And the compounds that keep the gut lining intact — because a compromised gut lining means nutrients pass through without being absorbed, inflammation runs higher than it should, and everything downstream is slightly off. In whole, unprocessed food, these exist naturally. The moment you apply heat to make food shelf-stable, they're gone. Not reduced. Gone.
+  </p>
+
+  <!-- TEMPERATURE SEQUENCE -->
+  <div class="temp-sequence">
+    <div class="temp-row bad">
+      <span class="temp-label">Kibble</span>
+      <span class="temp-desc">Cooked at 250–300°F+. Beneficial bacteria, digestive enzymes, and gut-supporting compounds destroyed before the bag is sealed. Every bag. Even the $90 one with the clean ingredient panel.</span>
+    </div>
+    <div class="temp-row warning">
+      <span class="temp-label">"Gently cooked" fresh food</span>
+      <span class="temp-desc">Still reaches food-safe temperatures. Still crosses the damage threshold. "Gentle" is a marketing description, not a temperature specification. Better sourcing. Same gap in what the gut actually receives.</span>
+    </div>
+    <div class="temp-row good">
+      <span class="temp-label">Freeze-dried raw</span>
+      <span class="temp-desc">No heat. Moisture removed at sub-zero temperatures in a vacuum. The bacteria, enzymes, and bioactive compounds survive intact. What's in the food is what arrives in the gut.</span>
+    </div>
+  </div>
+
+  <p>
+    I had moved from kibble to premium kibble to fresh-cooked delivery over the course of three years. Every upgrade improved the label. None of them changed the temperature problem. I was solving the wrong variable, over and over, with increasing sophistication.
+  </p>
+
+  <h2>The Part That Most Brands — Including The Good Ones — Still Miss</h2>
+
+  <p>
+    When I finally understood the processing issue, I thought the fix was straightforward: switch to freeze-dried, add a probiotic, done. I'd been recommending probiotics to patients for years. I knew how they worked. I figured I was most of the way there.
+  </p>
+
+  <p>
+    I was still missing something.
+  </p>
+
+  <p>
+    The research on gut health — in humans and increasingly in dogs — has moved significantly past the probiotic conversation in the last decade. Probiotics matter. But they're the middle of a three-part system, not the whole thing. And without the other two parts, they can't do what most people think they're doing.
+  </p>
+
+  <!-- MECHANISM BOX — Full Belly Biotics treatment -->
+  <div class="mechanism-box">
+    <div class="mechanism-title">The Three-Part Gut System — Why Probiotics Alone Aren't Enough</div>
+
+    <div class="mechanism-row">
+      <div class="mechanism-icon">🌱</div>
+      <div>
+        <div class="mechanism-row-title">Prebiotics — The Foundation</div>
+        <div class="mechanism-row-desc">Prebiotics are the food source that beneficial bacteria need to survive and multiply. Without adequate prebiotic input, even a high-quality probiotic supplement has nothing to grow on. The bacteria arrive, find an inhospitable environment, and die off before they can establish. Most dog foods — including many with added probiotics — <em>do not include the prebiotic substrate those probiotics need to function.</em></div>
+      </div>
+    </div>
+
+    <div class="mechanism-row">
+      <div class="mechanism-icon">🦠</div>
+      <div>
+        <div class="mechanism-row-title">Probiotics — The Population</div>
+        <div class="mechanism-row-desc">With a prebiotic foundation in place, probiotic bacteria can actually establish themselves and begin diversifying the microbiome. This is where most gut health products stop. But a populated microbiome is not a functional gut lining — and the gut lining is where most of the downstream benefits actually originate.</div>
+      </div>
+    </div>
+
+    <div class="mechanism-row">
+      <div class="mechanism-icon">⚡</div>
+      <div>
+        <div class="mechanism-row-title">Postbiotics — The Moat</div>
+        <div class="mechanism-row-desc">Postbiotics are what beneficial gut bacteria actually produce once they're established and fed — the compounds that do the real work. The most important one is called butyrate, and the simplest way I can describe it is this: it's the fuel that keeps the gut lining sealed. A sealed gut lining means better nutrient absorption, lower inflammation, and the visible results most owners are actually chasing — better coat, better energy, stronger immunity. <em>Without postbiotics, you have a microbiome that exists on paper but isn't producing what the body needs to run well.</em> This is the piece almost every product on the market — probiotic supplements, fresh food, even most freeze-dried brands — leaves out entirely.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- POSTBIOTIC CHAIN VISUAL -->
+  <div class="postbiotic-chain">
+    <div class="chain-step">
+      <div class="step-label">Step 1</div>
+      <div class="step-name">Prebiotics</div>
+      <div class="step-desc">Feed the bacteria</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-step">
+      <div class="step-label">Step 2</div>
+      <div class="step-name">Probiotics</div>
+      <div class="step-desc">Populate the microbiome</div>
+    </div>
+    <div class="chain-arrow">→</div>
+    <div class="chain-step highlight">
+      <div class="step-label">Step 3 — The Missing Piece</div>
+      <div class="step-name">Postbiotics</div>
+      <div class="step-desc">Seal the gut lining. Drive real results.</div>
+    </div>
+  </div>
+
+  <p>
+    When I mapped this out, the three years of Mochi's digestive issues made complete sense. He was getting food. He was occasionally getting probiotics. He was never getting the full system — and without the full system, the gut lining stays compromised, inflammation stays elevated, and all those downstream issues I'd been writing off as "just how he is" stay exactly where they are.
+  </p>
+
+  <!-- PULL QUOTE -->
+  <div class="pull-quote">
+    "Adding a probiotic to a dog's diet without prebiotics and postbiotics is like hiring staff for a building you haven't finished constructing. The people show up. There's nowhere for them to work. Nothing gets done."
+  </div>
+
+  <h2>What I Found When I Went Looking For A Brand That Actually Built Around This</h2>
+
+  <p>
+    The honest answer is: not much, for a while.
+  </p>
+
+  <p>
+    Most freeze-dried brands have solved the heat problem. That's real and meaningful progress over kibble and fresh-cooked. But solving the heat problem means the living components in the food survive — it doesn't mean the brand has built a formula specifically designed to complete the three-part gut system. Most haven't. They're selling clean ingredients in a format that preserves them. That's better. It's not complete.
+  </p>
+
+  <p>
+    Get Joy was the first brand I found that had actually built their formula around the gut architecture itself. They call it Belly Biotics™ — and when I saw what it actually included, it was the first time I'd seen a pet food brand address all three components in a single product.
+  </p>
+
+  <p>
+    I ordered it skeptically. I'd been wrong before — confidently wrong, which is worse.
+  </p>
+
+  <!-- IMAGE 2 -->
+  <div class="image-placeholder">
+    IMAGE: Get Joy bag arriving — natural home setting, unboxing.<br>
+    Caption: "I gave it four weeks before I let myself have an opinion."
+  </div>
+
+  <h2>What Happened Over The Next Eight Weeks</h2>
+
+  <p>
+    Week one: Mochi's digestion changed. The variability that had been his normal for three years — the inconsistency I'd been told was just his stomach — resolved. Not gradually. Just gone, within about a week. I'd seen this pattern in patients before. I knew what it meant.
+  </p>
+
+  <p>
+    By week four, his coat was noticeably different. The adequate-but-not-remarkable coat I'd assumed was genetic had shifted. I took a photo to compare to one from two months earlier. The difference was obvious enough that I sent it to a colleague without comment. She replied: "What changed?"
+  </p>
+
+  <p>
+    By week eight, his energy had shifted. Mochi had been a three-year-old dog with a seven-year-old's enthusiasm for the couch. By week eight, he was back to pulling toward things, interested in the world again. Not because anything dramatic had happened — because the gut was finally running the way it was supposed to.
+  </p>
+
+  <!-- BEFORE / AFTER -->
+  <div class="before-after-container">
+    <div class="before-after-col">
+      <div class="image-placeholder" style="margin:0;">
+        IMAGE: Mochi — adequate coat, settled energy, not engaged.<br>
+        Looks fine. Healthy. Just muted.
+      </div>
+      <div class="before-after-caption before-caption">Three years in. Premium food the whole time.<br>"Some dogs just have sensitive stomachs."</div>
+    </div>
+    <div class="before-after-col">
+      <div class="image-placeholder" style="margin:0;">
+        IMAGE: Mochi — coat visibly improved, alert, pulling toward something.
+      </div>
+      <div class="before-after-caption after-caption">Eight weeks on Get Joy.<br>My colleague asked: "What changed?"</div>
+    </div>
+  </div>
+
+  <p>
+    I want to be careful here. I'm not telling you this because I think one brand fixed my dog. I'm telling you this because the mechanism is real — and once you understand the mechanism, the results aren't surprising. They're what you'd expect from a gut that finally has everything it needs to function.
+  </p>
+
+  <p>
+    The food is what changed. But what actually changed was the gut. The food was just, finally, the right kind of input.
+  </p>
+
+  <!-- DIVIDER -->
+  <hr class="divider">
+
+  <!-- ===================== PRODUCT SECTION (BOTTOM 40% — LOCKED TEMPLATE) ===================== -->
+
+  <div class="product-section">
+    <h2>What Get Joy Does Differently</h2>
+    <p>
+      Most freeze-dried brands solve the heat problem and stop there. Get Joy is the only one built around the complete three-part gut architecture — Belly Biotics™ combines the prebiotics that feed gut bacteria, the probiotics that populate the microbiome, and the postbiotics that seal the gut lining and drive the visible results most owners are actually looking for.
+    </p>
+    <p>
+      It's the difference between a probiotic that exists in your dog's food and a gut system that actually functions.
+    </p>
+
+    <div class="image-placeholder" style="background:#2a2a2a; border-color:#444; color:#888;">
+      IMAGE: Get Joy product — freeze-dried bag, clean brand photography.<br>
+      Multiple flavor options visible.
+    </div>
+
+    <p style="color:#bbb; font-size:15px;">
+      Used daily by 150,000+ dog owners who made the switch and didn't go back.
+    </p>
+
+    <ul class="features-list">
+      <li><span class="check">✓</span> Freeze-dried at -40°F — no heat, 97% nutrient retention, gut bacteria survive to the bowl</li>
+      <li><span class="check">✓</span> Belly Biotics™ — the only complete pre + pro + postbiotic system in freeze-dried dog food</li>
+      <li><span class="check">✓</span> Postbiotics produce butyrate — seals the gut lining, regulates inflammation, visible coat and energy results</li>
+      <li><span class="check">✓</span> Shelf-stable — no freezer required, no disruption to the gut microbiome from food rotation</li>
+      <li><span class="check">✓</span> Even picky eaters eat it — freeze-drying preserves raw flavor that cooking destroys</li>
+      <li><span class="check">✓</span> Free 24/7 TeleVet access included with every order</li>
+    </ul>
+
+    <!-- OFFER BOX -->
+    <div class="offer-box">
+      <div class="offer-box-title">FREE TRIAL BAG</div>
+      <div class="offer-box-subtitle">The bag is completely on us. Just cover $4.95 shipping — and let your dog be the judge. No subscription. No commitment. No risk. Ever.</div>
+
+      <div class="offer-table-header">
+        <span>YOUR TRIAL INCLUDES</span>
+        <span class="offer-value-total">$252+ in value</span>
+      </div>
+
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Free 4oz Freeze-Dried Sample</div>
+          <div class="offer-row-desc">97% nutrients preserved · raw benefits, zero mess</div>
+        </div>
+        <span class="offer-badge free">FREE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Belly Biotics™ Gut System</div>
+          <div class="offer-row-desc">Pre + pro + postbiotics — built into every bite</div>
+        </div>
+        <span class="offer-badge exclusive">EXCLUSIVE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">24/7 TeleVet Access</div>
+          <div class="offer-row-desc">Unlimited on-demand vet care — any question, anytime</div>
+        </div>
+        <span class="offer-badge value">$240 VALUE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">Personalized Feeding Guide</div>
+          <div class="offer-row-desc">Tailored to your dog's size, breed and age</div>
+        </div>
+        <span class="offer-badge free">FREE</span>
+      </div>
+      <div class="offer-row">
+        <div class="offer-row-left">
+          <div class="offer-row-title">30-Day Happiness Guarantee</div>
+          <div class="offer-row-desc">Full refund if your dog doesn't love it — zero hoops</div>
+        </div>
+        <span class="offer-badge included">INCLUDED</span>
+      </div>
+
+      <div class="offer-price-row">
+        <span class="offer-price-was">$12.95</span>
+        <span class="offer-price-now">$4.95</span>
+        <span class="offer-price-label">shipping only</span>
+      </div>
+      <div class="offer-price-note">The bag is free. You only pay to ship it.</div>
+
+      <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
+      <div class="cta-subtext">No subscription required · Cancel anytime · 30-Day Money-Back Guarantee</div>
+    </div>
+  </div>
+
+  <!-- TESTIMONIALS -->
+  <h2>What Dog Owners Are Saying After The Switch</h2>
+
+  <div class="testimonial-grid">
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"I'd been adding a probiotic to his food for two years and seeing nothing. Once I understood the three-part system, it clicked. Get Joy was the first thing that actually worked."</div>
+      <div class="reviewer">— Rachel T., Labradoodle owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"My vet kept saying sensitive stomach was just her breed. Four weeks on Get Joy and the issues I'd dealt with for three years are basically gone."</div>
+      <div class="reviewer">— James T., French Bulldog owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"After two years on a fresh-cooked delivery service, I thought I was doing everything right. Get Joy has been a completely different result — digestion, coat, everything."</div>
+      <div class="reviewer">— Michelle R., Golden Retriever owner</div>
+    </div>
+    <div class="testimonial-card">
+      <div class="stars">★★★★★</div>
+      <div class="quote">"The coat difference alone would have sold me. But it's the energy that really got me. My 7-year-old dog acts like he's 3 again."</div>
+      <div class="reviewer">— Dan P., German Shepherd owner</div>
+    </div>
+  </div>
+
+  <!-- UGC IMAGE -->
+  <div class="image-placeholder">
+    IMAGE: Grid of UGC — real dogs, real owners, diverse breeds.<br>
+    Before/after coat photos if available. Lifestyle shots of happy dogs eating Get Joy.
+  </div>
+
+  <!-- GUARANTEE -->
+  <div class="guarantee-box">
+    <div class="guarantee-title">30-Day Happiness Guarantee</div>
+    <p>If your dog doesn't love it — or you don't see a difference — Get Joy will refund every penny. No questions, no hoops.</p>
+  </div>
+
+  <!-- PRICE REVEAL / CLOSING -->
+  <h2>What It Actually Costs To Test Whether This Is Real</h2>
+
+  <p>
+    Get Joy is running a trial offer right now: the first bag is free. You cover $4.95 shipping. No subscription required, no commitment, no hoops.
+  </p>
+
+  <p>
+    What you get for that $4.95: a full 4oz freeze-dried bag built around the complete Belly Biotics™ system, a personalized feeding guide for your dog's size and breed, 24/7 TeleVet access ($240 value), and a 30-Day Happiness Guarantee — full refund if you don't see a difference.
+  </p>
+
+  <p>
+    The mechanism is real. The three-part gut system is real. The question isn't whether it works — it's whether you test it before or after a few more years of writing off the symptoms as just how your dog is.
+  </p>
+
+  <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
+  <div style="text-align:center; font-family:Arial,sans-serif; font-size:13px; color:#888; margin-bottom:40px;">
+    No subscription required &nbsp;·&nbsp; 30-Day Money-Back Guarantee &nbsp;·&nbsp; Free TeleVet access included
+  </div>
+
+  <!-- FINAL IMAGE -->
+  <div class="image-placeholder">
+    IMAGE: Mochi eating from his bowl — Get Joy bag visible in background.<br>
+    Caption: "He eats it every time. No performance required."
+  </div>
+
+  <!-- ARTICLE FOOTER -->
+  <div class="article-footer">
+    <p>© 2025 RealDogNutrition.com &nbsp;·&nbsp; This article contains affiliate content. Maya was compensated to share her experience with Get Joy. Individual results may vary. This content does not constitute veterinary or medical advice.</p>
+  </div>
+
+</body>
+</html>

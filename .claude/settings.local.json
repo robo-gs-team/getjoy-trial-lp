@@ -1,0 +1,39 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \":*)",
+      "Bash(py --version)",
+      "Bash(node --version)",
+      "Bash(node -e \":*)",
+      "Bash(npm install pdfjs-dist)",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "mcp__Claude_in_Chrome__navigate",
+      "mcp__Claude_in_Chrome__computer",
+      "Bash(start \"\" \"C:\\\\Users\\\\gianf\\\\Desktop\\\\Growth Shop\\\\GetJoy\\\\Advertorials\\\\ADV1 \\(4 Years\\).html\")",
+      "mcp__Claude_in_Chrome__javascript_tool",
+      "Bash(INFILE=\"$HOME/.claude/projects/C--Users-gianf-Desktop-Growth-Shop-GetJoy/923a7958-2ffa-4a6f-96dd-9f8c969d2f0e/tool-results/toolu_015P5gqeQmDAsg4FXqRGDhWd.json\")",
+      "Bash(OUTFILE=\"$HOME/Desktop/Growth Shop/GetJoy/pdp_raw.html\")",
+      "Bash(INFILE=\"$HOME/Desktop/Growth Shop/GetJoy/pdp_full.html\")",
+      "mcp__Claude_in_Chrome__find",
+      "mcp__Claude_in_Chrome__tabs_create_mcp",
+      "mcp__Claude_in_Chrome__read_console_messages",
+      "Bash(cd /c/Users/gianf/Desktop/\"Growth Shop\"/GetJoy)",
+      "Bash(node apply_fixes.js)",
+      "mcp__Claude_Preview__preview_start",
+      "Bash(lsof -i :8080)",
+      "Bash(netstat -ano)",
+      "Bash(taskkill //PID 32488 //F)",
+      "Bash(tr '>' '\\\\n')",
+      "mcp__Claude_in_Chrome__resize_window",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(r''C:\\\\Users\\\\gianf\\\\Downloads\\\\Product_Claims.pdf''\\); text = ''''.join\\([p.extract_text\\(\\) or '''' for p in pdf.pages]\\); print\\(text\\)\")",
+      "Bash(python -c \"import pdfplumber; pdf = pdfplumber.open\\(r''C:\\\\Users\\\\gianf\\\\Downloads\\\\BrandTone_Copy_Callouts.pdf''\\); text = ''''.join\\([p.extract_text\\(\\) or '''' for p in pdf.pages]\\); print\\(text\\)\")",
+      "Bash(pdftotext \"C:\\\\Users\\\\gianf\\\\Downloads\\\\Product_Claims.pdf\" -)",
+      "Bash(pdftotext \"C:\\\\Users\\\\gianf\\\\Downloads\\\\BrandTone_Copy_Callouts.pdf\" -)",
+      "Bash(npm install -g docx)",
+      "Bash(node build-image-doc.js)",
+      "Bash(npm install docx)",
+      "Skill(commit-commands:commit-push-pr)",
+      "Skill(commit-commands:commit-push-pr:*)"
+    ]
+  }
+}
