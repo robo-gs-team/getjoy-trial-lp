@@ -5,7 +5,7 @@
       "name": "pdp-local",
       "runtimeExecutable": "node",
       "runtimeArgs": ["serve.js"],
-      "port": 8080
+      "autoPort": true
     }
   ]
 }
