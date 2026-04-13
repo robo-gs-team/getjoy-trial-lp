@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>I Fed My Dog Premium Food For 4 Years — RealDogNutrition.com</title>
+  <title>I Fed My Dog Premium Food For 4 Years — Get Joy Blog</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
   <style>
@@ -537,15 +537,226 @@
       .before-after-container { grid-template-columns: 1fr; }
       .temp-label { min-width: 120px; font-size: 13px; }
     }
+
+    /* ===== GETJOY BRANDED NAV + CTA COMPONENTS ===== */
+    .l1-site-nav {
+      background: #005005;
+      padding: 13px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      margin-left: -20px;
+      margin-right: -20px;
+    }
+    .l1-nav-logo { height: 26px; width: auto; display: block; }
+    .l1-nav-tag {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #CAF7C0;
+      opacity: 0.75;
+    }
+    .l1-nav-cta {
+      background: #00CC3B;
+      color: #fff;
+      border-radius: 100px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 20px;
+      text-decoration: none;
+      letter-spacing: 0.02em;
+    }
+    .l1-section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 32px;
+      margin-top: 8px;
+    }
+    .l1-section-label-text {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: #00CC3B;
+      white-space: nowrap;
+    }
+    .l1-section-label-line { flex: 1; height: 1px; background: rgba(0,80,5,0.1); }
+    .l1-product-section {
+      background: #005005;
+      border-radius: 14px;
+      padding: 40px 32px;
+      color: #fff;
+      margin-bottom: 24px;
+    }
+    .l1-product-section h2 {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      text-transform: uppercase;
+      color: #CAF7C0;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+      line-height: 1.1;
+      margin-top: 0;
+    }
+    .l1-product-sub {
+      font-size: 16px;
+      color: rgba(255,255,255,0.65);
+      margin-bottom: 24px;
+      line-height: 1.6;
+      font-family: 'DM Sans', sans-serif;
+    }
+    .l1-feature-list { list-style: none; padding: 0; margin-bottom: 28px; }
+    .l1-feature-list li {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      color: rgba(255,255,255,0.82);
+      line-height: 1.5;
+    }
+    .l1-feature-list li:last-child { border-bottom: none; }
+    .l1-check { color: #00CC3B; font-size: 16px; margin-top: 1px; flex-shrink: 0; font-weight: 700; }
+    .l1-offer-box { background: #fff; border-radius: 10px; padding: 24px; color: #1A241A; }
+    .l1-offer-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #005005;
+      margin-bottom: 4px;
+    }
+    .l1-offer-desc {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      color: #627362;
+      margin-bottom: 18px;
+      line-height: 1.55;
+    }
+    .l1-offer-table-head {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      background: #005005;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 9px 14px;
+      border-radius: 6px 6px 0 0;
+    }
+    .l1-val { color: #CAF7C0; }
+    .l1-offer-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(0,80,5,0.1);
+      background: #FAFAFA;
+      gap: 12px;
+    }
+    .l1-offer-row:last-of-type { border-bottom: none; border-radius: 0 0 6px 6px; }
+    .l1-offer-row-name { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #1A241A; margin-bottom: 1px; }
+    .l1-offer-row-note { font-family: 'DM Sans', sans-serif; font-size: 11px; color: #627362; }
+    .l1-badge {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 4px 9px;
+      border-radius: 4px;
+      white-space: nowrap;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .l1-badge-free { background: #CAF7C0; color: #005005; }
+    .l1-badge-excl { background: #00CC3B; color: #005005; }
+    .l1-badge-val { background: #CAF7C0; color: #005005; }
+    .l1-badge-inc { background: #E8F5E8; color: #005005; }
+    .l1-price-row { display: flex; align-items: baseline; gap: 10px; margin: 18px 0 4px; }
+    .l1-price-was { font-size: 15px; color: #627362; text-decoration: line-through; font-family: 'DM Sans', sans-serif; }
+    .l1-price-now { font-size: 48px; font-weight: 800; color: #005005; font-family: 'Work Sans', sans-serif; line-height: 1; }
+    .l1-price-label { font-family: 'DM Sans', sans-serif; font-size: 15px; color: #1A241A; }
+    .l1-price-note { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #627362; font-style: italic; margin-bottom: 18px; }
+    .l1-cta-btn {
+      display: block;
+      background: #00CC3B;
+      color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-align: center;
+      padding: 18px 28px;
+      border-radius: 100px;
+      text-decoration: none;
+      margin: 16px 0 8px;
+    }
+    .l1-cta-sub { font-family: 'DM Sans', sans-serif; font-size: 12px; color: #627362; text-align: center; line-height: 1.5; }
+    .l1-testimonials { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 24px; }
+    .l1-tcard { background: #fff; border: 1.5px solid rgba(0,80,5,0.1); border-radius: 14px; overflow: hidden; }
+    .l1-tcard-img { width: 100%; height: 170px; overflow: hidden; }
+    .l1-tcard-img img { width: 100%; height: 100%; object-fit: cover; object-position: center center; display: block; }
+    .l1-tcard-body { padding: 14px 16px 16px; }
+    .l1-tcard .l1-stars { color: #F5A623; font-size: 12px; letter-spacing: 2px; margin-bottom: 6px; }
+    .l1-tcard .l1-tquote { font-style: italic; font-size: 13px; font-weight: 700; color: #1A241A; line-height: 1.4; margin-bottom: 6px; font-family: 'DM Sans', sans-serif; }
+    .l1-tcard .l1-ttext { font-size: 12px; color: #627362; line-height: 1.55; margin-bottom: 8px; font-family: 'DM Sans', sans-serif; }
+    .l1-tcard .l1-tname { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; color: #005005; text-transform: uppercase; letter-spacing: 0.04em; }
+    .l1-guarantee {
+      background: #CAF7C0;
+      border-radius: 10px;
+      padding: 24px;
+      text-align: center;
+      margin-bottom: 24px;
+      border: 1.5px solid rgba(0,80,5,0.15);
+    }
+    .l1-guarantee-title {
+      font-family: 'Work Sans', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: #005005;
+      margin-bottom: 6px;
+      letter-spacing: 0.04em;
+    }
+    .l1-guarantee p { font-family: 'DM Sans', sans-serif; font-size: 14px; color: #1A241A; line-height: 1.6; margin: 0; }
+    .l1-footer {
+      border-top: 1px solid rgba(0,80,5,0.1);
+      padding: 20px 0 40px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      color: #627362;
+      text-align: center;
+      line-height: 1.7;
+    }
+    @media (max-width: 600px) {
+      .l1-testimonials { grid-template-columns: 1fr; }
+      .l1-product-section { padding: 28px 20px; }
+      .l1-price-now { font-size: 36px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- SITE HEADER -->
-  <header class="site-header">
-    <a class="site-name" href="#">RealDogNutrition.com</a>
-    <div class="site-nav">Dog Health · Nutrition · Gut Health</div>
-  </header>
+  <nav class="l1-site-nav">
+    <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/wordmark-cream.svg?v=1745597763" class="l1-nav-logo" alt="Get Joy">
+    <span class="l1-nav-tag">Get Joy Blog</span>
+    <a href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&utm_medium=advertorial&utm_campaign=fdr-trial-16oz" class="l1-nav-cta">Shop Now</a>
+  </nav>
 
   <!-- BREADCRUMB -->
   <div class="breadcrumb">
@@ -763,158 +974,148 @@
   <!-- DIVIDER -->
   <hr class="divider">
 
-  <!-- ===================== PRODUCT SECTION (BOTTOM 40%) ===================== -->
+  <!-- ===== GETJOY PRODUCT / CTA SECTION ===== -->
 
-  <div class="product-section">
-    <h2>What Get Joy Does Differently</h2>
-    <p>
-      Most freeze-dried brands solve the heat problem and stop there. Get Joy is the only one I found that actually built their formula around the gut — a system called Belly Biotics™ that supports the whole gut environment, not just the ingredients going into it.
-    </p>
+  <div class="l1-section-label">
+    <span class="l1-section-label-text">What Get Joy Does Differently</span>
+    <div class="l1-section-label-line"></div>
+  </div>
 
-    <div class="image-placeholder" style="background:#2a2a2a; border-color:#444; color:#888;">
-      IMAGE: Get Joy product — freeze-dried bag, clean brand photography.<br>
-      Multiple flavor options visible.
-    </div>
+  <div class="l1-product-section">
+    <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/GETJOY_SCRIPT_LOGO_GET-JOY-GREEN_wPadding_copy.png?v=1752590502" alt="Get Joy" style="height:38px; width:auto; display:block; margin-bottom:18px;">
+    <h2>The Format That Addresses What Every Upgrade Missed</h2>
+    <p class="l1-product-sub">Freeze-dried at -40°F — no heat, gut bacteria survive intact. Belly Biotics™ adds the complete pre, pro, and postbiotic system that makes the difference visible.</p>
 
-    <p style="color:#bbb; font-size:15px;">
-      Used daily by 150,000+ dog owners who made the switch and didn't go back.
-    </p>
+    <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/LIST1_2_CTA_img_of_getjoy_product_1.png?v=1774989953" alt="Get Joy Freeze Dried Raw" style="width:100%; border-radius:8px; display:block; margin-bottom:24px;">
 
-    <ul class="features-list">
-      <li><span class="check">✓</span> Freeze-dried at -40°F — no heat, 97% nutrient retention, gut bacteria survive to the bowl</li>
-      <li><span class="check">✓</span> Belly Biotics™ — the only complete pre + pro + postbiotic system in freeze-dried dog food</li>
-      <li><span class="check">✓</span> Postbiotics produce butyrate — seals the gut lining, regulates inflammation, visible coat and energy results</li>
-      <li><span class="check">✓</span> Shelf-stable — no freezer required, no disruption to the gut microbiome from food rotation</li>
-      <li><span class="check">✓</span> Even picky eaters eat it — freeze-drying preserves raw flavor that cooking destroys</li>
-      <li><span class="check">✓</span> Free 24/7 TeleVet access included with every order</li>
+    <ul class="l1-feature-list">
+      <li><span class="l1-check">✓</span> Freeze-dried at -40°F - no heat applied, 97% nutrient retention, beneficial bacteria survive to the bowl</li>
+      <li><span class="l1-check">✓</span> Belly Biotics™ - complete pre + pro + postbiotic system, exclusive to Get Joy</li>
+      <li><span class="l1-check">✓</span> Postbiotics produce butyrate - maintains gut lining integrity, addresses inflammation at the source</li>
+      <li><span class="l1-check">✓</span> Shelf-stable - no freezer required, consistent daily gut input without disruption</li>
+      <li><span class="l1-check">✓</span> Freeze-drying preserves raw flavor - dogs that have refused cooked food consistently accept it</li>
     </ul>
 
-    <!-- OFFER BOX -->
-    <div class="offer-box">
-      <div class="offer-box-title">FREE TRIAL BAG</div>
-      <div class="offer-box-subtitle">The bag is completely on us. Just cover $4.95 shipping — and let your dog be the judge. No subscription. No commitment. No risk. Ever.</div>
+    <div class="l1-offer-box">
+      <div class="l1-offer-title">16oz Starter Bag — $19.99 + Free Shipping</div>
+      <div class="l1-offer-desc">Full-size bag. Free shipping. 30-day money-back guarantee. See what a complete gut input does for your dog.</div>
 
-      <div class="offer-table-header">
-        <span>YOUR TRIAL INCLUDES</span>
-        <span class="offer-value-total">$252+ in value</span>
+      <div class="l1-offer-table-head">
+        <span>Your Trial Includes</span>
+        <span class="l1-val">$115 Value</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">16oz Freeze Dried Raw Food</div>
+          <div class="l1-offer-row-note">97% of nutrients intact</div>
+        </div>
+        <span class="l1-badge l1-badge-val">$35 VALUE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Belly Biotics™ · Digestive Enzymes</div>
+          <div class="l1-offer-row-note">Pre, Pro + Postbiotics</div>
+        </div>
+        <span class="l1-badge l1-badge-excl">EXCLUSIVE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Fresher Breath</div>
+          <div class="l1-offer-row-note">A balanced gut reduces odor-causing bacteria. Bye-bye dog breath.</div>
+        </div>
+        <span class="l1-badge l1-badge-val">$20 VALUE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Coat &amp; Skin Health</div>
+          <div class="l1-offer-row-note">Most owners see the coat change before anything else.</div>
+        </div>
+        <span class="l1-badge l1-badge-val">$20 VALUE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Joint &amp; Mobility Support</div>
+          <div class="l1-offer-row-note">Regulates inflammation, so they move like they used to.</div>
+        </div>
+        <span class="l1-badge l1-badge-val">$30 VALUE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Free Shipping</div>
+          <div class="l1-offer-row-note">Free Tracked US Shipping</div>
+        </div>
+        <span class="l1-badge l1-badge-val">$10 VALUE</span>
+      </div>
+      <div class="l1-offer-row">
+        <div>
+          <div class="l1-offer-row-name">Money-Back Guarantee</div>
+          <div class="l1-offer-row-note">Your dog doesn't love it? Full refund.</div>
+        </div>
+        <span class="l1-badge l1-badge-inc">INCLUDED</span>
       </div>
 
-      <div class="offer-row">
-        <div class="offer-row-left">
-          <div class="offer-row-title">Free 4oz Freeze-Dried Sample</div>
-          <div class="offer-row-desc">97% nutrients preserved · raw benefits, zero mess</div>
-        </div>
-        <span class="offer-badge free">FREE</span>
+      <div class="l1-price-row">
+        <span class="l1-price-was">$45.00</span>
+        <span class="l1-price-now">$19.99</span>
+        <span class="l1-price-label">+ free shipping</span>
       </div>
-      <div class="offer-row">
-        <div class="offer-row-left">
-          <div class="offer-row-title">Belly Biotics™ Gut System</div>
-          <div class="offer-row-desc">Pre + pro + postbiotics — built into every bite</div>
-        </div>
-        <span class="offer-badge exclusive">EXCLUSIVE</span>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-left">
-          <div class="offer-row-title">24/7 TeleVet Access</div>
-          <div class="offer-row-desc">Unlimited on-demand vet care — any question, anytime</div>
-        </div>
-        <span class="offer-badge value">$240 VALUE</span>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-left">
-          <div class="offer-row-title">Personalized Feeding Guide</div>
-          <div class="offer-row-desc">Tailored to your dog's size, breed and age</div>
-        </div>
-        <span class="offer-badge free">FREE</span>
-      </div>
-      <div class="offer-row">
-        <div class="offer-row-left">
-          <div class="offer-row-title">30-Day Happiness Guarantee</div>
-          <div class="offer-row-desc">Full refund if your dog doesn't love it — zero hoops</div>
-        </div>
-        <span class="offer-badge included">INCLUDED</span>
-      </div>
+      <div class="l1-price-note">A 16oz bag retails for $35 + $10 shipping ($45 total). Your starter price is $19.99 with free shipping — and if your dog doesn't respond, the 30-day guarantee covers the full amount.</div>
 
-      <div class="offer-price-row">
-        <span class="offer-price-was">$12.95</span>
-        <span class="offer-price-now">$4.95</span>
-        <span class="offer-price-label">shipping only</span>
-      </div>
-      <div class="offer-price-note">The bag is free. You only pay to ship it.</div>
-
-      <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
-      <div class="cta-subtext">No subscription required · Cancel anytime · 30-Day Money-Back Guarantee</div>
+      <a href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&amp;utm_medium=advertorial&amp;utm_campaign=fdr-trial-16oz" class="l1-cta-btn">Get Your 16oz Starter Bag — $19.99 →</a>
+      <div class="l1-cta-sub">Free shipping · 30-Day Money-Back Guarantee</div>
     </div>
   </div>
 
-  <!-- TESTIMONIALS -->
-  <h2>What Dog Owners Are Saying After The Switch</h2>
-
-  <div class="testimonial-grid">
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="quote">"After two years on a fresh-cooked delivery service, I thought I was doing everything right. Kinda devastated to find out I wasn't. Get Joy has been a completely different result."</div>
-      <div class="reviewer">— Michelle R., Golden Retriever owner</div>
+  <div class="l1-testimonials">
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">“Face, eyes and paws cleared up in days.”</div>
+        <p class="l1-ttext">My English Bulldog was experiencing allergic reactions to other food brands. After seeing Get Joy advertised on TV, I switched him to the Freeze Dried Beef Meal and within a few days his face, eyes and paws completely cleared up.</p>
+        <div class="l1-tname">Leonard — English Bulldog owner</div>
+      </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="quote">"My vet kept saying sensitive stomach was just her breed. Four weeks on Get Joy and the issues I'd dealt with for three years are basically gone."</div>
-      <div class="reviewer">— James T., French Bulldog owner</div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">“She eats her bowl the second I set it down.”</div>
+        <p class="l1-ttext">Maple has been a picky eater and would leave her meals out all day. I switched her to Get Joy and she immediately eats her bowl after I set it out! Her poops have become noticeably firmer and she has a lot more energy.</p>
+        <div class="l1-tname">Brianna</div>
+      </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="quote">"I was the most skeptical person about switching again after spending so much on premium food. The sample bag was $4.95. Within two weeks I was on subscription."</div>
-      <div class="reviewer">— Sarah K., Labrador owner</div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">“The only food that doesn't bother his stomach.”</div>
+        <p class="l1-ttext">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach.</p>
+        <div class="l1-tname">Peter A. — German Shepherd owner</div>
+      </div>
     </div>
-    <div class="testimonial-card">
-      <div class="stars">★★★★★</div>
-      <div class="quote">"The coat difference alone would have sold me. But it's the energy that really got me. My 7-year-old dog acts like he's 3 again."</div>
-      <div class="reviewer">— Dan P., German Shepherd owner</div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">“Three picky seniors — loved it from day one.”</div>
+        <p class="l1-ttext">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
+        <div class="l1-tname">Ingrid S. — Shih Tzu, Havanese &amp; Podengo owner</div>
+      </div>
     </div>
   </div>
 
-  <!-- IMAGE 5 -->
-  <div class="image-placeholder">
-    IMAGE: Grid of UGC — real dogs, real owners, diverse breeds.<br>
-    Before/after coat photos if available. Lifestyle shots of happy dogs eating Get Joy.
+  <div class="l1-guarantee">
+    <div class="l1-guarantee-title">30-Day Money-Back Guarantee</div>
+    <p>If your dog doesn't respond - or you don't see a difference - Get Joy refunds the order in full. No return shipping required.</p>
   </div>
 
-  <!-- GUARANTEE -->
-  <div class="guarantee-box">
-    <div class="guarantee-title">30-Day Happiness Guarantee</div>
-    <p>If your dog doesn't love it — or you don't see a difference — Get Joy will refund every penny. No questions, no hoops.</p>
-  </div>
+  <a href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&amp;utm_medium=advertorial&amp;utm_campaign=fdr-trial-16oz" class="l1-cta-btn" style="max-width:560px; margin: 0 auto 10px; display:block;">Get Your 16oz Starter Bag — $19.99 →</a>
+  <div class="l1-cta-sub" style="margin-bottom:44px;">Free shipping · 30-Day Money-Back Guarantee</div>
 
-  <!-- PRICE REVEAL -->
-  <h2>What It Actually Costs To Find Out</h2>
-
-  <p>
-    Get Joy is running a trial offer right now: the first bag is free. You cover $4.95 shipping. That's it. No subscription required to claim it, no commitment, no hoops.
-  </p>
-
-  <p>
-    What you get for that $4.95: a full 4oz freeze-dried bag, a personalized feeding guide for your dog's size and breed, 24/7 TeleVet access ($240 value), and a 30-Day Happiness Guarantee — full refund if your dog doesn't respond the way I've described.
-  </p>
-
-  <p>
-    I spent four years and close to $4,000 upgrading to the wrong solution. The trial bag costs less than a cup of coffee and tells you in a week whether any of this is real.
-  </p>
-
-  <a class="cta-button" href="#">Get Your Free Bag — Just Pay $4.95 Shipping →</a>
-  <div style="text-align:center; font-family:Arial,sans-serif; font-size:13px; color:#888; margin-bottom:40px;">
-    No subscription required  ·  30-Day Money-Back Guarantee  ·  Free TeleVet access included
-  </div>
-
-  <!-- IMAGE 6 -->
-  <div class="image-placeholder">
-    IMAGE: Koda eating from his bowl — Get Joy bag visible in background.<br>
-    Caption: "He actually finishes the bowl now. Every time."
-  </div>
-
-  <!-- ARTICLE FOOTER -->
-  <div class="article-footer">
-    <p>© 2025 RealDogNutrition.com  ·  This article contains affiliate content. Natalie was compensated to share her experience with Get Joy. Individual results may vary.</p>
+  <div class="l1-footer">
+    <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/wordkmark-forest.svg?v=1745597816" alt="Get Joy" style="height:20px; width:auto; display:block; margin: 0 auto 12px;">
+    © 2025 Get Joy  ·  getjoyfood.com  ·  Individual results may vary. This content does not constitute veterinary advice.
   </div>
 
 </body>
-</html>
