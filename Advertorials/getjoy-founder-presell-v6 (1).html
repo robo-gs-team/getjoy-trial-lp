@@ -618,7 +618,7 @@ img{ display: block; max-width: 100%; }
     /* ═══════════════════════════════════════════════════════
        SUPPLEMENT COST TABLE
     ═══════════════════════════════════════════════════════ */
-.gjf-page .supp-tbl-wrap{ border: 1px solid var(--border); overflow: hidden; margin-bottom: 8px; }
+.gjf-page .supp-tbl-wrap{ border: 1px solid var(--border); overflow: hidden; margin-bottom: 8px; background: var(--gj-cream); }
 .gjf-page .supp-header{
       display: grid; grid-template-columns: 1fr 110px;
       background: var(--ink); color: #fff; padding: 10px 18px;
@@ -628,13 +628,14 @@ img{ display: block; max-width: 100%; }
 .gjf-page .supp-row{
       display: grid; grid-template-columns: 1fr 110px;
       padding: 12px 18px; border-bottom: 1px solid var(--border-soft); align-items: start;
+      background: var(--gj-cream);
     }
 .gjf-page .supp-name{ font-size: .86rem; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
 .gjf-page .supp-brands{ font-size: .7rem; color: var(--ink-light); }
 .gjf-page .supp-price{ font-size: .82rem; font-weight: 600; color: var(--ink-mid); text-align: right; padding-top: 2px; }
 .gjf-page .supp-subtotal{
       display: grid; grid-template-columns: 1fr 110px;
-      padding: 12px 18px; background: var(--off-white);
+      padding: 12px 18px; background: var(--gj-tan);
       border-top: 1px solid var(--border);
       font-size: .84rem; color: var(--ink-soft);
     }
@@ -656,6 +657,39 @@ img{ display: block; max-width: 100%; }
       padding: 5px 16px; margin-bottom: 3px;
     }
 .gjf-page .supp-savings-note{ font-size: .67rem; color: rgba(255,255,255,.45); }
+
+    /* ═══ DR. COLE CO-FORMULATED CARD ══════════════════════ */
+.gjf-page .dr-cole-card{
+      background: var(--gj-cream);
+      border-top: 1px solid var(--gj-tan-border);
+      padding: 18px 20px;
+    }
+.gjf-page .dr-cole-top{
+      display: flex; align-items: center; gap: 14px;
+      margin-bottom: 10px;
+    }
+.gjf-page .dr-cole-avatar{
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--gj-tan); flex-shrink: 0;
+      overflow: hidden; display: flex;
+      align-items: center; justify-content: center;
+      font-family: var(--font-ui); font-size: .68rem;
+      font-weight: 600; color: var(--ink-mid);
+    }
+.gjf-page .dr-cole-avatar img{ width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.gjf-page .dr-cole-eyebrow{
+      font-family: var(--font-ui); font-size: .57rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: 4px;
+    }
+.gjf-page .dr-cole-name{
+      font-family: var(--font-display); font-size: 1rem;
+      font-style: italic; font-weight: 400; color: var(--gj-forest); line-height: 1.2;
+    }
+.gjf-page .dr-cole-desc{
+      font-family: var(--font-ui); font-size: .79rem;
+      color: var(--ink-mid); line-height: 1.6; margin: 0;
+    }
 
     /* ═══ BIG QUOTE ════════════════════════════════════════ */
 .gjf-page .big-quote{
@@ -1213,23 +1247,18 @@ body{ font-size: 17px; }
       <span>Get Joy subscription <span style="font-weight:400;opacity:.7;font-size:.75em;">(regular price)</span></span>
       <span>~$92/mo</span>
     </div>
-    <div class="supp-trial-card">
-      <div class="supp-trial-card-top">
-        <div class="supp-trial-avatar">
-          <!-- Claude Code: <img src="tom-arrix-headshot.jpg" alt="Tom Arrix" /> -->
-          <span>TA</span>
+    <div class="dr-cole-card">
+      <div class="dr-cole-top">
+        <div class="dr-cole-avatar">
+          <!-- replace with: <img src="dr-will-cole.jpg" alt="Dr. Will Cole" /> -->
+          <span>WC</span>
         </div>
-        <div class="supp-trial-meta">
-          <div class="supp-trial-eyebrow">Founder's Trial Offer</div>
-          <div class="supp-trial-name">Tom Arrix</div>
-          <div class="supp-trial-title">Founder &amp; CEO, Get Joy</div>
-        </div>
-        <div class="supp-trial-price-block">
-          <div class="supp-trial-price">$19.99</div>
-          <div class="supp-trial-shipping">+ free shipping</div>
+        <div>
+          <div class="dr-cole-eyebrow">Co-formulated with</div>
+          <div class="dr-cole-name">Dr.Will Cole, MD IFMCP</div>
         </div>
       </div>
-      <p class="supp-trial-quote">"One bag. Two weeks. See what changes in your dog. That's all I'm asking."</p>
+      <p class="dr-cole-desc">Leading functional medicine expert, NY Times bestselling author of <em>The Inflammation Spectrum</em>, and Gwyneth Paltrow's practitioner of choice. Every ingredient chosen for clinical efficacy — not trend.</p>
     </div>
     <div class="supp-savings">
       <div class="supp-savings-badge">Annual savings: $2,300+ per year</div>
