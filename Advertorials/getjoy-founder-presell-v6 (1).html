@@ -1,0 +1,1786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why Cooper Got 20 More Months, A Founder's Letter · Get Joy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@700;800;900&family=Literata:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+
+    /* ═══════════════════════════════════════════════════════
+       BRAND TOKENS, Claude Code: apply Get Joy design system
+    ═══════════════════════════════════════════════════════ */
+:root{
+      --gj-forest:   #005005;
+      --gj-leaf:     #00CC3B;
+      --gj-bright:   #00CC3B;
+      --gj-forest-hover: #003d04;
+      --gj-cream-dark: #CAF7C0;
+      --gj-cream:    #FCF6E8;
+      --gj-tan:      #E8DFC9;
+
+      --ink:         #1C1C1C;
+      --ink-soft:    #3D3D3D;
+      --ink-mid:     #606060;
+      --ink-light:   #8A8A8A;
+      --ink-faint:   #ADADAD;
+      --white:       #FFFFFF;
+      --off-white:   #FAFAF7;
+      --border:      #DDD8CE;
+      --border-soft: #EAE5DB;
+      --gj-tan-border: #D4C9B5;
+
+      --font-display: 'Literata', Georgia, serif;
+      --font-story:   'Literata', Georgia, serif;
+      --font-ui:      'DM Sans', system-ui, sans-serif;
+
+      --col-text:    760px;
+      --col-wide:    980px;
+      --col-full:    1120px;
+    }
+
+    /* ═══ RESET ══════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html{ scroll-behavior: smooth; }
+body{
+      background: var(--gj-cream);
+      color: var(--ink);
+      font-family: var(--font-ui);
+      font-size: 18px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+    }
+img{ display: block; max-width: 100%; }
+
+    /* ═══ PAGE WRAPPER — defensive scoping ══════════════════ */
+.gjf-page{
+      font-family: 'DM Sans', system-ui, sans-serif;
+      font-size: 18px;
+      line-height: 1.8;
+      -webkit-font-smoothing: antialiased;
+      background: var(--gj-cream);
+      color: var(--ink);
+      box-sizing: border-box;
+    }
+    .gjf-page *, .gjf-page *::before, .gjf-page *::after { box-sizing: border-box; }
+.gjf-page img{ display: block; max-width: 100%; }
+
+    /* ═══ REVEAL ═════════════════════════════════════════ */
+.gjf-page .reveal{ opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
+.gjf-page .reveal.visible{ opacity: 1; transform: none; }
+
+    /* ═══ HOOK SYSTEM ════════════════════════════════════ */
+.gjf-page .hook{ display: none; }
+.gjf-page .hook.on{ display: block; }
+
+    /* ═══════════════════════════════════════════════════════
+       DEV BAR, remove in production
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .dev-bar{
+      background: #111;
+      padding: 7px 24px;
+      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+    }
+.gjf-page .dev-bar em{ font-family: var(--font-ui); font-size: .62rem; color: rgba(255,255,255,.3); letter-spacing: .14em; text-transform: uppercase; font-style: normal; margin-right: 4px; }
+.gjf-page .db{ font-family: var(--font-ui); font-size: .62rem; font-weight: 500; letter-spacing: .08em; padding: 4px 11px; border: 1px solid rgba(255,255,255,.15); background: transparent; color: rgba(255,255,255,.4); cursor: pointer; transition: all .15s; }
+    .db:hover, .db.on { background: var(--gj-forest); border-color: var(--gj-forest); color: #fff; }
+
+    /* ═══════════════════════════════════════════════════════
+       MASTHEAD, listicle style
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .masthead{
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      padding: 0 28px;
+      display: flex; align-items: stretch; justify-content: space-between;
+      position: static;
+      background: #005005;
+      height: 56px;
+    }
+.gjf-page .mast-left{ display: flex; align-items: center; gap: 16px; }
+.gjf-page .mast-logo{
+      /* Claude Code: replace with <img src="wordkmark-forest.svg" height="22" /> */
+      font-family: var(--font-story);
+      font-size: 1.2rem; font-weight: 500;
+      color: var(--gj-forest); letter-spacing: -.01em;
+    }
+.gjf-page .mast-divider{ width: 1px; height: 20px; background: rgba(255,255,255,0.15); }
+.gjf-page .mast-label{
+      font-family: var(--font-ui);
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(202,247,192,0.65);
+    }
+.gjf-page .mast-right{ display: flex; align-items: center; gap: 20px; }
+.gjf-page .mast-read{ font-size: .72rem; color: rgba(255,255,255,0.45); }
+.gjf-page .mast-cta{
+      background: #00CC3B; color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px; font-weight: 700;
+      letter-spacing: .02em;
+      border: none; cursor: pointer;
+      border-radius: 100px;
+      padding: 9px 20px; margin: auto 0;
+      text-decoration: none; display: inline-flex;
+      align-items: center;
+      transition: filter .2s; white-space: nowrap;
+    }
+    .gjf-page .mast-cta:hover { filter: brightness(1.1); }
+
+    /* ═══════════════════════════════════════════════════════
+       ARTICLE HEADER
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .art-header{
+      max-width: var(--col-text);
+      margin: 0 auto;
+      padding: 56px 24px 0;
+    }
+.gjf-page .art-kicker{
+      font-size: .7rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gj-leaf); margin-bottom: 20px;
+    }
+.gjf-page .art-hl{
+      font-family: var(--font-display);
+      font-size: clamp(2.1rem, 4.8vw, 3.5rem);
+      font-weight: 400; line-height: 1.12;
+      letter-spacing: -.02em; color: var(--ink);
+      margin-bottom: 24px;
+    }
+.gjf-page .art-hl em{ font-style: italic; color: var(--gj-forest); font-weight: 300; }
+.gjf-page .art-deck{
+      font-size: 1.05rem; font-weight: 300;
+      color: var(--ink-mid); line-height: 1.65;
+      margin-bottom: 32px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--gj-tan);
+    }
+
+    /* Author block */
+.gjf-page .author{
+      display: flex; align-items: center; gap: 13px;
+      margin-bottom: 44px;
+    }
+.gjf-page .author-av{
+      width: 42px; height: 42px; border-radius: 50%;
+      background: var(--gj-tan); flex-shrink: 0;
+      overflow: hidden; display: flex; align-items: center; justify-content: center;
+      font-size: .68rem; color: var(--ink-mid); font-weight: 500;
+    }
+.gjf-page .author-av img{ width: 100%; height: 100%; object-fit: cover; }
+.gjf-page .author-name{ font-size: .85rem; font-weight: 500; color: var(--ink); line-height: 1.3; }
+.gjf-page .author-role{ font-size: .75rem; color: var(--ink-light); }
+
+    /* placeholder CSS removed, images now use .img-ph */
+
+    /* Image wrappers */
+.gjf-page .img-full{ width: 100%; max-width: var(--col-full); margin: 0 auto; }
+.gjf-page .img-wide{ max-width: var(--col-wide); margin: 0 auto; padding: 0 16px; }
+.gjf-page .img-col{ max-width: var(--col-text); margin: 0 auto; padding: 0 16px; }
+.gjf-page .img-full img,
+ .gjf-page .img-wide img{ width: 100%; object-fit: cover; }
+.gjf-page .img-full img{ height: clamp(300px, 46vw, 560px); }
+.gjf-page .img-wide img{ height: clamp(240px, 36vw, 420px); }
+.gjf-page .img-cap{
+      font-size: .7rem; color: var(--ink-faint);
+      text-align: center; max-width: var(--col-full);
+      margin: 0 auto; padding: 6px 24px 0;
+    }
+.gjf-page .img-ph{
+      font-family: var(--font-ui); font-size: .73rem;
+      color: var(--ink-faint); font-style: italic;
+      padding: 14px 0; line-height: 1.55;
+      background: var(--gj-cream-dark);
+      border-top: 1px dashed var(--gj-tan);
+      border-bottom: 1px dashed var(--gj-tan);
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       READING COLUMN + BODY
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .col{ max-width: var(--col-text); margin: 0 auto; padding: 0 20px; }
+.gjf-page .col-wide{ max-width: var(--col-wide); margin: 0 auto; padding: 0 20px; }
+
+.gjf-page .body p{ font-size: 1.02rem; line-height: 1.88; color: var(--ink-soft); margin-bottom: 1.5em; }
+    .body p:last-child { margin-bottom: 0; }
+.gjf-page .body strong{ color: var(--ink); font-weight: 600; }
+
+    /* Story paragraphs, serif weight for emotional sections */
+.gjf-page .body p.story{
+      font-family: var(--font-display);
+      font-size: 1.05rem; line-height: 1.82;
+      color: var(--ink-soft); font-weight: 400;
+    }
+
+    /* Single punchy line */
+.gjf-page .punch{
+      font-family: var(--font-display);
+      font-size: 1.12rem; font-style: italic;
+      color: var(--ink-soft);
+      border-left: 2px solid var(--gj-forest);
+      padding: 2px 0 2px 20px;
+      margin: 2em 0 !important;
+      line-height: 1.5;
+    }
+
+    /* ═══ SPACING ═════════════════════════════════════════ */
+.gjf-page .gap{ height: 60px; }
+.gjf-page .gap-sm{ height: 36px; }
+.gjf-page .rule{ max-width: var(--col-text); margin: 0 auto; padding: 0 24px; border-top: 1px solid var(--gj-tan); }
+
+    /* ═══════════════════════════════════════════════════════
+       SECTION NUMBERS, listicle style
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .sec-num{
+      font-family: var(--font-display);
+      font-size: 3.8rem; font-weight: 700;
+      color: rgba(0,80,5,0.1); line-height: 1;
+      margin-bottom: 6px;
+    }
+.gjf-page .sec-label{
+      font-size: .68rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--ink-light); margin-bottom: 12px;
+    }
+.gjf-page .sec-hl{
+      font-family: var(--font-display);
+      font-size: clamp(1.7rem, 3vw, 2.3rem);
+      font-weight: 400; line-height: 1.15;
+      color: var(--ink); margin-bottom: 8px;
+      letter-spacing: -.01em;
+    }
+.gjf-page .sec-hl em{ font-style: italic; font-weight: 300; color: var(--gj-forest); }
+.gjf-page .sec-sub{
+      font-size: .88rem; color: var(--ink-mid);
+      margin-bottom: 28px; font-weight: 400;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       PULL QUOTES
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .pull-left{ max-width: var(--col-text); margin: 0 auto; padding: 0 24px; }
+.gjf-page .pull-left blockquote{
+      border-left: 2px solid rgba(0,80,5,0.3);
+      padding: 4px 0 4px 24px; margin: 44px 0;
+    }
+.gjf-page .pull-left blockquote p{
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem, 2vw, 1.45rem);
+      font-style: italic; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.5; margin: 0;
+    }
+.gjf-page .pull-left blockquote cite{
+      display: block; margin-top: 10px;
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--ink-light); font-style: normal;
+      font-family: var(--font-ui);
+    }
+
+.gjf-page .pull-center{
+      max-width: var(--col-wide); margin: 0 auto;
+      padding: 60px 48px; text-align: center;
+    }
+.gjf-page .pull-center p{
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      font-style: italic; font-weight: 300;
+      color: var(--ink-soft); line-height: 1.4;
+    }
+.gjf-page .pull-center cite{
+      display: block; margin-top: 16px;
+      font-family: var(--font-ui);
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); font-style: normal;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       CALLOUT BOX
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .callout{
+      display: block; width: 100%; box-sizing: border-box;
+      background: #fff;
+      border: 1px solid rgba(0,80,5,0.12);
+      border-left: 3px solid #005005;
+      border-radius: 0 !important;
+      padding: 20px 24px; margin: 28px 0;
+      overflow: visible; clear: both; position: relative;
+      outline: none; box-shadow: none;
+    }
+.gjf-page .callout *{ border-radius: 0 !important; }
+.gjf-page .reveal{ border-radius: 0 !important; outline: none; }
+.gjf-page .callout-lbl{
+      font-size: .65rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--gj-forest); margin-bottom: 10px;
+    }
+.gjf-page .callout p{ font-size: .92rem; line-height: 1.7; color: var(--ink-soft); margin-bottom: .8em; }
+    .callout p:last-child { margin-bottom: 0; }
+.gjf-page .callout strong{ color: var(--ink); }
+
+    /* ═══ DEFENSIVE OVERRIDES — prevent host theme bleed ════ */
+    .gjf-page .col > *,
+    .gjf-page .col-wide > *,
+    .gjf-page .body,
+    .gjf-page .reveal { border-radius: 0 !important; outline: none !important; }
+    /* ═══════════════════════════════════════════════════════
+       FEATURE LIST, listicle style
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .feat-list{
+      border: 1px solid rgba(0,80,5,0.1);
+      background: #fff;
+      margin: 32px 0;
+    }
+.gjf-page .feat-row{
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 14px 20px;
+      border-bottom: 1px solid var(--gj-tan);
+    }
+    .feat-row:last-child { border-bottom: none; }
+.gjf-page .feat-check{
+      font-size: .9rem; color: #00CC3B;
+      flex-shrink: 0; margin-top: 2px; font-weight: 700;
+    }
+.gjf-page .feat-txt{}
+.gjf-page .feat-name{
+      font-size: .9rem; font-weight: 600; color: var(--ink);
+      margin-bottom: 2px;
+    }
+.gjf-page .feat-sub{ font-size: .78rem; color: var(--ink-light); line-height: 1.5; }
+
+    /* ═══════════════════════════════════════════════════════
+       TEMP TABLE
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .tbl-wrap{ overflow-x: auto; margin: 36px 0; }
+    .gjf-page table, .gjf-page td, .gjf-page th { box-sizing: border-box; }
+    .gjf-page table tbody { background: #fff; }
+    .gjf-page table tbody tr { background: #fff; }
+    .gjf-page table tbody td { background: inherit; }
+.gjf-page .temp-tbl{ width: 100%; border-collapse: collapse; font-size: .84rem; font-family: var(--font-ui); }
+.gjf-page .temp-tbl thead tr{ background: var(--gj-forest); color: #fff; }
+.gjf-page .temp-tbl thead th{ padding: 12px 16px; text-align: left; font-weight: 500; font-size: .68rem; letter-spacing: .08em; text-transform: uppercase; }
+.gjf-page .temp-tbl tbody tr{ border-bottom: 1px solid var(--border); background: #fff; }
+.gjf-page .temp-tbl tbody td{ padding: 12px 16px; color: var(--ink-soft); vertical-align: top; line-height: 1.45; }
+.gjf-page .temp-tbl tbody tr.hero-row{ background: #f0faf0; }
+.gjf-page .temp-tbl tbody tr.hero-row td{ color: var(--ink); font-weight: 600; }
+.gjf-page .temp-tbl tbody tr.hero-row td:first-child { color: var(--gj-forest); font-weight: 700; }
+.gjf-page .bdg{ display: inline-block; font-size: .66rem; font-weight: 600; padding: 2px 8px; letter-spacing: .03em; }
+.gjf-page .b-no{ background: rgba(160,0,0,.07);   color: #8B0000; }
+.gjf-page .b-mid{ background: rgba(139,111,71,.1); color: #6b4c1e; }
+.gjf-page .b-yes{ background: rgba(43,79,46,.1);   color: var(--gj-forest); }
+
+    /* ═══════════════════════════════════════════════════════
+       TIMELINE, Days 3-5 / Weeks 2-3 / Day 30
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .timeline{
+      margin: 36px 0;
+      display: flex; flex-direction: column; gap: 1px;
+      background: var(--gj-tan); border: 1px solid var(--gj-tan);
+    }
+.gjf-page .tl-row{
+      background: #fff;
+      display: grid; grid-template-columns: 110px 1fr;
+    }
+.gjf-page .tl-when{
+      padding: 18px 16px;
+      border-right: 1px solid var(--gj-tan);
+      display: flex; align-items: center; justify-content: center;
+      text-align: center;
+    }
+.gjf-page .tl-when-lbl{
+      font-family: var(--font-display);
+      font-size: 1rem; font-style: italic;
+      color: var(--gj-forest); line-height: 1.2;
+    }
+.gjf-page .tl-body{ padding: 18px 20px; }
+.gjf-page .tl-title{ font-size: .82rem; font-weight: 600; color: var(--ink); margin-bottom: 4px; }
+.gjf-page .tl-desc{ font-size: .8rem; color: var(--ink-mid); line-height: 1.55; }
+
+    /* ═══════════════════════════════════════════════════════
+       REVIEWS, listicle style
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .reviews{
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 32px 0;
+    }
+.gjf-page .review{
+      border: 1.5px solid rgba(0,80,5,0.1);
+      background: #fff;
+      padding: 20px 22px; border-radius: 8px;
+    }
+.gjf-page .rev-top{ display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.gjf-page .rev-av{
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gj-tan); flex-shrink: 0;
+      overflow: hidden;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .6rem; color: var(--ink-mid);
+      font-weight: 600;
+    }
+.gjf-page .rev-av img{ width: 100%; height: 100%; object-fit: cover; }
+.gjf-page .rev-meta{}
+.gjf-page .rev-name{ font-size: .8rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.gjf-page .rev-dog{ font-size: .72rem; color: var(--gj-leaf); }
+.gjf-page .rev-stars{ color: #C9A23A; font-size: .78rem; letter-spacing: 1px; margin-bottom: 8px; }
+.gjf-page .rev-q{
+      font-size: .9rem; font-style: italic;
+      line-height: 1.65; color: var(--ink-soft);
+    }
+.gjf-page .rev-headline{
+      font-size: .82rem; font-weight: 600; color: var(--ink);
+      margin-bottom: 4px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       STATS
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .stats{
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 1px; background: rgba(0,80,5,0.1);
+      border: 1px solid rgba(0,80,5,0.1); margin: 36px 0;
+    }
+.gjf-page .stat{ background: var(--gj-cream); padding: 24px 20px; text-align: center; }
+.gjf-page .stat-n{ font-family: var(--font-display); font-size: 2.2rem; font-weight: 400; color: var(--gj-forest); line-height: 1; margin-bottom: 4px; }
+    .gjf-page .stat-title{ font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-mid); margin-bottom: 8px; }
+.gjf-page .stat-l{ font-size: .85rem; color: var(--ink-mid); line-height: 1.55; max-width: 200px; margin: 0 auto; }
+
+    /* ═══════════════════════════════════════════════════════
+       CTA SECTION, exact listicle style
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .cta-section{
+      background: var(--gj-cream);
+      padding: 32px 24px 64px;
+    }
+.gjf-page .cta-inner{
+      max-width: 640px; margin: 0 auto;
+    }
+
+    /* Tom's heartfelt closer, above the offer table */
+.gjf-page .founder-close{
+      background: #005005;
+      border: none;
+      padding: 36px 32px; margin-bottom: 0;
+      text-align: left;
+    }
+.gjf-page .fc-eyebrow{
+      font-size: .65rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: rgba(255,255,255,.65); margin-bottom: 14px;
+    }
+.gjf-page .fc-hl{
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 400; font-style: italic;
+      color: #fff; line-height: 1.25; margin-bottom: 20px;
+    }
+.gjf-page .fc-body p{
+      font-size: .94rem; line-height: 1.82;
+      color: rgba(255,255,255,.88);
+      margin-bottom: 1em;
+    }
+    .fc-body p:last-of-type { margin-bottom: 0; }
+.gjf-page .fc-sig{
+      display: block; margin-top: 20px;
+      font-family: var(--font-story);
+      font-size: 1.5rem; font-style: italic;
+      font-weight: 400; color: #fff;
+    }
+.gjf-page .fc-role{
+      font-size: .68rem; letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-top: 3px;
+    }
+
+    /* Product image row */
+.gjf-page .prod-row{
+      display: flex; align-items: center; gap: 16px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(255,255,255,.1);
+      padding: 16px 20px; margin-bottom: 28px;
+    }
+.gjf-page .prod-row img{ width: 60px; height: 60px; object-fit: contain; flex-shrink: 0; }
+.gjf-page .prod-name{ font-size: .88rem; font-weight: 600; color: #fff; margin-bottom: 2px; }
+.gjf-page .prod-sub{ font-size: .74rem; color: rgba(255,255,255,.45); line-height: 1.4; }
+
+    /* ── Value Stack Table, listicle exact ── */
+.gjf-page .vs-wrap{ border: 1px solid rgba(255,255,255,.12); margin-bottom: 28px; overflow: hidden; }
+.gjf-page .vs-head{
+      display: grid; grid-template-columns: 1fr 90px;
+      background: rgba(255,255,255,.1);
+      padding: 10px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+.gjf-page .vs-head span{
+      font-size: .63rem; font-weight: 700;
+      letter-spacing: .16em; text-transform: uppercase;
+      color: rgba(255,255,255,.45);
+    }
+    .vs-head span:last-child { text-align: right; }
+.gjf-page .vs-row{
+      display: grid; grid-template-columns: 1fr 90px;
+      padding: 13px 18px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      align-items: start;
+    }
+    .vs-row:last-child { border-bottom: none; }
+.gjf-page .vs-item-name{ font-size: .84rem; font-weight: 500; color: #fff; margin-bottom: 2px; }
+.gjf-page .vs-item-sub{ font-size: .73rem; color: rgba(255,255,255,.42); line-height: 1.4; }
+.gjf-page .vs-val{ text-align: right; font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.5); padding-top: 2px; }
+.gjf-page .vs-val.excl{ font-size: .7rem; font-weight: 700; color: rgba(255,255,255,.9); letter-spacing: .06em; }
+.gjf-page .vs-val.incl{ font-size: .72rem; font-weight: 400; font-style: italic; color: rgba(255,255,255,.35); }
+.gjf-page .vs-total{
+      display: grid; grid-template-columns: 1fr 90px;
+      padding: 14px 18px;
+      background: rgba(255,255,255,.07);
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+.gjf-page .vs-total-lbl{ font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.55); text-transform: uppercase; letter-spacing: .1em; }
+.gjf-page .vs-total-val{ text-align: right; font-family: var(--font-story); font-size: 1.1rem; color: rgba(255,255,255,.45); text-decoration: line-through; text-decoration-color: rgba(255,255,255,.25); }
+
+    /* ── Price display ── */
+.gjf-page .price-wrap{ text-align: center; margin: 0 0 24px; }
+.gjf-page .price-was{ font-size: .84rem; color: rgba(255,255,255,.3); text-decoration: line-through; margin-bottom: 4px; }
+.gjf-page .price-now{ font-family: var(--font-display); font-size: 2.8rem; font-weight: 700; color: #fff; line-height: 1; margin-bottom: 4px; }
+.gjf-page .price-now sup{ font-size: 1.3rem; vertical-align: super; }
+.gjf-page .price-ship{ font-size: .78rem; color: rgba(255,255,255,.45); }
+.gjf-page .price-save{
+      display: inline-block; margin-top: 10px;
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      background: rgba(255,255,255,.1);
+      color: rgba(255,255,255,.75); padding: 5px 14px;
+    }
+
+    /* ── Guarantee ── */
+.gjf-page .guar{
+      display: flex; gap: 14px; align-items: flex-start;
+      border: 1px solid rgba(255,255,255,.12);
+      padding: 18px 22px; margin: 20px 0; text-align: left;
+    }
+.gjf-page .guar-icon{ font-size: 1.4rem; flex-shrink: 0; margin-top: 1px; }
+.gjf-page .guar-title{ font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.65); margin-bottom: 5px; }
+.gjf-page .guar-body{ font-size: .85rem; line-height: 1.6; color: rgba(255,255,255,.55); }
+
+    /* ── Trust pills ── */
+.gjf-page .trust-pills{ display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 20px; }
+.gjf-page .tp{ font-size: .67rem; font-weight: 500; letter-spacing: .07em; border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.42); padding: 5px 13px; }
+
+    /* ── Green CTA button, exact listicle style ── */
+.gjf-page .cta-btn{
+      display: block; width: 100%;
+      background: var(--gj-bright, #3A7D3E);
+      color: #fff;
+      font-family: var(--font-ui); font-size: .92rem; font-weight: 700;
+      letter-spacing: .04em; text-align: center;
+      padding: 18px 28px; border: none; cursor: pointer;
+      border-radius: 50px;
+      transition: filter .2s, transform .15s;
+      margin-bottom: 10px;
+    }
+    .cta-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+.gjf-page .cta-sub-line{
+      text-align: center; font-size: .7rem;
+      color: rgba(255,255,255,.35); letter-spacing: .04em;
+      margin-bottom: 28px;
+    }
+
+    /* Post-CTA testimonials */
+.gjf-page .cta-reviews{ display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 28px; }
+.gjf-page .cta-review{ background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); padding: 18px 20px; }
+.gjf-page .cta-stars{ color: #C9A23A; font-size: .75rem; letter-spacing: 1px; margin-bottom: 8px; }
+.gjf-page .cta-rev-hl{ font-size: .8rem; font-weight: 600; color: #fff; margin-bottom: 6px; font-style: italic; }
+.gjf-page .cta-rev-q{ font-size: .78rem; color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 10px; }
+.gjf-page .cta-rev-name{ font-size: .67rem; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.32); }
+
+    /* ── Second CTA ── */
+.gjf-page .cta2-wrap{ margin-top: 28px; border-top: 1px solid rgba(255,255,255,.1); padding-top: 28px; text-align: center; }
+.gjf-page .guar2{
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: .75rem; color: rgba(255,255,255,.42);
+      margin-bottom: 16px;
+    }
+
+    /* ── Offer fine print ── */
+.gjf-page .offer-fine{
+      font-size: .68rem; color: rgba(255,255,255,.28);
+      text-align: center; line-height: 1.7;
+      margin-top: 20px; font-style: italic;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       FOOTER
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .footer{ background: #111; padding: 28px 24px; text-align: center; }
+.gjf-page .footer p{ font-size: .68rem; color: rgba(255,255,255,.22); line-height: 1.7; }
+
+    /* ═══════════════════════════════════════════════════════
+       SUPPLEMENT COST TABLE
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .supp-tbl-wrap{ border: 1px solid var(--border); overflow: hidden; margin-bottom: 8px; }
+.gjf-page .supp-header{
+      display: grid; grid-template-columns: 1fr 110px;
+      background: var(--ink); color: #fff; padding: 10px 18px;
+    }
+.gjf-page .supp-header span{ font-size: .65rem; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; }
+    .supp-header span:last-child { text-align: right; }
+.gjf-page .supp-row{
+      display: grid; grid-template-columns: 1fr 110px;
+      padding: 12px 18px; border-bottom: 1px solid var(--border-soft); align-items: start;
+    }
+.gjf-page .supp-name{ font-size: .86rem; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.gjf-page .supp-brands{ font-size: .7rem; color: var(--ink-light); }
+.gjf-page .supp-price{ font-size: .82rem; font-weight: 600; color: var(--ink-mid); text-align: right; padding-top: 2px; }
+.gjf-page .supp-subtotal{
+      display: grid; grid-template-columns: 1fr 110px;
+      padding: 12px 18px; background: var(--off-white);
+      border-top: 1px solid var(--border);
+      font-size: .84rem; color: var(--ink-soft);
+    }
+    .supp-subtotal span:last-child { text-align: right; font-weight: 800; color: var(--ink); }
+.gjf-page .supp-getjoy{
+      display: grid; grid-template-columns: 1fr 110px;
+      padding: 14px 18px; background: var(--gj-forest);
+      color: #fff; font-size: .88rem; font-weight: 600;
+    }
+    .supp-getjoy span:last-child { text-align: right; }
+.gjf-page .supp-savings{
+      background: var(--gj-forest); padding: 10px 18px 14px;
+      text-align: center; border-top: 1px solid rgba(255,255,255,.12);
+    }
+.gjf-page .supp-savings-badge{
+      display: inline-block; font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: #fff; background: rgba(255,255,255,.14);
+      padding: 5px 16px; margin-bottom: 3px;
+    }
+.gjf-page .supp-savings-note{ font-size: .67rem; color: rgba(255,255,255,.45); }
+
+    /* ═══ BIG QUOTE ════════════════════════════════════════ */
+.gjf-page .big-quote{
+      max-width: var(--col-wide);
+      margin: 0 auto;
+      padding: 48px 20px;
+      text-align: center;
+      border-top: 1px solid var(--gj-tan);
+      border-bottom: 1px solid var(--gj-tan);
+    }
+.gjf-page .big-quote-label{
+      font-family: var(--font-ui);
+      font-size: .68rem; font-weight: 700;
+      letter-spacing: .2em; text-transform: uppercase;
+      color: var(--ink-mid); margin-bottom: 20px;
+    }
+.gjf-page .big-quote-text{
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2.2vw, 1.65rem);
+      font-style: italic; font-weight: 400;
+      color: var(--ink-soft); line-height: 1.5;
+      margin-bottom: 20px;
+    }
+.gjf-page .big-quote-bold{
+      font-family: var(--font-display);
+      font-size: clamp(1.3rem, 2.4vw, 1.85rem);
+      font-weight: 700;
+      color: var(--gj-forest); line-height: 1.3;
+    }
+
+    /* ═══ TOM TRIAL CARD ════════════════════════════════════ */
+    .gjf-page .supp-trial-card {
+      background: #fff;
+      border: 1px solid rgba(0,80,5,0.12);
+      border-top: 2px solid #00CC3B;
+      padding: 16px 18px 18px;
+    }
+    .gjf-page .supp-trial-card-top {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 10px;
+    }
+    .gjf-page .supp-trial-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      background: #005005; flex-shrink: 0;
+      overflow: hidden; display: flex;
+      align-items: center; justify-content: center;
+      font-family: var(--font-ui); font-size: .68rem;
+      font-weight: 700; color: rgba(202,247,192,0.9);
+    }
+    .gjf-page .supp-trial-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+    .gjf-page .supp-trial-meta { flex: 1; }
+    .gjf-page .supp-trial-eyebrow {
+      font-family: var(--font-ui); font-size: .58rem; font-weight: 700;
+      letter-spacing: .15em; text-transform: uppercase;
+      color: #00CC3B; margin-bottom: 2px;
+    }
+    .gjf-page .supp-trial-name {
+      font-family: var(--font-display); font-size: .98rem;
+      font-weight: 400; font-style: italic; color: #005005; line-height: 1.2;
+    }
+    .gjf-page .supp-trial-title {
+      font-family: var(--font-ui); font-size: .7rem; color: #627362; margin-top: 1px;
+    }
+    .gjf-page .supp-trial-price-block { text-align: right; flex-shrink: 0; }
+    .gjf-page .supp-trial-price {
+      font-family: var(--font-display); font-size: 1.5rem;
+      font-weight: 700; color: #005005; line-height: 1;
+    }
+    .gjf-page .supp-trial-shipping {
+      font-family: var(--font-ui); font-size: .63rem; color: #627362; margin-top: 2px;
+    }
+    .gjf-page .supp-trial-quote {
+      font-family: var(--font-ui); font-size: .82rem;
+      color: #444; line-height: 1.55; font-style: italic; margin: 0;
+      padding-left: 56px;
+    }
+
+    /* ═══════════════════════════════════════════════════════
+       RESPONSIVE
+    ═══════════════════════════════════════════════════════ */
+    @media (max-width: 640px) {
+body{ font-size: 17px; }
+.gjf-page .masthead{ padding: 0 16px; }
+.gjf-page .reviews{ grid-template-columns: 1fr; }
+.gjf-page .cta-reviews{ grid-template-columns: 1fr; }
+.gjf-page .stats{ grid-template-columns: 1fr; }
+.gjf-page .tl-row{ grid-template-columns: 88px 1fr; }
+.gjf-page .pull-center{ padding: 44px 24px; }
+.gjf-page .founder-close{ padding: 22px 20px; }
+.gjf-page .mast-read{ display: none; }
+    }
+
+
+    /* ═══════════════════════════════════════════════════════
+       ADV1 OFFER SECTION — matched to live Get Joy styling
+    ═══════════════════════════════════════════════════════ */
+.gjf-page .adv1-gs-l1-section-label{
+      display: flex; align-items: center; gap: 16px;
+      margin: 36px 0 24px;
+    }
+.gjf-page .adv1-gs-l1-section-label-text{
+      font-family: var(--font-ui); font-size: .72rem; font-weight: 700;
+      letter-spacing: .18em; text-transform: uppercase;
+      color: #005005; white-space: nowrap;
+    }
+.gjf-page .adv1-gs-l1-section-label-line{
+      flex: 1; height: 1px; background: rgba(0,80,5,0.15);
+    }
+.gjf-page .adv1-gs-l1-product-section{
+      background: #005005;
+      border: none;
+      border-radius: 14px;
+      padding: 40px 36px 0;
+      margin-bottom: 28px;
+    }
+.gjf-page .adv1-gs-l1-product-section h2{
+      font-family: var(--font-display); font-size: clamp(1.5rem, 2.8vw, 2rem);
+      font-weight: 700; color: #fff; line-height: 1.2;
+      margin-bottom: 8px;
+    }
+.gjf-page .adv1-gs-l1-product-sub{
+      font-family: var(--font-ui); font-size: .92rem;
+      color: rgba(255,255,255,.7); line-height: 1.65;
+      margin-bottom: 20px;
+    }
+.gjf-page .adv1-gs-l1-feature-list{
+      list-style: none; margin: 0 0 24px; padding: 0;
+      border-top: 1px solid rgba(255,255,255,.1);
+    }
+.gjf-page .adv1-gs-l1-feature-list li{
+      font-family: var(--font-ui); font-size: .88rem;
+      color: rgba(255,255,255,.78); line-height: 1.6;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      display: flex; gap: 10px; align-items: flex-start;
+    }
+.gjf-page .adv1-gs-l1-check{
+      color: #C3F54A; font-weight: 700; flex-shrink: 0; margin-top: 1px;
+    }
+
+    /* Offer box */
+.gjf-page .adv1-gs-l1-offer-box{
+      background: #fff;
+      border: 1px solid rgba(0,80,5,0.12);
+      border-radius: 10px;
+      padding: 24px;
+      margin: 0 -36px;
+      overflow: hidden;
+    }
+.gjf-page .adv1-gs-l1-offer-title{
+      font-family: var(--font-ui); font-size: .82rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: #005005; margin-bottom: 6px;
+    }
+.gjf-page .adv1-gs-l1-offer-desc{
+      font-family: var(--font-ui); font-size: .82rem;
+      color: #627362; margin-bottom: 20px; line-height: 1.5;
+    }
+.gjf-page .adv1-gs-l1-offer-table-head{
+      display: flex; justify-content: space-between;
+      background: #005005;
+      padding: 10px 14px;
+      font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 0; border-radius: 6px 6px 0 0;
+    }
+.gjf-page .adv1-gs-l1-offer-row{
+      display: flex; justify-content: space-between; align-items: flex-start;
+      padding: 12px 14px;
+      border-bottom: 1px solid rgba(0,80,5,0.08);
+      background: #fff;
+      gap: 12px;
+    }
+.gjf-page .adv1-gs-l1-offer-row-name{
+      font-family: var(--font-ui); font-size: .85rem; font-weight: 600;
+      color: #1A241A; margin-bottom: 3px;
+    }
+.gjf-page .adv1-gs-l1-offer-row-note{
+      font-family: var(--font-ui); font-size: .73rem;
+      color: #627362; line-height: 1.4;
+    }
+.gjf-page .adv1-gs-l1-badge{
+      font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+      letter-spacing: .06em; white-space: nowrap;
+      padding: 3px 8px; flex-shrink: 0;
+    }
+.gjf-page .l1-badge-val{ background: #CAF7C0; color: #005005; }
+.gjf-page .l1-badge-excl{ color: #C3F54A; }
+.gjf-page .l1-badge-inc{ background: #e8f5e8; color: #005005; font-style: italic; font-weight: 400; }
+
+    /* Price */
+.gjf-page .adv1-gs-l1-price-row{
+      display: flex; align-items: baseline; gap: 12px;
+      padding: 20px 14px 4px; flex-wrap: wrap;
+    }
+.gjf-page .adv1-gs-l1-price-was{
+      font-family: var(--font-ui); font-size: 1rem;
+      color: #aaa; text-decoration: line-through;
+    }
+.gjf-page .adv1-gs-l1-price-now{
+      font-family: var(--font-display); font-size: 2.6rem;
+      font-weight: 700; color: #005005; line-height: 1;
+    }
+.gjf-page .adv1-gs-l1-price-label{
+      font-family: var(--font-ui); font-size: .82rem;
+      color: #1A241A;
+    }
+.gjf-page .adv1-gs-l1-price-note{
+      font-family: var(--font-ui); font-size: .75rem;
+      color: #627362; padding: 0 14px 20px;
+      font-style: italic;
+    }
+
+    /* CTA button */
+.gjf-page .adv1-gs-l1-cta-btn{
+      display: block; width: 100%;
+      background: #C3F54A; color: #1a2e1b;
+      font-family: var(--font-ui); font-size: .92rem; font-weight: 700;
+      letter-spacing: .04em; text-align: center; text-decoration: none;
+      padding: 18px 28px; border: none; cursor: pointer;
+      border-radius: 50px;
+      transition: filter .2s, transform .15s;
+      margin-top: 4px; margin-bottom: 8px;
+    }
+    .adv1-gs-l1-cta-btn:hover { filter: brightness(1.05); transform: translateY(-1px); }
+.gjf-page .adv1-gs-l1-cta-sub{
+      font-family: var(--font-ui); font-size: .72rem;
+      color: rgba(255,255,255,.35); text-align: center;
+      letter-spacing: .04em;
+    }
+
+    /* Testimonials */
+.gjf-page .adv1-gs-l1-testimonials{
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin: 28px 0;
+    }
+.gjf-page .adv1-gs-l1-tcard{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+.gjf-page .adv1-gs-l1-tcard-img img{
+      width: 100%; height: 180px; object-fit: cover; display: block;
+    }
+.gjf-page .adv1-gs-l1-tcard-body{ padding: 16px 18px; }
+.gjf-page .adv1-gs-l1-stars{ color: #C9A23A; font-size: .82rem; letter-spacing: 2px; margin-bottom: 6px; }
+.gjf-page .adv1-gs-l1-tquote{
+      font-family: var(--font-display); font-size: .95rem;
+      font-style: italic; font-weight: 500;
+      color: #fff; line-height: 1.35; margin-bottom: 8px;
+    }
+.gjf-page .adv1-gs-l1-ttext{
+      font-family: var(--font-ui); font-size: .8rem;
+      color: rgba(255,255,255,.6); line-height: 1.6; margin-bottom: 10px;
+    }
+.gjf-page .adv1-gs-l1-tname{
+      font-family: var(--font-ui); font-size: .7rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(255,255,255,.32);
+    }
+
+    /* Guarantee */
+.gjf-page .adv1-gs-l1-guarantee{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px;
+      padding: 22px 24px; margin: 0 0 24px;
+      text-align: center;
+    }
+.gjf-page .adv1-gs-l1-guarantee-title{
+      font-family: var(--font-ui); font-size: .72rem; font-weight: 700;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: rgba(255,255,255,.6); margin-bottom: 8px;
+    }
+.gjf-page .adv1-gs-l1-guarantee p{
+      font-family: var(--font-ui); font-size: .85rem;
+      color: rgba(255,255,255,.5); line-height: 1.6;
+    }
+
+    @media (max-width: 640px) {
+.gjf-page .adv1-gs-l1-testimonials{ grid-template-columns: 1fr; }
+.gjf-page .adv1-gs-l1-offer-box{ margin: 0 -20px; padding: 20px; }
+.gjf-page .adv1-gs-l1-product-section{ padding: 20px 20px 0; }
+    }
+
+    /* ═══ STICKY ATC BAR ═══════════════════════════════════ */
+    .gjf-sticky-atc {
+      position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--gj-forest);
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 14px 20px 18px;
+      z-index: 99998;
+      transform: translateY(100%);
+      transition: transform 0.35s ease;
+    }
+    .gjf-sticky-atc.visible { transform: translateY(0); }
+    .gjf-sticky-atc-inner {
+      max-width: 560px; margin: 0 auto; text-align: center;
+    }
+    .gjf-sticky-atc-btn {
+      display: block; width: 100%;
+      background: #00CC3B; color: #fff;
+      font-family: 'DM Sans', sans-serif;
+      font-size: .92rem; font-weight: 800;
+      text-transform: uppercase; letter-spacing: .06em;
+      text-align: center; text-decoration: none;
+      padding: 16px 28px;
+      border-radius: 100px;
+      margin-bottom: 6px;
+      transition: filter .2s;
+    }
+    .gjf-sticky-atc-btn:hover { filter: brightness(1.08); }
+    .gjf-sticky-atc-sub {
+      font-family: 'DM Sans', sans-serif;
+      font-size: .7rem; color: rgba(255,255,255,0.45);
+      letter-spacing: .04em;
+    }
+
+    /* ═══ MOBILE RESPONSIVE ═════════════════════════════════ */
+    @media (max-width: 640px) {
+      .gjf-page { font-size: 17px; }
+      .gjf-page .reveal { transform: none !important; }
+      .gjf-page .callout { position: static !important; margin: 24px 0 !important; }
+      .gjf-page .masthead { padding: 0 16px; }
+      .gjf-page .art-header { padding: 40px 16px 0; }
+      .gjf-page .col, .gjf-page .col-wide { padding: 0 16px; }
+      .gjf-page .art-hl { font-size: clamp(1.8rem, 8vw, 2.4rem); line-height: 1.12; }
+      .gjf-page .sec-hl { font-size: clamp(1.5rem, 7vw, 2rem); }
+      .gjf-page .pull-center { padding: 36px 16px; }
+      .gjf-page .pull-center p { font-size: clamp(1.2rem, 5.5vw, 1.6rem); }
+      .gjf-page .reviews { grid-template-columns: 1fr; }
+      .gjf-page .stats { grid-template-columns: 1fr; }
+      .gjf-page .timeline .tl-row { grid-template-columns: 72px 1fr; }
+      .gjf-page .supp-tbl-wrap { font-size: .8rem; }
+      .gjf-page .supp-header span { font-size: .6rem; }
+      .gjf-page .supp-row { padding: 10px 12px; }
+      .gjf-page .supp-price { font-size: .78rem; }
+      .gjf-page .big-quote { padding: 32px 16px; }
+      .gjf-page .big-quote-text { font-size: 1.1rem; }
+      .gjf-page .big-quote-bold { font-size: 1.2rem; }
+      .gjf-page .adv1-gs-l1-testimonials { grid-template-columns: 1fr; }
+      .gjf-page .adv1-gs-l1-product-section { padding: 28px 20px; }
+      .gjf-page .adv1-gs-l1-price-now { font-size: 36px !important; }
+      .gjf-page .adv1-gs-l1-offer-box { border-radius: 8px; }
+      .gjf-page .founder-close { padding: 22px 18px; }
+      .gjf-page .cta-section { padding: 48px 16px; }
+      .gjf-sticky-atc { padding: 12px 16px 20px; }
+      .gjf-sticky-atc-btn { font-size: .84rem; padding: 14px 20px; }
+      /* Add bottom padding to page so sticky bar doesn't cover content */
+      .gjf-page { padding-bottom: 90px; }
+    }
+    @media (min-width: 641px) {
+      .gjf-page { padding-bottom: 90px; }
+    }
+
+  </style>
+</head>
+<body>
+<div class="gjf-page">
+
+<!-- dev bar removed, single hook version -->
+
+<!-- ══ MASTHEAD ══════════════════════════════════════════ -->
+<header class="masthead">
+  <div class="mast-left">
+    <!-- Claude Code: swap for <img src="wordkmark-forest.svg" height="20" alt="Get Joy" /> -->
+    <div class="mast-logo">
+      <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/wordmark-cream.svg?v=1745597763" height="22" alt="Get Joy" onerror="this.style.display='none';this.insertAdjacentText('afterend','Get Joy');">
+    </div>
+    <div class="mast-divider"></div>
+    <div class="mast-label">Founder's Letter</div>
+  </div>
+  <div class="mast-right">
+    <span class="mast-read">8 min read</span>
+    <a class="mast-cta" href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&utm_medium=founder-page&utm_campaign=fdr-trial-16oz&utm_content=founder-story">
+      Check Availability
+    </a>
+  </div>
+</header>
+
+<!-- ══ ARTICLE HEADER ════════════════════════════════════ -->
+<div class="art-header">
+  <p class="art-kicker">A Personal Letter From Tom Arrix · Founder &amp; CEO</p>
+
+  <h1 class="art-hl">His vet gave Cooper<br>six months to live.<br><em>Cooper got twenty more.</em></h1>
+  <p class="art-deck">What a dog dad did when he refused to accept a terminal diagnosis, the two years that followed, and what he built because of them.</p>
+
+  <!-- Author -->
+  <div class="author">
+    <div class="author-av">
+      <!-- Claude Code: <img src="tom-arrix-avatar.jpg" alt="Tom Arrix" /> -->
+      <span>TA</span>
+    </div>
+    <div>
+      <div class="author-name">Tom Arrix</div>
+      <div class="author-role">Founder &amp; CEO, Get Joy · Canine Nutrition · Personal Account</div>
+    </div>
+  </div>
+</div>
+
+<div class="img-full reveal" style="margin-top: 12px;">
+  <p class="img-ph">📷 Tom with Cooper (Golden Retriever). Candid, warm, natural light. The relationship, not the product. Most emotionally critical image on the page.</p>
+</div>
+<p class="img-cap">Cooper, the Golden Retriever who started all of this.</p>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 01, TOM'S STORY
+══════════════════════════════════════════════════════════ -->
+<div class="gap"></div>
+<div class="col">
+  <div class="sec-num reveal">01</div>
+  <div class="sec-label reveal">The Story</div>
+  <h2 class="sec-hl reveal">The day the vet gave us<br><em>a number I refused to accept.</em></h2>
+
+  <div class="body reveal">
+    <p class="story">In late 2018, I sat in a vet's office with my Golden Retriever Cooper and heard a word I wasn't prepared for. Lymphoma.</p>
+    <p class="story">The vet was kind and thorough. She told me what the timelines typically looked like, what the options were, what to expect. And I drove home with Cooper in the back seat, that particular way he had of resting his chin on the center console, just to be close, and I made one decision.</p>
+    <p class="story">I wasn't going to wait.</p>
+  </div>
+</div>
+
+<div class="gap-sm"></div>
+<div class="img-col reveal">
+  <p class="img-ph">📷 Cooper healthy, playing, running, or at rest with Tom. The "before." Warm, candid. This is what Tom was fighting for.</p>
+</div>
+<div class="gap-sm"></div>
+
+<div class="col">
+  <div class="body reveal">
+    <p>I started calling everyone I could find, vet nutritionists, PhD animal scientists, people who'd spent careers studying what actually determines how long a dog lives. I had no background in any of it. I wasn't a scientist. I was just a dog dad who ran out of options and went looking.</p>
+    <p>What they all kept coming back to was the same framework.</p>
+  </div>
+
+  <div class="callout reveal">
+    <div class="callout-lbl">What the research kept returning to</div>
+    <p><strong>Three things determine how long, and how well, a dog lives.</strong></p>
+    <p><strong>Genetics.</strong> The hand you're dealt. Nothing changes it.</p>
+    <p><strong>Environment.</strong> Stress, toxins, activity. Some control, but limited.</p>
+    <p><strong>Nutrition.</strong> Every single thing in that bowl, every single day, for the rest of their life. <strong>The one pillar you have complete control over.</strong></p>
+  </div>
+
+  <div class="body reveal">
+    <p>I couldn't change Cooper's genetics. I couldn't control everything in his environment. But I could control what went in his bowl. So I went as deep as I could on that one thing, deeper than I'd ever gone on anything.</p>
+    <p>What I found, over two years of research, testing, and a lot of failed attempts, led me to build something I couldn't find anywhere else.</p>
+  </div>
+</div>
+
+<div class="pull-left reveal">
+  <blockquote>
+    <p>"If I could go back and change what I fed Cooper his whole life, I would."</p>
+    <cite>,  Tom Arrix, Founder &amp; CEO</cite>
+  </blockquote>
+</div>
+
+<div class="col">
+  <div class="body reveal">
+    <p>I looked everywhere. What Cooper needed didn't exist. So I built it. That's what Get Joy is.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+<div class="rule"></div>
+<div class="gap"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 02, THE DISCOVERY
+══════════════════════════════════════════════════════════ -->
+<div class="col">
+  <div class="sec-num reveal">02</div>
+  <div class="sec-label reveal">The Discovery</div>
+  <h2 class="sec-hl reveal">I had a counter full of bottles.<br><em>And I was fighting the wrong problem.</em></h2>
+  <p class="sec-sub reveal">What I was trying. What wasn't working. The conversation that changed everything.</p>
+
+  <div class="body reveal">
+    <p>I'd buy the best freeze-dried raw I could find, premium, expensive, clean label, quality sourcing. And then I'd add to it. Probiotic supplements. Digestive enzyme powder. Prebiotic fiber. Hip and joint support. Fish oil. Skin and coat. I was building this protocol, twice a day, Cooper's ritual.</p>
+    <p>And it helped. For a while.</p>
+    <p>Then it would plateau. Stools would tighten up, then soften again. Energy would lift, then settle back. I kept adjusting, different brands, higher doses, different strains. I had this counter in my kitchen that looked like a pharmacy. Bottles lined up. Some half-empty, some barely started. I was spending somewhere between three and four hundred dollars a month on supplements alone, on top of the food.</p>
+    <p>I was fortunate enough to be able to do that. Most dog owners aren't. And I knew that even as I was doing it.</p>
+  </div>
+</div>
+
+<div class="gap-sm"></div>
+<div class="img-wide reveal">
+  <p class="img-ph">📷 Tom's counter covered in supplement bottles, probiotic pouches, prebiotic powders, multiple freeze-dried raw brands, scattered notebooks. Real, messy, obsessive. NOT staged.</p>
+</div>
+<p class="img-cap">The protocol Tom was running before he understood what the actual problem was.</p>
+<div class="gap-sm"></div>
+
+<div class="col">
+  <div class="body reveal" style="margin-bottom: 24px;">
+    <p>Here's what the protocol actually cost. Each one felt necessary at the time.</p>
+  </div>
+
+  <div class="supp-tbl-wrap reveal">
+    <div class="supp-header">
+      <span>What I was buying for Cooper</span>
+      <span>Monthly cost</span>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Probiotic supplement</div>
+        <div class="supp-brands">"Cooper's gut needed live bacteria. This was my starting point."</div>
+      </div>
+      <div class="supp-price">$40–55/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Hip &amp; Joint supplement</div>
+        <div class="supp-brands">"Lymphoma puts stress on the whole body. I wanted his joints supported."</div>
+      </div>
+      <div class="supp-price">$40–60/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Fish oil / Omega-3</div>
+        <div class="supp-brands">"Every protocol I read mentioned inflammation. This was supposed to help."</div>
+      </div>
+      <div class="supp-price">$25–40/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Digestive enzyme supplement</div>
+        <div class="supp-brands">"Without enzymes, food doesn't break down properly. I added this when his digestion kept struggling."</div>
+      </div>
+      <div class="supp-price">$30–45/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Skin &amp; coat supplement</div>
+        <div class="supp-brands">"His coat was dulling. I thought it was the disease. It was the food."</div>
+      </div>
+      <div class="supp-price">$25–40/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Daily multivitamin</div>
+        <div class="supp-brands">"I was trying to cover every gap I didn't know existed yet."</div>
+      </div>
+      <div class="supp-price">$20–35/mo</div>
+    </div>
+    <div class="supp-row">
+      <div>
+        <div class="supp-name">Dental &amp; breath support</div>
+        <div class="supp-brands">"Bad breath was one of his first symptoms. I kept trying to address it separately."</div>
+      </div>
+      <div class="supp-price">$20–35/mo</div>
+    </div>
+    <div class="supp-subtotal">
+      <span>The full protocol, bought separately</span>
+      <span>~$340/mo</span>
+    </div>
+    <div class="supp-getjoy">
+      <span>Get Joy subscription <span style="font-weight:400;opacity:.7;font-size:.75em;">(regular price)</span></span>
+      <span>~$92/mo</span>
+    </div>
+    <div class="supp-trial-card">
+      <div class="supp-trial-card-top">
+        <div class="supp-trial-avatar">
+          <!-- Claude Code: <img src="tom-arrix-headshot.jpg" alt="Tom Arrix" /> -->
+          <span>TA</span>
+        </div>
+        <div class="supp-trial-meta">
+          <div class="supp-trial-eyebrow">Founder's Trial Offer</div>
+          <div class="supp-trial-name">Tom Arrix</div>
+          <div class="supp-trial-title">Founder &amp; CEO, Get Joy</div>
+        </div>
+        <div class="supp-trial-price-block">
+          <div class="supp-trial-price">$19.99</div>
+          <div class="supp-trial-shipping">+ free shipping</div>
+        </div>
+      </div>
+      <p class="supp-trial-quote">"One bag. Two weeks. See what changes in your dog. That's all I'm asking."</p>
+    </div>
+    <div class="supp-savings">
+      <div class="supp-savings-badge">Annual savings: $2,300+ per year</div>
+      <div class="supp-savings-note">when switching to Get Joy full subscription</div>
+    </div>
+  </div>
+  <p class="img-cap" style="text-align:left; padding: 6px 0 0;">Supplement prices based on average retail cost of leading branded products at standard dosages. Get Joy subscription reflects average recurring subscriber order value. Individual prices may vary.</p>
+  <div class="gap-sm"></div>
+</div>
+
+<div class="col">
+  <div class="body reveal">
+    <p>I was on a call with a food scientist I'd been working with for a few months. I was walking him through the protocol, what I was adding, what was helping, why I thought it was plateauing. And he stopped me and asked a question I hadn't thought to ask:</p>
+    <p><em>"Have you looked at what temperature your freeze-dried raw is being processed at?"</em></p>
+    <p>I hadn't. I'd looked at ingredients. I'd looked at protein sources and sourcing and labels. But not the process temperature.</p>
+    <p>Most freeze-dried raw on the market, including the premium brands, the expensive ones, uses a kill step that runs between 160 and 180°F. That temperature matters because of one number: <strong>118°F.</strong></p>
+    <p>That's where it starts. Above 118°F, digestive enzymes begin to break down, lipase, protease, amylase, the compounds that make digestion work. The beneficial bacteria that should be colonizing your dog's gut microbiome die above 115 to 120°F. The prebiotic compounds that feed those bacteria? Eliminated in the same process.</p>
+    <p>The food I'd been buying, and the probiotic supplements I'd been adding to it, was arriving in Cooper's gut in a state the vet nutritionists call sterile. Enzymatically dead. The supplements I'd been adding were alive, briefly. But the food they were landing on had already destroyed the environment they needed to work in. I was fighting the process. And the process was winning every time.</p>
+  </div>
+
+  <div class="big-quote reveal">
+    <p class="big-quote-label">What I finally understood</p>
+    <p class="big-quote-text">The problem wasn't ingredient quality. You can have perfect ingredients and arrive in the gut with nothing alive.</p>
+    <p class="big-quote-bold">No supplement sprinkled on top can fix a food that arrives gut-dead. You have to solve it in the process.</p>
+  </div>
+
+</div>
+
+<div class="col">
+  <div class="tbl-wrap reveal">
+    <table class="temp-tbl">
+      <thead>
+        <tr>
+          <th>Format</th>
+          <th>Process Temp</th>
+          <th>What Reaches the Gut</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Standard &amp; Premium Kibble</td>
+          <td>250–300°F+</td>
+          <td><span class="bdg b-no">Enzymes dead. Microbiome absent.</span></td>
+        </tr>
+        <tr>
+          <td>"Gently Cooked" Fresh</td>
+          <td>300–375°F environment</td>
+          <td><span class="bdg b-no">"Gentle" is a texture description, not a biology term.</span></td>
+        </tr>
+        <tr>
+          <td>Most Freeze-Dried Raw</td>
+          <td>160–180°F (kill step)</td>
+          <td><span class="bdg b-mid">Better format. Still crosses the damage threshold.</span></td>
+        </tr>
+        <tr class="hero-row">
+          <td>Get Joy Freeze-Dried Raw</td>
+          <td>Capped at 125°F</td>
+          <td><span class="bdg b-yes">Enzymes intact. Probiotics viable. Gut-ready.</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="gap"></div>
+<div class="rule"></div>
+<div class="gap"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 03, THE BUILD
+══════════════════════════════════════════════════════════ -->
+
+<div class="img-wide reveal">
+  <p class="img-ph">📷 Tom with food scientist reviewing specs, OR actual freeze-drying equipment / production line. Real facility, NOT stock. Two years of deliberate work.</p>
+</div>
+<div class="gap-sm"></div>
+
+<div class="col">
+  <div class="sec-num reveal">03</div>
+  <div class="sec-label reveal">The Build</div>
+  <h2 class="sec-hl reveal">I stopped trying to supplement<br><em>my way out of the problem.</em></h2>
+
+  <div class="body reveal">
+    <p>I went back to the food scientists with a different question. Not "what supplement fixes this?" but "what would a food look like if it was designed around the gut system from the beginning?"</p>
+    <p>The answer took two years. It required three things present and intact simultaneously: the dietary compounds beneficial bacteria need to establish (prebiotics), the bacteria themselves alive in concentrations that matter (3 billion CFU per pound, because the process never crossed the temperature that kills them), and the conditions for those bacteria to produce the short-chain fatty acids that feed the gut lining and regulate inflammation throughout the body.</p>
+    <p>That output is what shows up as coat, energy, and digestion that actually holds. We called it Belly Biotics™. It's built into the food because the process was cold enough to keep it alive.</p>
+  </div>
+</div>
+
+<div class="gap-sm"></div>
+<div class="img-wide reveal">
+  <p class="img-ph">📷 Tom with food scientist reviewing specs, OR actual freeze-drying equipment. Real facility. Two years of deliberate work. NOT stock.</p>
+</div>
+<div class="gap-sm"></div>
+
+<div class="col">
+  <div class="body reveal">
+    <p>I was lucky. I had the resources to spend $300 a month on individual supplements, to consult food scientists, to test and iterate for two years. Most people can't do that. So the goal when I built Get Joy was to make all of it unnecessary. The complete system, in one product, at a fraction of what the protocol costs separately.</p>
+  </div>
+</div>
+
+<div class="col">
+  <div class="feat-list reveal">
+    <div class="feat-row">
+      <span class="feat-check">✓</span>
+      <div class="feat-txt">
+        <div class="feat-name">Freeze-dried at −40°F · No heat at any stage</div>
+        <div class="feat-sub">Sub-zero sublimation. Moisture removed without crossing the damage threshold. What's formulated is what reaches the bowl.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-check">✓</span>
+      <div class="feat-txt">
+        <div class="feat-name">97% nutrient retention</div>
+        <div class="feat-sub">Enzymes intact. Living compounds preserved. The nutritional profile you're paying for actually arrives.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-check">✓</span>
+      <div class="feat-txt">
+        <div class="feat-name">Belly Biotics™, pre + pro + postbiotics built in</div>
+        <div class="feat-sub">3 billion CFU per pound. The complete gut architecture, alive, because the process never destroyed it. Exclusive to Get Joy.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-check">✓</span>
+      <div class="feat-txt">
+        <div class="feat-name">Competitive Inhibition kill step</div>
+        <div class="feat-sub">No HPP. No irradiation. No acidifiers. No heat. Good bacteria outcompete bad bacteria. Biology, not shortcuts.</div>
+      </div>
+    </div>
+    <div class="feat-row">
+      <span class="feat-check">✓</span>
+      <div class="feat-txt">
+        <div class="feat-name">Shelf-stable · Ships direct</div>
+        <div class="feat-sub">No freezer, no thawing, no handling protocols. Raw aroma preserved, dogs that have refused other options consistently accept it on the first try.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col">
+  <div class="body reveal" style="margin-bottom: 0;">
+    <p>What keeping the process this cold actually produces, in numbers your dog's body can use:</p>
+  </div>
+  <div class="stats reveal">
+    <div class="stat">
+      <div class="stat-n">125°F</div>
+      <div class="stat-title">Process temperature</div>
+      <div class="stat-l">Low enough that the good bacteria, enzymes, and nutrients stay alive all the way to your dog's bowl. Most brands run 50°F hotter.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">3 Billion</div>
+      <div class="stat-title">Live probiotics per pound</div>
+      <div class="stat-l">Gut bacteria that actually survive to colonize your dog's microbiome. Most heat-processed food arrives with none.</div>
+    </div>
+    <div class="stat">
+      <div class="stat-n">97%</div>
+      <div class="stat-title">Nutrients retained</div>
+      <div class="stat-l">Of what's in the formula actually reaches the bowl. Every vitamin, enzyme, and gut compound — intact. Not destroyed in processing.</div>
+    </div>
+  </div>
+</div>
+
+<div class="gap"></div>
+<div class="rule"></div>
+<div class="gap"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 04, PROOF
+══════════════════════════════════════════════════════════ -->
+
+<div class="img-full reveal">
+  <p class="img-ph">📷 Cooper, January 2026. Active, outdoors, alive. A dog given 12 months, still here years later. Tom with him if possible. This image carries the weight of the entire page.</p>
+</div>
+<p class="img-cap">Cooper, January 2026. Still here. Still running ahead on morning walks.</p>
+
+<div class="gap"></div>
+<div class="col">
+  <div class="sec-num reveal">04</div>
+  <div class="sec-label reveal">The Proof · Updated January 2026</div>
+  <h2 class="sec-hl reveal">Seven years after<br>a twelve-month prognosis.<br><em>Cooper is still here.</em></h2>
+
+  <div class="body reveal">
+    <p>In late 2018, a vet gave Cooper twelve months. I want to be precise about what's happened since.</p>
+    <p>As of January 2026, Cooper is still with me. Still going on morning walks. Still doing that thing where he rests his chin on the center console when we drive.</p>
+    <p>I am not telling you the food did this. I won't make that claim and you shouldn't trust anyone who would. What I'll tell you is what I watched. The digestion that stabilized in the first two weeks after the switch. The coat his vet noticed before I'd mentioned changing his food. The morning maybe six weeks in when Cooper ran ahead of me on a walk, just for a moment, and I stood there on the path and didn't move for probably thirty seconds.</p>
+    <p>I don't know exactly why he's still here. The food. The love. The extra walks we've taken every day because I knew to take them. Probably everything, together.</p>
+    <p>What I know is what changed in that bowl. And I built a company around it because I couldn't live with the idea that other dogs were still eating what I'd been feeding Cooper before I understood any of this.</p>
+  </div>
+</div>
+
+<div class="pull-center reveal">
+  <p>"I built this for Cooper. He's still here. And 30,000 families are feeding it to their dogs right now, because they don't have to wait for a diagnosis to start."</p>
+  <cite>,  Tom Arrix · Updated January 2026</cite>
+</div>
+
+<!-- Timeline -->
+<div class="col">
+  <div class="body reveal">
+    <p>What customers typically notice, and when:</p>
+  </div>
+  <div class="timeline reveal">
+    <div class="tl-row">
+      <div class="tl-when"><span class="tl-when-lbl">Days<br>3–5</span></div>
+      <div class="tl-body">
+        <div class="tl-title">Digestion changes first</div>
+        <div class="tl-desc">Stool consistency, frequency, odor. The gut microbiome beginning to shift, the earliest visible signal that the architecture is working.</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-when"><span class="tl-when-lbl">Weeks<br>2–3</span></div>
+      <div class="tl-body">
+        <div class="tl-title">Energy &amp; appetite</div>
+        <div class="tl-desc">Dogs that were disinterested in meals start showing up for them. Picky eaters, whose refusals were often gut signaling, not preference, typically accept it from the first bowl.</div>
+      </div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-when"><span class="tl-when-lbl">Day<br>30</span></div>
+      <div class="tl-body">
+        <div class="tl-title">Coat &amp; skin</div>
+        <div class="tl-desc">The downstream effects of postbiotic production, showing up visibly in the coat and skin your vet would notice at a checkup. Most owners see this before anything else.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- [Reviews moved, see below, before offer section] -->
+
+<div class="gap"></div>
+<div class="rule"></div>
+<div class="gap"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 05, IDENTITY CLOSE
+══════════════════════════════════════════════════════════ -->
+<div class="col">
+  <div class="sec-num reveal">05</div>
+  <div class="sec-label reveal">Before You Move On</div>
+  <h2 class="sec-hl reveal">You've already done more<br><em>than most dog owners ever will.</em></h2>
+
+  <div class="body reveal">
+    <p>You read labels for yourself. You've thought about what processing does to food over time, not just ingredients, but what survives the process. You've made deliberate choices, not perfect ones, because you believe it matters over years.</p>
+    <p>The gap between that standard and what goes in your dog's bowl every single day, that's what Get Joy was built to close.</p>
+    <p>Get Joy costs less per day than the fresh-cooked subscription brands. It costs significantly less than a single vet visit for the skin issues, the chronic digestion problems, the inflammation that compounds quietly over years. The math most dog owners never do isn't the price of the bag. It's the cost of the vet visits they could have avoided.</p>
+  </div>
+</div>
+
+<div class="col">
+  <div class="body reveal">
+    <p class="punch">Every bag carries a bit of Cooper's perseverance. The same stubbornness that refused to give up is what this food was built on.</p>
+  </div>
+</div>
+
+<div class="gap-sm"></div>
+<div class="img-col reveal">
+  <p class="img-ph">📷 Bag of Get Joy on a kitchen counter, in someone's hands, or next to a dog bowl. NOT a product shoot. Warm, real, imperfect. Optional: Tom holding the bag, direct camera.</p>
+</div>
+<p class="img-cap" style="max-width: var(--col-text); margin: 0 auto; padding: 6px 24px 0;">The food Cooper ate in his best months, available for your dog today.</p>
+<div class="gap"></div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     REVIEWS, moved here, directly before offer
+══════════════════════════════════════════════════════════ -->
+<div class="gap"></div>
+<div class="rule"></div>
+<div class="gap"></div>
+
+<div class="col">
+  <div class="sec-label reveal">What People Notice</div>
+  <div class="body reveal" style="margin-bottom: 16px;">
+    <p style="font-size: .8rem; color: var(--ink-light);">219 reviews · Freeze-Dried Raw · 4.48 ★ &nbsp;·&nbsp; 140 reviews · Fresh Meals · 4.75 ★</p>
+  </div>
+  <div class="reviews reveal">
+    <div class="review">
+      <div class="rev-top">
+        <div class="rev-av">
+          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="rev-meta">
+          <div class="rev-name">Leonard</div>
+          <div class="rev-dog">English Bulldog owner</div>
+        </div>
+      </div>
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-headline">"Face, eyes and paws cleared up in days."</div>
+      <p class="rev-q">My English Bulldog was experiencing allergic reactions to other food brands. After switching to Get Joy Freeze Dried Beef Meal, within a few days his face, eyes and paws completely cleared up.</p>
+    </div>
+    <div class="review">
+      <div class="rev-top">
+        <div class="rev-av">
+          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="rev-meta">
+          <div class="rev-name">Brianna</div>
+          <div class="rev-dog">Maple, picky eater</div>
+        </div>
+      </div>
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-headline">"She eats her bowl the second I set it down."</div>
+      <p class="rev-q">Maple had been a picky eater and would leave her meals out all day. I switched to Get Joy and she immediately eats her bowl after I set it out. Her poops are noticeably firmer and she has a lot more energy.</p>
+    </div>
+    <div class="review">
+      <div class="rev-top">
+        <div class="rev-av">
+          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="rev-meta">
+          <div class="rev-name">Peter A.</div>
+          <div class="rev-dog">German Shepherd owner</div>
+        </div>
+      </div>
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-headline">"The only food that doesn't bother his stomach."</div>
+      <p class="rev-q">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach. We haven't looked back.</p>
+    </div>
+    <div class="review">
+      <div class="rev-top">
+        <div class="rev-av">
+          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." style="width:100%;height:100%;object-fit:cover;">
+        </div>
+        <div class="rev-meta">
+          <div class="rev-name">Ingrid S.</div>
+          <div class="rev-dog">Shih Tzu, Havanese &amp; Podengo</div>
+        </div>
+      </div>
+      <div class="rev-stars">★★★★★</div>
+      <div class="rev-headline">"Three picky seniors, loved it from day one."</div>
+      <p class="rev-q">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
+    </div>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     CTA SECTION, exact listicle style
+══════════════════════════════════════════════════════════ -->
+<section class="cta-section" id="offer">
+  <div class="cta-inner">
+
+    <!-- Tom's founder close, heartfelt, personal -->
+    <div class="founder-close">
+      <p class="fc-eyebrow">From Tom Arrix · Founder &amp; CEO, Get Joy · Founder's Trial Offer</p>
+      <h2 class="fc-hl">I want to get this into the hands<br>of every dog owner who cares<br><em>enough to read this far.</em></h2>
+      <div class="fc-body">
+        <p>You've read the whole story. You understand what the process temperature means, why the supplement protocol I was running couldn't fix the root problem, and what Belly Biotics™ does that buying each piece separately never could.</p>
+        <p>I've set up a trial offer through this page, the best terms I make available anywhere. Not because I need another sale. Because I genuinely believe that if you try this for two weeks, you'll understand exactly why I spent two years building it.</p>
+        <p>Cooper is still here. That's not a marketing line. That's just what happened. Try the food. Watch what changes in your dog. Then decide.</p>
+      </div>
+      <span class="fc-sig">Tom</span>
+      <div class="fc-role">Tom Arrix · Founder &amp; CEO, Get Joy · Built this for Cooper</div>
+    </div>
+
+    <!-- ===== ADV1 PRODUCT / CTA SECTION, 1:1 ===== -->
+    <div class="adv1-gs-l1-section-label">
+      <span class="adv1-gs-l1-section-label-text">What Get Joy Does Differently</span>
+      <div class="adv1-gs-l1-section-label-line"></div>
+    </div>
+
+    <div class="adv1-gs-l1-product-section">
+      <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/GETJOY_SCRIPT_LOGO_GET-JOY-GREEN_wPadding_copy.png?v=1752590502" alt="Get Joy" style="height:38px;width:auto;display:block;margin-bottom:18px;">
+      <h2>One Bag. All Their Essential Nutrients.</h2>
+      <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C3F54A;margin:0 0 20px 0;">Replaces 9 Supplements &nbsp;·&nbsp; A $135/mo Value</p>
+      <p class="adv1-gs-l1-product-sub">Probiotics. Gut health. A shinier coat. Most owners are buying all of it separately. Get Joy has Belly Biotics™, Salmon Oil, and Pumpkin built in. Real food that replaces the stack.</p>
+
+      <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/GJ_FDR_1lb_Beef_Front_WithProduct.png?v=1772488391" alt="Get Joy Freeze Dried Raw" style="width:100%;border-radius:8px;display:block;margin-bottom:24px;">
+
+      <ul class="adv1-gs-l1-feature-list">
+        <li><span class="adv1-gs-l1-check">✓</span> Freeze-dried at -40°F: no heat applied, 97% nutrient retention, beneficial bacteria survive to the bowl</li>
+        <li><span class="adv1-gs-l1-check">✓</span> Belly Biotics™: complete pre, pro + postbiotic system, exclusive to Get Joy, built in not added after</li>
+        <li><span class="adv1-gs-l1-check">✓</span> Postbiotics produce butyrate, maintaining gut lining integrity, addresses inflammation at the source</li>
+        <li><span class="adv1-gs-l1-check">✓</span> Shelf-stable: no freezer required, consistent daily gut input without disruption</li>
+        <li><span class="adv1-gs-l1-check">✓</span> Freeze-drying preserves raw flavor. Dogs that have refused cooked food consistently accept it</li>
+      </ul>
+
+      <div class="adv1-gs-l1-offer-box">
+        <div class="adv1-gs-l1-offer-title">16oz Starter Bag: $19.99 + Free Shipping</div>
+        <div class="adv1-gs-l1-offer-desc">Full-size bag. Free shipping. 30-day money-back guarantee. See what a complete gut system does for your dog.</div>
+
+        <div class="adv1-gs-l1-offer-table-head">
+          <span>What's In Every Bag</span>
+          <span class="adv1-gs-l1-val">$135 Value</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">16oz Freeze Dried Raw Food</div>
+            <div class="adv1-gs-l1-offer-row-note">Real food. No fillers. Nothing your dog doesn't need.</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-val">$35 VALUE</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">Belly Biotics™: Complete Gut System</div>
+            <div class="adv1-gs-l1-offer-row-note">Pre, pro + postbiotics built in, not sprinkled on top.</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-excl">$40 VALUE</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">Coat &amp; Skin Health</div>
+            <div class="adv1-gs-l1-offer-row-note">Shinier coat, less shedding. People will ask what you changed.</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-val">$20 VALUE</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">Joint &amp; Mobility Support</div>
+            <div class="adv1-gs-l1-offer-row-note">Regulates inflammation, so they move like they used to.</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-val">$30 VALUE</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">Free Shipping</div>
+            <div class="adv1-gs-l1-offer-row-note">Free Tracked US Shipping</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-val">$10 VALUE</span>
+        </div>
+        <div class="adv1-gs-l1-offer-row">
+          <div>
+            <div class="adv1-gs-l1-offer-row-name">30-Day Money-Back Guarantee</div>
+            <div class="adv1-gs-l1-offer-row-note">Your dog doesn't love it? Full refund. No hoops.</div>
+          </div>
+          <span class="adv1-gs-l1-badge l1-badge-inc">INCLUDED</span>
+        </div>
+
+        <div class="adv1-gs-l1-price-row">
+          <span class="adv1-gs-l1-price-was">$45.00</span>
+          <span class="adv1-gs-l1-price-now">$19.99</span>
+          <span class="adv1-gs-l1-price-label">+ free shipping</span>
+        </div>
+        <div class="adv1-gs-l1-price-note">That's $15 off the bag, shipping on us. Because the food earns the next order.</div>
+
+        <a href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&amp;utm_medium=founder-page&amp;utm_campaign=fdr-trial-16oz&amp;utm_content=founder-story" class="adv1-gs-l1-cta-btn">Try Get Joy $20 →</a>
+        <div class="adv1-gs-l1-cta-sub">Free shipping · 30-Day Money-Back Guarantee · Low Stock: Ships within 24 hours</div>
+      </div>
+    </div>
+
+    <div class="adv1-gs-l1-testimonials">
+      <div class="adv1-gs-l1-tcard">
+        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" loading="lazy"></div>
+        <div class="adv1-gs-l1-tcard-body">
+          <div class="adv1-gs-l1-stars">★★★★★</div>
+          <div class="adv1-gs-l1-tquote">"Face, eyes and paws cleared up in days."</div>
+          <p class="adv1-gs-l1-ttext">My English Bulldog was experiencing allergic reactions to other food brands. After seeing Get Joy advertised on TV, I switched him to the Freeze Dried Beef Meal and within a few days his face, eyes and paws completely cleared up.</p>
+          <div class="adv1-gs-l1-tname">Leonard, English Bulldog owner</div>
+        </div>
+      </div>
+      <div class="adv1-gs-l1-tcard">
+        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" loading="lazy"></div>
+        <div class="adv1-gs-l1-tcard-body">
+          <div class="adv1-gs-l1-stars">★★★★★</div>
+          <div class="adv1-gs-l1-tquote">"She eats her bowl the second I set it down."</div>
+          <p class="adv1-gs-l1-ttext">Maple has been a picky eater and would leave her meals out all day. I switched her to Get Joy and she immediately eats her bowl after I set it out! Her poops have become noticeably firmer and she has a lot more energy.</p>
+          <div class="adv1-gs-l1-tname">Brianna</div>
+        </div>
+      </div>
+      <div class="adv1-gs-l1-tcard">
+        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." loading="lazy"></div>
+        <div class="adv1-gs-l1-tcard-body">
+          <div class="adv1-gs-l1-stars">★★★★★</div>
+          <div class="adv1-gs-l1-tquote">"The only food that doesn't bother his stomach."</div>
+          <p class="adv1-gs-l1-ttext">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach.</p>
+          <div class="adv1-gs-l1-tname">Peter A., German Shepherd owner</div>
+        </div>
+      </div>
+      <div class="adv1-gs-l1-tcard">
+        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." loading="lazy"></div>
+        <div class="adv1-gs-l1-tcard-body">
+          <div class="adv1-gs-l1-stars">★★★★★</div>
+          <div class="adv1-gs-l1-tquote">"Three picky seniors, loved it from day one."</div>
+          <p class="adv1-gs-l1-ttext">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
+          <div class="adv1-gs-l1-tname">Ingrid S., Shih Tzu, Havanese &amp; Podengo owner</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="adv1-gs-l1-guarantee">
+      <div class="adv1-gs-l1-guarantee-title">30-Day Money-Back Guarantee</div>
+      <p>If your dog doesn't respond, or you don't see a difference, Get Joy refunds the order in full. No return shipping required.</p>
+    </div>
+
+    <a href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&amp;utm_medium=founder-page&amp;utm_campaign=fdr-trial-16oz&amp;utm_content=founder-story" class="adv1-gs-l1-cta-btn" style="max-width:560px;margin:0 auto 10px;display:block;">Try Get Joy $20 →</a>
+    <div class="adv1-gs-l1-cta-sub" style="margin-bottom:44px;text-align:center;">Free shipping · 30-Day Money-Back Guarantee · Low Stock: Ships within 24 hours</div>
+
+  </div>
+</section>
+
+
+<!-- ══ FOOTER ═════════════════════════════════════════════ -->
+<footer class="footer">
+  <p>
+    © Get Joy 2025. All rights reserved. &nbsp;·&nbsp; getjoyfood.com<br>
+    Individual results may vary. This content does not constitute veterinary advice.<br>
+    Tom's account reflects his personal experience with Cooper. Get Joy's formulation is not a treatment for cancer or any medical condition.<br>
+    These statements have not been evaluated by the FDA.
+  </p>
+</footer>
+
+<!-- ══ JS ════════════════════════════════════════════════ -->
+<script>
+  /* Scroll reveal */
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</div><!-- /.gjf-page -->
+
+<!-- ══ STICKY ATC BAR ══════════════════════════════════════ -->
+<div class="gjf-sticky-atc" id="gjf-atc">
+  <div class="gjf-sticky-atc-inner">
+    <a
+      href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&utm_medium=founder-page&utm_campaign=fdr-trial-16oz&utm_content=founder-story"
+      class="gjf-sticky-atc-btn"
+    >
+      Check Availability →
+    </a>
+    <p class="gjf-sticky-atc-sub">Tom's Founder Trial Offer · $19.99 + Free Shipping · 30-Day Guarantee</p>
+  </div>
+</div>
+
+<script>
+  /* Show sticky ATC after scrolling past hero, hide near offer section */
+  (function() {
+    var atc = document.getElementById('gjf-atc');
+    var offer = document.getElementById('offer');
+    var hero = document.querySelector('.gjf-page .art-header');
+    var shown = false;
+
+    function onScroll() {
+      if (!atc) return;
+      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
+      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 400;
+      var offerTop = offer ? offer.getBoundingClientRect().top + scrollY : 999999;
+
+      // Show after passing hero, hide when offer section is in view
+      var nearOffer = offer && offer.getBoundingClientRect().top < window.innerHeight * 1.1;
+
+      if (scrollY > heroBottom && !nearOffer) {
+        atc.classList.add('visible');
+      } else {
+        atc.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+  })();
+</script>
+</body>
+</html>
