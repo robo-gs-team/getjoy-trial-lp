@@ -977,6 +977,45 @@ body{ font-size: 17px; }
 .gjf-page .adv1-gs-l1-product-section{ padding: 20px 20px 0; }
     }
 
+    /* ═══ STANDARD TESTIMONIAL CARDS (matches other listicles) ════ */
+.gjf-page .l1-testimonials{
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 14px; margin-bottom: 24px;
+    }
+.gjf-page .l1-tcard{
+      background: #fff;
+      border: 1.5px solid rgba(0,80,5,0.1);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+.gjf-page .l1-tcard-img{ width: 100%; height: 170px; overflow: hidden; }
+.gjf-page .l1-tcard-img img{
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center center; display: block;
+    }
+.gjf-page .l1-tcard-body{ padding: 14px 16px 16px; }
+.gjf-page .l1-tcard .l1-stars{
+      color: #F5A623; font-size: 12px;
+      letter-spacing: 2px; margin-bottom: 6px;
+    }
+.gjf-page .l1-tcard .l1-tquote{
+      font-style: italic; font-size: 13px; font-weight: 700;
+      color: #1A241A; line-height: 1.4; margin-bottom: 6px;
+      font-family: 'DM Sans', sans-serif;
+    }
+.gjf-page .l1-tcard .l1-ttext{
+      font-size: 12px; color: #627362;
+      line-height: 1.55; margin-bottom: 8px;
+      font-family: 'DM Sans', sans-serif;
+    }
+.gjf-page .l1-tcard .l1-tname{
+      font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700;
+      color: #005005; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    @media (max-width: 640px) {
+      .gjf-page .l1-testimonials{ grid-template-columns: 1fr; }
+    }
+
     /* ═══ STICKY ATC BAR ═══════════════════════════════════ */
     .gjf-sticky-atc {
       position: fixed; bottom: 0; left: 0; right: 0;
@@ -1533,62 +1572,42 @@ body{ font-size: 17px; }
   <div class="body reveal" style="margin-bottom: 16px;">
     <p style="font-size: .8rem; color: var(--ink-light);">219 reviews · Freeze-Dried Raw · 4.48 ★ &nbsp;·&nbsp; 140 reviews · Fresh Meals · 4.75 ★</p>
   </div>
-  <div class="reviews reveal">
-    <div class="review">
-      <div class="rev-top">
-        <div class="rev-av">
-          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="rev-meta">
-          <div class="rev-name">Leonard</div>
-          <div class="rev-dog">English Bulldog owner</div>
-        </div>
+  <div class="l1-testimonials reveal">
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">"Face, eyes and paws cleared up in days."</div>
+        <p class="l1-ttext">My English Bulldog was experiencing allergic reactions to other food brands. After switching to Get Joy Freeze Dried Beef Meal, within a few days his face, eyes and paws completely cleared up.</p>
+        <div class="l1-tname">Leonard — English Bulldog owner</div>
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <div class="rev-headline">"Face, eyes and paws cleared up in days."</div>
-      <p class="rev-q">My English Bulldog was experiencing allergic reactions to other food brands. After switching to Get Joy Freeze Dried Beef Meal, within a few days his face, eyes and paws completely cleared up.</p>
     </div>
-    <div class="review">
-      <div class="rev-top">
-        <div class="rev-av">
-          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="rev-meta">
-          <div class="rev-name">Brianna</div>
-          <div class="rev-dog">Maple, picky eater</div>
-        </div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">"She eats her bowl the second I set it down."</div>
+        <p class="l1-ttext">Maple had been a picky eater and would leave her meals out all day. I switched to Get Joy and she immediately eats her bowl after I set it out! Her poops are noticeably firmer and she has a lot more energy.</p>
+        <div class="l1-tname">Brianna — Maple, picky eater</div>
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <div class="rev-headline">"She eats her bowl the second I set it down."</div>
-      <p class="rev-q">Maple had been a picky eater and would leave her meals out all day. I switched to Get Joy and she immediately eats her bowl after I set it out. Her poops are noticeably firmer and she has a lot more energy.</p>
     </div>
-    <div class="review">
-      <div class="rev-top">
-        <div class="rev-av">
-          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="rev-meta">
-          <div class="rev-name">Peter A.</div>
-          <div class="rev-dog">German Shepherd owner</div>
-        </div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">"The only food that doesn't bother his stomach."</div>
+        <p class="l1-ttext">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach. We haven't looked back.</p>
+        <div class="l1-tname">Peter A. — German Shepherd owner</div>
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <div class="rev-headline">"The only food that doesn't bother his stomach."</div>
-      <p class="rev-q">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach. We haven't looked back.</p>
     </div>
-    <div class="review">
-      <div class="rev-top">
-        <div class="rev-av">
-          <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." style="width:100%;height:100%;object-fit:cover;">
-        </div>
-        <div class="rev-meta">
-          <div class="rev-name">Ingrid S.</div>
-          <div class="rev-dog">Shih Tzu, Havanese &amp; Podengo</div>
-        </div>
+    <div class="l1-tcard">
+      <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." loading="lazy"></div>
+      <div class="l1-tcard-body">
+        <div class="l1-stars">★★★★★</div>
+        <div class="l1-tquote">"Three picky seniors, loved it from day one."</div>
+        <p class="l1-ttext">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
+        <div class="l1-tname">Ingrid S. — Shih Tzu, Havanese &amp; Podengo owner</div>
       </div>
-      <div class="rev-stars">★★★★★</div>
-      <div class="rev-headline">"Three picky seniors, loved it from day one."</div>
-      <p class="rev-q">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
     </div>
   </div>
 </div>
@@ -1623,7 +1642,7 @@ body{ font-size: 17px; }
     <div class="adv1-gs-l1-product-section">
       <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/GETJOY_SCRIPT_LOGO_GET-JOY-GREEN_wPadding_copy.png?v=1752590502" alt="Get Joy" style="height:38px;width:auto;display:block;margin-bottom:18px;">
       <h2>One Bag. All Their Essential Nutrients.</h2>
-      <p style="font-family:'Inter',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C3F54A;margin:0 0 20px 0;">Replaces 9 Supplements &nbsp;·&nbsp; A $135/mo Value</p>
+      <p style="font-family:'DM Sans',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:#C3F54A;margin:0 0 20px 0;">Replaces 9 Supplements &nbsp;·&nbsp; A $135/mo Value</p>
       <p class="adv1-gs-l1-product-sub">Probiotics. Gut health. A shinier coat. Most owners are buying all of it separately. Get Joy has Belly Biotics™, Salmon Oil, and Pumpkin built in. Real food that replaces the stack.</p>
 
       <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/GJ_FDR_1lb_Beef_Front_WithProduct.png?v=1772488391" alt="Get Joy Freeze Dried Raw" style="width:100%;border-radius:8px;display:block;margin-bottom:24px;">
@@ -1656,7 +1675,7 @@ body{ font-size: 17px; }
             <div class="adv1-gs-l1-offer-row-name">Belly Biotics™: Complete Gut System</div>
             <div class="adv1-gs-l1-offer-row-note">Pre, pro + postbiotics built in, not sprinkled on top.</div>
           </div>
-          <span class="adv1-gs-l1-badge l1-badge-excl">$40 VALUE</span>
+          <span class="adv1-gs-l1-badge l1-badge-val">$40 VALUE</span>
         </div>
         <div class="adv1-gs-l1-offer-row">
           <div>
@@ -1699,41 +1718,41 @@ body{ font-size: 17px; }
       </div>
     </div>
 
-    <div class="adv1-gs-l1-testimonials">
-      <div class="adv1-gs-l1-tcard">
-        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" loading="lazy"></div>
-        <div class="adv1-gs-l1-tcard-body">
-          <div class="adv1-gs-l1-stars">★★★★★</div>
-          <div class="adv1-gs-l1-tquote">"Face, eyes and paws cleared up in days."</div>
-          <p class="adv1-gs-l1-ttext">My English Bulldog was experiencing allergic reactions to other food brands. After seeing Get Joy advertised on TV, I switched him to the Freeze Dried Beef Meal and within a few days his face, eyes and paws completely cleared up.</p>
-          <div class="adv1-gs-l1-tname">Leonard, English Bulldog owner</div>
+    <div class="l1-testimonials">
+      <div class="l1-tcard">
+        <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748" alt="Leonard" loading="lazy"></div>
+        <div class="l1-tcard-body">
+          <div class="l1-stars">★★★★★</div>
+          <div class="l1-tquote">"Face, eyes and paws cleared up in days."</div>
+          <p class="l1-ttext">My English Bulldog was experiencing allergic reactions to other food brands. After seeing Get Joy advertised on TV, I switched him to the Freeze Dried Beef Meal and within a few days his face, eyes and paws completely cleared up.</p>
+          <div class="l1-tname">Leonard — English Bulldog owner</div>
         </div>
       </div>
-      <div class="adv1-gs-l1-tcard">
-        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" loading="lazy"></div>
-        <div class="adv1-gs-l1-tcard-body">
-          <div class="adv1-gs-l1-stars">★★★★★</div>
-          <div class="adv1-gs-l1-tquote">"She eats her bowl the second I set it down."</div>
-          <p class="adv1-gs-l1-ttext">Maple has been a picky eater and would leave her meals out all day. I switched her to Get Joy and she immediately eats her bowl after I set it out! Her poops have become noticeably firmer and she has a lot more energy.</p>
-          <div class="adv1-gs-l1-tname">Brianna</div>
+      <div class="l1-tcard">
+        <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749" alt="Brianna" loading="lazy"></div>
+        <div class="l1-tcard-body">
+          <div class="l1-stars">★★★★★</div>
+          <div class="l1-tquote">"She eats her bowl the second I set it down."</div>
+          <p class="l1-ttext">Maple has been a picky eater and would leave her meals out all day. I switched her to Get Joy and she immediately eats her bowl after I set it out! Her poops have become noticeably firmer and she has a lot more energy.</p>
+          <div class="l1-tname">Brianna — Maple, picky eater</div>
         </div>
       </div>
-      <div class="adv1-gs-l1-tcard">
-        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." loading="lazy"></div>
-        <div class="adv1-gs-l1-tcard-body">
-          <div class="adv1-gs-l1-stars">★★★★★</div>
-          <div class="adv1-gs-l1-tquote">"The only food that doesn't bother his stomach."</div>
-          <p class="adv1-gs-l1-ttext">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach.</p>
-          <div class="adv1-gs-l1-tname">Peter A., German Shepherd owner</div>
+      <div class="l1-tcard">
+        <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748" alt="Peter A." loading="lazy"></div>
+        <div class="l1-tcard-body">
+          <div class="l1-stars">★★★★★</div>
+          <div class="l1-tquote">"The only food that doesn't bother his stomach."</div>
+          <p class="l1-ttext">I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn't bother his stomach. We haven't looked back.</p>
+          <div class="l1-tname">Peter A. — German Shepherd owner</div>
         </div>
       </div>
-      <div class="adv1-gs-l1-tcard">
-        <div class="adv1-gs-l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." loading="lazy"></div>
-        <div class="adv1-gs-l1-tcard-body">
-          <div class="adv1-gs-l1-stars">★★★★★</div>
-          <div class="adv1-gs-l1-tquote">"Three picky seniors, loved it from day one."</div>
-          <p class="adv1-gs-l1-ttext">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
-          <div class="adv1-gs-l1-tname">Ingrid S., Shih Tzu, Havanese &amp; Podengo owner</div>
+      <div class="l1-tcard">
+        <div class="l1-tcard-img"><img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748" alt="Ingrid S." loading="lazy"></div>
+        <div class="l1-tcard-body">
+          <div class="l1-stars">★★★★★</div>
+          <div class="l1-tquote">"Three picky seniors, loved it from day one."</div>
+          <p class="l1-ttext">I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.</p>
+          <div class="l1-tname">Ingrid S. — Shih Tzu, Havanese &amp; Podengo owner</div>
         </div>
       </div>
     </div>
