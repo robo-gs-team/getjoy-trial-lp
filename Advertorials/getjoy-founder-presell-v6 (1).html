@@ -71,22 +71,6 @@ img{ display: block; max-width: 100%; }
 .gjf-page .reveal{ opacity: 0; transform: translateY(12px); transition: opacity .6s ease, transform .6s ease; }
 .gjf-page .reveal.visible{ opacity: 1; transform: none; }
 
-    /* ═══ HOOK SYSTEM ════════════════════════════════════ */
-.gjf-page .hook{ display: none; }
-.gjf-page .hook.on{ display: block; }
-
-    /* ═══════════════════════════════════════════════════════
-       DEV BAR, remove in production
-    ═══════════════════════════════════════════════════════ */
-.gjf-page .dev-bar{
-      background: #111;
-      padding: 7px 24px;
-      display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-    }
-.gjf-page .dev-bar em{ font-family: var(--font-ui); font-size: .62rem; color: rgba(255,255,255,.3); letter-spacing: .14em; text-transform: uppercase; font-style: normal; margin-right: 4px; }
-.gjf-page .db{ font-family: var(--font-ui); font-size: .62rem; font-weight: 500; letter-spacing: .08em; padding: 4px 11px; border: 1px solid rgba(255,255,255,.15); background: transparent; color: rgba(255,255,255,.4); cursor: pointer; transition: all .15s; }
-    .db:hover, .db.on { background: var(--gj-forest); border-color: var(--gj-forest); color: #fff; }
-
     /* ═══════════════════════════════════════════════════════
        MASTHEAD, listicle style
     ═══════════════════════════════════════════════════════ */
@@ -399,41 +383,6 @@ img{ display: block; max-width: 100%; }
 .gjf-page .tl-desc{ font-size: .8rem; color: var(--ink-mid); line-height: 1.55; }
 
     /* ═══════════════════════════════════════════════════════
-       REVIEWS, listicle style
-    ═══════════════════════════════════════════════════════ */
-.gjf-page .reviews{
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 16px; margin: 32px 0;
-    }
-.gjf-page .review{
-      border: 1.5px solid rgba(0,80,5,0.1);
-      background: #fff;
-      padding: 20px 22px; border-radius: 8px;
-    }
-.gjf-page .rev-top{ display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.gjf-page .rev-av{
-      width: 36px; height: 36px; border-radius: 50%;
-      background: var(--gj-tan); flex-shrink: 0;
-      overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
-      font-size: .6rem; color: var(--ink-mid);
-      font-weight: 600;
-    }
-.gjf-page .rev-av img{ width: 100%; height: 100%; object-fit: cover; }
-.gjf-page .rev-meta{}
-.gjf-page .rev-name{ font-size: .8rem; font-weight: 600; color: var(--ink); line-height: 1.2; }
-.gjf-page .rev-dog{ font-size: .72rem; color: var(--gj-leaf); }
-.gjf-page .rev-stars{ color: #C9A23A; font-size: .78rem; letter-spacing: 1px; margin-bottom: 8px; }
-.gjf-page .rev-q{
-      font-size: .9rem; font-style: italic;
-      line-height: 1.65; color: var(--ink-soft);
-    }
-.gjf-page .rev-headline{
-      font-size: .82rem; font-weight: 600; color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    /* ═══════════════════════════════════════════════════════
        STATS
     ═══════════════════════════════════════════════════════ */
 .gjf-page .stats{
@@ -720,60 +669,12 @@ img{ display: block; max-width: 100%; }
       color: var(--gj-forest); line-height: 1.3;
     }
 
-    /* ═══ TOM TRIAL CARD ════════════════════════════════════ */
-    .gjf-page .supp-trial-card {
-      background: #fff;
-      border: 1px solid rgba(0,80,5,0.12);
-      border-top: 2px solid #00CC3B;
-      padding: 16px 18px 18px;
-    }
-    .gjf-page .supp-trial-card-top {
-      display: flex; align-items: center; gap: 12px;
-      margin-bottom: 10px;
-    }
-    .gjf-page .supp-trial-avatar {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: #005005; flex-shrink: 0;
-      overflow: hidden; display: flex;
-      align-items: center; justify-content: center;
-      font-family: var(--font-ui); font-size: .68rem;
-      font-weight: 700; color: rgba(202,247,192,0.9);
-    }
-    .gjf-page .supp-trial-avatar img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
-    .gjf-page .supp-trial-meta { flex: 1; }
-    .gjf-page .supp-trial-eyebrow {
-      font-family: var(--font-ui); font-size: .58rem; font-weight: 700;
-      letter-spacing: .15em; text-transform: uppercase;
-      color: #00CC3B; margin-bottom: 2px;
-    }
-    .gjf-page .supp-trial-name {
-      font-family: var(--font-display); font-size: .98rem;
-      font-weight: 400; font-style: italic; color: #005005; line-height: 1.2;
-    }
-    .gjf-page .supp-trial-title {
-      font-family: var(--font-ui); font-size: .7rem; color: #627362; margin-top: 1px;
-    }
-    .gjf-page .supp-trial-price-block { text-align: right; flex-shrink: 0; }
-    .gjf-page .supp-trial-price {
-      font-family: var(--font-display); font-size: 1.5rem;
-      font-weight: 700; color: #005005; line-height: 1;
-    }
-    .gjf-page .supp-trial-shipping {
-      font-family: var(--font-ui); font-size: .63rem; color: #627362; margin-top: 2px;
-    }
-    .gjf-page .supp-trial-quote {
-      font-family: var(--font-ui); font-size: .82rem;
-      color: #444; line-height: 1.55; font-style: italic; margin: 0;
-      padding-left: 56px;
-    }
-
     /* ═══════════════════════════════════════════════════════
        RESPONSIVE
     ═══════════════════════════════════════════════════════ */
     @media (max-width: 640px) {
 body{ font-size: 17px; }
 .gjf-page .masthead{ padding: 0 16px; }
-.gjf-page .reviews{ grid-template-columns: 1fr; }
 .gjf-page .cta-reviews{ grid-template-columns: 1fr; }
 .gjf-page .stats{ grid-template-columns: 1fr; }
 .gjf-page .tl-row{ grid-template-columns: 88px 1fr; }
@@ -1181,7 +1082,7 @@ body{ font-size: 17px; }
 <div class="pull-left reveal">
   <blockquote>
     <p>"If I could go back and change what I fed Cooper his whole life, I would."</p>
-    <cite>,  Tom Arrix, Founder &amp; CEO</cite>
+    <cite>Tom Arrix, Founder &amp; CEO</cite>
   </blockquote>
 </div>
 
@@ -1387,12 +1288,6 @@ body{ font-size: 17px; }
   </div>
 </div>
 
-<div class="gap-sm"></div>
-<div class="img-wide reveal">
-  <p class="img-ph">📷 Tom with food scientist reviewing specs, OR actual freeze-drying equipment. Real facility. Two years of deliberate work. NOT stock.</p>
-</div>
-<div class="gap-sm"></div>
-
 <div class="col">
   <div class="body reveal">
     <p>I was lucky. I had the resources to spend $300 a month on individual supplements, to consult food scientists, to test and iterate for two years. Most people can't do that. So the goal when I built Get Joy was to make all of it unnecessary. The complete system, in one product, at a fraction of what the protocol costs separately.</p>
@@ -1492,7 +1387,7 @@ body{ font-size: 17px; }
 
 <div class="pull-center reveal">
   <p>"I built this for Cooper. He's still here. And 30,000 families are feeding it to their dogs right now, because they don't have to wait for a diagnosis to start."</p>
-  <cite>,  Tom Arrix · Updated January 2026</cite>
+  <cite>Tom Arrix · Updated January 2026</cite>
 </div>
 
 <!-- Timeline -->
@@ -1772,7 +1667,7 @@ body{ font-size: 17px; }
 <!-- ══ FOOTER ═════════════════════════════════════════════ -->
 <footer class="footer">
   <p>
-    © Get Joy 2025. All rights reserved. &nbsp;·&nbsp; getjoyfood.com<br>
+    © Get Joy 2026. All rights reserved. &nbsp;·&nbsp; getjoyfood.com<br>
     Individual results may vary. This content does not constitute veterinary advice.<br>
     Tom's account reflects his personal experience with Cooper. Get Joy's formulation is not a treatment for cancer or any medical condition.<br>
     These statements have not been evaluated by the FDA.
