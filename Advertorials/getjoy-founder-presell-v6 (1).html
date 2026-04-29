@@ -180,6 +180,32 @@ img{ display: block; max-width: 100%; }
       border-bottom: 1px dashed var(--gj-tan);
     }
 
+    /* ═══ FACILITY PHOTO GRID ════════════════════════════════ */
+.gjf-page .facility-grid{
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 3px;
+    }
+.gjf-page .facility-grid-hero{
+      grid-column: 1 / -1;
+    }
+.gjf-page .facility-grid-hero img{
+      width: 100%; display: block;
+      height: clamp(220px, 30vw, 400px);
+      object-fit: cover; object-position: center top;
+    }
+.gjf-page .facility-grid-item img{
+      width: 100%; display: block;
+      height: clamp(160px, 20vw, 280px);
+      object-fit: cover; object-position: center center;
+    }
+    @media (max-width: 640px) {
+      .gjf-page .facility-grid{ grid-template-columns: 1fr 1fr; gap: 2px; }
+      .gjf-page .facility-grid-hero{ grid-column: 1 / -1; }
+      .gjf-page .facility-grid-item:last-child{ grid-column: 1 / -1; }
+      .gjf-page .facility-grid-item:last-child img{ height: clamp(120px, 30vw, 180px); }
+    }
+
     /* ═══════════════════════════════════════════════════════
        READING COLUMN + BODY
     ═══════════════════════════════════════════════════════ */
@@ -1272,7 +1298,20 @@ body{ font-size: 17px; }
 ══════════════════════════════════════════════════════════ -->
 
 <div class="img-wide reveal">
-  <p class="img-ph">📷 Tom with food scientist reviewing specs, OR actual freeze-drying equipment / production line. Real facility, NOT stock. Two years of deliberate work.</p>
+  <div class="facility-grid">
+    <div class="facility-grid-hero">
+      <img src="facility-tom-production.jpg" alt="Tom Arrix working the production line at Get Joy's facility" loading="lazy">
+    </div>
+    <div class="facility-grid-item">
+      <img src="facility-worker-mixing.jpg" alt="Get Joy team member hand-mixing fresh ingredients" loading="lazy">
+    </div>
+    <div class="facility-grid-item">
+      <img src="facility-worker-machine.jpg" alt="Vegetable processing at Get Joy's production facility" loading="lazy">
+    </div>
+    <div class="facility-grid-item">
+      <img src="facility-worker-cutting.jpg" alt="Get Joy team member preparing fresh ingredients" loading="lazy">
+    </div>
+  </div>
 </div>
 <div class="gap-sm"></div>
 
