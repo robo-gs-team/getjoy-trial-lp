@@ -5,263 +5,310 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Get Joy – Subscription Selector</title>
 <style>
-  /* ─── Reset & base ─────────────────────────────────────────────── */
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-    background: #F5F0E8;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: #F5EFE0;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     padding: 32px 16px 64px;
-    min-height: 100vh;
   }
 
-  .selector-wrap {
+  .selector {
     width: 100%;
     max-width: 480px;
   }
 
-  /* ─── Section label ─────────────────────────────────────────────── */
+  .details-link {
+    display: inline-block;
+    font-size: 13px;
+    color: #444;
+    text-decoration: underline;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+
+  /* ── Section label ── */
   .section-label {
-    font-size: 11px;
+    font-size: 13px;
     font-weight: 700;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-    color: #8B7355;
-    margin-bottom: 8px;
-  }
-
-  /* ─── Toggle (Age / Flavor) ─────────────────────────────────────── */
-  .toggle-row {
-    display: flex;
-    gap: 8px;
-    margin-bottom: 20px;
-  }
-
-  .toggle-btn {
-    flex: 1;
-    padding: 10px 4px;
-    border: 2px solid #D9CEB8;
-    border-radius: 10px;
-    background: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: 600;
-    color: #3D2B1F;
-    text-align: center;
-    transition: border-color .15s, background .15s, color .15s;
-    line-height: 1.2;
-  }
-
-  .toggle-btn .sub-text {
+    color: #1a1a2e;
+    margin-bottom: 10px;
     display: block;
-    font-size: 11px;
-    font-weight: 400;
-    color: #8B7355;
-    margin-top: 2px;
   }
 
-  .toggle-btn.active {
-    border-color: #2C5F2E;
-    background: #2C5F2E;
-    color: #fff;
-  }
-
-  .toggle-btn.active .sub-text {
-    color: rgba(255,255,255,.75);
-  }
-
-  /* ─── Weight grid ───────────────────────────────────────────────── */
-  .weight-grid {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 6px;
-    margin-bottom: 20px;
-  }
-
-  .weight-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px 4px 8px;
-    border: 2px solid #D9CEB8;
-    border-radius: 10px;
-    background: #fff;
-    cursor: pointer;
-    transition: border-color .15s, background .15s;
-  }
-
-  .weight-btn .icon {
-    font-size: 22px;
-    line-height: 1;
-    margin-bottom: 4px;
-  }
-
-  .weight-btn .label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #3D2B1F;
-    text-transform: uppercase;
-    letter-spacing: .04em;
-  }
-
-  .weight-btn .lbs {
-    font-size: 9px;
-    color: #8B7355;
-    margin-top: 1px;
-  }
-
-  .weight-btn.active {
-    border-color: #2C5F2E;
-    background: #EEF5EE;
-  }
-
-  /* ─── Flavor toggle ─────────────────────────────────────────────── */
+  /* ── Flavor ── */
   .flavor-row {
     display: flex;
-    gap: 8px;
-    margin-bottom: 24px;
+    gap: 14px;
+    margin-bottom: 22px;
   }
 
   .flavor-btn {
-    flex: 1;
-    padding: 9px 4px;
-    border: 2px solid #D9CEB8;
-    border-radius: 10px;
-    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
     cursor: pointer;
-    font-size: 13px;
-    font-weight: 600;
-    color: #3D2B1F;
-    text-align: center;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+  .flavor-circle {
+    width: 54px;
+    height: 54px;
+    border-radius: 50%;
+    background: #E8DFD0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 3px solid transparent;
     transition: border-color .15s, background .15s;
   }
 
-  .flavor-btn .emoji {
-    display: block;
-    font-size: 18px;
-    margin-bottom: 3px;
-  }
-
-  .flavor-btn.active {
-    border-color: #C07A30;
-    background: #FDF3E7;
-  }
-
-  /* ─── Plan card ─────────────────────────────────────────────────── */
-  .plan-card {
-    border: 2px solid #2C5F2E;
-    border-radius: 14px;
-    background: #fff;
-    padding: 18px 16px 14px;
-    margin-bottom: 10px;
-    position: relative;
-  }
-
-  .plan-badge {
-    position: absolute;
-    top: -1px;
-    right: 14px;
+  .flavor-btn.active .flavor-circle {
     background: #F5C842;
-    color: #2C1A00;
+    border-color: #C8941A;
+  }
+
+  .flavor-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #1a1a2e;
+  }
+
+  /* ── Dog size swatches ── */
+  .size-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  .size-btn {
+    padding: 10px 6px;
+    border: 2px solid #CFC7B6;
+    border-radius: 8px;
+    background: #EDE7D6;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    color: #1a1a2e;
+    text-align: center;
+    line-height: 1.35;
+    transition: background .15s, border-color .15s, color .15s;
+  }
+
+  .size-btn.active {
+    background: #1C2B3A;
+    border-color: #1C2B3A;
+    color: #fff;
+  }
+
+  .size-meta {
+    text-align: center;
+    font-size: 12px;
+    color: #7a6e5e;
+    margin-bottom: 8px;
+    min-height: 18px;
+  }
+
+  .feeding-guide-row {
+    text-align: right;
+    margin-bottom: 14px;
+  }
+
+  .feeding-guide-row a {
+    font-size: 13px;
+    color: #1a1a2e;
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  /* ── Subscribe card ── */
+  .sub-card {
+    background: #fff;
+    border: 1.5px solid #CFC7B6;
+    border-radius: 12px;
+    padding: 14px 16px;
+    margin-bottom: 10px;
+  }
+
+  .sub-card-top {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .radio-filled {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #1a1a2e;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .radio-filled::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #1a1a2e;
+  }
+
+  .sub-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a1a2e;
+    flex: 1;
+    line-height: 1.4;
+  }
+
+  .best-value-badge {
+    background: #C8E63C;
+    color: #1a1a2e;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: .08em;
     text-transform: uppercase;
-    padding: 3px 8px;
-    border-radius: 0 0 6px 6px;
+    padding: 3px 7px;
+    border-radius: 4px;
+    white-space: nowrap;
+    flex-shrink: 0;
+    align-self: flex-start;
   }
 
-  .plan-header {
+  .sub-freq-row {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: 10px;
+    align-items: center;
+    margin-left: 28px;
+    margin-bottom: 12px;
   }
 
-  .plan-title {
-    font-size: 14px;
+  .freq-pill {
+    background: #F0E8D8;
+    border: 1px solid #CFC7B6;
+    border-radius: 6px;
+    padding: 5px 10px;
+    font-size: 12px;
     font-weight: 700;
-    color: #2C5F2E;
-    line-height: 1.3;
-    max-width: 62%;
+    color: #1a1a2e;
+    display: flex;
+    align-items: center;
+    gap: 5px;
   }
 
-  .plan-price-block {
+  .freq-pill .arrow { font-size: 10px; }
+
+  .sub-price {
+    margin-left: auto;
     text-align: right;
   }
 
-  .plan-price-first {
-    font-size: 22px;
+  .sub-price-now {
+    font-size: 16px;
     font-weight: 800;
-    color: #2C5F2E;
-    line-height: 1;
+    color: #1a1a2e;
   }
 
-  .plan-price-label {
-    font-size: 10px;
-    color: #8B7355;
+  .sub-price-was {
+    font-size: 13px;
+    color: #999;
+    text-decoration: line-through;
+    margin-left: 3px;
+  }
+
+  .sub-price-oz {
+    display: block;
+    font-size: 11px;
+    color: #7a6e5e;
     margin-top: 1px;
   }
 
-  .plan-price-recurring {
-    font-size: 11px;
-    color: #8B7355;
-    margin-top: 2px;
-  }
-
-  .plan-details {
-    border-top: 1px solid #E8E0D0;
-    padding-top: 10px;
+  .sub-benefits {
+    margin-left: 28px;
     display: flex;
     flex-direction: column;
     gap: 5px;
   }
 
-  .plan-detail-row {
+  .benefit {
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 7px;
     font-size: 12px;
-    color: #3D2B1F;
+    color: #1a1a2e;
+    line-height: 1.3;
   }
 
-  .plan-detail-row .dot {
-    width: 6px;
-    height: 6px;
+  .bdot {
+    width: 14px;
+    height: 14px;
     border-radius: 50%;
     background: #2C5F2E;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 8px;
+    color: #fff;
+    font-weight: 900;
+  }
+
+  .bdot.orange { background: #C07A30; }
+
+  .benefit .hl { color: #C07A30; font-weight: 600; }
+  .benefit b { font-weight: 700; }
+
+  /* ── Buy Once ── */
+  .buy-once {
+    background: #fff;
+    border: 1.5px solid #CFC7B6;
+    border-radius: 12px;
+    padding: 14px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 14px;
+    cursor: pointer;
+  }
+
+  .buy-once-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .radio-empty {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid #aaa;
     flex-shrink: 0;
   }
 
-  .plan-highlight {
-    color: #2C5F2E;
-    font-weight: 600;
+  .buy-once-label {
+    font-size: 14px;
+    color: #1a1a2e;
+    font-weight: 500;
   }
 
-  /* Bag summary strip */
-  .bag-summary {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: #F5F0E8;
-    border-radius: 8px;
-    padding: 8px 10px;
-    margin-bottom: 12px;
-    font-size: 12px;
-    color: #3D2B1F;
-  }
-
-  .bag-summary strong {
+  .buy-once-price {
+    font-size: 14px;
     font-weight: 700;
+    color: #1a1a2e;
   }
 
-  .bag-icon {
-    font-size: 18px;
-  }
-
-  /* ─── CTA button ────────────────────────────────────────────────── */
+  /* ── CTA ── */
   .cta-btn {
     display: block;
     width: 100%;
@@ -271,247 +318,143 @@
     border-radius: 50px;
     font-size: 15px;
     font-weight: 800;
-    color: #1A0F00;
+    color: #1a1a2e;
+    letter-spacing: .02em;
     cursor: pointer;
     text-align: center;
-    letter-spacing: .02em;
-    transition: transform .1s, background .15s;
+    transition: background .15s, transform .1s;
     margin-bottom: 10px;
   }
 
   .cta-btn:hover { background: #EDB830; transform: translateY(-1px); }
   .cta-btn:active { transform: translateY(0); }
 
-  .cta-sub-text {
+  .guarantee {
     text-align: center;
     font-size: 11px;
-    color: #8B7355;
-    margin-bottom: 16px;
-  }
-
-  .onetime-link {
-    display: block;
-    text-align: center;
-    font-size: 12px;
-    color: #8B7355;
-    text-decoration: underline;
-    cursor: pointer;
-    background: none;
-    border: none;
-    width: 100%;
-  }
-
-  /* ─── Guarantee strip ───────────────────────────────────────────── */
-  .guarantee-strip {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
-    margin-top: 14px;
-    font-size: 11px;
-    color: #8B7355;
-  }
-
-  /* ─── Transition for plan reveal ───────────────────────────────── */
-  .plan-reveal {
-    transition: opacity .2s ease;
-  }
-
-  .plan-reveal.hidden {
-    opacity: 0;
-    pointer-events: none;
-  }
-
-  /* ─── Step indicators ───────────────────────────────────────────── */
-  .step-group {
-    margin-bottom: 20px;
+    color: #7a6e5e;
+    margin-top: 8px;
   }
 </style>
 </head>
 <body>
-<div class="selector-wrap">
+<div class="selector">
 
-  <!-- Step 1: Age -->
-  <div class="step-group">
-    <div class="section-label">Step 1 — How old is your dog?</div>
-    <div class="toggle-row">
-      <button class="toggle-btn active" data-age="adult" onclick="selectAge('adult', this)">
-        Adult
-        <span class="sub-text">1 year +</span>
-      </button>
-      <button class="toggle-btn" data-age="puppy" onclick="selectAge('puppy', this)">
-        Puppy
-        <span class="sub-text">Under 1 year</span>
-      </button>
-    </div>
+  <a class="details-link">Details</a>
+
+  <!-- Flavor -->
+  <span class="section-label">Flavor</span>
+  <div class="flavor-row">
+    <button class="flavor-btn active" data-flavor="beef" onclick="pick('flavor','beef',this)">
+      <div class="flavor-circle">🥩</div>
+      <span class="flavor-label">Beef</span>
+    </button>
+    <button class="flavor-btn" data-flavor="chicken" onclick="pick('flavor','chicken',this)">
+      <div class="flavor-circle">🍗</div>
+      <span class="flavor-label">Chicken</span>
+    </button>
   </div>
 
-  <!-- Step 2: Weight -->
-  <div class="step-group">
-    <div class="section-label">Step 2 — How much do they weigh?</div>
-    <div class="weight-grid">
-      <button class="weight-btn" data-weight="tiny" onclick="selectWeight('tiny', this)">
-        <span class="icon">🐭</span>
-        <span class="label">Tiny</span>
-        <span class="lbs">&lt; 10 lbs</span>
-      </button>
-      <button class="weight-btn" data-weight="small" onclick="selectWeight('small', this)">
-        <span class="icon">🐶</span>
-        <span class="label">Small</span>
-        <span class="lbs">10–25 lbs</span>
-      </button>
-      <button class="weight-btn active" data-weight="medium" onclick="selectWeight('medium', this)">
-        <span class="icon">🐕</span>
-        <span class="label">Medium</span>
-        <span class="lbs">25–50 lbs</span>
-      </button>
-      <button class="weight-btn" data-weight="large" onclick="selectWeight('large', this)">
-        <span class="icon">🐕‍🦺</span>
-        <span class="label">Large</span>
-        <span class="lbs">50–75 lbs</span>
-      </button>
-      <button class="weight-btn" data-weight="xl" onclick="selectWeight('xl', this)">
-        <span class="icon">🐻</span>
-        <span class="label">XL</span>
-        <span class="lbs">75+ lbs</span>
-      </button>
-    </div>
+  <!-- Dog size -->
+  <span class="section-label">Dog size</span>
+  <div class="size-row">
+    <button class="size-btn active" data-size="s" onclick="pick('size','s',this)">Under<br>20 lbs</button>
+    <button class="size-btn" data-size="m" onclick="pick('size','m',this)">20–50<br>lbs</button>
+    <button class="size-btn" data-size="l" onclick="pick('size','l',this)">50–75<br>lbs</button>
+    <button class="size-btn" data-size="xl" onclick="pick('size','xl',this)">75+<br>lbs</button>
   </div>
+  <div class="size-meta" id="sizeMeta">2 bags · lasts your dog ~27 days</div>
 
-  <!-- Step 3: Flavor -->
-  <div class="step-group">
-    <div class="section-label">Step 3 — Pick a flavor</div>
-    <div class="flavor-row">
-      <button class="flavor-btn active" data-flavor="beef" onclick="selectFlavor('beef', this)">
-        <span class="emoji">🥩</span>Beef
-      </button>
-      <button class="flavor-btn" data-flavor="chicken" onclick="selectFlavor('chicken', this)">
-        <span class="emoji">🍗</span>Chicken
-      </button>
+  <div class="feeding-guide-row"><a>Feeding Guide</a></div>
+
+  <!-- Subscribe card -->
+  <div class="sub-card">
+    <div class="sub-card-top">
+      <div class="radio-filled"></div>
+      <div class="sub-title">Subscribe &amp; Save – 50% off your first order, 10% off every recurring delivery</div>
+      <div class="best-value-badge">BEST VALUE</div>
     </div>
-  </div>
-
-  <!-- Plan card (auto-updates) -->
-  <div class="plan-reveal" id="planReveal">
-
-    <div class="bag-summary">
-      <span class="bag-icon">📦</span>
-      <span id="bagSummaryText">Your dog needs <strong>5 bags/month</strong> (32oz each)</span>
-    </div>
-
-    <div class="plan-card">
-      <div class="plan-badge">BEST VALUE</div>
-      <div class="plan-header">
-        <div class="plan-title">Subscribe &amp; Save — 50% off your first month, 10% off every delivery after</div>
-        <div class="plan-price-block">
-          <div class="plan-price-first" id="firstPrice">$149.88</div>
-          <div class="plan-price-label">first month</div>
-          <div class="plan-price-recurring" id="recurringPrice">then $269.78/mo</div>
-        </div>
-      </div>
-      <div class="plan-details">
-        <div class="plan-detail-row">
-          <span class="dot"></span>
-          <span><span class="plan-highlight">50% off</span> your first order — saves <span class="plan-highlight" id="savingsAmt">$149.87</span></span>
-        </div>
-        <div class="plan-detail-row">
-          <span class="dot"></span>
-          <span>Ships every 4 weeks — pause, skip, or cancel anytime</span>
-        </div>
-        <div class="plan-detail-row">
-          <span class="dot"></span>
-          <span>30-day money-back guarantee</span>
-        </div>
-        <div class="plan-detail-row">
-          <span class="dot"></span>
-          <span>For new subscribers only</span>
-        </div>
+    <div class="sub-freq-row">
+      <div class="freq-pill">EVERY 4 WEEKS <span class="arrow">▼</span></div>
+      <div class="sub-price">
+        <span class="sub-price-now" id="priceNow">$59.96</span>
+        <span class="sub-price-was" id="priceWas">$119.90</span>
+        <span class="sub-price-oz">$0.94/oz</span>
       </div>
     </div>
-
-    <button class="cta-btn" id="ctaBtn">
-      START MY SUBSCRIPTION — $149.88
-    </button>
-    <div class="cta-sub-text">Ships every 4 weeks · Cancel anytime</div>
-
-    <button class="onetime-link" id="onetimeLink">
-      Or buy once at $299.75
-    </button>
-
-    <div class="guarantee-strip">
-      🔒 Secure checkout &nbsp;·&nbsp; 30-day money-back guarantee
+    <div class="sub-benefits">
+      <div class="benefit">
+        <div class="bdot">✓</div>
+        <span>Best Value: <span class="hl">50% Discount on your first order</span></span>
+      </div>
+      <div class="benefit">
+        <div class="bdot">✓</div>
+        <span>Flexible: <span class="hl">Pause, edit, or cancel anytime</span></span>
+      </div>
+      <div class="benefit">
+        <div class="bdot orange">✓</div>
+        <span>Risk Free Trial: <span class="hl">30-day money back guarantee</span></span>
+      </div>
+      <div class="benefit">
+        <div class="bdot">✓</div>
+        <span><b>Eligible for new customers only</b></span>
+      </div>
     </div>
+  </div>
 
-  </div><!-- /planReveal -->
+  <!-- Buy Once -->
+  <div class="buy-once">
+    <div class="buy-once-left">
+      <div class="radio-empty"></div>
+      <span class="buy-once-label">Buy Once</span>
+    </div>
+    <span class="buy-once-price" id="buyOnce">$119.90</span>
+  </div>
 
-</div><!-- /selector-wrap -->
+  <!-- CTA -->
+  <button class="cta-btn" id="ctaBtn">ADD TO CART – $59.96</button>
+
+  <div class="guarantee">🔒 Secure checkout &nbsp;·&nbsp; 30-day money-back guarantee</div>
+
+</div>
 
 <script>
-  const PRICE_PER_BAG = 59.95;
-  const SUB_FIRST_DISCOUNT = 0.50;   // 50% off first order
-  const SUB_RECURRING_DISCOUNT = 0.10; // 10% off ongoing
+  const PER_BAG   = 59.95;
+  const FIRST_OFF = 0.50;
 
-  // Bags per month: [adult, puppy]
-  const BAGS = {
-    tiny:   [2,  3],
-    small:  [3,  5],
-    medium: [5,  8],
-    large:  [8,  12],
-    xl:     [11, 16],
+  const SIZES = {
+    s:  { bags: 2,  days: 27 },
+    m:  { bags: 5,  days: 28 },
+    l:  { bags: 8,  days: 29 },
+    xl: { bags: 11, days: 30 },
   };
 
-  let state = {
-    age: 'adult',
-    weight: 'medium',
-    flavor: 'beef',
-  };
+  let state = { flavor: 'beef', size: 's' };
 
-  function selectAge(age, btn) {
-    state.age = age;
-    document.querySelectorAll('[data-age]').forEach(b => b.classList.remove('active'));
+  function fmt(n) { return '$' + n.toFixed(2); }
+
+  function render() {
+    const { bags, days } = SIZES[state.size];
+    const regular = bags * PER_BAG;
+    const first   = regular * (1 - FIRST_OFF);
+
+    document.getElementById('sizeMeta').textContent =
+      `${bags} bag${bags > 1 ? 's' : ''} · lasts your dog ~${days} days`;
+    document.getElementById('priceNow').textContent = fmt(first);
+    document.getElementById('priceWas').textContent = fmt(regular);
+    document.getElementById('buyOnce').textContent  = fmt(regular);
+    document.getElementById('ctaBtn').textContent   = `ADD TO CART – ${fmt(first)}`;
+  }
+
+  function pick(type, val, btn) {
+    state[type] = val;
+    const attr = type === 'flavor' ? 'data-flavor' : 'data-size';
+    document.querySelectorAll(`[${attr}]`).forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    updatePlan();
+    render();
   }
 
-  function selectWeight(weight, btn) {
-    state.weight = weight;
-    document.querySelectorAll('[data-weight]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    updatePlan();
-  }
-
-  function selectFlavor(flavor, btn) {
-    state.flavor = flavor;
-    document.querySelectorAll('[data-flavor]').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    // flavor doesn't change price, just used on add-to-cart
-  }
-
-  function fmt(n) {
-    return '$' + n.toFixed(2);
-  }
-
-  function updatePlan() {
-    const ageIdx = state.age === 'puppy' ? 1 : 0;
-    const bags = BAGS[state.weight][ageIdx];
-
-    const regular = bags * PRICE_PER_BAG;
-    const firstMonth = regular * (1 - SUB_FIRST_DISCOUNT);
-    const recurring = regular * (1 - SUB_RECURRING_DISCOUNT);
-    const savings = regular - firstMonth;
-
-    document.getElementById('bagSummaryText').innerHTML =
-      `Your dog needs <strong>${bags} bag${bags > 1 ? 's' : ''}/month</strong> (32oz each)`;
-
-    document.getElementById('firstPrice').textContent = fmt(firstMonth);
-    document.getElementById('recurringPrice').textContent = `then ${fmt(recurring)}/mo`;
-    document.getElementById('savingsAmt').textContent = fmt(savings);
-    document.getElementById('ctaBtn').textContent = `START MY SUBSCRIPTION — ${fmt(firstMonth)}`;
-    document.getElementById('onetimeLink').textContent = `Or buy once at ${fmt(regular)}`;
-  }
-
-  // Init
-  updatePlan();
+  render();
 </script>
 </body>
 </html>
