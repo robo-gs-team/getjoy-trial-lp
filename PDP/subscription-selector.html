@@ -119,6 +119,14 @@
 
   .age-btn.active .age-sub { color: rgba(255,255,255,.7); }
 
+  .age-note {
+    font-size: 11px;
+    color: #7a6e5e;
+    margin-top: -14px;
+    margin-bottom: 18px;
+    min-height: 16px;
+  }
+
   /* ── Dog size swatches ── */
   .size-row {
     display: grid;
@@ -411,6 +419,7 @@
       <span class="age-sub">Under 1 year</span>
     </button>
   </div>
+  <div class="age-note" id="ageNote"></div>
 
   <!-- Dog size -->
   <span class="section-label">Dog size</span>
@@ -514,6 +523,7 @@
 
     // Puppies max out at 50-75 lbs per feeding guide
     const xlBtn = document.querySelector('[data-size="xl"]');
+    const note  = document.getElementById('ageNote');
     if (state.age === 'puppy') {
       xlBtn.classList.add('disabled');
       if (state.size === 'xl') {
@@ -521,8 +531,10 @@
         document.querySelector('[data-size="l"]').classList.add('active');
         xlBtn.classList.remove('active');
       }
+      note.textContent = '⚡ Puppies need ~2× the portion of adults to fuel healthy growth.';
     } else {
       xlBtn.classList.remove('disabled');
+      note.textContent = '';
     }
 
     render();
