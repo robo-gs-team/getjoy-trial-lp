@@ -147,6 +147,12 @@
     color: #fff;
   }
 
+  .size-btn.disabled {
+    opacity: .35;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
   .size-meta {
     text-align: center;
     font-size: 12px;
@@ -505,6 +511,20 @@
     const attr = `data-${type}`;
     document.querySelectorAll(`[${attr}]`).forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
+
+    // Puppies max out at 50-75 lbs per feeding guide
+    const xlBtn = document.querySelector('[data-size="xl"]');
+    if (state.age === 'puppy') {
+      xlBtn.classList.add('disabled');
+      if (state.size === 'xl') {
+        state.size = 'l';
+        document.querySelector('[data-size="l"]').classList.add('active');
+        xlBtn.classList.remove('active');
+      }
+    } else {
+      xlBtn.classList.remove('disabled');
+    }
+
     render();
   }
 
