@@ -391,9 +391,9 @@
     text-align: center;
     font-size: 10px;
     color: #9a8e7e;
-    margin-top: 12px;
+    margin-top: 2px;
+    margin-bottom: 10px;
     line-height: 1.4;
-    padding: 0 8px;
   }
 </style>
 </head>
@@ -439,6 +439,7 @@
     <button class="size-btn" data-size="xl" onclick="pick('size','xl',this)">75+<br>lbs</button>
   </div>
   <div class="size-meta" id="sizeMeta">2 bags · lasts your dog ~27 days</div>
+  <div class="meal-disclaimer">Based on 2 meals/day per our feeding guide for your dog's size</div>
 
   <div class="feeding-guide-row"><a>Feeding Guide</a></div>
 
@@ -490,7 +491,6 @@
   <button class="cta-btn" id="ctaBtn">ADD TO CART – $59.96</button>
 
   <div class="guarantee">🔒 Secure checkout &nbsp;·&nbsp; 30-day money-back guarantee</div>
-  <div class="meal-disclaimer">* Per-meal price based on 2 meals/day, portioned for your dog's weight per our feeding guide.</div>
 
 </div>
 
@@ -524,7 +524,7 @@
       `${bags} bag${bags > 1 ? 's' : ''} · lasts your dog ~${days} days`;
     document.getElementById('priceNow').textContent = fmt(first);
     document.getElementById('priceWas').textContent = fmt(regular);
-    document.getElementById('priceMeal').textContent = `${fmt(perMeal)}/meal*`;
+    document.getElementById('priceMeal').textContent = `${fmt(perMeal)}/meal`;
     document.getElementById('buyOnce').textContent  = fmt(regular);
     document.getElementById('ctaBtn').textContent   = `ADD TO CART – ${fmt(first)}`;
   }
