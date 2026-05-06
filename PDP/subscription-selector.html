@@ -130,18 +130,18 @@
   /* ── Dog size swatches ── */
   .size-row {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 8px;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 6px;
     margin-bottom: 8px;
   }
 
   .size-btn {
-    padding: 10px 6px;
+    padding: 10px 4px;
     border: 2px solid #CFC7B6;
     border-radius: 8px;
     background: #EDE7D6;
     cursor: pointer;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
     color: #1a1a2e;
     text-align: center;
@@ -259,7 +259,6 @@
     gap: 5px;
   }
 
-  .freq-pill .arrow { font-size: 10px; }
 
   .sub-price {
     margin-left: auto;
@@ -425,8 +424,9 @@
   <span class="section-label">Dog size</span>
   <div class="size-row">
     <button class="size-btn active" data-size="s" onclick="pick('size','s',this)">Under<br>20 lbs</button>
-    <button class="size-btn" data-size="m" onclick="pick('size','m',this)">20–50<br>lbs</button>
-    <button class="size-btn" data-size="l" onclick="pick('size','l',this)">50–75<br>lbs</button>
+    <button class="size-btn" data-size="ms" onclick="pick('size','ms',this)">20–35<br>lbs</button>
+    <button class="size-btn" data-size="m" onclick="pick('size','m',this)">35–55<br>lbs</button>
+    <button class="size-btn" data-size="l" onclick="pick('size','l',this)">55–75<br>lbs</button>
     <button class="size-btn" data-size="xl" onclick="pick('size','xl',this)">75+<br>lbs</button>
   </div>
   <div class="size-meta" id="sizeMeta">2 bags · lasts your dog ~27 days</div>
@@ -441,7 +441,7 @@
       <div class="best-value-badge">BEST VALUE</div>
     </div>
     <div class="sub-freq-row">
-      <div class="freq-pill">EVERY 4 WEEKS <span class="arrow">▼</span></div>
+      <div class="freq-pill">EVERY 4 WEEKS</div>
       <div class="sub-price">
         <span class="sub-price-now" id="priceNow">$59.96</span>
         <span class="sub-price-was" id="priceWas">$119.90</span>
@@ -491,6 +491,7 @@
   // Bags/month based on feeding guide × 4.33 weeks. Puppy = ~2x adult.
   const SIZES = {
     s:  { adult: 2,  puppy: 4,  days: { adult: 27, puppy: 28 } },
+    ms: { adult: 3,  puppy: 6,  days: { adult: 28, puppy: 28 } },
     m:  { adult: 5,  puppy: 10, days: { adult: 28, puppy: 28 } },
     l:  { adult: 8,  puppy: 16, days: { adult: 29, puppy: 29 } },
     xl: { adult: 11, puppy: 22, days: { adult: 30, puppy: 30 } },
