@@ -386,6 +386,15 @@
     color: #7a6e5e;
     margin-top: 8px;
   }
+
+  .meal-disclaimer {
+    text-align: center;
+    font-size: 10px;
+    color: #9a8e7e;
+    margin-top: 12px;
+    line-height: 1.4;
+    padding: 0 8px;
+  }
 </style>
 </head>
 <body>
@@ -445,7 +454,7 @@
       <div class="sub-price">
         <span class="sub-price-now" id="priceNow">$59.96</span>
         <span class="sub-price-was" id="priceWas">$119.90</span>
-        <span class="sub-price-oz">$0.94/oz</span>
+        <span class="sub-price-oz" id="priceMeal">$1.11/meal</span>
       </div>
     </div>
     <div class="sub-benefits">
@@ -481,6 +490,7 @@
   <button class="cta-btn" id="ctaBtn">ADD TO CART – $59.96</button>
 
   <div class="guarantee">🔒 Secure checkout &nbsp;·&nbsp; 30-day money-back guarantee</div>
+  <div class="meal-disclaimer">* Per-meal price based on 2 meals/day, portioned for your dog's weight per our feeding guide.</div>
 
 </div>
 
@@ -507,11 +517,14 @@
     const days = tier.days[state.age];
     const regular = bags * PER_BAG;
     const first   = regular * (1 - FIRST_OFF);
+    const meals   = days * 2;
+    const perMeal = first / meals;
 
     document.getElementById('sizeMeta').textContent =
       `${bags} bag${bags > 1 ? 's' : ''} · lasts your dog ~${days} days`;
     document.getElementById('priceNow').textContent = fmt(first);
     document.getElementById('priceWas').textContent = fmt(regular);
+    document.getElementById('priceMeal').textContent = `${fmt(perMeal)}/meal*`;
     document.getElementById('buyOnce').textContent  = fmt(regular);
     document.getElementById('ctaBtn').textContent   = `ADD TO CART – ${fmt(first)}`;
   }
