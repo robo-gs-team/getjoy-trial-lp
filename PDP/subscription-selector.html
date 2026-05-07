@@ -15,7 +15,9 @@
     --gj-cream:       #FCF6E8;
     --gj-tan:         #E8DFC9;
     --gj-tan-border:  #D4C9B5;
-    --gj-step:        #B87830;
+    --pdp-navy:       #1C2B3A;
+    --pdp-gray:       #D5DCE0;
+    --pdp-gray-border:#BFC8D0;
     --ink:            #1C1C1C;
     --ink-soft:       #3D3D3D;
     --ink-mid:        #606060;
@@ -52,13 +54,11 @@
     margin-bottom: 20px;
   }
 
-  /* ── Step label ── */
+  /* ── Section label (matches live PDP: dark ink, not uppercase) ── */
   .section-label {
-    font-size: 10px;
+    font-size: 15px;
     font-weight: 700;
-    letter-spacing: .14em;
-    text-transform: uppercase;
-    color: var(--gj-step);
+    color: var(--ink);
     margin-bottom: 10px;
     display: block;
   }
@@ -85,7 +85,7 @@
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: #D8DDE6;
+    background: #C8D8DC;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -127,9 +127,9 @@
 
   .age-btn {
     padding: 10px 6px;
-    border: 1.5px solid var(--gj-tan-border);
+    border: 1.5px solid var(--pdp-gray-border);
     border-radius: 8px;
-    background: var(--gj-tan);
+    background: var(--pdp-gray);
     cursor: pointer;
     font-size: 13px;
     font-weight: 700;
@@ -149,8 +149,8 @@
   }
 
   .age-btn.active {
-    background: var(--gj-forest);
-    border-color: var(--gj-forest);
+    background: var(--pdp-navy);
+    border-color: var(--pdp-navy);
     color: #fff;
   }
 
@@ -174,9 +174,9 @@
 
   .size-btn {
     padding: 10px 4px;
-    border: 1.5px solid var(--gj-tan-border);
+    border: 1.5px solid var(--pdp-gray-border);
     border-radius: 8px;
-    background: var(--gj-tan);
+    background: var(--pdp-gray);
     cursor: pointer;
     font-size: 10px;
     font-weight: 700;
@@ -188,8 +188,8 @@
   }
 
   .size-btn.active {
-    background: var(--gj-forest);
-    border-color: var(--gj-forest);
+    background: var(--pdp-navy);
+    border-color: var(--pdp-navy);
     color: #fff;
   }
 
@@ -275,7 +275,7 @@
   }
 
   .fg-tab.active {
-    background: var(--gj-forest);
+    background: var(--pdp-navy);
     color: #fff;
   }
 
