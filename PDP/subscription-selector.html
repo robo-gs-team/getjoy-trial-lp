@@ -15,6 +15,7 @@
     --gj-cream:       #FCF6E8;
     --gj-tan:         #E8DFC9;
     --gj-tan-border:  #D4C9B5;
+    --gj-step:        #B87830;
     --ink:            #1C1C1C;
     --ink-soft:       #3D3D3D;
     --ink-mid:        #606060;
@@ -51,13 +52,13 @@
     margin-bottom: 20px;
   }
 
-  /* ── Section label ── */
+  /* ── Step label ── */
   .section-label {
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
-    letter-spacing: .12em;
+    letter-spacing: .14em;
     text-transform: uppercase;
-    color: var(--ink-mid);
+    color: var(--gj-step);
     margin-bottom: 10px;
     display: block;
   }
@@ -204,22 +205,120 @@
     text-align: center;
     font-size: 10px;
     color: var(--ink-light);
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     line-height: 1.4;
   }
 
+  /* ── Feeding Guide toggle ── */
   .feeding-guide-row {
     text-align: right;
     margin-bottom: 14px;
   }
 
-  .feeding-guide-row a {
+  .feeding-guide-row button {
+    background: none;
+    border: none;
     font-size: 13px;
     color: var(--gj-forest);
     text-decoration: underline;
     cursor: pointer;
+    font-family: var(--font-ui);
     font-weight: 500;
+    padding: 0;
   }
+
+  /* ── Feeding Guide Panel ── */
+  .fg-panel {
+    display: none;
+    border: 1px solid var(--border-mid);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 16px;
+    background: #fff;
+  }
+
+  .fg-panel.open { display: block; }
+
+  .fg-note {
+    font-size: 11px;
+    color: var(--ink-mid);
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    font-style: italic;
+  }
+
+  .fg-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .fg-tab {
+    padding: 9px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: var(--font-ui);
+    color: var(--ink-mid);
+    transition: background .15s, color .15s;
+  }
+
+  .fg-tab.active {
+    background: var(--gj-forest);
+    color: #fff;
+  }
+
+  .fg-table-wrap { overflow-x: auto; }
+
+  .fg-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11px;
+    font-family: var(--font-ui);
+  }
+
+  .fg-table thead tr { background: var(--gj-tan); }
+
+  .fg-table thead th {
+    padding: 8px 10px;
+    text-align: center;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--ink-mid);
+    border-bottom: 1px solid var(--gj-tan-border);
+  }
+
+  .fg-table thead th.col-adult { color: var(--gj-forest); }
+  .fg-table thead th.col-puppy { color: var(--gj-step); }
+  .fg-table thead th:first-child { text-align: left; }
+
+  .fg-table tbody tr { border-bottom: 1px solid var(--border); }
+  .fg-table tbody tr:last-child { border-bottom: none; }
+
+  .fg-table tbody td {
+    padding: 7px 10px;
+    text-align: center;
+    color: var(--ink-soft);
+  }
+
+  .fg-table tbody td:first-child {
+    text-align: left;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .fg-table .td-adult { color: var(--gj-forest); }
+  .fg-table .td-puppy { color: var(--gj-step); }
+  .fg-table .td-na { color: var(--ink-light); font-size: 10px; }
+
+  .fg-table tbody tr.fg-highlight { background: rgba(0,80,5,0.04); }
 
   /* ── Subscribe card ── */
   .sub-card {
@@ -316,7 +415,7 @@
     margin-left: 3px;
   }
 
-  .sub-price-oz {
+  .sub-price-meal {
     display: block;
     font-size: 11px;
     color: var(--ink-mid);
@@ -391,10 +490,22 @@
     font-weight: 500;
   }
 
+  .buy-once-right {
+    text-align: right;
+  }
+
   .buy-once-price {
+    display: block;
     font-size: 14px;
     font-weight: 700;
     color: var(--ink-soft);
+  }
+
+  .buy-once-meal {
+    display: block;
+    font-size: 11px;
+    color: var(--ink-light);
+    margin-top: 1px;
   }
 
   /* ── CTA ── */
@@ -449,7 +560,7 @@
     </button>
   </div>
 
-  <!-- Age -->
+  <!-- Life stage -->
   <span class="section-label">Life stage</span>
   <div class="age-row">
     <button class="age-btn active" data-age="adult" onclick="pick('age','adult',this)">
@@ -466,16 +577,54 @@
   <!-- Dog size -->
   <span class="section-label">Dog size</span>
   <div class="size-row">
-    <button class="size-btn active" data-size="s" onclick="pick('size','s',this)">Under<br>20 lbs</button>
-    <button class="size-btn" data-size="ms" onclick="pick('size','ms',this)">20–35<br>lbs</button>
-    <button class="size-btn" data-size="m" onclick="pick('size','m',this)">35–55<br>lbs</button>
-    <button class="size-btn" data-size="l" onclick="pick('size','l',this)">55–75<br>lbs</button>
-    <button class="size-btn" data-size="xl" onclick="pick('size','xl',this)">75+<br>lbs</button>
+    <button class="size-btn active" data-size="s"  onclick="pick('size','s',this)">Under<br>20 lbs</button>
+    <button class="size-btn"        data-size="ms" onclick="pick('size','ms',this)">20–35<br>lbs</button>
+    <button class="size-btn"        data-size="m"  onclick="pick('size','m',this)">35–55<br>lbs</button>
+    <button class="size-btn"        data-size="l"  onclick="pick('size','l',this)">55–75<br>lbs</button>
+    <button class="size-btn"        data-size="xl" onclick="pick('size','xl',this)">75+<br>lbs</button>
   </div>
   <div class="size-meta" id="sizeMeta">2 bags · lasts your dog ~27 days</div>
   <div class="meal-disclaimer">Based on 2 meals/day per our feeding guide for your dog's size</div>
 
-  <div class="feeding-guide-row"><a>Feeding Guide</a></div>
+  <div class="feeding-guide-row">
+    <button onclick="toggleFG(this)">Feeding Guide</button>
+  </div>
+
+  <!-- Feeding Guide Panel -->
+  <div class="fg-panel" id="fgPanel">
+    <div class="fg-note">The chart below can be used for general feeding estimates.</div>
+    <div class="fg-tabs">
+      <button class="fg-tab active" onclick="setFGTab('chicken',this)">CHICKEN</button>
+      <button class="fg-tab" onclick="setFGTab('beef',this)">BEEF</button>
+    </div>
+    <div class="fg-table-wrap">
+      <table class="fg-table">
+        <thead>
+          <tr>
+            <th>Dog Weight</th>
+            <th class="col-adult">Adult<br>Cups/Day</th>
+            <th class="col-adult">Adult<br>Bags/Mo</th>
+            <th class="col-puppy">Puppy<br>Cups/Day</th>
+            <th class="col-puppy">Puppy<br>Bags/Mo</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>5 lbs</td>   <td class="td-adult">½</td>     <td class="td-adult">1.3</td>  <td class="td-puppy">1</td>     <td class="td-puppy">2.6</td></tr>
+          <tr><td>10 lbs</td>  <td class="td-adult">¾</td>     <td class="td-adult">1.9</td>  <td class="td-puppy">1½</td>   <td class="td-puppy">3.9</td></tr>
+          <tr><td>15 lbs</td>  <td class="td-adult">1</td>     <td class="td-adult">2.6</td>  <td class="td-puppy">2</td>     <td class="td-puppy">5.2</td></tr>
+          <tr class="fg-highlight"><td>20 lbs</td>  <td class="td-adult">1¼</td>   <td class="td-adult">3.2</td>  <td class="td-puppy">2½</td>   <td class="td-puppy">6.5</td></tr>
+          <tr><td>30 lbs</td>  <td class="td-adult">1¾</td>   <td class="td-adult">4.5</td>  <td class="td-puppy">3½</td>   <td class="td-puppy">9.0</td></tr>
+          <tr><td>40 lbs</td>  <td class="td-adult">2¼</td>   <td class="td-adult">5.8</td>  <td class="td-puppy">4½</td>   <td class="td-puppy">11.6</td></tr>
+          <tr class="fg-highlight"><td>50 lbs</td>  <td class="td-adult">2¾</td>   <td class="td-adult">7.1</td>  <td class="td-puppy">5½</td>   <td class="td-puppy">14.2</td></tr>
+          <tr><td>60 lbs</td>  <td class="td-adult">3</td>     <td class="td-adult">7.7</td>  <td class="td-puppy">6</td>     <td class="td-puppy">15.5</td></tr>
+          <tr class="fg-highlight"><td>70 lbs</td>  <td class="td-adult">3½</td>   <td class="td-adult">9.0</td>  <td class="td-na" colspan="2">puppies: max 60 lbs</td></tr>
+          <tr><td>80 lbs</td>  <td class="td-adult">3¾</td>   <td class="td-adult">9.7</td>  <td class="td-na" colspan="2">—</td></tr>
+          <tr><td>90 lbs</td>  <td class="td-adult">4¼</td>   <td class="td-adult">11.0</td> <td class="td-na" colspan="2">—</td></tr>
+          <tr><td>100 lbs</td> <td class="td-adult">4½</td>   <td class="td-adult">11.6</td> <td class="td-na" colspan="2">—</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 
   <!-- Subscribe card -->
   <div class="sub-card">
@@ -489,7 +638,7 @@
       <div class="sub-price">
         <span class="sub-price-now" id="priceNow">$59.96</span>
         <span class="sub-price-was" id="priceWas">$119.90</span>
-        <span class="sub-price-oz" id="priceMeal">$1.11/meal</span>
+        <span class="sub-price-meal" id="priceMeal">$1.11/meal</span>
       </div>
     </div>
     <div class="sub-benefits">
@@ -518,7 +667,10 @@
       <div class="radio-empty"></div>
       <span class="buy-once-label">Buy Once</span>
     </div>
-    <span class="buy-once-price" id="buyOnce">$119.90</span>
+    <div class="buy-once-right">
+      <span class="buy-once-price" id="buyOnce">$119.90</span>
+      <span class="buy-once-meal" id="buyOnceMeal">$2.22/meal</span>
+    </div>
   </div>
 
   <!-- CTA -->
@@ -532,13 +684,13 @@
   const PER_BAG   = 59.95;
   const FIRST_OFF = 0.50;
 
-  // Bags/month based on feeding guide × 4.33 weeks. Puppy = ~2x adult.
+  // Bags/month calibrated from GetJoy feeding guide (bags/week × 4.33)
   const SIZES = {
     s:  { adult: 2,  puppy: 4,  days: { adult: 27, puppy: 28 } },
-    ms: { adult: 3,  puppy: 6,  days: { adult: 28, puppy: 28 } },
-    m:  { adult: 5,  puppy: 10, days: { adult: 28, puppy: 28 } },
-    l:  { adult: 8,  puppy: 16, days: { adult: 29, puppy: 29 } },
-    xl: { adult: 11, puppy: 22, days: { adult: 30, puppy: 30 } },
+    ms: { adult: 4,  puppy: 8,  days: { adult: 28, puppy: 28 } },
+    m:  { adult: 6,  puppy: 13, days: { adult: 28, puppy: 28 } },
+    l:  { adult: 8,  puppy: 15, days: { adult: 29, puppy: 29 } },
+    xl: { adult: 10, puppy: 22, days: { adult: 30, puppy: 30 } },
   };
 
   let state = { flavor: 'beef', age: 'adult', size: 's' };
@@ -546,21 +698,21 @@
   function fmt(n) { return '$' + n.toFixed(2); }
 
   function render() {
-    const tier = SIZES[state.size];
-    const bags = tier[state.age];
-    const days = tier.days[state.age];
+    const tier    = SIZES[state.size];
+    const bags    = tier[state.age];
+    const days    = tier.days[state.age];
     const regular = bags * PER_BAG;
     const first   = regular * (1 - FIRST_OFF);
     const meals   = days * 2;
-    const perMeal = first / meals;
 
     document.getElementById('sizeMeta').textContent =
       `${bags} bag${bags > 1 ? 's' : ''} · lasts your dog ~${days} days`;
-    document.getElementById('priceNow').textContent = fmt(first);
-    document.getElementById('priceWas').textContent = fmt(regular);
-    document.getElementById('priceMeal').textContent = `${fmt(perMeal)}/meal`;
-    document.getElementById('buyOnce').textContent  = fmt(regular);
-    document.getElementById('ctaBtn').textContent   = `ADD TO CART – ${fmt(first)}`;
+    document.getElementById('priceNow').textContent    = fmt(first);
+    document.getElementById('priceWas').textContent    = fmt(regular);
+    document.getElementById('priceMeal').textContent   = `${fmt(first / meals)}/meal`;
+    document.getElementById('buyOnce').textContent     = fmt(regular);
+    document.getElementById('buyOnceMeal').textContent = `${fmt(regular / meals)}/meal`;
+    document.getElementById('ctaBtn').textContent      = `ADD TO CART – ${fmt(first)}`;
   }
 
   function pick(type, val, btn) {
@@ -569,7 +721,6 @@
     document.querySelectorAll(`[${attr}]`).forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
 
-    // Puppies max out at 55-75 lbs per feeding guide
     const xlBtn = document.querySelector('[data-size="xl"]');
     const note  = document.getElementById('ageNote');
     if (state.age === 'puppy') {
@@ -584,8 +735,18 @@
       xlBtn.classList.remove('disabled');
       note.textContent = '';
     }
-
     render();
+  }
+
+  function toggleFG(btn) {
+    const panel = document.getElementById('fgPanel');
+    const open  = panel.classList.toggle('open');
+    btn.textContent = open ? 'Hide Feeding Guide' : 'Feeding Guide';
+  }
+
+  function setFGTab(flavor, btn) {
+    document.querySelectorAll('.fg-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
   }
 
   render();
