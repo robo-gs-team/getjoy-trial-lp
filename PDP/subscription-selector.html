@@ -88,9 +88,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 24px;
     border: 3px solid transparent;
     transition: border-color .15s, background .15s;
+  }
+
+  .flavor-circle img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    display: block;
   }
 
   .flavor-btn.active .flavor-circle {
@@ -430,11 +436,15 @@
   <span class="section-label">Flavor</span>
   <div class="flavor-row">
     <button class="flavor-btn active" data-flavor="beef" onclick="pick('flavor','beef',this)">
-      <div class="flavor-circle">🥩</div>
+      <div class="flavor-circle">
+        <img src="https://getjoyfood.com/cdn/shop/files/beef_e086530b-834d-489c-b5a8-5e7e0e7fdf63.svg?v=10005116391183757552" alt="Beef">
+      </div>
       <span class="flavor-label">Beef</span>
     </button>
     <button class="flavor-btn" data-flavor="chicken" onclick="pick('flavor','chicken',this)">
-      <div class="flavor-circle">🍗</div>
+      <div class="flavor-circle">
+        <img src="https://getjoyfood.com/cdn/shop/files/chicken_9bb3922a-734d-40bd-acac-196b1907e92d.svg?v=10169312193510481245" alt="Chicken">
+      </div>
       <span class="flavor-label">Chicken</span>
     </button>
   </div>
