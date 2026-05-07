@@ -1,0 +1,1111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "title_RyXDMV": {
+          "type": "title",
+          "settings": {
+            "custom_title": ""
+          }
+        },
+        "subtitle_LGTDxY": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": ""
+          }
+        },
+        "variant_picker_jMmMLy": {
+          "type": "variant_picker",
+          "settings": {
+            "variant_labels": true,
+            "picker_type": "button",
+            "color_swatches": false
+          }
+        },
+        "quantity_selector_jhtfkf": {
+          "type": "quantity_selector",
+          "settings": {}
+        },
+        "buy_buttons_hQNUj9": {
+          "type": "buy_buttons",
+          "settings": {
+            "show_dynamic_checkout": true,
+            "surface_pickup_enable": true
+          }
+        },
+        "description_UFLcqr": {
+          "type": "description",
+          "settings": {
+            "is_tab": false
+          }
+        }
+      },
+      "block_order": [
+        "title_RyXDMV",
+        "subtitle_LGTDxY",
+        "variant_picker_jMmMLy",
+        "quantity_selector_jhtfkf",
+        "buy_buttons_hQNUj9",
+        "description_UFLcqr"
+      ],
+      "disabled": true,
+      "settings": {
+        "sku_enable": false,
+        "image_size": "medium",
+        "pet_selector": true,
+        "product_zoom_enable": true,
+        "thumbnail_position": "beside",
+        "thumbnail_arrows": false,
+        "enable_video_looping": true,
+        "product_video_style": "muted",
+        "anchor_id": ""
+      }
+    },
+    "fdr_trial_16oz_hero_ngmJAx": {
+      "type": "fdr-trial-32oz-hero",
+      "blocks": {
+        "value_item_B8UR4g": {
+          "type": "value_item",
+          "settings": {
+            "title": "16oz Freeze Dried Raw Food",
+            "subtitle": "",
+            "description": "97% of nutrients intact",
+            "badge": "$35 VALUE",
+            "badge_style": "free"
+          }
+        },
+        "value_item_PNrnL7": {
+          "type": "value_item",
+          "settings": {
+            "title": "Belly Biotics™",
+            "subtitle": "Digestive Enzymes.",
+            "description": "Pre, Pro + Postbiotics",
+            "badge": "EXCLUSIVE",
+            "badge_style": "excl"
+          }
+        },
+        "value_item_bgEphP": {
+          "type": "value_item",
+          "settings": {
+            "title": "Fresher Breath",
+            "subtitle": "",
+            "description": "A balanced gut reduces odor-causing bacteria. Bye-bye dog breath.",
+            "badge": "$20 VALUE",
+            "badge_style": "free"
+          }
+        },
+        "value_item_FKpTXJ": {
+          "type": "value_item",
+          "settings": {
+            "title": "Coat & Skin Health",
+            "subtitle": "",
+            "description": "Most owners see the coat change before anything else.",
+            "badge": "$20 VALUE",
+            "badge_style": "free"
+          }
+        },
+        "value_item_Cec6HQ": {
+          "type": "value_item",
+          "settings": {
+            "title": "Joint & Mobility Support",
+            "subtitle": "",
+            "description": "Regulates inflammation, so they move like they used to.",
+            "badge": "$30 VALUE",
+            "badge_style": "free"
+          }
+        },
+        "value_item_PJPMVq": {
+          "type": "value_item",
+          "disabled": true,
+          "settings": {
+            "title": "Calm & Anxiety Relief",
+            "subtitle": "",
+            "description": "The gut-brain connection plays a big role in mood.",
+            "badge": "INCLUDED",
+            "badge_style": "free"
+          }
+        },
+        "value_item_6Y43h8": {
+          "type": "value_item",
+          "disabled": true,
+          "settings": {
+            "title": "Immune Health",
+            "subtitle": "",
+            "description": "70% of the immune system is in the gut.",
+            "badge": "INCLUDED",
+            "badge_style": "free"
+          }
+        },
+        "value_item_kHCqjk": {
+          "type": "value_item",
+          "settings": {
+            "title": "Free Shipping",
+            "subtitle": "",
+            "description": "Free Tracked US Shipping",
+            "badge": "$10 VALUE",
+            "badge_style": "free"
+          }
+        },
+        "value_item_i48DNx": {
+          "type": "value_item",
+          "settings": {
+            "title": "Money-Back Guarantee",
+            "subtitle": "",
+            "description": "Your dog doesn't love it? Full refund.",
+            "badge": "INCLUDED",
+            "badge_style": "free"
+          }
+        },
+        "supplement_item_XfjqhD": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Pre, Pro, and Postbiotics"
+          }
+        },
+        "supplement_item_JNJHk6": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Digestive Enzymes"
+          }
+        },
+        "supplement_item_nmCQQN": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Hip & Joint Support"
+          }
+        },
+        "supplement_item_WXhXWp": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Calming & Anxiety"
+          }
+        },
+        "supplement_item_q8FrCT": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Salmon Oil for Omega-3"
+          }
+        },
+        "supplement_item_3mEc3c": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Dental & Breath Support"
+          }
+        },
+        "supplement_item_NaCEax": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Skin & Coat Supplement"
+          }
+        },
+        "supplement_item_GzCPC8": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Essential Vitamins & Minerals"
+          }
+        },
+        "supplement_item_8D4HY9": {
+          "type": "supplement_item",
+          "settings": {
+            "label": "Urinary Tract Support"
+          }
+        },
+        "faq_item_Y8wFA6": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Ingredients & What’s Inside",
+            "answer": "<p>Every formula starts with a single 100% USDA-sourced protein — Beef or Chicken — plus organ meat, ancient grains like sorghum, and our proprietary Belly Biotics™ system: a blend of pre, pro, and postbiotics built into every bite, not added as an afterthought. No seed oils, no fillers, no byproducts, no artificial preservatives.</p>"
+          }
+        },
+        "faq_item_wezqeG": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I feed it?",
+            "answer": "<p>Start slow. Mix a small amount of Get Joy into your dog’s current food for the first few days, then gradually increase the ratio over 7–10 days. Most companions make a full switch within two weeks.</p>"
+          }
+        },
+        "faq_item_irKrCm": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping, Returns & Our Guarantee",
+            "answer": "<p>16oz bag ships free — no shipping charge at checkout. Orders typically arrive within 5–7 business days. If your dog tries it and isn’t interested, contact us within 30 days for a full refund, no questions asked. No subscription, no auto-ship. Your call entirely.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "value_item_B8UR4g",
+        "value_item_PNrnL7",
+        "value_item_bgEphP",
+        "value_item_FKpTXJ",
+        "value_item_Cec6HQ",
+        "value_item_PJPMVq",
+        "value_item_6Y43h8",
+        "value_item_kHCqjk",
+        "value_item_i48DNx",
+        "supplement_item_XfjqhD",
+        "supplement_item_JNJHk6",
+        "supplement_item_nmCQQN",
+        "supplement_item_WXhXWp",
+        "supplement_item_q8FrCT",
+        "supplement_item_3mEc3c",
+        "supplement_item_NaCEax",
+        "supplement_item_GzCPC8",
+        "supplement_item_8D4HY9",
+        "faq_item_Y8wFA6",
+        "faq_item_wezqeG",
+        "faq_item_irKrCm"
+      ],
+      "name": "FDR Trial 16oz — Hero",
+      "settings": {
+        "proof_text": "30,000+ Pet Parents|4.8 Stars",
+        "eyebrow": "",
+        "heading": "16oz Starter Bag",
+        "subtitle": "Freeze Dried Raw Food",
+        "pitch": "<p>Probiotics. Gut health. A shinier coat. Most owners are buying all of it separately. Get Joy has Belly Biotics™, Salmon Oil, and Pumpkin built in. Get real food that replaces the stack of pills.<br/></p>",
+        "step_1_label": "Step 1 — Pick a Flavor",
+        "step_2_label": "Step 2 — What You Get ($115 Value)",
+        "step_3_label": "Step 3 — Get Your Bag",
+        "show_shipping_price": false,
+        "shipping_price": "$20",
+        "price_note": "That’s $25 off the bag + free shipping — we let the food speak for itself.",
+        "stock_text": "Low Stock — Ships within 24 hours",
+        "cta_text": "Try Get Joy — $20",
+        "guarantee_text": "<p><strong>30-Day Money-Back Guarantee</strong></p><p>Not a hit? We refund every penny — no questions, no hoops, no hassle.</p>",
+        "infographic_slide_position": 4,
+        "si_eyebrow": "What’s Already in Every Bag",
+        "si_headline": "Your Dog's All-In-One Wellness Solution.",
+        "si_sub": "Skip the peanut butter tricks. Your dog will actually eat this.",
+        "si_link_text": "",
+        "si_link_url": ""
+      }
+    },
+    "fdr_trial_16oz_nph_wLfXjp": {
+      "type": "fdr-trial-16oz-nph",
+      "name": "16oz — NPH Story",
+      "settings": {
+        "video_url": "https://cdn.shopify.com/videos/c/o/v/ae953a0040e448edba859b2382a27d30.mp4",
+        "dog_pill_text": "Gidget, Spike, Chunk & Bianca",
+        "eyebrow": "From Customer to Co-Owner",
+        "headline": "<p>He fed his dogs Get Joy for 3 years.<br>Then he joined the mission.</p>",
+        "quote_text": "Our dogs have been devouring Get Joy for the past three years. So, rather than just continuing to order the food, I decided to invest and become an owner. I’m putting my money where their paws are.",
+        "person_name": "Neil Patrick Harris",
+        "person_title": "Actor · Writer · Director",
+        "badge_text": "Co-Owner & Investor — Get Joy",
+        "date_text": "Customer since 2023 · Investor since 2026"
+      }
+    },
+    "fdr_trial_16oz_trust_band_gR8xKL": {
+      "type": "fdr-trial-16oz-trust-band",
+      "blocks": {
+        "trust_item_B6BbNm": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Crafted in the USA with 100% USDA-sourced ingredients",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 22 22\" fill=\"none\"><path d=\"M11 2C7.69 2 5 4.69 5 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S9.62 5.5 11 5.5s2.5 1.12 2.5 2.5S12.38 10.5 11 10.5z\" fill=\"#fff\"></path></svg>",
+            "hide_mobile": false
+          }
+        },
+        "trust_item_dRdapK": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Single-Protein Formula for easier digestion & fewer sensitivities",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 22 22\"><path fill=\"#fff\" d=\"M2.7,8.29s.5.47,1.45,1.02c.37.21.81.43,1.32.64,1.35.56,3.19,1.05,5.53,1.05,1.49,0,2.77-.2,3.86-.49,1.28-.34,2.29-.8,3.02-1.22.92-.53,1.39-.98,1.42-1l.19-.2s.01-.06.01-.09c0-1.66-1.34-3-3-3-.22,0-.44.02-.65.07-.39-1.2-1.52-2.07-2.85-2.07-.72,0-1.38.26-1.9.68-.56-1-1.63-1.68-2.85-1.68-1.71,0-3.11,1.33-3.23,3h-.02c-1.38,0-2.5,1.12-2.5,2.5,0,.24.03.47.1.69l.1.1Z\"></path><path fill=\"#fff\" d=\"M20,9s-.39.39-1.17.89c-.27.17-.59.36-.95.54-.37.2-.79.39-1.26.56-1.42.56-3.3,1.01-5.62,1.01-3.07,0-5.36-.79-6.85-1.55-1.43-.73-2.15-1.45-2.15-1.45l-2,7s2.5,4,11,4,11-4,11-4l-2-7ZM11,18s-2-1.64-2-2.91c0-.64.29-1.09,1-1.09.64,0,1,.73,1,.73,0,0,.36-.73,1-.73.71,0,1,.45,1,1.09,0,1.27-2,2.91-2,2.91Z\"></path></svg>",
+            "hide_mobile": false
+          }
+        },
+        "trust_item_Wycqqg": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Complete nutrition for all life stages — puppies to seniors",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 22 22\"><path fill=\"#fff\" d=\"M15.86,13.78c-1.94-2.18-2.08-4.28-4.86-4.28s-2.92,2.1-4.86,4.28c-1.83,2.06-3.64,2.62-3.64,5.07s1.77,3.15,3.86,3.15,2.67-1,4.64-1,2.56,1,4.64,1,3.86-.69,3.86-3.15-1.81-3.01-3.64-5.07Z\"></path></svg>",
+            "hide_mobile": false
+          }
+        },
+        "trust_item_p4Jgpb": {
+          "type": "trust_item",
+          "settings": {
+            "label": "Developed by PhD Canine Nutritionists & vet recommended",
+            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewbox=\"0 0 22 22\"><path fill=\"#fff\" d=\"M11,0C4.92,0,0,4.92,0,11s4.92,11,11,11,11-4.92,11-11S17.08,0,11,0ZM11,1c2.58,0,4.92.99,6.7,2.6l-5.15,5.15c-.01-.13-.05-.26-.05-.39v-4.36h-3v4.36c0,.64-.15,1.28-.44,1.85l-2.02,4.04-3.45,3.45c-1.61-1.78-2.6-4.12-2.6-6.7C1,5.49,5.49,1,11,1Z\"></path></svg>",
+            "hide_mobile": true
+          }
+        }
+      },
+      "block_order": [
+        "trust_item_B6BbNm",
+        "trust_item_dRdapK",
+        "trust_item_Wycqqg",
+        "trust_item_p4Jgpb"
+      ],
+      "name": "16oz — Trust Band",
+      "settings": {
+        "background_color": "core-forest"
+      }
+    },
+    "fdr_trial_16oz_srt_zEaMrj": {
+      "type": "fdr-trial-16oz-srt",
+      "blocks": {
+        "ingredient_row_6QXVXQ": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "gut",
+            "name": "Belly Biotics™ → Butyrate",
+            "form": "Postbiotic Anti-Inflammatory Pathway",
+            "typical_products": "Postbiotics produce butyrate, which regulates inflammation at the source — the same pathway targeted by glucosamine and chondroitin supplements, without the separate pill.",
+            "replaces_label": "Hip & joint supplement"
+          }
+        },
+        "ingredient_row_nBzhBY": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "enzyme",
+            "name": "Freeze-Dried Raw Protein",
+            "form": "Natural Digestive Enzymes — Preserved at −40°F",
+            "typical_products": "Freeze-drying preserves the natural lipase, protease, and amylase in raw protein. Heat processing destroys them. Your dog gets enzymes the way nature intended.",
+            "replaces_label": "Digestive enzyme chews"
+          }
+        },
+        "ingredient_row_bMaBj3": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "omega",
+            "name": "Salmon Oil",
+            "form": "Omega-3 Fatty Acids — EPA & DHA",
+            "typical_products": "Wild-sourced salmon oil delivers EPA and DHA for body-wide inflammation control, joint lubrication, and a shinier coat. The same compounds in leading fish oil supplements.",
+            "replaces_label": "Fish oil supplement"
+          }
+        },
+        "ingredient_row_3c94PK": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "gut",
+            "name": "Belly Biotics™ → Gut-Brain Axis",
+            "form": "Microbiome → Serotonin Pathway",
+            "typical_products": "~90% of serotonin is produced in the gut. A balanced microbiome through Belly Biotics directly regulates mood — reducing anxiety-driven behavior from the inside out.",
+            "replaces_label": "Calming & anxiety chews"
+          }
+        },
+        "ingredient_row_ewj6M7": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "dental",
+            "name": "Anti-Odor Bacteria",
+            "form": "Gut Microbiome → Fresher Breath",
+            "typical_products": "Bad dog breath comes from odor-causing bacteria — mostly in the gut. Belly Biotics rebalances the microbiome, reducing bacterial overgrowth. Most owners notice fresher breath within weeks.",
+            "replaces_label": "Dental chews & breath support"
+          }
+        },
+        "ingredient_row_YGxd3w": {
+          "type": "ingredient_row",
+          "disabled": true,
+          "settings": {
+            "icon_emoji": "vitamin",
+            "name": "Salmon Oil + Premium Protein",
+            "form": "Nutrient Absorption Through a Healthy Gut",
+            "typical_products": "When the gut lining is intact, nutrients absorb properly. Salmon oil and complete protein reach the skin and coat instead of passing through. The result shows in the coat.",
+            "replaces_label": "Skin & coat supplement"
+          }
+        },
+        "ingredient_row_R3DwTe": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "vitamin",
+            "name": "Organ Meat + Vitamins & Minerals",
+            "form": "B12, Iron, CoQ10, Vitamin A — Whole Food Sources",
+            "typical_products": "Complete micronutrient delivery from organ meat and a full vitamin and mineral profile. Same coverage as a daily multivitamin — from real food, not synthetic add-ins.",
+            "replaces_label": "Daily multivitamin"
+          }
+        },
+        "ingredient_row_DdgKHh": {
+          "type": "ingredient_row",
+          "settings": {
+            "icon_emoji": "urinary",
+            "name": "Pumpkin + Belly Biotics™",
+            "form": "Gut Microbiome Balance → Urinary Health",
+            "typical_products": "A balanced gut microbiome keeps harmful bacteria from colonizing the urinary tract. Pumpkin supports digestive regularity and urinary health through natural fiber and antioxidants.",
+            "replaces_label": "UTI & urinary support"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_row_6QXVXQ",
+        "ingredient_row_nBzhBY",
+        "ingredient_row_bMaBj3",
+        "ingredient_row_3c94PK",
+        "ingredient_row_ewj6M7",
+        "ingredient_row_YGxd3w",
+        "ingredient_row_R3DwTe",
+        "ingredient_row_DdgKHh"
+      ],
+      "name": "16oz — Supp Table",
+      "settings": {
+        "eyebrow": "The Real Cost of Your Dog’s Health",
+        "headline": "<p>One Bag. Everything They Need to Thrive.</p>",
+        "subtitle": "Many dog parents spend $150+ a month on probiotics, anti-inflammatories, toppers, and oils to support their dog’s health.\n\nBecause the gut is the foundation of whole-body wellness, Get Joy is designed to nourish it, helping support all of their needs, all in one daily bowl.",
+        "th_ingredient": "In Every Get Joy Bag",
+        "th_typical": "What It Does",
+        "th_getjoy": "Replaces",
+        "bridge_text": "Every ingredient above is in Get Joy. The system that makes them all work together has a name."
+      }
+    },
+    "fdr_trial_16oz_csm_kQmERx": {
+      "type": "fdr-trial-16oz-csm",
+      "blocks": {
+        "supplement_row_MVL9Gf": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Probiotic supplement",
+            "brands": "FortiFlora, Purina Pro Plan",
+            "price": "$40–55/mo"
+          }
+        },
+        "supplement_row_Aecxbg": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Hip & Joint supplement",
+            "brands": "Cosequin Advanced, Dasuquin",
+            "price": "$40–60/mo"
+          }
+        },
+        "supplement_row_deLJVM": {
+          "type": "supplement_row",
+          "disabled": true,
+          "settings": {
+            "name": "Calming & anxiety chews",
+            "brands": "Zesty Paws, VetriScience Composure",
+            "price": "$30–45/mo"
+          }
+        },
+        "supplement_row_mYpQ7C": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Fish oil / Omega-3",
+            "brands": "Nordic Naturals, Zesty Paws",
+            "price": "$25–40/mo"
+          }
+        },
+        "supplement_row_aUi8Cp": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Digestive enzyme supplement",
+            "brands": "Prozyme, NaturVet",
+            "price": "$30–45/mo"
+          }
+        },
+        "supplement_row_4qKgFB": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Dental & breath support",
+            "brands": "Greenies, Whimzees",
+            "price": "$20–35/mo"
+          }
+        },
+        "supplement_row_NPpL3D": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Skin & coat supplement",
+            "brands": "Zesty Paws, Vet’s Best",
+            "price": "$25–40/mo"
+          }
+        },
+        "supplement_row_TfMDgR": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "Daily multivitamin",
+            "brands": "Pet-Tabs, Nutramax",
+            "price": "$20–35/mo"
+          }
+        },
+        "supplement_row_nLi39a": {
+          "type": "supplement_row",
+          "settings": {
+            "name": "UTI & urinary support",
+            "brands": "Zesty Paws, NaturVet",
+            "price": "$20–30/mo"
+          }
+        }
+      },
+      "block_order": [
+        "supplement_row_MVL9Gf",
+        "supplement_row_Aecxbg",
+        "supplement_row_deLJVM",
+        "supplement_row_mYpQ7C",
+        "supplement_row_aUi8Cp",
+        "supplement_row_4qKgFB",
+        "supplement_row_NPpL3D",
+        "supplement_row_TfMDgR",
+        "supplement_row_nLi39a"
+      ],
+      "name": "16oz — Cost Savings",
+      "settings": {
+        "eyebrow": "The Math Most Dog Owners Never See",
+        "headline": "<p>Your dog needs a lot. Most owners can only afford one or two.</p>",
+        "subtitle": "Many dog owners rotate through different probiotics, toppers, oils, and supplements.\nBut real, lasting gut health starts by addressing the source.",
+        "badge_amount": "$2,300+",
+        "badge_label": "Annual Savings",
+        "badge_unit": "per year",
+        "badge_note": "when switching to Get Joy",
+        "total_label": "The full solution, bought separately",
+        "total_price": "~$340/mo",
+        "gj_label": "Get Joy subscription",
+        "gj_price": "~$92/mo",
+        "close_line_1": "Most dog owners pick one supplement and hope.",
+        "close_line_2": "Get Joy is what happens when you stop choosing.",
+        "close_bold": "Every single category. One bag. ~$92 a month.",
+        "disclaimer": "Supplement prices based on average retail cost of leading branded products at standard dosages (Amazon, Chewy, brand direct — March 2026). Get Joy subscription reflects average recurring subscriber order value. Individual prices may vary.",
+        "cta_text": "Try Get Joy — $20",
+        "cta_url": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
+      }
+    },
+    "fdr_trial_16oz_clinical_AfmQkj": {
+      "type": "fdr-trial-16oz-clinical",
+      "blocks": {
+        "stat_XXeWYz": {
+          "type": "stat",
+          "settings": {
+            "number": "221%",
+            "label": "More likely to have improved breath",
+            "sub_detail": ""
+          }
+        },
+        "stat_mCb4GC": {
+          "type": "stat",
+          "settings": {
+            "number": "165%",
+            "label": "More likely to have reduced anxiety",
+            "sub_detail": ""
+          }
+        },
+        "stat_rjwGFr": {
+          "type": "stat",
+          "settings": {
+            "number": "95%",
+            "label": "More likely to have improved health markers",
+            "sub_detail": ""
+          }
+        },
+        "stat_WkC3QH": {
+          "type": "stat",
+          "settings": {
+            "number": "4.8★",
+            "label": "Average rating across 30,000+ pet parents",
+            "sub_detail": "77% five-star reviews"
+          }
+        }
+      },
+      "block_order": [
+        "stat_XXeWYz",
+        "stat_mCb4GC",
+        "stat_rjwGFr",
+        "stat_WkC3QH"
+      ],
+      "name": "16oz — Clinical",
+      "settings": {
+        "eyebrow": "What the Science Shows",
+        "headline": "Dogs who eat Get Joy are different.",
+        "citation": "*Based on a 60-day in-home study showing health and microbiome benefits from daily probiotic supplementation.",
+        "bridge_text": "These aren’t surface-level changes. They’re what happens when a gut that’s actually working starts doing its job."
+      }
+    },
+    "fdr_trial_16oz_faq_XYwijG": {
+      "type": "fdr-trial-16oz-faq",
+      "blocks": {
+        "faq_item_thdG4q": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I transition my dog?",
+            "answer": "<p>Start by mixing a small amount of Get Joy into your dog’s current food. Increase the ratio over 7–10 days. Most dogs make a full switch within two weeks — and most don’t need convincing. Sensitive stomachs? Take it slower. That’s it.</p>"
+          }
+        },
+        "faq_item_kdYWWg": {
+          "type": "faq_item",
+          "settings": {
+            "question": "What if my dog is a picky eater?",
+            "answer": "<p>Freeze Dried Raw is the closest thing to whole, fresh food — which is what dogs actually want. The 221% improvement in breath and the mealtime excitement we see in our 60-day study aren’t coincidences. If your dog genuinely isn’t interested within 30 days, we refund every penny.</p>"
+          }
+        },
+        "faq_item_U6tryk": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will this work for my dog’s specific issue?",
+            "answer": "<p>Get Joy was built around gut health — because most visible dog health problems (bad breath, dull coat, low energy, joint stiffness, anxiety) trace back to what’s happening in the gut. Belly Biotics™ addresses the root system. The ingredients target the specific symptoms. Most owners notice changes within the first week.</p>"
+          }
+        },
+        "faq_item_LNfH3t": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Is there a subscription or commitment?",
+            "answer": "<p>No subscription, no auto-ship — ever. This is a one-time purchase. Nothing starts after checkout. If you’d like to continue after trying it, you’ll have the option — but it’s entirely your call.</p>"
+          }
+        },
+        "faq_item_dH7XcY": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How is Get Joy different from fresh cooked food like Farmer's?",
+            "answer": "<p>Fresh cooked food reaches your dog’s bowl at 165°F+. Every enzyme and probiotic is destroyed above 118°F. Get Joy is freeze-dried at −40°F — 97% of nutrients intact, probiotics viable, digestive enzymes preserved. Shelf stable. No fridge required.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_item_thdG4q",
+        "faq_item_kdYWWg",
+        "faq_item_U6tryk",
+        "faq_item_LNfH3t",
+        "faq_item_dH7XcY"
+      ],
+      "name": "FDR Trial 16oz FAQ",
+      "settings": {
+        "eyebrow": "Common Questions",
+        "heading": "Everything You Need to Know",
+        "subheading": "The honest answers to what most people ask before trying.",
+        "cta_text": "Try Get Joy — $20",
+        "cta_url": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
+      }
+    },
+    "fdr_trial_16oz_ingredients_xLWaxi": {
+      "type": "fdr-trial-16oz-ingredients",
+      "blocks": {
+        "ingredient_card_zeQ47C": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "split",
+            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/BEEF_INGREDIENT.png?v=1774032152",
+            "image_2": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CHICKEN_INGREDIENT_2.png?v=1774032144",
+            "biotics_style": false,
+            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
+            "label": "Protein Source",
+            "title": "USDA Premium Protein",
+            "description": "100% single-protein muscle meat. The only protein in the bag — zero cross-contamination, zero mystery meals."
+          }
+        },
+        "ingredient_card_LUhaiW": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "single",
+            "image_1": "https://getjoyfood.com/cdn/shop/files/Postbiotic.png?v=1751312897&width=320",
+            "image_2": "",
+            "biotics_style": true,
+            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
+            "label": "Gut Support",
+            "title": "Belly Biotics™ Tri-Biotic Blend",
+            "description": "Pre, pro & postbiotics in every bite. Clinically-backed strains that survive digestion and actually work."
+          }
+        },
+        "ingredient_card_7t7Aqe": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "split",
+            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CRANBERRY_INGREDIENT.png?v=1774032163",
+            "image_2": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CELERY_INGREDIENT_2.png?v=1774032148",
+            "biotics_style": false,
+            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
+            "label": "Whole Foods",
+            "title": "Real Fruit & Vegetables",
+            "description": "Sweet potato, spinach, pumpkin. Named whole foods — not \"fruit/veg blend\" mystery mixes."
+          }
+        },
+        "ingredient_card_fMA4K6": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "none",
+            "image_1": "",
+            "image_2": "",
+            "biotics_style": false,
+            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
+            "label": "What's Not In It",
+            "title": "Zero Fillers. Zero B.S.",
+            "description": "No corn, wheat, soy, artificial preservatives, or seed oils. If you can't pronounce it, it's not here."
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_card_zeQ47C",
+        "ingredient_card_LUhaiW",
+        "ingredient_card_7t7Aqe",
+        "ingredient_card_fMA4K6"
+      ],
+      "name": "16oz — Ingredients",
+      "settings": {
+        "eyebrow": "Nothing to Hide",
+        "heading": "What's Actually In The Bag",
+        "subheading": "Every ingredient is named. No mystery meals, no fillers, no fine print.",
+        "cta_label": "Try Get Joy — $20",
+        "cta_link": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
+      }
+    },
+    "fdr_trial_16oz_why_banner_UGpJqp": {
+      "type": "fdr-trial-16oz-why-banner",
+      "name": "16oz — Why $20",
+      "settings": {
+        "heading": "Why Only $20?",
+        "subheading": "That's $25 off. Shipping's on us. Here's why.",
+        "body_1": "A full 16oz bag is enough for your dog to feel, enjoy, and for you to see the difference.",
+        "body_2": "Most dogs that try it don't go back. So we'd \nrather you judge it than pitch it to you. One \norder. No subscription starts. Your dog decides.",
+        "cta_label": "Try Get Joy — $20",
+        "cta_link": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
+      }
+    },
+    "fdr_trial_16oz_comparison_EaNCbU": {
+      "type": "fdr-trial-16oz-comparison",
+      "blocks": {
+        "comparison_row_ahHmYM": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Nutrient Retention",
+            "comp1_value": "~75%",
+            "comp2_value": "~60%",
+            "gj_value": "97%",
+            "gj_has_check": false
+          }
+        },
+        "comparison_row_D6AVky": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Belly Biotics™ Gut System",
+            "comp1_value": "",
+            "comp2_value": "",
+            "gj_value": "",
+            "gj_has_check": true
+          }
+        },
+        "comparison_row_RiCmMj": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "No Fridge or Freezer",
+            "comp1_value": "Freezer req.",
+            "comp2_value": "Fridge req.",
+            "gj_value": "Shelf Stable",
+            "gj_has_check": false
+          }
+        },
+        "comparison_row_K7WXCe": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "100% USDA Sourced Protein",
+            "comp1_value": "Sometimes",
+            "comp2_value": "Sometimes",
+            "gj_value": "Always",
+            "gj_has_check": false
+          }
+        },
+        "comparison_row_6XbUiV": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "No Fillers or Seed Oils",
+            "comp1_value": "Sometimes",
+            "comp2_value": "Sometimes",
+            "gj_value": "",
+            "gj_has_check": true
+          }
+        },
+        "comparison_row_UBY4qe": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Works for All Life Stages",
+            "comp1_value": "Sometimes",
+            "comp2_value": "Sometimes",
+            "gj_value": "",
+            "gj_has_check": true
+          }
+        },
+        "comparison_row_CKf4fj": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "30-Day Money-Back Guarantee",
+            "comp1_value": "",
+            "comp2_value": "",
+            "gj_value": "",
+            "gj_has_check": true
+          }
+        }
+      },
+      "block_order": [
+        "comparison_row_ahHmYM",
+        "comparison_row_D6AVky",
+        "comparison_row_RiCmMj",
+        "comparison_row_K7WXCe",
+        "comparison_row_6XbUiV",
+        "comparison_row_UBY4qe",
+        "comparison_row_CKf4fj"
+      ],
+      "name": "16oz — Comparison",
+      "settings": {
+        "eyebrow": "The Honest Comparison",
+        "heading": "How Get Joy Stacks Up Against the Rest",
+        "subheading": "Not all pet food is made equal. Here’s what actually sets us apart.",
+        "col_comp1_label": "Frozen Raw",
+        "col_comp1_sub": "Primal, Stella & Chewy’s",
+        "col_comp2_label": "Fresh Cooked",
+        "col_comp2_sub": "Farmer’s Dog, Nom Nom",
+        "col_gj_label": "Get Joy",
+        "col_gj_sub": "Freeze Dried Raw",
+        "col_mobile_comp_label": "Other Brands",
+        "col_mobile_gj_label": "Get Joy",
+        "col_mobile_gj_sub": "Freeze Dried",
+        "cta_text": "Try Get Joy — $20",
+        "cta_url": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
+      }
+    },
+    "fdr_trial_16oz_reviews_ygyMBk": {
+      "type": "fdr-trial-16oz-reviews",
+      "blocks": {
+        "review_jmhiYw": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_BRIANNA.png?v=1774272749",
+            "image_position": "center center",
+            "title": "She eats her bowl the second I set it down.",
+            "text": "Maple has been a picky eater and would leave her meals out all day. I switched her to Get Joy and she immediately eats her bowl after I set it out! Her poops have become noticeably firmer and she has a lot more energy.",
+            "author": "Brianna"
+          }
+        },
+        "review_YbkdRd": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_LEO.png?v=1774272748",
+            "image_position": "center center",
+            "title": "Face, eyes and paws cleared up in days.",
+            "text": "My English Bulldog was experiencing allergic reactions to other food brands. After seeing Get Joy advertised on TV, I switched him to the Freeze Dried Beef Meal and within a few days his face, eyes and paws completely cleared up.",
+            "author": "Leonard — English Bulldog owner"
+          }
+        },
+        "review_qTr3rd": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_KRIS.png?v=1774272747",
+            "image_position": "center center",
+            "title": "Even my sensitive-tummy dog took to it immediately.",
+            "text": "My dogs both LIVE the beef food. We all feel better eating clean food. The best news is that one of our dogs has a very sensitive tummy, but tolerate this food immediately. Highly recommend.",
+            "author": "Kris"
+          }
+        },
+        "review_X9eTVG": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/PDP-TESTI_DANNY.png?v=1774272748",
+            "image_position": "center center",
+            "title": "Still seeing benefits even as a kibble mixer.",
+            "text": "My medium/large dogs love this food. I like to use it for mixing into their bowls of kibble for a nutritional boost since full feeding would cost a bit more. Still see the benefits as a mixer and recommend!",
+            "author": "Danny"
+          }
+        },
+        "review_GhTNBW": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Ingrid_S.png?v=1774272748",
+            "image_position": "center center",
+            "title": "Three picky seniors — loved it from day one.",
+            "text": "I have three dogs, a 14 year old Shih Tzu, a 10 year old Havanese, and a 9 year old Portuguese Podengo. They are picky eaters and they have liked Get Joy from the very first day.",
+            "author": "Ingrid S. — Shih Tzu, Havanese & Podengo owner"
+          }
+        },
+        "review_TXMqLX": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_Llewellyn.png?v=1774272747",
+            "image_position": "center center",
+            "title": "Gone from his bowl in minutes, every time.",
+            "text": "Toby, a mini-Bernedoodle, just loves it and took to it from the first taste. He now gets up in the morning, does his business outside and runs to the cabinet where I store the Get Joy.",
+            "author": "Llewellyn — Mini-Bernedoodle owner"
+          }
+        },
+        "review_RR3dtH": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TESTI_PETER.png?v=1774272748",
+            "image_position": "center center",
+            "title": "The only food that doesn’t bother his stomach.",
+            "text": "I have a German Shepherd with a very sensitive stomach. This is the only food he will eat that doesn’t bother his stomach.",
+            "author": "Peter A. — German Shepherd owner"
+          }
+        }
+      },
+      "block_order": [
+        "review_jmhiYw",
+        "review_YbkdRd",
+        "review_qTr3rd",
+        "review_X9eTVG",
+        "review_GhTNBW",
+        "review_TXMqLX",
+        "review_RR3dtH"
+      ],
+      "name": "FDR Trial 16oz Reviews",
+      "settings": {
+        "eyebrow": "Real Dogs. Real Results.",
+        "heading": "Even the Pickiest Dogs Love It",
+        "subheading": "From dog companions who made the switch",
+        "background_color": "tennis",
+        "cta_text": "Try Get Joy — $20",
+        "cta_url": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
+      }
+    },
+    "fdr_trial_16oz_transition_BKrVh3": {
+      "type": "fdr-trial-16oz-transition",
+      "blocks": {
+        "step_F6kXFd": {
+          "type": "step",
+          "settings": {
+            "card_style": "pale",
+            "step_number": "1",
+            "timeframe": "Days 1–2",
+            "title": "25% Get Joy",
+            "bullet_1": "Mix 25% Get Joy with 75% of their current food",
+            "bullet_2": "Let them sniff, explore and get excited",
+            "bullet_3": "Watch for immediate enthusiasm at the bowl"
+          }
+        },
+        "step_WX8QTk": {
+          "type": "step",
+          "settings": {
+            "card_style": "forest",
+            "step_number": "2",
+            "timeframe": "Days 3–5",
+            "title": "50/50 Mix",
+            "bullet_1": "Split the bowl 50/50 with their old food",
+            "bullet_2": "Digestion adjusts — stools may change slightly",
+            "bullet_3": "Energy and coat improvements often start here"
+          }
+        },
+        "step_Jk8YHm": {
+          "type": "step",
+          "settings": {
+            "card_style": "forest",
+            "step_number": "3",
+            "timeframe": "Day 7+",
+            "title": "Full Get Joy",
+            "bullet_1": "Transition complete — 100% Freeze Dried Raw",
+            "bullet_2": "Firmer stools, better breath, more energy",
+            "bullet_3": "Most dogs never look back"
+          }
+        }
+      },
+      "block_order": [
+        "step_F6kXFd",
+        "step_WX8QTk",
+        "step_Jk8YHm"
+      ],
+      "name": "FDR 16oz Transition Guide",
+      "settings": {
+        "eyebrow": "Making the Switch",
+        "heading": "How to Feed Get Joy",
+        "subheading": "Switching from kibble? Follow this simple 7-day plan — your dog's gut will thank you.",
+        "cta_label": "Try Get Joy — $20",
+        "cta_link": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
+      }
+    },
+    "fdr_trial_16oz_bottom_cta_9Hh3YY": {
+      "type": "fdr-trial-16oz-bottom-cta",
+      "blocks": {
+        "include_item_MM3QQ7": {
+          "type": "include_item",
+          "settings": {
+            "label": "16oz Freeze Dried Raw Bag",
+            "badge": "FULL SIZE"
+          }
+        },
+        "include_item_CgDUFc": {
+          "type": "include_item",
+          "settings": {
+            "label": "Belly Biotics™ Gut System",
+            "badge": "EXCLUSIVE"
+          }
+        },
+        "include_item_7EdDEP": {
+          "type": "include_item",
+          "settings": {
+            "label": "Personalized Meal Plan",
+            "badge": "FREE"
+          }
+        },
+        "include_item_cFeW8b": {
+          "type": "include_item",
+          "settings": {
+            "label": "30-Day Happiness Guarantee",
+            "badge": "INCLUDED"
+          }
+        },
+        "include_item_VCjYig": {
+          "type": "include_item",
+          "settings": {
+            "label": "No Auto-Enrollment",
+            "badge": "ALWAYS"
+          }
+        }
+      },
+      "block_order": [
+        "include_item_MM3QQ7",
+        "include_item_CgDUFc",
+        "include_item_7EdDEP",
+        "include_item_cFeW8b",
+        "include_item_VCjYig"
+      ],
+      "name": "16oz — Bottom CTA",
+      "settings": {
+        "left_eyebrow": "Final Offer",
+        "left_heading": "Your Dog Decides. Risk Free.",
+        "left_sub": "One full bag. One taste test. A $20 bet that could give you more years of the unconditional love only dogs give.",
+        "stack_title": "What's Included",
+        "stack_value_label": "$35 value — $25 off + free shipping",
+        "was_price": "$35",
+        "now_price": "$20",
+        "price_unit": "free shipping",
+        "cta_label": "Try Get Joy — $20",
+        "cta_link": "",
+        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
+      }
+    },
+    "fdr_trial_16oz_sticky_atc_PRKU9g": {
+      "type": "fdr-trial-16oz-sticky-atc",
+      "name": "16oz — Sticky ATC",
+      "settings": {
+        "product_name": "Get Joy 16oz Starter Bag",
+        "price_label": "$20",
+        "descriptor": "Freeze Dried Raw · 16oz Bag + Free Shipping",
+        "cta_desktop": "TRY GET JOY — $20 + FREE SHIPPING",
+        "cta_mobile": "Add To Cart — $2",
+        "cta_mobile_line2": "",
+        "sub_text": "30-day money-back · No subscription"
+      }
+    }
+  },
+  "order": [
+    "main",
+    "fdr_trial_16oz_hero_ngmJAx",
+    "fdr_trial_16oz_nph_wLfXjp",
+    "fdr_trial_16oz_trust_band_gR8xKL",
+    "fdr_trial_16oz_srt_zEaMrj",
+    "fdr_trial_16oz_csm_kQmERx",
+    "fdr_trial_16oz_clinical_AfmQkj",
+    "fdr_trial_16oz_faq_XYwijG",
+    "fdr_trial_16oz_ingredients_xLWaxi",
+    "fdr_trial_16oz_why_banner_UGpJqp",
+    "fdr_trial_16oz_comparison_EaNCbU",
+    "fdr_trial_16oz_reviews_ygyMBk",
+    "fdr_trial_16oz_transition_BKrVh3",
+    "fdr_trial_16oz_bottom_cta_9Hh3YY",
+    "fdr_trial_16oz_sticky_atc_PRKU9g"
+  ]
+}
