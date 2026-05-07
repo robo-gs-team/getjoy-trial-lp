@@ -85,7 +85,7 @@
     width: 54px;
     height: 54px;
     border-radius: 50%;
-    background: var(--gj-tan);
+    background: #D8DDE6;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,15 +94,21 @@
   }
 
   .flavor-circle img {
-    width: 30px;
-    height: 30px;
+    width: 28px;
+    height: 28px;
     object-fit: contain;
     display: block;
+    opacity: .45;
+    transition: opacity .15s;
   }
 
   .flavor-btn.active .flavor-circle {
-    background: var(--gj-lime);
-    border-color: var(--gj-forest);
+    background: #F5A623;
+    border-color: transparent;
+  }
+
+  .flavor-btn.active .flavor-circle img {
+    opacity: 1;
   }
 
   .flavor-label {
