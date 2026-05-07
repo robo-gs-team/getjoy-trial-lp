@@ -149,8 +149,8 @@
   }
 
   .age-btn.active {
-    background: var(--pdp-navy);
-    border-color: var(--pdp-navy);
+    background: var(--gj-forest);
+    border-color: var(--gj-forest);
     color: #fff;
   }
 
@@ -188,8 +188,8 @@
   }
 
   .size-btn.active {
-    background: var(--pdp-navy);
-    border-color: var(--pdp-navy);
+    background: var(--gj-forest);
+    border-color: var(--gj-forest);
     color: #fff;
   }
 
@@ -275,7 +275,7 @@
   }
 
   .fg-tab.active {
-    background: var(--pdp-navy);
+    background: var(--gj-forest);
     color: #fff;
   }
 
@@ -604,7 +604,7 @@
       <button class="fg-tab" onclick="setFGTab('beef',this)">BEEF</button>
     </div>
     <div class="fg-table-wrap">
-      <table class="fg-table">
+      <table class="fg-table" id="fgTable">
         <thead>
           <tr>
             <th>Dog Weight</th>
@@ -614,20 +614,7 @@
             <th class="col-puppy">Puppy<br>Bags/Mo</th>
           </tr>
         </thead>
-        <tbody>
-          <tr><td>5 lbs</td>   <td class="td-adult">½</td>     <td class="td-adult">1.3</td>  <td class="td-puppy">1</td>     <td class="td-puppy">2.6</td></tr>
-          <tr><td>10 lbs</td>  <td class="td-adult">¾</td>     <td class="td-adult">1.9</td>  <td class="td-puppy">1½</td>   <td class="td-puppy">3.9</td></tr>
-          <tr><td>15 lbs</td>  <td class="td-adult">1</td>     <td class="td-adult">2.6</td>  <td class="td-puppy">2</td>     <td class="td-puppy">5.2</td></tr>
-          <tr class="fg-highlight"><td>20 lbs</td>  <td class="td-adult">1¼</td>   <td class="td-adult">3.2</td>  <td class="td-puppy">2½</td>   <td class="td-puppy">6.5</td></tr>
-          <tr><td>30 lbs</td>  <td class="td-adult">1¾</td>   <td class="td-adult">4.5</td>  <td class="td-puppy">3½</td>   <td class="td-puppy">9.0</td></tr>
-          <tr><td>40 lbs</td>  <td class="td-adult">2¼</td>   <td class="td-adult">5.8</td>  <td class="td-puppy">4½</td>   <td class="td-puppy">11.6</td></tr>
-          <tr class="fg-highlight"><td>50 lbs</td>  <td class="td-adult">2¾</td>   <td class="td-adult">7.1</td>  <td class="td-puppy">5½</td>   <td class="td-puppy">14.2</td></tr>
-          <tr><td>60 lbs</td>  <td class="td-adult">3</td>     <td class="td-adult">7.7</td>  <td class="td-puppy">6</td>     <td class="td-puppy">15.5</td></tr>
-          <tr class="fg-highlight"><td>70 lbs</td>  <td class="td-adult">3½</td>   <td class="td-adult">9.0</td>  <td class="td-na" colspan="2">puppies: max 60 lbs</td></tr>
-          <tr><td>80 lbs</td>  <td class="td-adult">3¾</td>   <td class="td-adult">9.7</td>  <td class="td-na" colspan="2">—</td></tr>
-          <tr><td>90 lbs</td>  <td class="td-adult">4¼</td>   <td class="td-adult">11.0</td> <td class="td-na" colspan="2">—</td></tr>
-          <tr><td>100 lbs</td> <td class="td-adult">4½</td>   <td class="td-adult">11.6</td> <td class="td-na" colspan="2">—</td></tr>
-        </tbody>
+        <tbody id="fgBody"></tbody>
       </table>
     </div>
   </div>
@@ -744,15 +731,71 @@
     render();
   }
 
+  // Feeding guide row data: [weight, adultCups, adultBagsMo, puppyCups, puppyBagsMo]
+  // null puppyCups/puppyBagsMo = "—" row; 'max' = "puppies: max 60 lbs" colspan
+  const FG_DATA = {
+    chicken: [
+      ['5 lbs',   '½',    '1.3',  '1',    '2.6'],
+      ['10 lbs',  '¾',    '1.9',  '1½',  '3.9'],
+      ['15 lbs',  '1',    '2.6',  '2',    '5.2'],
+      ['20 lbs',  '1¼',  '3.2',  '2½',  '6.5', 'hl'],
+      ['30 lbs',  '1¾',  '4.5',  '3½',  '9.0'],
+      ['40 lbs',  '2¼',  '5.8',  '4½',  '11.6'],
+      ['50 lbs',  '2¾',  '7.1',  '5½',  '14.2', 'hl'],
+      ['60 lbs',  '3',    '7.7',  '6',    '15.5'],
+      ['70 lbs',  '3½',  '9.0',  'max',  null,   'hl'],
+      ['80 lbs',  '3¾',  '9.7',  null,   null],
+      ['90 lbs',  '4¼',  '11.0', null,   null],
+      ['100 lbs', '4½',  '11.6', null,   null],
+    ],
+    beef: [
+      ['5 lbs',   '½',    '1.4',  '1',    '2.8'],
+      ['10 lbs',  '¾',    '2.0',  '1½',  '4.1'],
+      ['15 lbs',  '1',    '2.7',  '2',    '5.4'],
+      ['20 lbs',  '1¼',  '3.4',  '2½',  '6.8', 'hl'],
+      ['30 lbs',  '1¾',  '4.7',  '3½',  '9.4'],
+      ['40 lbs',  '2¼',  '6.1',  '4½',  '12.1'],
+      ['50 lbs',  '2¾',  '7.4',  '5½',  '14.8', 'hl'],
+      ['60 lbs',  '3¼',  '8.4',  '6',    '16.2'],
+      ['70 lbs',  '3½',  '9.4',  'max',  null,   'hl'],
+      ['80 lbs',  '4',    '10.4', null,   null],
+      ['90 lbs',  '4½',  '11.7', null,   null],
+      ['100 lbs', '4¾',  '12.3', null,   null],
+    ],
+  };
+
+  let fgFlavor = 'chicken';
+
+  function renderFG() {
+    const rows = FG_DATA[fgFlavor];
+    const tbody = document.getElementById('fgBody');
+    tbody.innerHTML = rows.map(r => {
+      const [wt, ac, ab, pc, pb, flag] = r;
+      const hl = flag === 'hl' ? ' class="fg-highlight"' : '';
+      let puppyCols;
+      if (pc === 'max') {
+        puppyCols = `<td class="td-na" colspan="2">puppies: max 60 lbs</td>`;
+      } else if (pc === null) {
+        puppyCols = `<td class="td-na" colspan="2">—</td>`;
+      } else {
+        puppyCols = `<td class="td-puppy">${pc}</td><td class="td-puppy">${pb}</td>`;
+      }
+      return `<tr${hl}><td>${wt}</td><td class="td-adult">${ac}</td><td class="td-adult">${ab}</td>${puppyCols}</tr>`;
+    }).join('');
+  }
+
   function toggleFG(btn) {
     const panel = document.getElementById('fgPanel');
     const open  = panel.classList.toggle('open');
     btn.textContent = open ? 'Hide Feeding Guide' : 'Feeding Guide';
+    if (open) renderFG();
   }
 
   function setFGTab(flavor, btn) {
     document.querySelectorAll('.fg-tab').forEach(t => t.classList.remove('active'));
     btn.classList.add('active');
+    fgFlavor = flavor;
+    renderFG();
   }
 
   render();
