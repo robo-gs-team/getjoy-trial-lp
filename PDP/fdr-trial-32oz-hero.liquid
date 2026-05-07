@@ -1,0 +1,1292 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign proof_text = section.settings.proof_text
+  assign eyebrow = section.settings.eyebrow
+  assign heading = section.settings.heading
+  assign subtitle = section.settings.subtitle
+  assign pitch = section.settings.pitch
+  assign step_1_label = section.settings.step_1_label
+  assign step_2_label = section.settings.step_2_label
+  assign cta_text = section.settings.cta_text
+  assign guarantee_text = section.settings.guarantee_text
+  assign price_note = section.settings.price_note
+  assign stock_text = section.settings.stock_text
+  assign si_eyebrow = section.settings.si_eyebrow
+  assign si_headline = section.settings.si_headline
+  assign si_sub = section.settings.si_sub
+  assign si_link_text = section.settings.si_link_text
+  assign si_link_url = section.settings.si_link_url
+  assign guarantee_shield_image = section.settings.guarantee_shield_image
+  assign infographic_slide_index = section.settings.infographic_slide_position | minus: 1
+  assign selling_plan_id = section.settings.selling_plan_id
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* ─── HERO GRID ─── */
+.t16-hero { background:var(--fdr-cream); width:100%; padding:0; }
+.t16-hero-inner {
+  display:grid; grid-template-columns:1fr 520px; gap:48px;
+  max-width:1280px; margin:0 auto; padding:20px 40px;
+  align-items:flex-start; min-height:88vh; box-sizing:border-box;
+}
+
+/* ══════════════════════════════
+   LEFT  —  IMAGE CAROUSEL
+══════════════════════════════ */
+.t16-carousel-col {
+  background:transparent; display:flex; flex-direction:column;
+  border-radius:20px; overflow:visible; position:sticky; top:20px;
+  max-width:560px; flex-shrink:0;
+}
+.t16-slide-window { width:100%; aspect-ratio:1/1; flex-shrink:0; position:relative; overflow:hidden; }
+.t16-slide {
+  position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  padding:0; opacity:0; transition:opacity .4s ease; pointer-events:none;
+}
+.t16-slide.t16-is-active { opacity:1; pointer-events:auto; }
+.t16-slide img { width:100%; height:100%; object-fit:contain; border-radius:8px; }
+.t16-slide-info {
+  width:100%; height:100%; overflow-y:auto; background:var(--fdr-forest); border-radius:8px;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  padding:clamp(24px,4%,48px) clamp(20px,5%,44px); box-sizing:border-box; text-align:center;
+}
+.t16-si-eyebrow {
+  font-family:var(--fdr-font-body); font-weight:700; font-size:9px;
+  letter-spacing:0.16em; text-transform:uppercase; color:var(--fdr-tennis); margin-bottom:8px;
+}
+.t16-si-headline {
+  font-family:var(--fdr-font-heading); font-weight:900; font-size:clamp(22px,3.2vw,36px);
+  color:#fff; letter-spacing:-0.03em; line-height:1.1; margin-bottom:6px;
+}
+.t16-si-sub {
+  font-family:var(--fdr-font-serif); font-style:italic; font-size:clamp(11px,1.1vw,14px);
+  color:rgba(255,255,255,.55); margin-bottom:clamp(12px,2%,24px); line-height:1.5;
+}
+.t16-si-hr { width:80%; max-width:320px; height:1px; background:rgba(255,255,255,.10); border:none; margin:0 auto clamp(10px,1.5%,18px); }
+.t16-si-list {
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(5px,0.8%,10px) clamp(8px,2%,20px);
+  text-align:left; margin-bottom:clamp(10px,1.5%,18px); width:100%; max-width:380px;
+}
+.t16-si-item {
+  display:flex; align-items:center; gap:6px; font-family:var(--fdr-font-body);
+  font-size:clamp(10px,1vw,13px); color:rgba(255,255,255,.88); line-height:1.3;
+}
+.t16-si-check {
+  width:clamp(16px,1.4vw,20px); height:clamp(16px,1.4vw,20px); background:var(--fdr-tennis);
+  color:var(--fdr-forest); border-radius:50%; display:inline-flex; align-items:center;
+  justify-content:center; font-weight:700; font-size:clamp(9px,.9vw,12px); flex-shrink:0; line-height:1;
+}
+.t16-si-summary {
+  width:80%; max-width:340px; border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--fdr-radius); overflow:hidden; margin-bottom:clamp(8px,1%,14px);
+}
+.t16-si-sum-row {
+  display:flex; justify-content:space-between; align-items:center;
+  padding:clamp(8px,1%,12px) clamp(12px,2%,20px); font-family:var(--fdr-font-body);
+  font-size:clamp(11px,1vw,13px); color:rgba(255,255,255,.50);
+}
+.t16-si-sum-row:first-child { border-bottom:1px solid rgba(255,255,255,.10); background:rgba(255,255,255,.04); }
+.t16-si-sum-row:last-child { background:rgba(255,255,255,.08); color:#fff; }
+.t16-si-sum-val { font-family:var(--fdr-font-heading); font-weight:900; font-size:clamp(12px,1.1vw,14px); letter-spacing:0.06em; text-transform:uppercase; }
+.t16-si-sum-row:last-child .t16-si-sum-val { color:var(--fdr-tennis); }
+.t16-si-link {
+  font-family:var(--fdr-font-body); font-size:clamp(10px,.9vw,12px); color:var(--fdr-tennis);
+  font-weight:600; text-decoration:underline; text-underline-offset:3px;
+  text-decoration-color:rgba(195,245,74,.4); opacity:.85;
+}
+.t16-si-link:hover { opacity:1; text-decoration-color:var(--fdr-tennis); }
+
+/* Thumbnail strip */
+.t16-thumb-strip {
+  display:flex; flex-direction:row; gap:8px; flex-shrink:0; padding:6px 12px 10px;
+  background:transparent; overflow-x:auto; overflow-y:hidden; scrollbar-width:none;
+}
+.t16-thumb-strip::-webkit-scrollbar { display:none; }
+.t16-thumb {
+  flex-shrink:0; width:76px; height:76px; display:flex; align-items:center; justify-content:center;
+  border:2px solid transparent; border-radius:10px; background:#fff; padding:5px; transition:border-color .18s; cursor:pointer;
+}
+.t16-thumb:hover { border-color:var(--fdr-forest); }
+.t16-thumb.t16-is-active { border-color:var(--fdr-forest); }
+.t16-thumb img { width:62px; height:62px; object-fit:cover; border-radius:6px; }
+.t16-thumb span { font-size:9px; font-weight:800; letter-spacing:.8px; text-transform:uppercase; color:var(--fdr-forest); text-align:center; line-height:1.2; }
+
+/* ══════════════════════════════
+   RIGHT  —  BUY BOX
+══════════════════════════════ */
+.t16-buy-col { display:flex; flex-direction:column; justify-content:flex-start; padding:20px 0; overflow-y:auto; }
+
+/* Proof bar */
+.t16-proof-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:0; margin-bottom:12px; }
+.t16-stars { color:var(--fdr-amber); font-size:14px; letter-spacing:2px; line-height:1; flex-shrink:0; }
+.t16-proof-dot { color:var(--fdr-muted); font-size:14px; flex-shrink:0; }
+.t16-proof-stat { font-family:var(--fdr-font-body); font-weight:700; font-size:14px; color:var(--fdr-forest); white-space:nowrap; flex-shrink:0; }
+
+/* Title */
+.t16-product-h1 { display:flex; flex-direction:column; gap:2px; color:var(--fdr-forest); letter-spacing:-1px; line-height:1.05; margin-bottom:6px; }
+.t16-product-h1-offer { font-size:13px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--fdr-muted); }
+.t16-product-h1-value { font-size:36px; font-weight:900; font-family:var(--fdr-font-heading); letter-spacing:-1.5px; color:var(--fdr-forest); line-height:1.0; }
+.t16-product-sub { font-size:12px; font-weight:700; letter-spacing:1.2px; text-transform:uppercase; color:var(--fdr-muted); margin-bottom:8px; }
+.t16-product-pitch { font-family:var(--fdr-font-serif); font-style:italic; font-weight:300; font-size:15.5px; color:var(--fdr-muted); line-height:1.6; margin-bottom:22px; max-width:400px; }
+.t16-product-pitch p { margin:0; }
+
+/* Field label */
+.t16-field-label {
+  font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+  color:var(--fdr-muted); margin-bottom:9px; display:flex; align-items:center; gap:8px;
+}
+.t16-field-label::after { content:''; flex:1; height:1px; background:var(--fdr-rule); }
+
+/* Stock alert */
+.t16-stock-alert {
+  display:flex; align-items:center; gap:8px; font-size:12px; color:var(--fdr-muted);
+  font-weight:600; margin-bottom:14px; margin-top:6px;
+}
+.t16-stock-dot { width:7px; height:7px; border-radius:50%; background:#E55000; flex-shrink:0; animation:t16-pulse-dot 1.6s ease-in-out infinite; }
+@keyframes t16-pulse-dot { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)} }
+
+/* CTA */
+.t16-cta-main {
+  width:100%; background:var(--fdr-green); color:#fff; font-family:var(--fdr-font-heading);
+  font-weight:900; font-size:17px; text-transform:uppercase; letter-spacing:-.5px;
+  padding:18px 22px; border-radius:100px; border:none; display:flex; align-items:center;
+  justify-content:center; text-align:center; transition:all .25s; margin-bottom:10px;
+  position:relative; overflow:hidden; cursor:pointer;
+}
+.t16-cta-main::after { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(255,255,255,.1) 0%,transparent 55%); pointer-events:none; }
+.t16-cta-main:hover { background:var(--fdr-forest); transform:translateY(-2px); }
+.t16-cta-arrow { display:inline-block; vertical-align:middle; margin-left:7px; flex-shrink:0; position:relative; top:-1px; }
+
+/* Guarantee */
+.t16-guarantee {
+  display:flex; align-items:center; gap:11px; background:var(--fdr-pale);
+  border:1.5px solid rgba(0,204,59,.25); border-radius:var(--fdr-radius); padding:12px 14px;
+}
+.t16-g-mark { width:34px; height:34px; object-fit:contain; flex-shrink:0; }
+.t16-g-text b { display:block; font-size:13px; font-weight:700; color:var(--fdr-forest); margin-bottom:2px; }
+.t16-g-text p { font-size:11px; color:var(--fdr-muted); line-height:1.4; }
+
+/* FAQ Accordion */
+.t16-faq { margin-top:16px; }
+.t16-faq--buy { display:none; }
+.t16-faq-item { border:1.5px solid var(--fdr-rule); border-radius:var(--fdr-radius); background:var(--fdr-cream); overflow:hidden; transition:border-color .2s; }
+.t16-faq-item + .t16-faq-item { margin-top:6px; }
+.t16-faq-item.t16-is-open { border-color:var(--fdr-forest); }
+.t16-faq-btn { width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px; padding:13px 16px; background:transparent; border:none; font-family:var(--fdr-font-body); font-size:13.5px; font-weight:700; color:var(--fdr-ink); text-align:left; cursor:pointer; }
+.t16-faq-chevron { flex-shrink:0; width:18px; height:18px; color:var(--fdr-forest); transition:transform .25s ease; }
+.t16-faq-item.t16-is-open .t16-faq-chevron { transform:rotate(180deg); }
+.t16-faq-body { max-height:0; overflow:hidden; transition:max-height .3s ease; }
+.t16-faq-body-inner { padding:0 16px 14px; font-size:13px; line-height:1.65; color:var(--fdr-muted); }
+.t16-faq-body-inner a { color:var(--fdr-forest); font-weight:700; }
+
+/* ─── STICKY ATC BAR ─── */
+.t16-atc-bar {
+  position:fixed; bottom:0; left:0; right:0; z-index:999; background:var(--fdr-forest);
+  border-top:1px solid rgba(255,255,255,0.10); box-shadow:0 -4px 24px rgba(0,0,0,0.20);
+  padding-bottom:env(safe-area-inset-bottom); opacity:0; transform:translateY(100%);
+  transition:opacity .25s ease, transform .25s ease; pointer-events:none;
+}
+.t16-atc-bar.t16-atc-visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.t16-atc-inner { max-width:1100px; margin:0 auto; padding:0 32px; height:82px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.t16-atc-left { flex:0 0 auto; display:flex; align-items:center; gap:12px; min-width:0; }
+.t16-atc-spacer { flex:1; }
+.t16-atc-icon { width:36px; height:36px; flex-shrink:0; object-fit:contain; }
+.t16-atc-text { min-width:0; }
+.t16-atc-name { font-family:var(--fdr-font-heading); font-weight:900; font-size:14px; color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.t16-atc-name-price { font-family:var(--fdr-font-heading); font-weight:700; font-size:14px; color:rgba(255,255,255,0.80); }
+.t16-atc-desc { font-family:var(--fdr-font-body); font-weight:400; font-size:12px; color:rgba(255,255,255,0.50); white-space:nowrap; }
+.t16-atc-btn { flex-shrink:0; background:var(--fdr-green); color:#fff; border:none; border-radius:100px; font-family:var(--fdr-font-body); font-weight:800; font-size:14px; letter-spacing:0.02em; padding:14px 28px; white-space:nowrap; cursor:pointer; transition:background .15s ease; }
+.t16-atc-btn:hover { background:#00b534; }
+.t16-atc-btn-m { display:none; }
+.t16-atc-flavors { flex-shrink:0; display:flex; flex-direction:row; align-items:center; gap:6px; }
+.t16-atc-fpill { display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.18); border-radius:100px; padding:5px 10px; font-family:var(--fdr-font-body); font-weight:600; font-size:11px; color:rgba(255,255,255,.55); cursor:pointer; white-space:nowrap; transition:all .15s ease; }
+.t16-atc-fpill.active { background:rgba(255,255,255,.15); border-color:rgba(255,255,255,.60); color:#fff; }
+.t16-atc-fdot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+
+/* ── RESPONSIVE ── */
+@media(max-width:960px) {
+  .t16-hero-inner { grid-template-columns:1fr; padding:0 16px 32px; gap:0; min-height:auto; }
+  .t16-carousel-col { position:relative; height:auto; border-radius:0; top:0; border-bottom:1px solid var(--fdr-rule); min-width:0; max-width:100%; }
+  .t16-buy-col { max-width:100%; padding:24px 0 0 0; }
+  .t16-faq--carousel { display:none; }
+  .t16-faq--buy { display:block; }
+  .t16-slide-window { flex:none; width:100%; height:100vw; max-height:100vw; min-height:unset; }
+  .t16-thumb-strip { padding:10px 12px 12px; }
+  .t16-thumb { width:70px; height:70px; padding:6px; }
+  .t16-thumb img { width:54px; height:54px; }
+  .t16-product-h1 { order:-3; }
+  .t16-product-sub { order:-2; }
+  .t16-proof-bar { order:-1; margin-top:10px; margin-bottom:10px; }
+  .t16-product-pitch { margin-top:8px; }
+}
+@media(max-width:640px) {
+  .t16-atc-inner { height:auto; padding:10px 16px 12px; display:flex; align-items:center; justify-content:space-between; gap:10px; width:100%; box-sizing:border-box; }
+  .t16-atc-left { display:none; }
+  .t16-atc-spacer { display:none; }
+  .t16-atc-flavors { flex-direction:column; gap:5px; flex-shrink:0; }
+  .t16-atc-fpill { font-size:11px; padding:5px 10px; min-width:80px; }
+  .t16-atc-btn { flex:none; border-radius:100px; font-size:13px; padding:12px 16px; text-align:center; white-space:nowrap; display:block; }
+  .t16-atc-btn-d { display:none; }
+  .t16-atc-btn-m { display:inline; }
+}
+@media(min-width:641px) and (max-width:960px) { .t16-atc-desc { display:none; } }
+
+/* ══════════════════════════════
+   SUBSCRIPTION SELECTOR
+══════════════════════════════ */
+
+/* Flavor circles */
+.t32-flavor-row { display:flex; gap:14px; margin-bottom:20px; }
+.t32-flavor-btn { display:flex; flex-direction:column; align-items:center; gap:5px; cursor:pointer; background:none; border:none; padding:0; }
+.t32-flavor-circle {
+  width:54px; height:54px; border-radius:50%; background:#C8D8DC;
+  display:flex; align-items:center; justify-content:center;
+  border:3px solid transparent; transition:background .15s;
+}
+.t32-flavor-circle img { width:28px; height:28px; object-fit:contain; opacity:.45; transition:opacity .15s; }
+.t32-flavor-btn.t32-active .t32-flavor-circle { background:#F5A623; }
+.t32-flavor-btn.t32-active .t32-flavor-circle img { opacity:1; }
+.t32-flavor-label { font-size:12px; font-weight:600; color:var(--fdr-ink); font-family:var(--fdr-font-body); }
+
+/* Life stage */
+.t32-age-row { display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-bottom:6px; }
+.t32-age-btn {
+  padding:10px 6px; border:1.5px solid rgba(0,80,5,.18); border-radius:8px;
+  background:#fff; cursor:pointer; font-size:13px; font-weight:700;
+  color:var(--fdr-ink); text-align:center; line-height:1.3; font-family:var(--fdr-font-body);
+  transition:background .15s, border-color .15s, color .15s;
+}
+.t32-age-btn .t32-age-sub { display:block; font-size:11px; font-weight:400; color:var(--fdr-muted); margin-top:2px; }
+.t32-age-btn.t32-active { background:var(--fdr-forest); border-color:var(--fdr-forest); color:#fff; }
+.t32-age-btn.t32-active .t32-age-sub { color:rgba(255,255,255,.7); }
+.t32-age-note { font-size:11px; color:var(--fdr-muted); min-height:16px; margin-bottom:14px; }
+
+/* Dog size swatches */
+.t32-size-row { display:grid; grid-template-columns:repeat(5,1fr); gap:6px; margin-bottom:8px; }
+.t32-size-btn {
+  padding:10px 4px; border:1.5px solid rgba(0,80,5,.18); border-radius:8px;
+  background:#fff; cursor:pointer; font-size:10px; font-weight:700;
+  color:var(--fdr-ink); text-align:center; line-height:1.35; font-family:var(--fdr-font-body);
+  transition:background .15s, border-color .15s, color .15s;
+}
+.t32-size-btn.t32-active { background:var(--fdr-forest); border-color:var(--fdr-forest); color:#fff; }
+.t32-size-btn.t32-disabled { opacity:.35; cursor:not-allowed; pointer-events:none; }
+.t32-size-meta { font-size:12px; color:var(--fdr-muted); margin-bottom:2px; text-align:left; min-height:18px; }
+.t32-meal-disc { font-size:10px; color:var(--fdr-muted); opacity:.75; margin-bottom:6px; line-height:1.4; }
+
+/* Feeding guide */
+.t32-fg-row { margin-bottom:14px; }
+.t32-fg-row button { background:none; border:none; font-size:13px; color:var(--fdr-forest); text-decoration:underline; cursor:pointer; font-family:var(--fdr-font-body); font-weight:500; padding:0; }
+.t32-fg-panel { display:none; border:1px solid rgba(0,80,5,.18); border-radius:10px; overflow:hidden; margin-bottom:16px; background:#fff; }
+.t32-fg-panel.t32-open { display:block; }
+.t32-fg-note { font-size:11px; color:var(--fdr-muted); padding:10px 14px; border-bottom:1px solid rgba(0,80,5,.1); font-style:italic; }
+.t32-fg-tabs { display:grid; grid-template-columns:1fr 1fr; border-bottom:1px solid rgba(0,80,5,.1); }
+.t32-fg-tab { padding:9px; text-align:center; font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; cursor:pointer; background:none; border:none; font-family:var(--fdr-font-body); color:var(--fdr-muted); transition:background .15s, color .15s; }
+.t32-fg-tab.t32-active { background:var(--fdr-forest); color:#fff; }
+.t32-fg-table-wrap { overflow-x:auto; }
+.t32-fg-table { width:100%; border-collapse:collapse; font-size:11px; font-family:var(--fdr-font-body); }
+.t32-fg-table thead tr { background:rgba(232,223,201,.5); }
+.t32-fg-table thead th { padding:8px 10px; text-align:center; font-size:10px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:var(--fdr-muted); border-bottom:1px solid rgba(0,80,5,.12); }
+.t32-fg-table thead th.t32-col-adult { color:var(--fdr-forest); }
+.t32-fg-table thead th:first-child { text-align:left; }
+.t32-fg-table tbody tr { border-bottom:1px solid rgba(0,80,5,.07); }
+.t32-fg-table tbody tr:last-child { border-bottom:none; }
+.t32-fg-table tbody tr.t32-hl { background:rgba(0,80,5,.04); }
+.t32-fg-table tbody td { padding:7px 10px; text-align:center; color:var(--fdr-muted); }
+.t32-fg-table tbody td:first-child { text-align:left; font-weight:600; color:var(--fdr-ink); }
+.t32-fg-table .t32-td-adult { color:var(--fdr-forest); }
+.t32-fg-table .t32-td-na { color:var(--fdr-muted); opacity:.6; font-size:10px; }
+
+/* Subscribe / Buy-once cards */
+.t32-sub-card {
+  background:#fff; border:1.5px solid rgba(0,80,5,.18); border-radius:12px;
+  padding:14px 16px; margin-bottom:10px; cursor:pointer;
+  transition:border-color .15s;
+}
+.t32-sub-card.t32-plan-active { border-color:var(--fdr-forest); }
+.t32-sub-card.t32-plan-inactive { opacity:.55; }
+.t32-sub-card.t32-plan-inactive .t32-radio-filled { border-color:var(--fdr-muted); }
+.t32-sub-card.t32-plan-inactive .t32-radio-filled::after { background:transparent; }
+
+.t32-card-top { display:flex; align-items:flex-start; gap:10px; margin-bottom:12px; }
+.t32-radio-filled { width:18px; height:18px; border-radius:50%; border:2px solid var(--fdr-forest); display:flex; align-items:center; justify-content:center; flex-shrink:0; margin-top:2px; }
+.t32-radio-filled::after { content:''; width:8px; height:8px; border-radius:50%; background:var(--fdr-forest); }
+.t32-title-wrap { flex:1; }
+.t32-card-title { font-size:14px; font-weight:800; color:var(--fdr-ink); line-height:1.3; font-family:var(--fdr-font-body); }
+.t32-card-sub { font-size:11px; font-weight:500; color:var(--fdr-muted); margin-top:2px; line-height:1.35; font-family:var(--fdr-font-body); }
+.t32-best-badge { background:var(--fdr-tennis); color:#1a4d1f; font-size:10px; font-weight:800; letter-spacing:.08em; text-transform:uppercase; padding:3px 7px; border-radius:4px; white-space:nowrap; flex-shrink:0; align-self:flex-start; }
+
+.t32-freq-row { display:flex; align-items:center; margin-left:28px; margin-bottom:12px; }
+.t32-freq-static { font-size:12px; font-weight:500; color:var(--fdr-muted); font-family:var(--fdr-font-body); }
+.t32-price-right { margin-left:auto; text-align:right; }
+.t32-price-now { font-size:16px; font-weight:800; color:var(--fdr-forest); }
+.t32-price-was { font-size:13px; color:var(--fdr-muted); text-decoration:line-through; margin-left:3px; }
+.t32-price-meal { display:block; font-size:11px; color:var(--fdr-muted); margin-top:1px; }
+
+.t32-benefits { margin-left:28px; display:flex; flex-direction:column; gap:5px; }
+.t32-benefit { display:flex; align-items:center; gap:7px; font-size:12px; color:var(--fdr-muted); line-height:1.3; font-family:var(--fdr-font-body); }
+.t32-bdot { width:14px; height:14px; border-radius:50%; background:var(--fdr-forest); display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:8px; color:#fff; font-weight:900; }
+.t32-benefit .t32-hl { color:var(--fdr-forest); font-weight:600; }
+
+/* Buy once */
+.t32-buy-once {
+  background:#fff; border:1.5px solid rgba(0,80,5,.12); border-radius:12px;
+  padding:14px 16px; display:flex; align-items:center; justify-content:space-between;
+  margin-bottom:14px; cursor:pointer; transition:border-color .15s;
+}
+.t32-buy-once.t32-plan-active { border-color:var(--fdr-forest); }
+.t32-buy-once-left { display:flex; align-items:center; gap:10px; }
+.t32-radio-empty { width:18px; height:18px; border-radius:50%; border:2px solid var(--fdr-muted); flex-shrink:0; position:relative; }
+.t32-buy-once.t32-plan-active .t32-radio-empty { border-color:var(--fdr-forest); }
+.t32-buy-once.t32-plan-active .t32-radio-empty::after { content:''; position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); width:8px; height:8px; border-radius:50%; background:var(--fdr-forest); }
+.t32-buy-once-label { font-size:14px; color:var(--fdr-muted); font-weight:500; font-family:var(--fdr-font-body); }
+.t32-buy-once-right { text-align:right; }
+.t32-buy-once-price { display:block; font-size:14px; font-weight:700; color:var(--fdr-muted); }
+.t32-buy-once-meal { display:block; font-size:11px; color:var(--fdr-muted); opacity:.7; margin-top:1px; }
+
+/* Guarantee box */
+.t32-guarantee-box { background:#DCEFC8; border:1px solid #B8DA9E; border-radius:10px; padding:10px 14px; margin-top:4px; }
+.t32-guarantee-title { font-size:13px; font-weight:700; color:#1a4d1f; margin-bottom:2px; font-family:var(--fdr-font-body); }
+.t32-guarantee-sub { font-size:12px; color:#2a5a30; line-height:1.4; font-family:var(--fdr-font-body); }
+
+@media(max-width:480px) {
+  .t32-size-btn { font-size:9px; padding:8px 2px; }
+  .t32-flavor-circle { width:46px; height:46px; }
+  .t32-flavor-circle img { width:22px; height:22px; }
+}
+</style>
+
+<section class="t16-hero" id="hero">
+  <div class="t16-hero-inner">
+
+    {%- comment -%} ===== LEFT: CAROUSEL ===== {%- endcomment -%}
+    <div class="t16-carousel-col">
+
+      <div class="t16-slide-window" id="fdr32ozSlideWindow">
+        {%- assign slide_index = 0 -%}
+        {%- for image in product.images -%}
+          {%- if slide_index == infographic_slide_index -%}
+            <div class="t16-slide{% if infographic_slide_index == 0 %} t16-is-active{% endif %}" data-slide="{{ infographic_slide_index }}">
+              <div class="t16-slide-info">
+                {%- if si_eyebrow != blank -%}<p class="t16-si-eyebrow">{{ si_eyebrow }}</p>{%- endif -%}
+                {%- if si_headline != blank -%}<h3 class="t16-si-headline">{{ si_headline }}</h3>{%- endif -%}
+                {%- if si_sub != blank -%}<p class="t16-si-sub">{{ si_sub }}</p>{%- endif -%}
+                <hr class="t16-si-hr">
+                <div class="t16-si-list">
+                  {%- for block in section.blocks -%}
+                    {%- if block.type == 'supplement_item' -%}
+                      <div class="t16-si-item" {{ block.shopify_attributes }}><span class="t16-si-check">&#x2713;</span> {{ block.settings.label }}</div>
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+                <hr class="t16-si-hr">
+                <div class="t16-si-summary">
+                  <div class="t16-si-sum-row"><span>Your supplement cabinet</span><span class="t16-si-sum-val">9 Products</span></div>
+                  <div class="t16-si-sum-row"><span><strong>Get Joy</strong></span><span class="t16-si-sum-val">1 Bag</span></div>
+                </div>
+                {%- if si_link_text != blank -%}<a class="t16-si-link" href="{{ si_link_url | default: '#ingredients-section' }}">{{ si_link_text }}</a>{%- endif -%}
+              </div>
+            </div>
+            {%- assign slide_index = slide_index | plus: 1 -%}
+          {%- endif -%}
+
+          <div class="t16-slide{% if slide_index == 0 %} t16-is-active{% endif %}" data-slide="{{ slide_index }}" data-image-id="{{ image.id }}">
+            <img
+              src="{{ image | image_url: width: 800 }}"
+              alt="{{ image.alt | escape }}"
+              width="800" height="800"
+              {% if slide_index == 0 %}loading="eager"{% else %}loading="lazy"{% endif %}
+            >
+          </div>
+          {%- assign slide_index = slide_index | plus: 1 -%}
+        {%- endfor -%}
+
+        {%- if infographic_slide_index >= product.images.size -%}
+          <div class="t16-slide" data-slide="{{ slide_index }}">
+            <div class="t16-slide-info">
+              {%- if si_eyebrow != blank -%}<p class="t16-si-eyebrow">{{ si_eyebrow }}</p>{%- endif -%}
+              {%- if si_headline != blank -%}<h3 class="t16-si-headline">{{ si_headline }}</h3>{%- endif -%}
+              {%- if si_sub != blank -%}<p class="t16-si-sub">{{ si_sub }}</p>{%- endif -%}
+              <hr class="t16-si-hr">
+              <div class="t16-si-list">
+                {%- for block in section.blocks -%}
+                  {%- if block.type == 'supplement_item' -%}
+                    <div class="t16-si-item" {{ block.shopify_attributes }}><span class="t16-si-check">&#x2713;</span> {{ block.settings.label }}</div>
+                  {%- endif -%}
+                {%- endfor -%}
+              </div>
+              <hr class="t16-si-hr">
+              <div class="t16-si-summary">
+                <div class="t16-si-sum-row"><span>Your supplement cabinet</span><span class="t16-si-sum-val">9 Products</span></div>
+                <div class="t16-si-sum-row"><span><strong>Get Joy</strong></span><span class="t16-si-sum-val">1 Bag</span></div>
+              </div>
+              {%- if si_link_text != blank -%}<a class="t16-si-link" href="{{ si_link_url | default: '#ingredients-section' }}">{{ si_link_text }}</a>{%- endif -%}
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Thumbnail strip {%- endcomment -%}
+      <div class="t16-thumb-strip" id="fdr32ozThumbStrip">
+        {%- assign thumb_index = 0 -%}
+        {%- for image in product.images -%}
+          {%- if thumb_index == infographic_slide_index -%}
+            <button class="t16-thumb{% if infographic_slide_index == 0 %} t16-is-active{% endif %}" data-slide="{{ infographic_slide_index }}" aria-label="Replaces 9 Supplements">
+              <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/replace9supps.png?v=1774970809" alt="Replaces 9 Supplements" width="62" height="62" loading="lazy">
+            </button>
+            {%- assign thumb_index = thumb_index | plus: 1 -%}
+          {%- endif -%}
+          <button class="t16-thumb{% if thumb_index == 0 %} t16-is-active{% endif %}" data-slide="{{ thumb_index }}" aria-label="{{ image.alt | escape | default: 'Product image' }}">
+            <img src="{{ image | image_url: width: 120 }}" alt="{{ image.alt | escape }}" width="62" height="62" loading="lazy">
+          </button>
+          {%- assign thumb_index = thumb_index | plus: 1 -%}
+        {%- endfor -%}
+        {%- if infographic_slide_index >= product.images.size -%}
+          <button class="t16-thumb" data-slide="{{ thumb_index }}" aria-label="Replaces 9 Supplements">
+            <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/replace9supps.png?v=1774970809" alt="Replaces 9 Supplements" width="62" height="62" loading="lazy">
+          </button>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} FAQ — desktop only (left column) {%- endcomment -%}
+      <div class="t16-faq t16-faq--carousel">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq_item' -%}
+            <div class="t16-faq-item" {{ block.shopify_attributes }}>
+              <button class="t16-faq-btn" aria-expanded="false">
+                {{ block.settings.question }}
+                <svg class="t16-faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 8 10 13 15 8"/></svg>
+              </button>
+              <div class="t16-faq-body"><div class="t16-faq-body-inner">{{ block.settings.answer }}</div></div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>{%- comment -%} /carousel-col {%- endcomment -%}
+
+    {%- comment -%} ===== RIGHT: BUY BOX ===== {%- endcomment -%}
+    <div class="t16-buy-col" id="buy-box-32oz">
+
+      {%- comment -%} Proof bar {%- endcomment -%}
+      <div class="t16-proof-bar">
+        <span class="t16-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        {%- if proof_text != blank -%}
+          {%- assign proof_parts = proof_text | split: '|' -%}
+          {%- for part in proof_parts -%}
+            <span class="t16-proof-dot">&middot;</span>
+            <span class="t16-proof-stat">{{ part | strip }}</span>
+          {%- endfor -%}
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Title {%- endcomment -%}
+      <h1 class="t16-product-h1">
+        {%- if eyebrow != blank -%}<span class="t16-product-h1-offer">{{ eyebrow }}</span>{%- endif -%}
+        <span class="t16-product-h1-value">
+          {%- if heading != blank -%}{{ heading }}{%- else -%}{{ product.title }}{%- endif -%}
+        </span>
+      </h1>
+      {%- if subtitle != blank -%}<p class="t16-product-sub">{{ subtitle }}</p>{%- endif -%}
+      {%- if pitch != blank -%}<div class="t16-product-pitch">{{ pitch }}</div>{%- endif -%}
+
+      {%- comment -%} ── SUBSCRIPTION SELECTOR ── {%- endcomment -%}
+
+      {%- if step_1_label != blank -%}
+        <div class="t16-field-label">{{ step_1_label }}</div>
+      {%- endif -%}
+
+      {%- comment -%} Flavor {%- endcomment -%}
+      <div class="t32-flavor-row" id="t32FlavorRow">
+        {%- for variant in product.variants -%}
+          <button
+            class="t32-flavor-btn{% if variant == current_variant %} t32-active{% endif %}"
+            data-flavor="{{ variant.option1 | downcase }}"
+            data-variant-id="{{ variant.id }}"
+            data-image-id="{{ variant.featured_image.id | default: '' }}"
+            type="button"
+          >
+            <div class="t32-flavor-circle">
+              {%- if variant.option1 == 'Beef' -%}
+                <img src="https://getjoyfood.com/cdn/shop/files/beef_e086530b-834d-489c-b5a8-5e7e0e7fdf63.svg?v=10005116391183757552" alt="Beef">
+              {%- elsif variant.option1 == 'Chicken' -%}
+                <img src="https://getjoyfood.com/cdn/shop/files/chicken_9bb3922a-734d-40bd-acac-196b1907e92d.svg?v=10169312193510481245" alt="Chicken">
+              {%- else -%}
+                <img src="{{ variant.featured_image | image_url: width: 56 }}" alt="{{ variant.option1 }}">
+              {%- endif -%}
+            </div>
+            <span class="t32-flavor-label">{{ variant.option1 }}</span>
+          </button>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} Life stage {%- endcomment -%}
+      {%- if step_2_label != blank -%}
+        <div class="t16-field-label">{{ step_2_label }}</div>
+      {%- endif -%}
+      <div class="t32-age-row">
+        <button class="t32-age-btn t32-active" data-age="adult" type="button">
+          Adult
+          <span class="t32-age-sub">1 year +</span>
+        </button>
+        <button class="t32-age-btn" data-age="puppy" type="button">
+          Puppy
+          <span class="t32-age-sub">Under 1 year</span>
+        </button>
+      </div>
+      <div class="t32-age-note" id="t32AgeNote"></div>
+
+      {%- comment -%} Dog size {%- endcomment -%}
+      <div class="t16-field-label">Dog size</div>
+      <div class="t32-size-row">
+        <button class="t32-size-btn t32-active" data-size="s"  type="button">Under<br>20 lbs</button>
+        <button class="t32-size-btn"             data-size="ms" type="button">20–35<br>lbs</button>
+        <button class="t32-size-btn"             data-size="m"  type="button">35–55<br>lbs</button>
+        <button class="t32-size-btn"             data-size="l"  type="button">55–75<br>lbs</button>
+        <button class="t32-size-btn"             data-size="xl" type="button">75+<br>lbs</button>
+      </div>
+      <div class="t32-size-meta" id="t32SizeMeta">2 bags · lasts your dog ~27 days</div>
+      <div class="t32-meal-disc">Based on 2 meals/day per our feeding guide for your dog's size</div>
+
+      {%- comment -%} Feeding guide toggle {%- endcomment -%}
+      <div class="t32-fg-row">
+        <button type="button" id="t32FGBtn" onclick="t32ToggleFG(this)">Feeding Guide</button>
+      </div>
+      <div class="t32-fg-panel" id="t32FGPanel">
+        <div class="t32-fg-note">The chart below can be used for general feeding estimates.</div>
+        <div class="t32-fg-tabs">
+          <button class="t32-fg-tab t32-active" type="button" onclick="t32SetFGTab('chicken',this)">CHICKEN</button>
+          <button class="t32-fg-tab" type="button" onclick="t32SetFGTab('beef',this)">BEEF</button>
+        </div>
+        <div class="t32-fg-table-wrap">
+          <table class="t32-fg-table">
+            <thead>
+              <tr>
+                <th>Dog Weight</th>
+                <th class="t32-col-adult">Adult<br>Cups/Day</th>
+                <th class="t32-col-adult">Adult<br>Bags/Mo</th>
+                <th>Puppy<br>Cups/Day</th>
+                <th>Puppy<br>Bags/Mo</th>
+              </tr>
+            </thead>
+            <tbody id="t32FGBody"></tbody>
+          </table>
+        </div>
+      </div>
+
+      {%- comment -%} Subscribe card {%- endcomment -%}
+      <div class="t32-sub-card t32-plan-active" id="t32SubCard" onclick="t32SetPlan('sub')">
+        <div class="t32-card-top">
+          <div class="t32-radio-filled"></div>
+          <div class="t32-title-wrap">
+            <div class="t32-card-title">Subscribe &amp; Save</div>
+            <div class="t32-card-sub">50% off first order · 10% off every refill</div>
+          </div>
+          <div class="t32-best-badge">BEST VALUE</div>
+        </div>
+        <div class="t32-freq-row">
+          <div class="t32-freq-static">Ships every 4 weeks</div>
+          <div class="t32-price-right">
+            <span class="t32-price-now" id="t32PriceNow">—</span>
+            <span class="t32-price-was" id="t32PriceWas"></span>
+            <span class="t32-price-meal" id="t32PriceMeal"></span>
+          </div>
+        </div>
+        <div class="t32-benefits">
+          <div class="t32-benefit"><div class="t32-bdot">✓</div><span>Best Value: <span class="t32-hl">50% off your first order</span></span></div>
+          <div class="t32-benefit"><div class="t32-bdot">✓</div><span>Flexible: <span class="t32-hl">Pause, edit, or cancel anytime</span></span></div>
+          <div class="t32-benefit"><div class="t32-bdot">✓</div><span>Risk Free: <span class="t32-hl">30-day money back guarantee</span></span></div>
+          <div class="t32-benefit"><div class="t32-bdot">✓</div><span><b>New customers only</b></span></div>
+        </div>
+      </div>
+
+      {%- comment -%} Buy once {%- endcomment -%}
+      <div class="t32-buy-once" id="t32BuyOnce" onclick="t32SetPlan('once')">
+        <div class="t32-buy-once-left">
+          <div class="t32-radio-empty"></div>
+          <span class="t32-buy-once-label">Buy Once</span>
+        </div>
+        <div class="t32-buy-once-right">
+          <span class="t32-buy-once-price" id="t32OncePriceAmt">—</span>
+          <span class="t32-buy-once-meal" id="t32OnceMeal"></span>
+        </div>
+      </div>
+
+      {%- if stock_text != blank -%}
+        <div class="t16-stock-alert">
+          <span class="t16-stock-dot"></span>
+          <span>{{ stock_text }}</span>
+        </div>
+      {%- endif -%}
+
+      {%- comment -%} ATC form {%- endcomment -%}
+      {%- form 'product', product, id: 'fdr-32oz-hero-atc-form', novalidate: 'novalidate' -%}
+        <input type="hidden" name="id" id="fdr32ozVariantId" value="{{ current_variant.id }}">
+        <input type="hidden" name="quantity" id="fdr32ozQty" value="2">
+        <input type="hidden" name="selling_plan" id="fdr32ozSellingPlan" value="{{ selling_plan_id }}">
+        <button
+          type="submit"
+          name="add"
+          class="t16-cta-main"
+          id="fdr32ozCta"
+          {% unless current_variant.available %}disabled{% endunless %}
+        >
+          <span id="fdr32ozCtaText">
+            {%- if current_variant.available -%}
+              {{ cta_text | default: 'Add to Cart' }}
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </span>
+          <svg class="t16-cta-arrow" width="18" height="13" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+      {%- endform -%}
+
+      {%- comment -%} Guarantee {%- endcomment -%}
+      <div class="t32-guarantee-box">
+        <div class="t32-guarantee-title">30-Day Money-Back Guarantee</div>
+        <div class="t32-guarantee-sub">Not a hit? We refund every penny — no questions, no hoops, no hassle.</div>
+      </div>
+
+      {%- comment -%} FAQ — mobile only (right column) {%- endcomment -%}
+      <div class="t16-faq t16-faq--buy">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'faq_item' -%}
+            <div class="t16-faq-item" {{ block.shopify_attributes }}>
+              <button class="t16-faq-btn" aria-expanded="false">
+                {{ block.settings.question }}
+                <svg class="t16-faq-chevron" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="5 8 10 13 15 8"/></svg>
+              </button>
+              <div class="t16-faq-body"><div class="t16-faq-body-inner">{{ block.settings.answer }}</div></div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+    </div>{%- comment -%} /buy-col {%- endcomment -%}
+
+  </div>{%- comment -%} /hero-inner {%- endcomment -%}
+</section>
+
+{%- comment -%} Sticky ATC bar {%- endcomment -%}
+<div class="t16-atc-bar" id="fdr32ozAtcBar">
+  <div class="t16-atc-inner">
+    <div class="t16-atc-left">
+      {%- if product.featured_image -%}
+        <img class="t16-atc-icon" src="{{ product.featured_image | image_url: width: 72 }}" alt="{{ product.title | escape }}" width="36" height="36" loading="lazy">
+      {%- endif -%}
+      <div class="t16-atc-text">
+        <div class="t16-atc-name">{{ product.title }} <span class="t16-atc-name-price" id="t32AtcPrice"></span></div>
+        <div class="t16-atc-desc" id="t32AtcDesc">Subscribe &amp; Save · 50% off first order</div>
+      </div>
+    </div>
+    <div class="t16-atc-spacer"></div>
+    <div class="t16-atc-flavors" id="t32AtcFlavors">
+      {%- for variant in product.variants -%}
+        <button
+          class="t16-atc-fpill{% if variant == current_variant %} active{% endif %}"
+          data-variant-id="{{ variant.id }}"
+          data-flavor="{{ variant.option1 | downcase }}"
+          type="button"
+        >
+          <span class="t16-atc-fdot" style="background:{%- if variant.option1 == 'Chicken' -%}#5EDBFF{%- elsif variant.option1 == 'Beef' -%}#FFAF00{%- else -%}#00CC3B{%- endif -%}"></span>
+          {{ variant.option1 }}
+        </button>
+      {%- endfor -%}
+    </div>
+    <button type="button" class="t16-atc-btn" id="fdr32ozAtcBtn">
+      <span class="t16-atc-btn-d" id="t32AtcBtnText">{{ cta_text | default: 'Add to Cart' }}</span>
+      <span class="t16-atc-btn-m">Add</span>
+    </button>
+  </div>
+</div>
+
+<script defer>
+(function() {
+  var SECTION_ID  = {{ section.id | json }};
+  var SECTION_SEL = '#shopify-section-' + SECTION_ID + ' ';
+
+  /* ── Liquid-injected data ── */
+  var VARIANTS = {};
+  {%- for variant in product.variants -%}
+    VARIANTS[{{ variant.option1 | downcase | json }}] = {
+      id: {{ variant.id }},
+      imageId: {{ variant.featured_image.id | default: '' | json }}
+    };
+  {%- endfor -%}
+
+  var PER_BAG     = {{ product.variants.first.price | divided_by: 100.0 }};
+  var FIRST_OFF   = 0.50;
+  var SELLING_PLAN_ID = {{ selling_plan_id | default: '' | json }};
+
+  /* ── Selector state ── */
+  var state = {
+    flavor: {{ current_variant.option1 | downcase | json }},
+    age: 'adult',
+    size: 's',
+    plan: 'sub'
+  };
+
+  /* ── Size / feeding data (calibrated from GetJoy feeding guide) ── */
+  var SIZES = {
+    s:  { adult: 2,  puppy: 4,  days: { adult: 27, puppy: 28 } },
+    ms: { adult: 4,  puppy: 8,  days: { adult: 28, puppy: 28 } },
+    m:  { adult: 6,  puppy: 13, days: { adult: 28, puppy: 28 } },
+    l:  { adult: 8,  puppy: 15, days: { adult: 29, puppy: 29 } },
+    xl: { adult: 10, puppy: 22, days: { adult: 30, puppy: 30 } }
+  };
+
+  /* ── Feeding guide data per flavor ── */
+  var FG_DATA = {
+    chicken: [
+      ['5 lbs',  '½',   '1.3', '1',   '2.6'],
+      ['10 lbs', '¾',   '1.9', '1½', '3.9'],
+      ['15 lbs', '1',   '2.6', '2',   '5.2'],
+      ['20 lbs', '1¼', '3.2', '2½', '6.5', 'hl'],
+      ['30 lbs', '1¾', '4.5', '3½', '9.0'],
+      ['40 lbs', '2¼', '5.8', '4½', '11.6'],
+      ['50 lbs', '2¾', '7.1', '5½', '14.2', 'hl'],
+      ['60 lbs', '3',   '7.7', '6',   '15.5'],
+      ['70 lbs', '3½', '9.0', 'max', null, 'hl'],
+      ['80 lbs', '3¾', '9.7', null, null],
+      ['90 lbs', '4¼', '11.0', null, null],
+      ['100 lbs','4½', '11.6', null, null]
+    ],
+    beef: [
+      ['5 lbs',  '½',   '1.4', '1',   '2.8'],
+      ['10 lbs', '¾',   '2.0', '1½', '4.1'],
+      ['15 lbs', '1',   '2.7', '2',   '5.4'],
+      ['20 lbs', '1¼', '3.4', '2½', '6.8', 'hl'],
+      ['30 lbs', '1¾', '4.7', '3½', '9.4'],
+      ['40 lbs', '2¼', '6.1', '4½', '12.1'],
+      ['50 lbs', '2¾', '7.4', '5½', '14.8', 'hl'],
+      ['60 lbs', '3¼', '8.4', '6',   '16.2'],
+      ['70 lbs', '3½', '9.4', 'max', null, 'hl'],
+      ['80 lbs', '4',   '10.4', null, null],
+      ['90 lbs', '4½', '11.7', null, null],
+      ['100 lbs','4¾', '12.3', null, null]
+    ]
+  };
+  var fgFlavor = 'chicken';
+
+  function fmt(n) { return '$' + n.toFixed(2); }
+
+  /* ── Render pricing ── */
+  function render() {
+    var tier    = SIZES[state.size];
+    var bags    = tier[state.age];
+    var days    = tier.days[state.age];
+    var regular = bags * PER_BAG;
+    var first   = regular * (1 - FIRST_OFF);
+    var meals   = days * 2;
+
+    /* Size/days meta */
+    var el = document.getElementById('t32SizeMeta');
+    if (el) el.textContent = bags + ' bag' + (bags > 1 ? 's' : '') + ' · lasts your dog ~' + days + ' days';
+
+    /* Subscribe card */
+    var pNow  = document.getElementById('t32PriceNow');
+    var pWas  = document.getElementById('t32PriceWas');
+    var pMeal = document.getElementById('t32PriceMeal');
+    if (pNow)  pNow.textContent  = fmt(first);
+    if (pWas)  pWas.textContent  = fmt(regular);
+    if (pMeal) pMeal.textContent = fmt(first / meals) + '/meal';
+
+    /* Buy once */
+    var oPrice = document.getElementById('t32OncePriceAmt');
+    var oMeal  = document.getElementById('t32OnceMeal');
+    if (oPrice) oPrice.textContent = fmt(regular);
+    if (oMeal)  oMeal.textContent  = fmt(regular / meals) + '/meal';
+
+    /* CTA */
+    var ctaPrice = state.plan === 'sub' ? first : regular;
+    var ctaTxt   = document.getElementById('fdr32ozCtaText');
+    var atcTxt   = document.getElementById('t32AtcBtnText');
+    var label    = state.plan === 'sub' ? 'Subscribe · ' + fmt(ctaPrice) : 'Buy Once · ' + fmt(ctaPrice);
+    if (ctaTxt) ctaTxt.textContent = label;
+    if (atcTxt) atcTxt.textContent = label;
+
+    /* Sticky bar price */
+    var atcP = document.getElementById('t32AtcPrice');
+    if (atcP) atcP.textContent = fmt(ctaPrice);
+
+    /* Update form quantity */
+    var qtyInput = document.getElementById('fdr32ozQty');
+    if (qtyInput) qtyInput.value = bags;
+
+    /* Toggle selling_plan input */
+    var spInput = document.getElementById('fdr32ozSellingPlan');
+    if (spInput) {
+      if (state.plan === 'sub' && SELLING_PLAN_ID) {
+        spInput.value = SELLING_PLAN_ID;
+        spInput.disabled = false;
+      } else {
+        spInput.value = '';
+        spInput.disabled = true;
+      }
+    }
+
+    /* Card active/inactive states */
+    var subCard  = document.getElementById('t32SubCard');
+    var onceCard = document.getElementById('t32BuyOnce');
+    if (subCard) {
+      subCard.classList.toggle('t32-plan-active',   state.plan === 'sub');
+      subCard.classList.toggle('t32-plan-inactive', state.plan !== 'sub');
+    }
+    if (onceCard) {
+      onceCard.classList.toggle('t32-plan-active', state.plan === 'once');
+    }
+  }
+
+  /* ── Plan toggle ── */
+  window.t32SetPlan = function(plan) {
+    state.plan = plan;
+    render();
+  };
+
+  /* ── Flavor selection ── */
+  function bindFlavorBtns() {
+    var flavorBtns = document.querySelectorAll(SECTION_SEL + '.t32-flavor-btn');
+    var variantInput = document.getElementById('fdr32ozVariantId');
+
+    flavorBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        flavorBtns.forEach(function(b) { b.classList.remove('t32-active'); });
+        this.classList.add('t32-active');
+
+        state.flavor = this.getAttribute('data-flavor');
+
+        /* Update variant input */
+        var vid = this.getAttribute('data-variant-id');
+        if (variantInput && vid) variantInput.value = vid;
+
+        /* Sync URL */
+        if (vid && window.history && window.history.replaceState) {
+          var url = new URL(window.location);
+          url.searchParams.set('variant', vid);
+          window.history.replaceState({}, '', url);
+        }
+
+        /* Go to variant image slide */
+        var imgId = this.getAttribute('data-image-id');
+        if (imgId) {
+          var matchSlide = document.querySelector(SECTION_SEL + '.t16-slide[data-image-id="' + imgId + '"]');
+          if (matchSlide) goTo(parseInt(matchSlide.getAttribute('data-slide') || '0', 10), true);
+        }
+
+        /* Sync sticky bar flavor pills */
+        document.querySelectorAll(SECTION_SEL + '.t16-atc-fpill').forEach(function(p) {
+          p.classList.toggle('active', p.getAttribute('data-flavor') === state.flavor);
+        });
+
+        /* Sync feeding guide tab to flavor */
+        fgFlavor = state.flavor;
+        var tabs = document.querySelectorAll(SECTION_SEL + '.t32-fg-tab');
+        tabs.forEach(function(t) { t.classList.toggle('t32-active', t.getAttribute('onclick') && t.getAttribute('onclick').indexOf("'" + fgFlavor + "'") > -1); });
+        renderFG();
+      });
+    });
+  }
+
+  /* ── Age selection ── */
+  function bindAgeBtns() {
+    var ageBtns = document.querySelectorAll(SECTION_SEL + '.t32-age-btn');
+    ageBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        ageBtns.forEach(function(b) { b.classList.remove('t32-active'); });
+        this.classList.add('t32-active');
+        state.age = this.getAttribute('data-age');
+
+        var xlBtn = document.querySelector(SECTION_SEL + '[data-size="xl"]');
+        var note  = document.getElementById('t32AgeNote');
+        if (state.age === 'puppy') {
+          if (xlBtn) xlBtn.classList.add('t32-disabled');
+          if (state.size === 'xl') {
+            state.size = 'l';
+            document.querySelectorAll(SECTION_SEL + '.t32-size-btn').forEach(function(b) { b.classList.remove('t32-active'); });
+            var lBtn = document.querySelector(SECTION_SEL + '[data-size="l"]');
+            if (lBtn) lBtn.classList.add('t32-active');
+          }
+          if (note) note.textContent = '⚡ Puppies need ~2× the portion of adults to fuel healthy growth.';
+        } else {
+          if (xlBtn) xlBtn.classList.remove('t32-disabled');
+          if (note) note.textContent = '';
+        }
+        render();
+      });
+    });
+  }
+
+  /* ── Size selection ── */
+  function bindSizeBtns() {
+    var sizeBtns = document.querySelectorAll(SECTION_SEL + '.t32-size-btn');
+    sizeBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        if (this.classList.contains('t32-disabled')) return;
+        sizeBtns.forEach(function(b) { b.classList.remove('t32-active'); });
+        this.classList.add('t32-active');
+        state.size = this.getAttribute('data-size');
+        render();
+      });
+    });
+  }
+
+  /* ── Sticky bar flavor pills ── */
+  function bindAtcFlavors() {
+    var atcPills = document.querySelectorAll(SECTION_SEL + '.t16-atc-fpill');
+    var variantInput = document.getElementById('fdr32ozVariantId');
+    atcPills.forEach(function(pill) {
+      pill.addEventListener('click', function() {
+        var flavor = this.getAttribute('data-flavor');
+        var vid    = this.getAttribute('data-variant-id');
+        /* Mirror to main flavor row */
+        document.querySelectorAll(SECTION_SEL + '.t32-flavor-btn').forEach(function(b) {
+          b.classList.toggle('t32-active', b.getAttribute('data-flavor') === flavor);
+        });
+        atcPills.forEach(function(p) { p.classList.toggle('active', p.getAttribute('data-flavor') === flavor); });
+        state.flavor = flavor;
+        if (variantInput && vid) variantInput.value = vid;
+      });
+    });
+
+    /* Sticky ATC btn submits the form */
+    var atcBtn = document.getElementById('fdr32ozAtcBtn');
+    if (atcBtn) {
+      atcBtn.addEventListener('click', function() {
+        var form = document.getElementById('fdr-32oz-hero-atc-form');
+        if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
+      });
+    }
+  }
+
+  /* ── Carousel ── */
+  var slides = document.querySelectorAll(SECTION_SEL + '.t16-slide');
+  var thumbs = document.querySelectorAll(SECTION_SEL + '.t16-thumb');
+  var TOTAL  = slides.length;
+  var cur    = 0;
+  var timer;
+
+  function goTo(n, userTriggered) {
+    cur = (n + TOTAL) % TOTAL;
+    slides.forEach(function(el, i) { el.classList.toggle('t16-is-active', i === cur); });
+    thumbs.forEach(function(el, i) {
+      el.classList.toggle('t16-is-active', i === cur);
+      if (i === cur && userTriggered) {
+        var strip = document.querySelector(SECTION_SEL + '#fdr32ozThumbStrip');
+        if (!strip) return;
+        strip.scrollTo({ left: el.offsetLeft - (strip.clientWidth - el.offsetWidth) / 2, behavior: 'smooth' });
+      }
+    });
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(function() { goTo(cur + 1, false); }, 7500);
+  }
+
+  thumbs.forEach(function(thumb, i) {
+    thumb.addEventListener('click', function(e) {
+      e.preventDefault(); goTo(i, true); resetTimer();
+    });
+  });
+
+  /* ── Sticky ATC visibility ── */
+  (function() {
+    var buyBox = document.getElementById('buy-box-32oz');
+    var atcBar = document.getElementById('fdr32ozAtcBar');
+    if (!buyBox || !atcBar) return;
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        atcBar.classList.toggle('t16-atc-visible', !entry.isIntersecting);
+      });
+    }, { threshold: 0.05 });
+    io.observe(buyBox);
+  })();
+
+  /* ── FAQ accordion ── */
+  document.querySelectorAll(SECTION_SEL + '.t16-faq-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item   = this.closest('.t16-faq-item');
+      var isOpen = item.classList.contains('t16-is-open');
+      document.querySelectorAll(SECTION_SEL + '.t16-faq-item').forEach(function(i) {
+        i.classList.remove('t16-is-open');
+        var b = i.querySelector('.t16-faq-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+        var body = i.querySelector('.t16-faq-body');
+        if (body) body.style.maxHeight = '0';
+      });
+      if (!isOpen) {
+        item.classList.add('t16-is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        var body = item.querySelector('.t16-faq-body');
+        if (body) body.style.maxHeight = item.querySelector('.t16-faq-body-inner').scrollHeight + 'px';
+      }
+    });
+  });
+
+  /* ── Feeding guide ── */
+  function renderFG() {
+    var rows  = FG_DATA[fgFlavor] || FG_DATA.chicken;
+    var tbody = document.getElementById('t32FGBody');
+    if (!tbody) return;
+    tbody.innerHTML = rows.map(function(r) {
+      var wt = r[0], ac = r[1], ab = r[2], pc = r[3], pb = r[4], flag = r[5];
+      var hl = flag === 'hl' ? ' class="t32-hl"' : '';
+      var puppyCols;
+      if (pc === 'max') {
+        puppyCols = '<td class="t32-td-na" colspan="2">puppies: max 60 lbs</td>';
+      } else if (pc === null || pc === undefined) {
+        puppyCols = '<td class="t32-td-na" colspan="2">—</td>';
+      } else {
+        puppyCols = '<td>' + pc + '</td><td>' + pb + '</td>';
+      }
+      return '<tr' + hl + '><td>' + wt + '</td><td class="t32-td-adult">' + ac + '</td><td class="t32-td-adult">' + ab + '</td>' + puppyCols + '</tr>';
+    }).join('');
+  }
+
+  window.t32ToggleFG = function(btn) {
+    var panel = document.getElementById('t32FGPanel');
+    var open  = panel.classList.toggle('t32-open');
+    btn.textContent = open ? 'Hide Feeding Guide' : 'Feeding Guide';
+    if (open) renderFG();
+  };
+
+  window.t32SetFGTab = function(flavor, btn) {
+    document.querySelectorAll(SECTION_SEL + '.t32-fg-tab').forEach(function(t) { t.classList.remove('t32-active'); });
+    btn.classList.add('t32-active');
+    fgFlavor = flavor;
+    renderFG();
+  };
+
+  /* ── Init ── */
+  bindFlavorBtns();
+  bindAgeBtns();
+  bindSizeBtns();
+  bindAtcFlavors();
+  resetTimer();
+  render();
+})();
+</script>
+
+{% schema %}
+{
+  "name": "FDR Trial 32oz — Hero (Subscription)",
+  "tag": "section",
+  "class": "section-fdr-trial-32oz-hero",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Proof Bar"
+    },
+    {
+      "type": "text",
+      "id": "proof_text",
+      "label": "Proof text (pipe-separated)",
+      "default": "30,000+ Pet Parents|4.8 Stars"
+    },
+    {
+      "type": "header",
+      "content": "Product Title"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow text",
+      "default": "50% Off Your First Order"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading (overrides product title)",
+      "default": "32oz Starter Bag"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Subtitle",
+      "default": "Freeze Dried Raw · 32oz Bag"
+    },
+    {
+      "type": "richtext",
+      "id": "pitch",
+      "label": "Pitch paragraph",
+      "default": "<p>Probiotics. Gut health. A shinier coat. Most owners are buying all of it separately. Get Joy has Belly Biotics™, Salmon Oil, and Pumpkin built in. Get real food that replaces the stack of pills.</p>"
+    },
+    {
+      "type": "header",
+      "content": "Step Labels"
+    },
+    {
+      "type": "text",
+      "id": "step_1_label",
+      "label": "Step 1 label",
+      "default": "Step 1 — Pick a Flavor"
+    },
+    {
+      "type": "text",
+      "id": "step_2_label",
+      "label": "Step 2 label (Life stage)",
+      "default": "Step 2 — Life Stage"
+    },
+    {
+      "type": "header",
+      "content": "Pricing & Subscription"
+    },
+    {
+      "type": "text",
+      "id": "selling_plan_id",
+      "label": "Subscription selling plan ID",
+      "info": "The numeric ID of the subscription selling plan (e.g. from Recharge or Shopify Subscriptions). Find it in your subscription app settings.",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "price_note",
+      "label": "Price note (unused — pricing is JS-driven)",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "stock_text",
+      "label": "Stock urgency text",
+      "default": "Low Stock — Ships within 24 hours"
+    },
+    {
+      "type": "header",
+      "content": "CTA & Guarantee"
+    },
+    {
+      "type": "text",
+      "id": "cta_text",
+      "label": "CTA fallback text",
+      "default": "Subscribe — 50% Off Today",
+      "info": "This is overridden by JS once the selector renders. Shown as a fallback only."
+    },
+    {
+      "type": "richtext",
+      "id": "guarantee_text",
+      "label": "Guarantee text (unused — see guarantee box in template)",
+      "default": "<p><b>30-Day Money-Back Guarantee</b></p>"
+    },
+    {
+      "type": "image_picker",
+      "id": "guarantee_shield_image",
+      "label": "Guarantee shield image"
+    },
+    {
+      "type": "header",
+      "content": "Infographic Slide"
+    },
+    {
+      "type": "range",
+      "id": "infographic_slide_position",
+      "label": "Infographic slide position",
+      "min": 1,
+      "max": 10,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "text",
+      "id": "si_eyebrow",
+      "label": "Infographic eyebrow",
+      "default": "What’s Already in Every Bag"
+    },
+    {
+      "type": "text",
+      "id": "si_headline",
+      "label": "Infographic headline",
+      "default": "Replaces 9 Supplements."
+    },
+    {
+      "type": "text",
+      "id": "si_sub",
+      "label": "Infographic subtitle",
+      "default": "Every ingredient was chosen because it does something."
+    },
+    {
+      "type": "text",
+      "id": "si_link_text",
+      "label": "Infographic link text",
+      "default": "See every ingredient →"
+    },
+    {
+      "type": "url",
+      "id": "si_link_url",
+      "label": "Infographic link URL"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "supplement_item",
+      "name": "Supplement Check Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Probiotics, Pre & Postbiotics"
+        }
+      ]
+    },
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "Frequently asked question"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>Answer goes here.</p>"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "FDR Trial 32oz — Hero (Subscription)",
+      "category": "Landing Page",
+      "blocks": [
+        { "type": "supplement_item", "settings": { "label": "Probiotics, Pre & Postbiotics" } },
+        { "type": "supplement_item", "settings": { "label": "Digestive Enzymes" } },
+        { "type": "supplement_item", "settings": { "label": "Hip & Joint Support" } },
+        { "type": "supplement_item", "settings": { "label": "Calming & Anxiety" } },
+        { "type": "supplement_item", "settings": { "label": "Fish Oil & Omega-3" } },
+        { "type": "supplement_item", "settings": { "label": "Dental & Breath Support" } },
+        { "type": "supplement_item", "settings": { "label": "Skin & Coat Supplement" } },
+        { "type": "supplement_item", "settings": { "label": "Daily Multivitamin" } },
+        { "type": "supplement_item", "settings": { "label": "Urinary Tract Support" } },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Ingredients & What’s Inside",
+            "answer": "<p>Every formula starts with a single 100% USDA-sourced protein — Beef or Chicken — plus organ meat, ancient grains, and our proprietary Belly Biotics™ system. No seed oils, no fillers, no artificial preservatives.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "How do I feed it?",
+            "answer": "<p>Start slow. Mix a small amount of Get Joy into your dog’s current food for the first few days, then gradually increase over 7–10 days.</p>"
+          }
+        },
+        {
+          "type": "faq_item",
+          "settings": {
+            "question": "Shipping, Returns & Our Guarantee",
+            "answer": "<p>Ships free. Orders arrive within 5–7 business days. If your dog isn’t interested, contact us within 30 days for a full refund — no questions asked.</p>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
