@@ -45,15 +45,6 @@
     max-width: 480px;
   }
 
-  .details-link {
-    display: inline-block;
-    font-size: 13px;
-    color: var(--ink-mid);
-    text-decoration: underline;
-    cursor: pointer;
-    margin-bottom: 20px;
-  }
-
   /* ── Section label (matches live PDP: dark ink, not uppercase) ── */
   .section-label {
     font-size: 15px;
@@ -333,7 +324,21 @@
     border-radius: 12px;
     padding: 14px 16px;
     margin-bottom: 10px;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
   }
+
+  .sub-card.active {
+    border-color: var(--gj-forest);
+    background: #fff;
+  }
+
+  .sub-card.inactive {
+    opacity: .55;
+  }
+
+  .sub-card.inactive .radio-filled { border-color: var(--ink-light); }
+  .sub-card.inactive .radio-filled::after { background: transparent; }
 
   .sub-card-top {
     display: flex;
@@ -362,12 +367,21 @@
     background: var(--gj-forest);
   }
 
+  .sub-title-wrap { flex: 1; }
+
   .sub-title {
-    font-size: 13px;
-    font-weight: 700;
+    font-size: 14px;
+    font-weight: 800;
     color: var(--ink);
-    flex: 1;
-    line-height: 1.4;
+    line-height: 1.3;
+  }
+
+  .sub-subtitle {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    margin-top: 2px;
+    line-height: 1.35;
   }
 
   .best-value-badge {
@@ -391,15 +405,10 @@
     margin-bottom: 12px;
   }
 
-  .freq-pill {
-    background: var(--gj-tan);
-    border: 1px solid var(--gj-tan-border);
-    border-radius: 6px;
-    padding: 5px 10px;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: .06em;
-    color: var(--gj-forest);
+  .freq-static {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-mid);
     font-family: var(--font-ui);
   }
 
@@ -458,8 +467,6 @@
     font-weight: 900;
   }
 
-  .bdot.orange { background: #C07A30; }
-
   .benefit .hl { color: var(--gj-forest); font-weight: 600; }
   .benefit b { font-weight: 700; }
 
@@ -474,7 +481,30 @@
     justify-content: space-between;
     margin-bottom: 14px;
     cursor: pointer;
+    transition: border-color .15s, background .15s;
   }
+
+  .buy-once.active {
+    border-color: var(--gj-forest);
+  }
+
+  .buy-once.active .radio-empty {
+    border-color: var(--gj-forest);
+    position: relative;
+  }
+
+  .buy-once.active .radio-empty::after {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--gj-forest);
+  }
+
+  .buy-once.active .buy-once-label,
+  .buy-once.active .buy-once-price { color: var(--ink); }
 
   .buy-once-left {
     display: flex;
@@ -536,18 +566,30 @@
   .cta-btn:hover { filter: brightness(1.06); transform: translateY(-1px); }
   .cta-btn:active { transform: translateY(0); }
 
-  .guarantee {
-    text-align: center;
-    font-size: 11px;
-    color: var(--ink-light);
-    margin-top: 8px;
+  .guarantee-box {
+    background: #DCEFC8;
+    border: 1px solid #B8DA9E;
+    border-radius: 10px;
+    padding: 10px 14px;
+    margin-top: 12px;
+  }
+
+  .guarantee-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #1a4d1f;
+    margin-bottom: 2px;
+  }
+
+  .guarantee-sub {
+    font-size: 12px;
+    color: #2a5a30;
+    line-height: 1.4;
   }
 </style>
 </head>
 <body>
 <div class="selector">
-
-  <a class="details-link">Details</a>
 
   <!-- Flavor -->
   <span class="section-label">Flavor</span>
@@ -620,14 +662,17 @@
   </div>
 
   <!-- Subscribe card -->
-  <div class="sub-card">
+  <div class="sub-card" id="subCard" onclick="setPlan('sub')">
     <div class="sub-card-top">
       <div class="radio-filled"></div>
-      <div class="sub-title">Subscribe &amp; Save – 50% off your first order, 10% off every recurring delivery</div>
+      <div class="sub-title-wrap">
+        <div class="sub-title">Subscribe &amp; Save</div>
+        <div class="sub-subtitle">50% off first order · 10% off every refill</div>
+      </div>
       <div class="best-value-badge">BEST VALUE</div>
     </div>
     <div class="sub-freq-row">
-      <div class="freq-pill">EVERY 4 WEEKS</div>
+      <div class="freq-static">Ships every 4 weeks</div>
       <div class="sub-price">
         <span class="sub-price-now" id="priceNow">$59.96</span>
         <span class="sub-price-was" id="priceWas">$119.90</span>
@@ -644,7 +689,7 @@
         <span>Flexible: <span class="hl">Pause, edit, or cancel anytime</span></span>
       </div>
       <div class="benefit">
-        <div class="bdot orange">✓</div>
+        <div class="bdot">✓</div>
         <span>Risk Free Trial: <span class="hl">30-day money back guarantee</span></span>
       </div>
       <div class="benefit">
@@ -655,7 +700,7 @@
   </div>
 
   <!-- Buy Once -->
-  <div class="buy-once">
+  <div class="buy-once" id="buyOnceCard" onclick="setPlan('once')">
     <div class="buy-once-left">
       <div class="radio-empty"></div>
       <span class="buy-once-label">Buy Once</span>
@@ -669,7 +714,10 @@
   <!-- CTA -->
   <button class="cta-btn" id="ctaBtn">ADD TO CART – $59.96</button>
 
-  <div class="guarantee">🔒 Secure checkout &nbsp;·&nbsp; 30-day money-back guarantee</div>
+  <div class="guarantee-box">
+    <div class="guarantee-title">30-Day Money-Back Guarantee</div>
+    <div class="guarantee-sub">Not a hit? We refund every penny — no questions, no hoops, no hassle.</div>
+  </div>
 
 </div>
 
@@ -686,7 +734,7 @@
     xl: { adult: 10, puppy: 22, days: { adult: 30, puppy: 30 } },
   };
 
-  let state = { flavor: 'beef', age: 'adult', size: 's' };
+  let state = { flavor: 'beef', age: 'adult', size: 's', plan: 'sub' };
 
   function fmt(n) { return '$' + n.toFixed(2); }
 
@@ -705,7 +753,20 @@
     document.getElementById('priceMeal').textContent   = `${fmt(first / meals)}/meal`;
     document.getElementById('buyOnce').textContent     = fmt(regular);
     document.getElementById('buyOnceMeal').textContent = `${fmt(regular / meals)}/meal`;
-    document.getElementById('ctaBtn').textContent      = `ADD TO CART – ${fmt(first)}`;
+
+    const subCard = document.getElementById('subCard');
+    const onceCard = document.getElementById('buyOnceCard');
+    const ctaPrice = state.plan === 'sub' ? first : regular;
+    document.getElementById('ctaBtn').textContent = `ADD TO CART – ${fmt(ctaPrice)}`;
+
+    subCard.classList.toggle('active', state.plan === 'sub');
+    subCard.classList.toggle('inactive', state.plan !== 'sub');
+    onceCard.classList.toggle('active', state.plan === 'once');
+  }
+
+  function setPlan(plan) {
+    state.plan = plan;
+    render();
   }
 
   function pick(type, val, btn) {
