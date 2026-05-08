@@ -8,6 +8,7 @@
   assign step_1_label = section.settings.step_1_label
   assign step_2_label = section.settings.step_2_label
   assign step_3_label = section.settings.step_3_label
+  assign size_label = section.settings.size_label
   assign cta_text = section.settings.cta_text
   assign stock_text = section.settings.stock_text
   assign si_eyebrow = section.settings.si_eyebrow
@@ -542,7 +543,9 @@
       <div class="t32-age-note" id="t32AgeNote"></div>
 
       {%- comment -%} Dog size {%- endcomment -%}
-      <div class="t16-field-label">Dog size</div>
+      {%- if size_label != blank -%}
+        <div class="t16-field-label">{{ size_label }}</div>
+      {%- endif -%}
       <div class="t32-size-row">
         <button class="t32-size-btn t32-active" data-size="s"  type="button">Under<br>20 lbs</button>
         <button class="t32-size-btn"             data-size="ms" type="button">20–35<br>lbs</button>
@@ -1147,6 +1150,13 @@
       "id": "step_3_label",
       "label": "Step 3 label (Pricing card)",
       "default": "Step 3 — Choose Your Plan"
+    },
+    {
+      "type": "text",
+      "id": "size_label",
+      "label": "Dog size label",
+      "default": "Dog size",
+      "info": "Leave blank to hide."
     },
     {
       "type": "header",
