@@ -495,27 +495,32 @@
         <div class="t16-field-label">{{ step_1_label }}</div>
       {%- endif -%}
 
-      {%- comment -%} Flavor {%- endcomment -%}
+      {%- comment -%} Flavor — dedupe by option1 (flavor name) {%- endcomment -%}
       <div class="t32-flavor-row" id="t32FlavorRow">
+        {%- assign seen_flavors = '' -%}
         {%- for variant in product.variants -%}
-          <button
-            class="t32-flavor-btn{% if variant == current_variant %} t32-active{% endif %}"
-            data-flavor="{{ variant.option1 | downcase }}"
-            data-variant-id="{{ variant.id }}"
-            data-image-id="{{ variant.featured_image.id | default: '' }}"
-            type="button"
-          >
-            <div class="t32-flavor-circle">
-              {%- if variant.option1 == 'Beef' -%}
-                <img src="https://getjoyfood.com/cdn/shop/files/beef_e086530b-834d-489c-b5a8-5e7e0e7fdf63.svg?v=10005116391183757552" alt="Beef">
-              {%- elsif variant.option1 == 'Chicken' -%}
-                <img src="https://getjoyfood.com/cdn/shop/files/chicken_9bb3922a-734d-40bd-acac-196b1907e92d.svg?v=10169312193510481245" alt="Chicken">
-              {%- else -%}
-                <img src="{{ variant.featured_image | image_url: width: 56 }}" alt="{{ variant.option1 }}">
-              {%- endif -%}
-            </div>
-            <span class="t32-flavor-label">{{ variant.option1 }}</span>
-          </button>
+          {%- assign flavor_key = variant.option1 | downcase -%}
+          {%- unless seen_flavors contains flavor_key -%}
+            {%- assign seen_flavors = seen_flavors | append: '|' | append: flavor_key | append: '|' -%}
+            <button
+              class="t32-flavor-btn{% if variant.option1 == current_variant.option1 %} t32-active{% endif %}"
+              data-flavor="{{ flavor_key }}"
+              data-variant-id="{{ variant.id }}"
+              data-image-id="{{ variant.featured_image.id | default: '' }}"
+              type="button"
+            >
+              <div class="t32-flavor-circle">
+                {%- if variant.option1 == 'Beef' -%}
+                  <img src="https://getjoyfood.com/cdn/shop/files/beef_e086530b-834d-489c-b5a8-5e7e0e7fdf63.svg?v=10005116391183757552" alt="Beef">
+                {%- elsif variant.option1 == 'Chicken' -%}
+                  <img src="https://getjoyfood.com/cdn/shop/files/chicken_9bb3922a-734d-40bd-acac-196b1907e92d.svg?v=10169312193510481245" alt="Chicken">
+                {%- else -%}
+                  <img src="{{ variant.featured_image | image_url: width: 56 }}" alt="{{ variant.option1 }}">
+                {%- endif -%}
+              </div>
+              <span class="t32-flavor-label">{{ variant.option1 }}</span>
+            </button>
+          {%- endunless -%}
         {%- endfor -%}
       </div>
 
@@ -681,16 +686,21 @@
     </div>
     <div class="t16-atc-spacer"></div>
     <div class="t16-atc-flavors" id="t32AtcFlavors">
+      {%- assign atc_seen = '' -%}
       {%- for variant in product.variants -%}
-        <button
-          class="t16-atc-fpill{% if variant == current_variant %} active{% endif %}"
-          data-variant-id="{{ variant.id }}"
-          data-flavor="{{ variant.option1 | downcase }}"
-          type="button"
-        >
-          <span class="t16-atc-fdot" style="background:{%- if variant.option1 == 'Chicken' -%}#5EDBFF{%- elsif variant.option1 == 'Beef' -%}#FFAF00{%- else -%}#00CC3B{%- endif -%}"></span>
-          {{ variant.option1 }}
-        </button>
+        {%- assign atc_key = variant.option1 | downcase -%}
+        {%- unless atc_seen contains atc_key -%}
+          {%- assign atc_seen = atc_seen | append: '|' | append: atc_key | append: '|' -%}
+          <button
+            class="t16-atc-fpill{% if variant.option1 == current_variant.option1 %} active{% endif %}"
+            data-variant-id="{{ variant.id }}"
+            data-flavor="{{ atc_key }}"
+            type="button"
+          >
+            <span class="t16-atc-fdot" style="background:{%- if variant.option1 == 'Chicken' -%}#5EDBFF{%- elsif variant.option1 == 'Beef' -%}#FFAF00{%- else -%}#00CC3B{%- endif -%}"></span>
+            {{ variant.option1 }}
+          </button>
+        {%- endunless -%}
       {%- endfor -%}
     </div>
     <button type="button" class="t16-atc-btn" id="fdr32ozAtcBtn">
