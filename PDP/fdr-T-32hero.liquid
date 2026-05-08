@@ -8,14 +8,12 @@
   assign step_1_label = section.settings.step_1_label
   assign step_2_label = section.settings.step_2_label
   assign cta_text = section.settings.cta_text
-  assign guarantee_text = section.settings.guarantee_text
   assign stock_text = section.settings.stock_text
   assign si_eyebrow = section.settings.si_eyebrow
   assign si_headline = section.settings.si_headline
   assign si_sub = section.settings.si_sub
   assign si_link_text = section.settings.si_link_text
   assign si_link_url = section.settings.si_link_url
-  assign guarantee_shield_image = section.settings.guarantee_shield_image
   assign infographic_slide_index = section.settings.infographic_slide_position | minus: 1
   assign selling_plan_id = section.settings.selling_plan_id
 -%}
@@ -1155,17 +1153,6 @@
       "label": "CTA fallback text",
       "default": "Subscribe — 50% Off Today",
       "info": "This is overridden by JS once the selector renders. Shown as a fallback only."
-    },
-    {
-      "type": "richtext",
-      "id": "guarantee_text",
-      "label": "Guarantee text (unused — see guarantee box in template)",
-      "default": "<p><b>30-Day Money-Back Guarantee</b></p>"
-    },
-    {
-      "type": "image_picker",
-      "id": "guarantee_shield_image",
-      "label": "Guarantee shield image"
     },
     {
       "type": "header",
