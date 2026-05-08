@@ -74,98 +74,6 @@
     "fdr_trial_16oz_hero_ngmJAx": {
       "type": "fdr-T-32hero",
       "blocks": {
-        "value_item_B8UR4g": {
-          "type": "value_item",
-          "settings": {
-            "title": "16oz Freeze Dried Raw Food",
-            "subtitle": "",
-            "description": "97% of nutrients intact",
-            "badge": "$35 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_PNrnL7": {
-          "type": "value_item",
-          "settings": {
-            "title": "Belly Biotics™",
-            "subtitle": "Digestive Enzymes.",
-            "description": "Pre, Pro + Postbiotics",
-            "badge": "EXCLUSIVE",
-            "badge_style": "excl"
-          }
-        },
-        "value_item_bgEphP": {
-          "type": "value_item",
-          "settings": {
-            "title": "Fresher Breath",
-            "subtitle": "",
-            "description": "A balanced gut reduces odor-causing bacteria. Bye-bye dog breath.",
-            "badge": "$20 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_FKpTXJ": {
-          "type": "value_item",
-          "settings": {
-            "title": "Coat & Skin Health",
-            "subtitle": "",
-            "description": "Most owners see the coat change before anything else.",
-            "badge": "$20 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_Cec6HQ": {
-          "type": "value_item",
-          "settings": {
-            "title": "Joint & Mobility Support",
-            "subtitle": "",
-            "description": "Regulates inflammation, so they move like they used to.",
-            "badge": "$30 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_PJPMVq": {
-          "type": "value_item",
-          "disabled": true,
-          "settings": {
-            "title": "Calm & Anxiety Relief",
-            "subtitle": "",
-            "description": "The gut-brain connection plays a big role in mood.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
-          }
-        },
-        "value_item_6Y43h8": {
-          "type": "value_item",
-          "disabled": true,
-          "settings": {
-            "title": "Immune Health",
-            "subtitle": "",
-            "description": "70% of the immune system is in the gut.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
-          }
-        },
-        "value_item_kHCqjk": {
-          "type": "value_item",
-          "settings": {
-            "title": "Free Shipping",
-            "subtitle": "",
-            "description": "Free Tracked US Shipping",
-            "badge": "$10 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_i48DNx": {
-          "type": "value_item",
-          "settings": {
-            "title": "Money-Back Guarantee",
-            "subtitle": "",
-            "description": "Your dog doesn't love it? Full refund.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
-          }
-        },
         "supplement_item_XfjqhD": {
           "type": "supplement_item",
           "settings": {
@@ -243,15 +151,6 @@
         }
       },
       "block_order": [
-        "value_item_B8UR4g",
-        "value_item_PNrnL7",
-        "value_item_bgEphP",
-        "value_item_FKpTXJ",
-        "value_item_Cec6HQ",
-        "value_item_PJPMVq",
-        "value_item_6Y43h8",
-        "value_item_kHCqjk",
-        "value_item_i48DNx",
         "supplement_item_XfjqhD",
         "supplement_item_JNJHk6",
         "supplement_item_nmCQQN",
