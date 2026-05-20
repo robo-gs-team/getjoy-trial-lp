@@ -72,7 +72,7 @@
       }
     },
     "fdr_trial_16oz_hero_ngmJAx": {
-      "type": "fdr-trial-16oz-hero",
+      "type": "fdr-T-32hero",
       "blocks": {
         "supplement_item_XfjqhD": {
           "type": "supplement_item",
@@ -146,99 +146,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Shipping, Returns & Our Guarantee",
-            "answer": "<p>32oz bag ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. If your dog tries it and isn\u2019t interested, contact us within 30 days for a full refund, no questions asked. No subscription, no auto-ship. Your call entirely.</p>"
-          }
-        },
-        "value_item_B8UR4g": {
-          "type": "value_item",
-          "settings": {
-            "title": "32oz Freeze Dried Raw Food",
-            "subtitle": "",
-            "description": "97% of nutrients intact",
-            "badge": "$35 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_PNrnL7": {
-          "type": "value_item",
-          "settings": {
-            "title": "Belly Biotics\u2122",
-            "subtitle": "Digestive Enzymes.",
-            "description": "Pre, Pro + Postbiotics",
-            "badge": "EXCLUSIVE",
-            "badge_style": "excl"
-          }
-        },
-        "value_item_bgEphP": {
-          "type": "value_item",
-          "settings": {
-            "title": "Fresher Breath",
-            "subtitle": "",
-            "description": "A balanced gut reduces odor-causing bacteria. Bye-bye dog breath.",
-            "badge": "$20 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_FKpTXJ": {
-          "type": "value_item",
-          "settings": {
-            "title": "Coat & Skin Health",
-            "subtitle": "",
-            "description": "Most owners see the coat change before anything else.",
-            "badge": "$20 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_Cec6HQ": {
-          "type": "value_item",
-          "settings": {
-            "title": "Joint & Mobility Support",
-            "subtitle": "",
-            "description": "Regulates inflammation, so they move like they used to.",
-            "badge": "$30 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_PJPMVq": {
-          "type": "value_item",
-          "disabled": true,
-          "settings": {
-            "title": "Calm & Anxiety Relief",
-            "subtitle": "",
-            "description": "The gut-brain connection plays a big role in mood.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
-          }
-        },
-        "value_item_6Y43h8": {
-          "type": "value_item",
-          "disabled": true,
-          "settings": {
-            "title": "Immune Health",
-            "subtitle": "",
-            "description": "70% of the immune system is in the gut.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
-          }
-        },
-        "value_item_kHCqjk": {
-          "type": "value_item",
-          "settings": {
-            "title": "Free Shipping",
-            "subtitle": "",
-            "description": "Free Tracked US Shipping",
-            "badge": "$10 VALUE",
-            "badge_style": "free"
-          }
-        },
-        "value_item_i48DNx": {
-          "type": "value_item",
-          "settings": {
-            "title": "Money-Back Guarantee",
-            "subtitle": "",
-            "description": "Your dog doesn't love it? Full refund.",
-            "badge": "INCLUDED",
-            "badge_style": "free"
+            "answer": "<p>16oz bag ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. If your dog tries it and isn\u2019t interested, contact us within 30 days for a full refund, no questions asked. No subscription, no auto-ship. Your call entirely.</p>"
           }
         }
       },
@@ -252,33 +160,24 @@
         "supplement_item_NaCEax",
         "supplement_item_GzCPC8",
         "supplement_item_8D4HY9",
-        "value_item_B8UR4g",
-        "value_item_PNrnL7",
-        "value_item_bgEphP",
-        "value_item_FKpTXJ",
-        "value_item_Cec6HQ",
-        "value_item_PJPMVq",
-        "value_item_6Y43h8",
-        "value_item_kHCqjk",
-        "value_item_i48DNx",
         "faq_item_Y8wFA6",
         "faq_item_wezqeG",
         "faq_item_irKrCm"
       ],
-      "name": "FDR Trial 16oz \u2014 Hero",
+      "name": "FDR 32oz Sub \u2014 Hero",
       "settings": {
         "proof_text": "30,000+ Pet Parents|4.8 Stars",
         "eyebrow": "",
-        "heading": "32oz Starter Bag",
+        "heading": "32oz Subscription Bag",
         "subtitle": "Freeze Dried Raw Food",
         "pitch": "<p>Probiotics. Gut health. A shinier coat. Most owners are buying all of it separately. Get Joy has Belly Biotics\u2122, Salmon Oil, and Pumpkin built in. Get real food that replaces the stack of pills.<br/></p>",
         "step_1_label": "Step 1 \u2014 Pick a Flavor",
-        "step_2_label": "Step 2 \u2014 What You Get ($115 Value)",
-        "step_3_label": "Step 3 \u2014 Get Your Bag",
+        "step_2_label": "Step 2 \u2014 Age",
+        "step_3_label": "Step 3 \u2014 Choose Your Plan",
         "show_shipping_price": false,
-        "shipping_price": "$39",
+        "shipping_price": "$20",
         "stock_text": "Low Stock \u2014 Ships within 24 hours",
-        "cta_text": "Try Get Joy \u2014 $39",
+        "cta_text": "Try Get Joy \u2014 $20",
         "guarantee_text": "<p><strong>30-Day Money-Back Guarantee</strong></p><p>Not a hit? We refund every penny \u2014 no questions, no hoops, no hassle.</p>",
         "infographic_slide_position": 4,
         "si_eyebrow": "What\u2019s Already in Every Bag",
@@ -505,7 +404,7 @@
           "settings": {
             "name": "Dental & breath support",
             "brands": "Greenies, Whimzees",
-            "price": "$39\u201335/mo"
+            "price": "$20\u201335/mo"
           }
         },
         "supplement_row_NPpL3D": {
@@ -521,7 +420,7 @@
           "settings": {
             "name": "Daily multivitamin",
             "brands": "Pet-Tabs, Nutramax",
-            "price": "$39\u201335/mo"
+            "price": "$20\u201335/mo"
           }
         },
         "supplement_row_nLi39a": {
@@ -529,7 +428,7 @@
           "settings": {
             "name": "UTI & urinary support",
             "brands": "Zesty Paws, NaturVet",
-            "price": "$39\u201330/mo"
+            "price": "$20\u201330/mo"
           }
         }
       },
@@ -561,7 +460,7 @@
         "close_line_2": "Get Joy is what happens when you stop choosing.",
         "close_bold": "Every single category. One bag. ~$92 a month.",
         "disclaimer": "Supplement prices based on average retail cost of leading branded products at standard dosages (Amazon, Chewy, brand direct \u2014 March 2026). Get Joy subscription reflects average recurring subscriber order value. Individual prices may vary.",
-        "cta_text": "Try Get Joy \u2014 $39",
+        "cta_text": "Try Get Joy \u2014 $20",
         "cta_url": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
@@ -667,7 +566,7 @@
         "eyebrow": "Common Questions",
         "heading": "Everything You Need to Know",
         "subheading": "The honest answers to what most people ask before trying.",
-        "cta_text": "Try Get Joy \u2014 $39",
+        "cta_text": "Try Get Joy \u2014 $20",
         "cta_url": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
@@ -739,7 +638,7 @@
         "eyebrow": "Nothing to Hide",
         "heading": "What's Actually In The Bag",
         "subheading": "Every ingredient is named. No mystery meals, no fillers, no fine print.",
-        "cta_label": "Try Get Joy \u2014 $39",
+        "cta_label": "Try Get Joy \u2014 $20",
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
@@ -748,11 +647,11 @@
       "type": "fdr-trial-16oz-why-banner",
       "name": "16oz \u2014 Why $20",
       "settings": {
-        "heading": "Why Only $39?",
+        "heading": "Why Only $20?",
         "subheading": "That's $25 off. Shipping's on us. Here's why.",
-        "body_1": "A full 32oz bag is enough for your dog to feel, enjoy, and for you to see the difference.",
+        "body_1": "A full 16oz bag is enough for your dog to feel, enjoy, and for you to see the difference.",
         "body_2": "Most dogs that try it don't go back. So we'd \nrather you judge it than pitch it to you. One \norder. No subscription starts. Your dog decides.",
-        "cta_label": "Try Get Joy \u2014 $39",
+        "cta_label": "Try Get Joy \u2014 $20",
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
@@ -854,7 +753,7 @@
         "col_mobile_comp_label": "Other Brands",
         "col_mobile_gj_label": "Get Joy",
         "col_mobile_gj_sub": "Freeze Dried",
-        "cta_text": "Try Get Joy \u2014 $39",
+        "cta_text": "Try Get Joy \u2014 $20",
         "cta_url": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
@@ -955,7 +854,7 @@
         "heading": "Even the Pickiest Dogs Love It",
         "subheading": "From dog companions who made the switch",
         "background_color": "tennis",
-        "cta_text": "Try Get Joy \u2014 $39",
+        "cta_text": "Try Get Joy \u2014 $20",
         "cta_url": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
@@ -1010,7 +909,7 @@
         "eyebrow": "Making the Switch",
         "heading": "How to Feed Get Joy",
         "subheading": "Switching from kibble? Follow this simple 7-day plan \u2014 your dog's gut will thank you.",
-        "cta_label": "Try Get Joy \u2014 $39",
+        "cta_label": "Try Get Joy \u2014 $20",
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
@@ -1021,7 +920,7 @@
         "include_item_MM3QQ7": {
           "type": "include_item",
           "settings": {
-            "label": "32oz Freeze Dried Raw Bag",
+            "label": "16oz Freeze Dried Raw Bag",
             "badge": "FULL SIZE"
           }
         },
@@ -1065,13 +964,13 @@
       "settings": {
         "left_eyebrow": "Final Offer",
         "left_heading": "Your Dog Decides. Risk Free.",
-        "left_sub": "One full bag. One taste test. A $39 bet that could give you more years of the unconditional love only dogs give.",
+        "left_sub": "One full bag. One taste test. A $20 bet that could give you more years of the unconditional love only dogs give.",
         "stack_title": "What's Included",
         "stack_value_label": "$35 value \u2014 $25 off + free shipping",
         "was_price": "$35",
-        "now_price": "$39",
+        "now_price": "$20",
         "price_unit": "free shipping",
-        "cta_label": "Try Get Joy \u2014 $39",
+        "cta_label": "Try Get Joy \u2014 $20",
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
@@ -1080,11 +979,11 @@
       "type": "fdr-trial-16oz-sticky-atc",
       "name": "16oz \u2014 Sticky ATC",
       "settings": {
-        "product_name": "Get Joy 32oz Starter Bag",
-        "price_label": "$39",
-        "descriptor": "Freeze Dried Raw \u00b7 32oz Bag + Free Shipping",
-        "cta_desktop": "TRY GET JOY \u2014 $39 + FREE SHIPPING",
-        "cta_mobile": "Add To Cart \u2014 $39",
+        "product_name": "Get Joy 16oz Starter Bag",
+        "price_label": "$20",
+        "descriptor": "Freeze Dried Raw \u00b7 16oz Bag + Free Shipping",
+        "cta_desktop": "TRY GET JOY \u2014 $20 + FREE SHIPPING",
+        "cta_mobile": "Add To Cart \u2014 $2",
         "cta_mobile_line2": "",
         "sub_text": "30-day money-back \u00b7 No subscription"
       }

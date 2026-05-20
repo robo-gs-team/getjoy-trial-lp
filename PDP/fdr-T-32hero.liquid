@@ -7,6 +7,8 @@
   assign pitch = section.settings.pitch
   assign step_1_label = section.settings.step_1_label
   assign step_2_label = section.settings.step_2_label
+  assign step_3_label = section.settings.step_3_label
+  assign size_label = section.settings.size_label
   assign cta_text = section.settings.cta_text
   assign stock_text = section.settings.stock_text
   assign si_eyebrow = section.settings.si_eyebrow
@@ -541,7 +543,9 @@
       <div class="t32-age-note" id="t32AgeNote"></div>
 
       {%- comment -%} Dog size {%- endcomment -%}
-      <div class="t16-field-label">Dog size</div>
+      {%- if size_label != blank -%}
+        <div class="t16-field-label">{{ size_label }}</div>
+      {%- endif -%}
       <div class="t32-size-row">
         <button class="t32-size-btn t32-active" data-size="s"  type="button">Under<br>20 lbs</button>
         <button class="t32-size-btn"             data-size="ms" type="button">20–35<br>lbs</button>
@@ -577,6 +581,10 @@
           </table>
         </div>
       </div>
+
+      {%- if step_3_label != blank -%}
+        <div class="t16-field-label">{{ step_3_label }}</div>
+      {%- endif -%}
 
       {%- comment -%} Subscribe card {%- endcomment -%}
       <div class="t32-sub-card t32-plan-active" id="t32SubCard" onclick="t32SetPlan('sub')">
@@ -958,6 +966,44 @@
       });
     });
 
+    /* Intercept form submit → use AJAX /cart/add.js so we don't redirect to homepage */
+    var atcForm = document.getElementById('fdr-32oz-hero-atc-form');
+    if (atcForm) {
+      atcForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var submitBtn = document.getElementById('fdr32ozCta');
+        var ctaText   = document.getElementById('fdr32ozCtaText');
+        var originalText = ctaText ? ctaText.textContent : '';
+        if (submitBtn) submitBtn.disabled = true;
+        if (ctaText)   ctaText.textContent = 'Adding…';
+
+        var formData = new FormData(atcForm);
+        /* Strip empty selling_plan so Shopify doesn't error on Buy Once */
+        if (!formData.get('selling_plan')) formData.delete('selling_plan');
+
+        fetch('/cart/add.js', { method:'POST', body:formData, headers:{ 'Accept':'application/json' } })
+          .then(function(r) { return r.json().then(function(d) { return { ok:r.ok, data:d }; }); })
+          .then(function(res) {
+            if (!res.ok) throw new Error(res.data && res.data.description || 'Add to cart failed');
+            /* Tell the theme's cart drawer to refresh/open. Most themes listen for one of these. */
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+            document.dispatchEvent(new CustomEvent('cart:open'));
+            document.dispatchEvent(new CustomEvent('cart:build'));
+            /* Fallback: nav to /cart if no drawer responded within 600ms */
+            setTimeout(function() {
+              if (!document.querySelector('.cart-drawer.is-open, [data-cart-drawer].is-open, .drawer--cart.is-open, cart-drawer[open]')) {
+                window.location.href = '/cart';
+              }
+            }, 600);
+          })
+          .catch(function(err) {
+            alert(err.message || 'Could not add to cart. Please try again.');
+            if (submitBtn) submitBtn.disabled = false;
+            if (ctaText)   ctaText.textContent = originalText;
+          });
+      });
+    }
+
     /* Sticky ATC btn submits the form */
     var atcBtn = document.getElementById('fdr32ozAtcBtn');
     if (atcBtn) {
@@ -1135,7 +1181,20 @@
       "type": "text",
       "id": "step_2_label",
       "label": "Step 2 label (Life stage)",
-      "default": "Step 2 — Life Stage"
+      "default": "Step 2 — Age"
+    },
+    {
+      "type": "text",
+      "id": "step_3_label",
+      "label": "Step 3 label (Pricing card)",
+      "default": "Step 3 — Choose Your Plan"
+    },
+    {
+      "type": "text",
+      "id": "size_label",
+      "label": "Dog size label",
+      "default": "Dog size",
+      "info": "Leave blank to hide."
     },
     {
       "type": "header",
@@ -1145,7 +1204,7 @@
       "type": "text",
       "id": "selling_plan_id",
       "label": "Subscription selling plan ID",
-      "info": "The numeric ID of the subscription selling plan (e.g. from Recharge or Shopify Subscriptions). Find it in your subscription app settings."
+      "info": "Numeric selling plan ID from SKIO, Recharge, or Shopify Subscriptions. One ID covers all variants on this product — Beef and Chicken both subscribe under the same plan. Find it in your subscription app: SKIO → Programs → click plan → copy the ID from the URL or details panel."
     },
     {
       "type": "text",
