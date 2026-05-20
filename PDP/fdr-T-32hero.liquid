@@ -987,9 +987,8 @@
           .then(function(r) { return r.json().then(function(d) { return { ok:r.ok, data:d }; }); })
           .then(function(res) {
             if (!res.ok) throw new Error(res.data && res.data.description || 'Add to cart failed');
-            /* Theme's cart drawer typically intercepts /cart/add.js fetches and opens itself.
-               No manual event dispatch — those were triggering a redirect via a global theme listener.
-               Reset button state in case drawer doesn't auto-close it. */
+            /* Get Joy theme listens for ajaxProduct:added to refresh and open the cart drawer. */
+            document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: res.data }));
             if (submitBtn) submitBtn.disabled = false;
             if (ctaText)   ctaText.textContent = originalText;
           })
