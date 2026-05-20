@@ -966,6 +966,44 @@
       });
     });
 
+    /* Intercept form submit → use AJAX /cart/add.js so we don't redirect to homepage */
+    var atcForm = document.getElementById('fdr-32oz-hero-atc-form');
+    if (atcForm) {
+      atcForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var submitBtn = document.getElementById('fdr32ozCta');
+        var ctaText   = document.getElementById('fdr32ozCtaText');
+        var originalText = ctaText ? ctaText.textContent : '';
+        if (submitBtn) submitBtn.disabled = true;
+        if (ctaText)   ctaText.textContent = 'Adding…';
+
+        var formData = new FormData(atcForm);
+        /* Strip empty selling_plan so Shopify doesn't error on Buy Once */
+        if (!formData.get('selling_plan')) formData.delete('selling_plan');
+
+        fetch('/cart/add.js', { method:'POST', body:formData, headers:{ 'Accept':'application/json' } })
+          .then(function(r) { return r.json().then(function(d) { return { ok:r.ok, data:d }; }); })
+          .then(function(res) {
+            if (!res.ok) throw new Error(res.data && res.data.description || 'Add to cart failed');
+            /* Tell the theme's cart drawer to refresh/open. Most themes listen for one of these. */
+            document.dispatchEvent(new CustomEvent('cart:refresh'));
+            document.dispatchEvent(new CustomEvent('cart:open'));
+            document.dispatchEvent(new CustomEvent('cart:build'));
+            /* Fallback: nav to /cart if no drawer responded within 600ms */
+            setTimeout(function() {
+              if (!document.querySelector('.cart-drawer.is-open, [data-cart-drawer].is-open, .drawer--cart.is-open, cart-drawer[open]')) {
+                window.location.href = '/cart';
+              }
+            }, 600);
+          })
+          .catch(function(err) {
+            alert(err.message || 'Could not add to cart. Please try again.');
+            if (submitBtn) submitBtn.disabled = false;
+            if (ctaText)   ctaText.textContent = originalText;
+          });
+      });
+    }
+
     /* Sticky ATC btn submits the form */
     var atcBtn = document.getElementById('fdr32ozAtcBtn');
     if (atcBtn) {
