@@ -1,0 +1,152 @@
+{%- liquid
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign separate_label = section.settings.separate_label
+  assign separate_total = section.settings.separate_total
+  assign payoff_left_title = section.settings.payoff_left_title
+  assign payoff_left_sub = section.settings.payoff_left_sub
+  assign payoff_right_price = section.settings.payoff_right_price
+  assign payoff_right_sub = section.settings.payoff_right_sub
+  assign footnote = section.settings.footnote
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+.pcvs { --pc-orange:#E85F2E; --pc-forest:#1C5236; --pc-cream:#FBF3E8; --pc-muted:#6F6A60; --pc-rule:rgba(0,0,0,.08); background:var(--pc-cream); padding:64px 20px; font-family:var(--fdr-font-body, system-ui, sans-serif); }
+.pcvs-inner { max-width:980px; margin:0 auto; }
+.pcvs-head { text-align:center; margin-bottom:36px; }
+.pcvs-h2 { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:clamp(26px, 3.5vw, 38px); color:var(--pc-forest); letter-spacing:-1px; line-height:1.1; margin:0 0 12px; }
+.pcvs-sub { font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic; font-size:15.5px; color:var(--pc-muted); line-height:1.6; max-width:640px; margin:0 auto; }
+
+.pcvs-card { background:#fff; border:1px solid var(--pc-rule); border-radius:14px; overflow:hidden; box-shadow:0 4px 24px rgba(0,0,0,.04); }
+.pcvs-row { display:grid; grid-template-columns:36px 1fr auto; gap:16px; align-items:center; padding:18px 24px; border-bottom:1px solid var(--pc-rule); }
+.pcvs-row:last-of-type { border-bottom:none; }
+.pcvs-check { width:24px; height:24px; border-radius:50%; background:var(--pc-orange); color:#fff; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.pcvs-check svg { width:14px; height:14px; }
+.pcvs-name { font-size:15px; font-weight:800; color:var(--pc-forest); line-height:1.3; }
+.pcvs-sub-label { font-size:13px; color:var(--pc-muted); margin-top:2px; line-height:1.4; }
+.pcvs-price { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:700; font-size:16px; color:var(--pc-muted); text-decoration:line-through; text-decoration-color:rgba(0,0,0,.4); white-space:nowrap; }
+
+.pcvs-total-row { display:grid; grid-template-columns:36px 1fr auto; gap:16px; align-items:center; padding:18px 24px; background:rgba(232,95,46,.06); border-top:2px solid var(--pc-orange); }
+.pcvs-total-label { font-size:14px; font-weight:900; color:var(--pc-forest); letter-spacing:.04em; text-transform:uppercase; grid-column:2; }
+.pcvs-total-price { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:20px; color:var(--pc-forest); text-decoration:line-through; }
+
+.pcvs-payoff { background:var(--pc-forest); color:#fff; padding:22px 28px; display:grid; grid-template-columns:1fr auto; gap:24px; align-items:center; border-radius:14px; margin-top:18px; }
+.pcvs-payoff-title { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:18px; line-height:1.2; }
+.pcvs-payoff-sub { font-size:13px; color:rgba(255,255,255,.75); line-height:1.5; margin-top:4px; }
+.pcvs-payoff-right { text-align:right; }
+.pcvs-payoff-price { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:28px; line-height:1; }
+.pcvs-payoff-pricesub { font-size:12px; color:rgba(255,255,255,.7); margin-top:4px; }
+
+.pcvs-footnote { text-align:center; font-size:11.5px; color:var(--pc-muted); margin-top:18px; line-height:1.5; max-width:680px; margin-left:auto; margin-right:auto; }
+
+@media (max-width:680px) {
+  .pcvs { padding:44px 14px; }
+  .pcvs-row, .pcvs-total-row { padding:14px 16px; gap:12px; grid-template-columns:28px 1fr auto; }
+  .pcvs-check { width:20px; height:20px; }
+  .pcvs-name { font-size:14px; }
+  .pcvs-sub-label { font-size:12px; }
+  .pcvs-payoff { grid-template-columns:1fr; padding:18px 20px; gap:10px; }
+  .pcvs-payoff-right { text-align:left; }
+}
+</style>
+
+<section class="pcvs" data-section-id="{{ section.id }}">
+  <div class="pcvs-inner">
+    <div class="pcvs-head">
+      <h2 class="pcvs-h2">{{ heading }}</h2>
+      {%- if subheading != blank -%}<div class="pcvs-sub">{{ subheading }}</div>{%- endif -%}
+    </div>
+
+    <div class="pcvs-card">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'stack_row' -%}
+          <div class="pcvs-row" {{ block.shopify_attributes }}>
+            <div class="pcvs-check">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div>
+              <div class="pcvs-name">{{ block.settings.name }}</div>
+              {%- if block.settings.sub_label != blank -%}
+                <div class="pcvs-sub-label">{{ block.settings.sub_label }}</div>
+              {%- endif -%}
+            </div>
+            <div class="pcvs-price">${{ block.settings.price }}</div>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
+      <div class="pcvs-total-row">
+        <div></div>
+        <div class="pcvs-total-label">{{ separate_label }}</div>
+        <div class="pcvs-total-price">${{ separate_total }}</div>
+      </div>
+    </div>
+
+    <div class="pcvs-payoff">
+      <div>
+        <div class="pcvs-payoff-title">{{ payoff_left_title }}</div>
+        {%- if payoff_left_sub != blank -%}<div class="pcvs-payoff-sub">{{ payoff_left_sub }}</div>{%- endif -%}
+      </div>
+      <div class="pcvs-payoff-right">
+        <div class="pcvs-payoff-price">${{ payoff_right_price }}</div>
+        {%- if payoff_right_sub != blank -%}<div class="pcvs-payoff-pricesub">{{ payoff_right_sub }}</div>{%- endif -%}
+      </div>
+    </div>
+
+    {%- if footnote != blank -%}
+      <div class="pcvs-footnote">{{ footnote }}</div>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pro Chews Value Stack",
+  "tag": "section",
+  "settings": [
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "heading", "label": "H2", "default": "One chew does the job of a whole shelf" },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Most owners buy gut, gut-lining, omega, and digestive support separately. Get Joy builds all of it into one daily chew, food grade, no pile of bottles." },
+
+    { "type": "header", "content": "Total Row" },
+    { "type": "text", "id": "separate_label", "label": "Total row label", "default": "Bought separately" },
+    { "type": "text", "id": "separate_total", "label": "Total price", "default": "100.94" },
+
+    { "type": "header", "content": "Payoff Bar" },
+    { "type": "text", "id": "payoff_left_title", "label": "Payoff title", "default": "Get Joy Probiotic Chews, all of it in one chew" },
+    { "type": "textarea", "id": "payoff_left_sub", "label": "Payoff sub", "default": "Food grade. Made in the USA. The same Belly Biotics™ that's in the food." },
+    { "type": "text", "id": "payoff_right_price", "label": "Payoff price", "default": "25.99" },
+    { "type": "text", "id": "payoff_right_sub", "label": "Payoff price sub", "default": "first order, from $0.29/day" },
+
+    { "type": "header", "content": "Footnote" },
+    { "type": "textarea", "id": "footnote", "label": "Footnote", "default": "Separate-product prices are illustrative category averages, to be confirmed before publish." }
+  ],
+  "blocks": [
+    {
+      "type": "stack_row",
+      "name": "Stack Row",
+      "settings": [
+        { "type": "text", "id": "name", "label": "What's inside", "default": "Live probiotics, 3 billion CFU" },
+        { "type": "text", "id": "sub_label", "label": "Sub-label", "default": "B. coagulans + B. subtilis" },
+        { "type": "text", "id": "price", "label": "Separate price", "default": "24.99" }
+      ]
+    }
+  ],
+  "max_blocks": 10,
+  "presets": [
+    {
+      "name": "Pro Chews Value Stack",
+      "blocks": [
+        { "type": "stack_row", "settings": { "name": "Live probiotics, 3 billion CFU", "sub_label": "B. coagulans + B. subtilis", "price": "24.99" }},
+        { "type": "stack_row", "settings": { "name": "Postbiotic, 200mg", "sub_label": "The part most chews skip", "price": "19.99" }},
+        { "type": "stack_row", "settings": { "name": "L-Glutamine, 100mg", "sub_label": "Supports the gut lining", "price": "16.99" }},
+        { "type": "stack_row", "settings": { "name": "Omega-3 DHA + EPA", "sub_label": "Algae-sourced, skin & coat", "price": "18.99" }},
+        { "type": "stack_row", "settings": { "name": "Prebiotics (inulin + kelp)", "sub_label": "Feeds the good bacteria", "price": "10.99" }},
+        { "type": "stack_row", "settings": { "name": "Organic ginger", "sub_label": "Settles the stomach", "price": "8.99" }}
+      ]
+    }
+  ]
+}
+{% endschema %}

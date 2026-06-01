@@ -1,0 +1,421 @@
+{%- liquid
+  assign current_variant = product.selected_or_first_available_variant
+  assign proof_text = section.settings.proof_text
+  assign heading = section.settings.heading
+  assign lede = section.settings.lede
+  assign taste_line = section.settings.taste_line
+  assign details_text = section.settings.details_text
+  assign details_url = section.settings.details_url
+  assign payoff_line = section.settings.payoff_line
+  assign sub_first_price = section.settings.sub_first_price
+  assign sub_refill_price = section.settings.sub_refill_price
+  assign onetime_price = section.settings.onetime_price
+  assign sub_compare = section.settings.sub_compare
+  assign per_day_line = section.settings.per_day_line
+  assign sub_eyebrow = section.settings.sub_eyebrow
+  assign sub_fine_print = section.settings.sub_fine_print
+  assign onetime_eyebrow = section.settings.onetime_eyebrow
+  assign stock_text = section.settings.stock_text
+  assign cta_text = section.settings.cta_text
+  assign guarantee_text = section.settings.guarantee_text
+  assign selling_plan_id = section.settings.selling_plan_id
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* ── Orange action tokens ─ TODO: confirm GJ brand orange token ── */
+.pc-hero { --pc-orange:#E85F2E; --pc-orange-dk:#D24E20; --pc-forest:#1C5236; --pc-best:#CDEB6B; --pc-cream:#FBF3E8; --pc-pink:#F7DDD0; --pc-muted:#6F6A60; --pc-rule:rgba(0,0,0,.08); }
+
+.pc-hero { background:var(--pc-cream); width:100%; padding:0; font-family:var(--fdr-font-body, system-ui, sans-serif); }
+.pc-hero-inner { display:grid; grid-template-columns:1fr 520px; gap:48px; max-width:1280px; margin:0 auto; padding:20px 40px; align-items:flex-start; min-height:88vh; box-sizing:border-box; }
+
+/* ── LEFT: gallery ── */
+.pc-gallery-col { display:flex; flex-direction:column; position:sticky; top:20px; max-width:560px; }
+.pc-slide-window { width:100%; aspect-ratio:1/1; position:relative; overflow:hidden; background:var(--pc-pink); border-radius:8px; }
+.pc-slide { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; opacity:0; transition:opacity .4s ease; pointer-events:none; }
+.pc-slide.pc-is-active { opacity:1; pointer-events:auto; }
+.pc-slide img { width:100%; height:100%; object-fit:contain; }
+.pc-badge { position:absolute; top:18px; left:18px; background:var(--pc-forest); color:#fff; font-weight:800; font-size:11px; letter-spacing:.12em; text-transform:uppercase; padding:6px 12px; border-radius:99px; z-index:2; }
+.pc-thumb-strip { display:flex; gap:8px; padding:10px 0 14px; overflow-x:auto; scrollbar-width:none; }
+.pc-thumb-strip::-webkit-scrollbar { display:none; }
+.pc-thumb { flex-shrink:0; width:72px; height:72px; border:2px solid transparent; border-radius:8px; background:var(--pc-pink); padding:4px; cursor:pointer; transition:border-color .18s; }
+.pc-thumb:hover, .pc-thumb.pc-is-active { border-color:var(--pc-orange); }
+.pc-thumb img { width:100%; height:100%; object-fit:contain; }
+
+/* ── Accordions ── */
+.pc-accordion-list { margin-top:8px; border-top:1px solid var(--pc-rule); }
+.pc-acc-item { border-bottom:1px solid var(--pc-rule); }
+.pc-acc-trigger { width:100%; background:none; border:none; padding:18px 4px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; font-family:inherit; font-size:15px; font-weight:700; color:var(--pc-forest); text-align:left; }
+.pc-acc-icon { color:var(--pc-orange); font-size:24px; line-height:1; transition:transform .25s; flex-shrink:0; }
+.pc-acc-item.pc-is-open .pc-acc-icon { transform:rotate(45deg); }
+.pc-acc-body { display:none; padding:0 4px 18px; font-size:14px; color:var(--pc-muted); line-height:1.6; }
+.pc-acc-item.pc-is-open .pc-acc-body { display:block; }
+
+/* ── RIGHT: buybox ── */
+.pc-buy-col { display:flex; flex-direction:column; padding:20px 0; }
+.pc-proof { display:flex; align-items:center; gap:8px; font-size:13px; font-weight:700; color:var(--pc-forest); margin-bottom:14px; }
+.pc-proof-stars { color:#F2B233; letter-spacing:2px; font-size:14px; line-height:1; }
+.pc-h1 { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:36px; color:var(--pc-forest); letter-spacing:-1px; line-height:1.05; margin:0 0 14px; }
+.pc-lede { font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic; font-size:15.5px; color:var(--pc-muted); line-height:1.6; margin:0 0 14px; }
+.pc-lede p { margin:0 0 10px; }
+.pc-taste { font-size:14px; color:var(--pc-muted); line-height:1.5; margin:0 0 8px; }
+.pc-details-link { display:inline-block; font-size:13px; font-weight:700; color:var(--pc-orange); text-decoration:underline; text-underline-offset:3px; margin-bottom:18px; }
+.pc-details-link:hover { color:var(--pc-orange-dk); }
+.pc-payoff { background:var(--pc-cream); border:1px solid var(--pc-rule); border-radius:10px; padding:12px 14px; margin-bottom:16px; font-size:13.5px; color:var(--pc-forest); line-height:1.5; }
+.pc-payoff strong { color:var(--pc-forest); }
+
+/* Plan cards */
+.pc-plan-list { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
+.pc-plan-card { border:2px solid var(--pc-rule); background:#fff; border-radius:10px; padding:16px 18px; cursor:pointer; transition:border-color .18s, box-shadow .18s; position:relative; }
+.pc-plan-card.pc-is-active { border-color:var(--pc-orange); box-shadow:0 4px 16px rgba(232,95,46,.12); }
+.pc-plan-head { display:flex; align-items:flex-start; gap:12px; }
+.pc-radio { flex-shrink:0; width:18px; height:18px; border:2px solid #ccc; border-radius:50%; margin-top:3px; position:relative; }
+.pc-plan-card.pc-is-active .pc-radio { border-color:var(--pc-orange); }
+.pc-plan-card.pc-is-active .pc-radio::after { content:''; position:absolute; inset:3px; background:var(--pc-orange); border-radius:50%; }
+.pc-plan-titlewrap { flex:1; }
+.pc-plan-title { font-size:15.5px; font-weight:800; color:var(--pc-forest); margin-bottom:2px; }
+.pc-plan-sub { font-size:12.5px; color:var(--pc-muted); line-height:1.45; }
+.pc-best-badge { background:var(--pc-best); color:#1a4d1f; font-size:10px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; padding:4px 7px; border-radius:4px; align-self:flex-start; }
+.pc-price-row { display:flex; align-items:baseline; justify-content:flex-end; gap:8px; margin-top:8px; flex-wrap:wrap; }
+.pc-price-now { font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900; font-size:22px; color:var(--pc-forest); }
+.pc-price-was { font-size:14px; color:var(--pc-muted); text-decoration:line-through; }
+.pc-price-meal { font-size:12px; color:var(--pc-muted); width:100%; text-align:right; }
+.pc-plan-fineprint { font-size:12px; color:var(--pc-muted); line-height:1.5; margin-top:10px; padding-top:10px; border-top:1px solid var(--pc-rule); }
+
+/* ATC */
+.pc-stock { display:flex; align-items:center; gap:6px; font-size:12px; color:var(--pc-muted); margin:10px 0 12px; }
+.pc-stock-dot { width:6px; height:6px; border-radius:50%; background:var(--pc-orange); animation:pc-pulse 1.6s ease-in-out infinite; }
+@keyframes pc-pulse { 0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)} }
+.pc-cta { width:100%; background:var(--pc-orange); color:#fff; border:none; padding:16px 20px; border-radius:12px; font-weight:900; font-size:16px; letter-spacing:-.3px; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:8px; transition:background .2s, transform .2s; font-family:inherit; }
+.pc-cta:hover:not(:disabled) { background:var(--pc-orange-dk); transform:translateY(-1px); }
+.pc-cta:disabled { opacity:.5; cursor:not-allowed; }
+.pc-cta-arrow { width:16px; height:12px; }
+.pc-guarantee { display:flex; align-items:center; gap:8px; padding:12px 14px; background:rgba(28,82,54,.06); border-radius:10px; margin-top:12px; font-size:12.5px; color:var(--pc-forest); font-weight:600; }
+.pc-guarantee-check { color:var(--pc-forest); flex-shrink:0; }
+
+/* Sticky mobile ATC */
+.pc-sticky-atc { display:none; position:fixed; left:0; right:0; bottom:0; z-index:9999; background:#fff; border-top:1px solid var(--pc-rule); padding:10px 14px; padding-bottom:calc(10px + env(safe-area-inset-bottom)); box-shadow:0 -4px 16px rgba(0,0,0,.08); align-items:center; gap:10px; opacity:0; transform:translateY(100%); transition:opacity .25s, transform .25s; pointer-events:none; }
+.pc-sticky-atc.pc-visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.pc-sticky-info { flex:1; min-width:0; }
+.pc-sticky-name { font-size:12px; font-weight:800; color:var(--pc-forest); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.pc-sticky-price { font-size:11px; color:var(--pc-muted); }
+.pc-sticky-btn { background:var(--pc-orange); color:#fff; border:none; padding:12px 18px; border-radius:10px; font-weight:900; font-size:13px; cursor:pointer; font-family:inherit; white-space:nowrap; }
+
+/* Responsive */
+@media (max-width:980px) {
+  .pc-hero-inner { grid-template-columns:1fr; padding:14px 16px; gap:24px; }
+  .pc-gallery-col { position:relative; top:0; max-width:100%; }
+  .pc-h1 { font-size:30px; }
+  .pc-sticky-atc { display:flex; }
+}
+</style>
+
+<section class="pc-hero" data-section-id="{{ section.id }}">
+  <div class="pc-hero-inner">
+
+    {%- comment -%} LEFT: gallery + accordions {%- endcomment -%}
+    <div class="pc-gallery-col">
+      <div class="pc-slide-window">
+        {%- if section.settings.badge_text != blank -%}
+          <div class="pc-badge">{{ section.settings.badge_text }}</div>
+        {%- endif -%}
+        {%- for i in (1..5) -%}
+          {%- assign img_key = 'image_' | append: i -%}
+          {%- assign img = section.settings[img_key] -%}
+          {%- if img != blank -%}
+            <div class="pc-slide{% if forloop.first %} pc-is-active{% endif %}" data-idx="{{ forloop.index0 }}">
+              <img src="{{ img | image_url: width: 900 }}" alt="{{ heading | escape }} – slide {{ forloop.index }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+      <div class="pc-thumb-strip">
+        {%- for i in (1..5) -%}
+          {%- assign img_key = 'image_' | append: i -%}
+          {%- assign img = section.settings[img_key] -%}
+          {%- if img != blank -%}
+            <button class="pc-thumb{% if forloop.first %} pc-is-active{% endif %}" data-idx="{{ forloop.index0 }}" type="button" aria-label="View slide {{ forloop.index }}">
+              <img src="{{ img | image_url: width: 200 }}" alt="">
+            </button>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+
+      <div class="pc-accordion-list">
+        {%- for block in section.blocks -%}
+          {%- if block.type == 'accordion' -%}
+            <div class="pc-acc-item" {{ block.shopify_attributes }}>
+              <button class="pc-acc-trigger" type="button" aria-expanded="false">
+                <span>{{ block.settings.title }}</span>
+                <span class="pc-acc-icon">+</span>
+              </button>
+              <div class="pc-acc-body">{{ block.settings.body }}</div>
+            </div>
+          {%- endif -%}
+        {%- endfor -%}
+      </div>
+    </div>
+
+    {%- comment -%} RIGHT: buybox {%- endcomment -%}
+    <div class="pc-buy-col">
+      {%- if proof_text != blank -%}
+        <div class="pc-proof">
+          <span class="pc-proof-stars">★★★★★</span>
+          <span>{{ proof_text }}</span>
+        </div>
+      {%- endif -%}
+
+      <h1 class="pc-h1">{{ heading }}</h1>
+
+      {%- if lede != blank -%}<div class="pc-lede">{{ lede }}</div>{%- endif -%}
+      {%- if taste_line != blank -%}<p class="pc-taste">{{ taste_line }}</p>{%- endif -%}
+      {%- if details_text != blank -%}
+        <a href="{{ details_url | default: '#' }}" class="pc-details-link">{{ details_text }} →</a>
+      {%- endif -%}
+
+      {%- if payoff_line != blank -%}
+        <div class="pc-payoff">{{ payoff_line }}</div>
+      {%- endif -%}
+
+      {%- comment -%} Plan selector {%- endcomment -%}
+      <div class="pc-plan-list">
+        <div class="pc-plan-card pc-is-active" id="pcSubCard" data-plan="sub" onclick="pcSetPlan('sub', this)">
+          <div class="pc-plan-head">
+            <div class="pc-radio"></div>
+            <div class="pc-plan-titlewrap">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+                <div>
+                  <div class="pc-plan-title">Subscribe &amp; Save</div>
+                  <div class="pc-plan-sub">{{ sub_eyebrow }}</div>
+                </div>
+                <div class="pc-best-badge">Best Value</div>
+              </div>
+              <div class="pc-price-row">
+                <span class="pc-price-now">${{ sub_first_price }}</span>
+                {%- if sub_compare != blank -%}<span class="pc-price-was">${{ sub_compare }}</span>{%- endif -%}
+                <span class="pc-price-meal">{{ per_day_line }}</span>
+              </div>
+            </div>
+          </div>
+          {%- if sub_fine_print != blank -%}
+            <div class="pc-plan-fineprint">{{ sub_fine_print }}</div>
+          {%- endif -%}
+        </div>
+
+        <div class="pc-plan-card" id="pcOnceCard" data-plan="once" onclick="pcSetPlan('once', this)">
+          <div class="pc-plan-head">
+            <div class="pc-radio"></div>
+            <div class="pc-plan-titlewrap">
+              <div class="pc-plan-title">One-Time Purchase</div>
+              <div class="pc-plan-sub">{{ onetime_eyebrow }}</div>
+              <div class="pc-price-row">
+                <span class="pc-price-now">${{ onetime_price }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {%- if stock_text != blank -%}
+        <div class="pc-stock"><span class="pc-stock-dot"></span><span>{{ stock_text }}</span></div>
+      {%- endif -%}
+
+      {%- comment -%} ATC form {%- endcomment -%}
+      {%- form 'product', product, id: 'pc-atc-form', novalidate: 'novalidate' -%}
+        <input type="hidden" name="id" id="pcVariantId" value="{{ current_variant.id }}">
+        <input type="hidden" name="quantity" value="1">
+        <input type="hidden" name="selling_plan" id="pcSellingPlan" value="{{ selling_plan_id }}">
+        <button type="submit" name="add" class="pc-cta" id="pcCta" {% unless current_variant.available %}disabled{% endunless %}>
+          <span id="pcCtaText">
+            {%- if current_variant.available -%}{{ cta_text | default: 'Add to Cart' }} · ${{ sub_first_price }}{%- else -%}Sold Out{%- endif -%}
+          </span>
+          <svg class="pc-cta-arrow" viewBox="0 0 18 13" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      {%- endform -%}
+
+      {%- if guarantee_text != blank -%}
+        <div class="pc-guarantee">
+          <svg class="pc-guarantee-check" width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>{{ guarantee_text }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+
+  {%- comment -%} Sticky mobile ATC {%- endcomment -%}
+  <div class="pc-sticky-atc" id="pcStickyBar">
+    <div class="pc-sticky-info">
+      <div class="pc-sticky-name">{{ heading }}</div>
+      <div class="pc-sticky-price"><span id="pcStickyPrice">${{ sub_first_price }}</span> · 30-day guarantee</div>
+    </div>
+    <button type="button" class="pc-sticky-btn" id="pcStickyBtn">Add to Cart</button>
+  </div>
+</section>
+
+<script>
+(function() {
+  var section = document.querySelector('[data-section-id="{{ section.id }}"]');
+  if (!section) return;
+  var SUB_PRICE  = {{ sub_first_price | json }};
+  var ONCE_PRICE = {{ onetime_price | json }};
+  var SUB_PLAN   = {{ selling_plan_id | default: '' | json }};
+  var CTA_LABEL  = {{ cta_text | default: 'Add to Cart' | json }};
+
+  /* Plan selector */
+  window.pcSetPlan = function(plan, el) {
+    var cards = section.querySelectorAll('.pc-plan-card');
+    cards.forEach(function(c) { c.classList.remove('pc-is-active'); });
+    if (el) el.classList.add('pc-is-active');
+    var price = plan === 'sub' ? SUB_PRICE : ONCE_PRICE;
+    var ctaTxt = section.querySelector('#pcCtaText');
+    if (ctaTxt) ctaTxt.textContent = CTA_LABEL + ' · $' + price;
+    var stickyPrice = section.querySelector('#pcStickyPrice');
+    if (stickyPrice) stickyPrice.textContent = '$' + price;
+    var planInput = section.querySelector('#pcSellingPlan');
+    if (planInput) planInput.value = plan === 'sub' ? SUB_PLAN : '';
+  };
+
+  /* Carousel */
+  var slides = section.querySelectorAll('.pc-slide');
+  var thumbs = section.querySelectorAll('.pc-thumb');
+  function showSlide(idx) {
+    slides.forEach(function(s, i) { s.classList.toggle('pc-is-active', i === idx); });
+    thumbs.forEach(function(t, i) { t.classList.toggle('pc-is-active', i === idx); });
+  }
+  thumbs.forEach(function(t, i) {
+    t.addEventListener('click', function() { showSlide(i); });
+  });
+
+  /* Accordions */
+  section.querySelectorAll('.pc-acc-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.pc-acc-item');
+      var open = item.classList.toggle('pc-is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  /* Sticky mobile ATC visibility */
+  var stickyBar = section.querySelector('#pcStickyBar');
+  var mainCta   = section.querySelector('#pcCta');
+  if (stickyBar && mainCta && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        stickyBar.classList.toggle('pc-visible', !e.isIntersecting && e.boundingClientRect.top < 0);
+      });
+    }, { threshold:0 });
+    io.observe(mainCta);
+  }
+  var stickyBtn = section.querySelector('#pcStickyBtn');
+  if (stickyBtn) {
+    stickyBtn.addEventListener('click', function() {
+      var form = section.querySelector('#pc-atc-form');
+      if (form) form.requestSubmit ? form.requestSubmit() : form.submit();
+    });
+  }
+
+  /* AJAX add to cart — dispatches ajaxProduct:added so Get Joy cart drawer opens */
+  var atcForm = section.querySelector('#pc-atc-form');
+  if (atcForm) {
+    atcForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      if (e.stopImmediatePropagation) e.stopImmediatePropagation();
+      var submitBtn = section.querySelector('#pcCta');
+      var ctaText   = section.querySelector('#pcCtaText');
+      var originalText = ctaText ? ctaText.textContent : '';
+      if (submitBtn) submitBtn.disabled = true;
+      if (ctaText)   ctaText.textContent = 'Adding…';
+
+      var formData = new FormData(atcForm);
+      if (!formData.get('selling_plan')) formData.delete('selling_plan');
+
+      fetch('/cart/add.js', { method:'POST', body:formData, headers:{ 'Accept':'application/json', 'X-Requested-With':'XMLHttpRequest' } })
+        .then(function(r) { return r.json().then(function(d) { return { ok:r.ok, data:d }; }); })
+        .then(function(res) {
+          if (!res.ok) throw new Error(res.data && res.data.description || 'Add to cart failed');
+          document.dispatchEvent(new CustomEvent('ajaxProduct:added', { detail: res.data }));
+          if (submitBtn) submitBtn.disabled = false;
+          if (ctaText)   ctaText.textContent = originalText;
+        })
+        .catch(function(err) {
+          alert(err.message || 'Could not add to cart. Please try again.');
+          if (submitBtn) submitBtn.disabled = false;
+          if (ctaText)   ctaText.textContent = originalText;
+        });
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Pro Chews Hero",
+  "tag": "section",
+  "class": "pc-hero-section",
+  "settings": [
+    { "type": "header", "content": "Gallery" },
+    { "type": "text", "id": "badge_text", "label": "Image badge", "default": "90 Chews" },
+    { "type": "image_picker", "id": "image_1", "label": "Image 1 (primary)" },
+    { "type": "image_picker", "id": "image_2", "label": "Image 2" },
+    { "type": "image_picker", "id": "image_3", "label": "Image 3" },
+    { "type": "image_picker", "id": "image_4", "label": "Image 4" },
+    { "type": "image_picker", "id": "image_5", "label": "Image 5" },
+
+    { "type": "header", "content": "Headline & Lede" },
+    { "type": "text", "id": "proof_text", "label": "Trust eyebrow", "default": "Trusted by 30,000+ Pet Parents" },
+    { "type": "text", "id": "heading", "label": "H1", "default": "Probiotic Chews for Dogs" },
+    { "type": "richtext", "id": "lede", "label": "Lede (italic paragraph)", "default": "<p>The dog probiotic made by a dog food company. Every chew carries Belly Biotics: 3 billion live CFUs plus a postbiotic, omega-3s, and gut-soothing botanicals. Supports healthy digestion, immune function, and a normal inflammatory response, the way real food intended.</p>" },
+    { "type": "text", "id": "taste_line", "label": "Taste line", "default": "Natural chicken flavor dogs actually want. If yours won't touch them, we'll refund you." },
+    { "type": "text", "id": "details_text", "label": "Details link text", "default": "Details" },
+    { "type": "url", "id": "details_url", "label": "Details link URL" },
+
+    { "type": "header", "content": "Payoff Line" },
+    { "type": "richtext", "id": "payoff_line", "label": "Value payoff (above plan)", "default": "<p>One chew replaces about <strong>$100 of separate supplements</strong>. From about <strong>$0.29 a day</strong>.</p>" },
+
+    { "type": "header", "content": "Pricing" },
+    { "type": "text", "id": "sub_first_price", "label": "Subscribe first-order price", "default": "25.99" },
+    { "type": "text", "id": "sub_refill_price", "label": "Subscribe refill price", "default": "31.99" },
+    { "type": "text", "id": "sub_compare", "label": "Strikethrough price (subscribe)", "default": "39.99" },
+    { "type": "text", "id": "onetime_price", "label": "One-time price", "default": "39.99" },
+    { "type": "text", "id": "per_day_line", "label": "Per-day micro line", "default": "from about $0.29/day" },
+
+    { "type": "header", "content": "Plan Copy" },
+    { "type": "text", "id": "sub_eyebrow", "label": "Subscribe sub-line", "default": "35% off your first order, then 20% off every refill" },
+    { "type": "text", "id": "sub_fine_print", "label": "Subscribe fine print", "default": "Ships every 4 weeks. Skip, pause, or cancel anytime, right from your account. Refills $31.99." },
+    { "type": "text", "id": "onetime_eyebrow", "label": "One-time sub-line", "default": "Try it once, no commitment" },
+
+    { "type": "header", "content": "Subscription" },
+    { "type": "text", "id": "selling_plan_id", "label": "SKIO selling plan ID", "info": "Numeric ID from SKIO. One ID covers all variants of this product. Find it in SKIO → Programs → click plan → copy ID from URL." },
+
+    { "type": "header", "content": "ATC & Guarantee" },
+    { "type": "text", "id": "stock_text", "label": "Stock urgency text", "default": "Low Stock — Ships within 24 hours" },
+    { "type": "text", "id": "cta_text", "label": "CTA fallback text", "default": "Add to Cart" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee line", "default": "Made in the USA, backed by our 30-Day money-back guarantee." }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Accordion title" },
+        { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Accordion body text.</p>" }
+      ]
+    }
+  ],
+  "max_blocks": 5,
+  "presets": [
+    {
+      "name": "Pro Chews Hero",
+      "blocks": [
+        { "type": "accordion", "settings": { "title": "Ingredients & What's Inside", "body": "<p>3 billion CFUs (Bacillus coagulans, B. subtilis), a 200mg postbiotic (Saccharomyces cerevisiae), algae omega-3 (DHA 46mg / EPA 31mg), L-Glutamine 100mg, organic ginger 60mg, kelp 200mg, inulin. Natural chicken flavor. Made in the USA. The same Belly Biotics™ family that goes into Get Joy food.</p>" }},
+        { "type": "accordion", "settings": { "title": "How to use", "body": "<p>A daily treat, not a diet change. No transition, no mixing. 1 chew/day up to 30 lbs, scaling to 4 for dogs over 91 lbs.</p>" }},
+        { "type": "accordion", "settings": { "title": "Shipping, Returns & Our Guarantee", "body": "<p>Made in the USA. Backed by our 30-day money-back guarantee. If your dog won't eat them, we'll refund you.</p>" }}
+      ]
+    }
+  ]
+}
+{% endschema %}
