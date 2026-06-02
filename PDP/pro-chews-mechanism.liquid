@@ -89,9 +89,9 @@
 <section class="pc-mech" data-section-id="{{ section.id }}">
   <div class="pc-mech-inner">
     <div class="pc-mech-head">
-      {%- if eyebrow != blank -%}<p class="pc-mech-eyebrow">{{ eyebrow }}</p>{%- endif -%}
-      {%- if heading != blank -%}<h2 class="pc-mech-h2">{{ heading }}</h2>{%- endif -%}
-      {%- if sub != blank -%}<p class="pc-mech-sub">{{ sub }}</p>{%- endif -%}
+      {%- if eyebrow != blank -%}<p class="pc-mech-eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
+      {%- if heading != blank -%}<h2 class="pc-mech-h2">{{ heading | escape }}</h2>{%- endif -%}
+      {%- if sub != blank -%}<p class="pc-mech-sub">{{ sub | escape }}</p>{%- endif -%}
     </div>
 
     <div class="pc-mech-grid">
@@ -117,10 +117,10 @@
               </div>
             {%- endif -%}
             {%- if block.settings.eyebrow != blank -%}
-              <p class="pc-mech-card-eyebrow">{{ block.settings.eyebrow }}</p>
+              <p class="pc-mech-card-eyebrow">{{ block.settings.eyebrow | escape }}</p>
             {%- endif -%}
             {%- if block.settings.headline != blank -%}
-              <h3 class="pc-mech-card-headline">{{ block.settings.headline }}</h3>
+              <h3 class="pc-mech-card-headline">{{ block.settings.headline | escape }}</h3>
             {%- endif -%}
             {%- if block.settings.body != blank -%}
               <p class="pc-mech-card-body">{{ block.settings.body }}</p>
@@ -131,7 +131,7 @@
     </div>
 
     {%- if footer != blank -%}
-      <p class="pc-mech-footer">{{ footer }}</p>
+      <p class="pc-mech-footer">{{ footer | escape }}</p>
     {%- endif -%}
   </div>
 </section>

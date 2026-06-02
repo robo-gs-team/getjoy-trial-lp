@@ -74,6 +74,7 @@
 .pc-plan-card.pc-is-active .pc-radio { border-color:var(--pc-orange); }
 .pc-plan-card.pc-is-active .pc-radio::after { content:''; position:absolute; inset:3px; background:var(--pc-orange); border-radius:50%; }
 .pc-plan-titlewrap { flex:1; }
+.pc-plan-head-row { display:flex; justify-content:space-between; align-items:flex-start; gap:8px; }
 .pc-plan-title { font-size:15.5px; font-weight:800; color:var(--pc-forest); margin-bottom:2px; }
 .pc-plan-sub { font-size:12.5px; color:var(--pc-muted); line-height:1.45; }
 .pc-best-badge { background:var(--pc-best); color:#1a4d1f; font-size:10px; font-weight:900; letter-spacing:.08em; text-transform:uppercase; padding:4px 7px; border-radius:4px; align-self:flex-start; }
@@ -118,7 +119,7 @@
     <div class="pc-gallery-col">
       <div class="pc-slide-window">
         {%- if section.settings.badge_text != blank -%}
-          <div class="pc-badge">{{ section.settings.badge_text }}</div>
+          <div class="pc-badge">{{ section.settings.badge_text | escape }}</div>
         {%- endif -%}
         {%- for i in (1..5) -%}
           {%- assign img_key = 'image_' | append: i -%}
@@ -162,14 +163,14 @@
       {%- if proof_text != blank -%}
         <div class="pc-proof">
           <span class="pc-proof-stars">★★★★★</span>
-          <span>{{ proof_text }}</span>
+          <span>{{ proof_text | escape }}</span>
         </div>
       {%- endif -%}
 
       <h1 class="pc-h1">{{ heading }}</h1>
 
       {%- if lede != blank -%}<div class="pc-lede">{{ lede }}</div>{%- endif -%}
-      {%- if taste_line != blank -%}<p class="pc-taste">{{ taste_line }}</p>{%- endif -%}
+      {%- if taste_line != blank -%}<p class="pc-taste">{{ taste_line | escape }}</p>{%- endif -%}
       {%- if details_text != blank -%}
         <a href="{{ details_url | default: '#' }}" class="pc-details-link">{{ details_text }} →</a>
       {%- endif -%}
@@ -184,7 +185,7 @@
           <div class="pc-plan-head">
             <div class="pc-radio"></div>
             <div class="pc-plan-titlewrap">
-              <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:8px;">
+              <div class="pc-plan-head-row">
                 <div>
                   <div class="pc-plan-title">Subscribe &amp; Save</div>
                   <div class="pc-plan-sub">{{ sub_eyebrow }}</div>

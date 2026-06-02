@@ -152,7 +152,7 @@
         </div>
       {%- endif -%}
       {%- if eyebrow != blank -%}
-        <span class="pc-nph-eyebrow-overlay">{{ eyebrow }}</span>
+        <span class="pc-nph-eyebrow-overlay">{{ eyebrow | escape }}</span>
       {%- endif -%}
     </div>
   {%- endif -%}
@@ -160,7 +160,7 @@
   <!-- Right: Content -->
   <div class="pc-nph-content">
     {%- if eyebrow != blank -%}
-      <p class="pc-nph-eyebrow">{{ eyebrow }}</p>
+      <p class="pc-nph-eyebrow">{{ eyebrow | escape }}</p>
     {%- endif -%}
 
     {%- if headline != blank -%}
@@ -169,7 +169,7 @@
 
     {%- if quote_text != blank -%}
       <div class="pc-nph-quote-block">
-        <p class="pc-nph-quote">&ldquo;{{ quote_text }}&rdquo;</p>
+        <p class="pc-nph-quote">&ldquo;{{ quote_text | escape }}&rdquo;</p>
       </div>
     {%- endif -%}
 
@@ -178,21 +178,21 @@
         <div class="pc-nph-rule"></div>
         <div>
           {%- if person_name != blank -%}
-            <div class="pc-nph-name">{{ person_name }}</div>
+            <div class="pc-nph-name">{{ person_name | escape }}</div>
           {%- endif -%}
           {%- if person_title != blank -%}
-            <div class="pc-nph-title">{{ person_title }}</div>
+            <div class="pc-nph-title">{{ person_title | escape }}</div>
           {%- endif -%}
         </div>
       </div>
     {%- endif -%}
 
     {%- if badge_text != blank -%}
-      <span class="pc-nph-badge">{{ badge_text }}</span>
+      <span class="pc-nph-badge">{{ badge_text | escape }}</span>
     {%- endif -%}
 
     {%- if date_text != blank -%}
-      <p class="pc-nph-date">{{ date_text }}</p>
+      <p class="pc-nph-date">{{ date_text | escape }}</p>
     {%- endif -%}
   </div>
 
