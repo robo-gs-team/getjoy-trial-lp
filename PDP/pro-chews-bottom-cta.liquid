@@ -1,0 +1,270 @@
+{%- liquid
+  assign left_eyebrow = section.settings.left_eyebrow
+  assign left_heading = section.settings.left_heading
+  assign left_sub = section.settings.left_sub
+  assign stack_title = section.settings.stack_title
+  assign stack_value_label = section.settings.stack_value_label
+  assign was_price = section.settings.was_price
+  assign now_price = section.settings.now_price
+  assign price_unit = section.settings.price_unit
+  assign cta_label = section.settings.cta_label
+  assign cta_link = section.settings.cta_link
+  assign guarantee_text = section.settings.guarantee_text
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* ─── BOTTOM CARD ─── */
+  .pc-bottom-cta__card {
+    background:var(--fdr-forest); border-radius:var(--fdr-radius-lg);
+    max-width:880px; margin:0 auto;
+    display:grid; grid-template-columns:1fr 1fr; overflow:hidden;
+    box-shadow:0 18px 64px rgba(0,80,5,.18); position:relative;
+  }
+  .pc-bottom-cta__card::before {
+    content:''; position:absolute; top:-60px; left:-60px;
+    width:260px; height:260px;
+    background:radial-gradient(circle,rgba(232,95,46,.15) 0%,transparent 70%);
+    pointer-events:none;
+  }
+  .pc-bottom-cta__left { padding:50px 44px; position:relative; z-index:1; }
+  .pc-bottom-cta__eyebrow { font-size:10px; font-weight:800; letter-spacing:3px; text-transform:uppercase; color:var(--pc-orange, #E85F2E); opacity:.8; margin-bottom:14px; }
+  .pc-bottom-cta__heading {
+    font-family:var(--fdr-font-heading); font-weight:900;
+    font-size:clamp(32px,3.2vw,46px); text-transform:uppercase;
+    color:#fff; letter-spacing:-2px; line-height:.93; margin-bottom:18px;
+  }
+  .pc-bottom-cta__heading .accent { color:var(--pc-orange, #E85F2E); }
+  .pc-bottom-cta__sub { font-family:var(--fdr-font-serif); font-style:italic; font-weight:300; font-size:15px; color:rgba(255,255,255,.6); line-height:1.65; max-width:310px; }
+  .pc-bottom-cta__right {
+    background:rgba(255,255,255,.04); border-left:1px solid rgba(255,255,255,.08);
+    padding:44px; position:relative; z-index:1;
+  }
+  .pc-bottom-cta__stack {
+    margin-bottom:22px;
+    border-radius:var(--fdr-radius); overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);
+  }
+  .pc-bottom-cta__stack-head {
+    background:rgba(0,0,0,.30); backdrop-filter:blur(6px);
+    padding:9px 14px;
+    display:flex; align-items:center; justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.10);
+  }
+  .pc-bottom-cta__stack-head-title {
+    font-size:10px; font-weight:800; letter-spacing:2px;
+    text-transform:uppercase; color:rgba(255,255,255,.55);
+  }
+  .pc-bottom-cta__stack-head-value {
+    font-size:10px; font-weight:700; color:var(--pc-orange, #E85F2E);
+  }
+  .pc-bottom-cta__row {
+    display:flex; align-items:center; gap:10px;
+    padding:9px 14px; border-bottom:1px solid rgba(255,255,255,.07);
+    font-size:13px; color:#fff; font-weight:700;
+    background:rgba(255,255,255,.03);
+  }
+  .pc-bottom-cta__row:last-child { border-bottom:none; }
+  .pc-bottom-cta__chk {
+    width:20px; height:20px; background:var(--pc-orange, #E85F2E); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    font-size:10px; color:var(--fdr-forest); flex-shrink:0; font-weight:900;
+  }
+  .pc-bottom-cta__val {
+    margin-left:auto; font-size:10px; font-weight:800;
+    padding:3px 8px; border-radius:100px; letter-spacing:.3px;
+    background:rgba(232,95,46,.15); color:var(--pc-orange, #E85F2E); white-space:nowrap;
+    border:1px solid rgba(232,95,46,.25);
+  }
+  .pc-bottom-cta__price { display:flex; align-items:baseline; gap:8px; margin-bottom:16px; }
+  .pc-bottom-cta__was { color:rgba(255,255,255,.3); text-decoration:line-through; font-size:14px; }
+  .pc-bottom-cta__now { font-family:var(--fdr-font-heading); font-weight:900; font-size:46px; color:#fff; letter-spacing:-3px; line-height:1; }
+  .pc-bottom-cta__unit { font-size:12px; color:rgba(255,255,255,.4); }
+  .pc-bottom-cta__btn {
+    width:100%; background:var(--pc-orange, #E85F2E); color:#fff;
+    font-family:var(--fdr-font-heading); font-weight:900;
+    font-size:16px; text-transform:uppercase;
+    padding:17px; border-radius:100px; border:none;
+    display:flex; align-items:center; justify-content:center; gap:8px;
+    transition:all .2s; margin-bottom:8px;
+    text-decoration:none; cursor:pointer;
+  }
+  .pc-bottom-cta__btn:hover { background:var(--pc-orange, #E85F2E); color:var(--fdr-forest); transform:translateY(-1px); }
+  .pc-bottom-cta__guarantee { text-align:center; font-size:11px; color:rgba(255,255,255,.3); }
+
+  @media (max-width:768px) {
+    .pc-bottom-cta__card { grid-template-columns:1fr; }
+    .pc-bottom-cta__left,
+    .pc-bottom-cta__right { padding:34px 22px; }
+  }
+</style>
+
+<div class="fdr-sec fdr-sec--cream">
+  <div class="pc-bottom-cta__card">
+    <div class="pc-bottom-cta__left">
+      {% if left_eyebrow != blank %}
+        <p class="pc-bottom-cta__eyebrow">{{ left_eyebrow | escape }}</p>
+      {% endif %}
+      {% if left_heading != blank %}
+        <h2 class="pc-bottom-cta__heading">{{ left_heading }}</h2>
+      {% endif %}
+      {% if left_sub != blank %}
+        <p class="pc-bottom-cta__sub">{{ left_sub | escape }}</p>
+      {% endif %}
+    </div>
+    <div class="pc-bottom-cta__right">
+      <div class="pc-bottom-cta__stack">
+        <div class="pc-bottom-cta__stack-head">
+          <span class="pc-bottom-cta__stack-head-title">{{ stack_title | escape }}</span>
+          <span class="pc-bottom-cta__stack-head-value">{{ stack_value_label | escape }}</span>
+        </div>
+        {% for block in section.blocks %}
+          <div class="pc-bottom-cta__row" {{ block.shopify_attributes }}>
+            <div class="pc-bottom-cta__chk">&#10003;</div>
+            {{ block.settings.label | escape }}
+            <span class="pc-bottom-cta__val">{{ block.settings.badge | escape }}</span>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="pc-bottom-cta__price">
+        {% if was_price != blank %}<span class="pc-bottom-cta__was">{{ was_price | escape }}</span>{% endif %}
+        {% if now_price != blank %}<span class="pc-bottom-cta__now">{{ now_price | escape }}</span>{% endif %}
+        {% if price_unit != blank %}<span class="pc-bottom-cta__unit">{{ price_unit | escape }}</span>{% endif %}
+      </div>
+      {% if cta_label != blank %}
+        <a href="#buy-box" class="pc-bottom-cta__btn">
+          {{ cta_label | escape }}
+          <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+      {% endif %}
+      {% if guarantee_text != blank %}
+        <p class="pc-bottom-cta__guarantee">{{ guarantee_text | escape }}</p>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pro Chews Bottom CTA",
+  "tag": "section",
+  "class": "section-pc-bottom-cta",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Left Column"
+    },
+    {
+      "type": "text",
+      "id": "left_eyebrow",
+      "label": "Eyebrow",
+      "default": "Final Offer"
+    },
+    {
+      "type": "inline_richtext",
+      "id": "left_heading",
+      "label": "Heading",
+      "default": "One chew a day. Risk free."
+    },
+    {
+      "type": "textarea",
+      "id": "left_sub",
+      "label": "Subtext",
+      "default": "90 chews, three months of gut support for a small dog. $25.99 to start. If your dog won't eat them, you don't pay."
+    },
+    {
+      "type": "header",
+      "content": "Right Column"
+    },
+    {
+      "type": "text",
+      "id": "stack_title",
+      "label": "Stack heading",
+      "default": "What's Included"
+    },
+    {
+      "type": "text",
+      "id": "stack_value_label",
+      "label": "Value label",
+      "default": "35% off your first order"
+    },
+    {
+      "type": "header",
+      "content": "Pricing"
+    },
+    {
+      "type": "text",
+      "id": "was_price",
+      "label": "Was price",
+      "default": "$39.99"
+    },
+    {
+      "type": "text",
+      "id": "now_price",
+      "label": "Now price",
+      "default": "$25.99"
+    },
+    {
+      "type": "text",
+      "id": "price_unit",
+      "label": "Price unit",
+      "default": "first order, ships every 4 weeks"
+    },
+    {
+      "type": "header",
+      "content": "Button"
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "Add to Cart \u2014 $25.99"
+    },
+    {
+      "type": "url",
+      "id": "cta_link",
+      "label": "Button link"
+    },
+    {
+      "type": "text",
+      "id": "guarantee_text",
+      "label": "Guarantee text",
+      "default": "30-day money-back guarantee. If it doesn't work, it's completely free."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "include_item",
+      "name": "Included Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Item label",
+          "default": "90 Probiotic Chews"
+        },
+        {
+          "type": "text",
+          "id": "badge",
+          "label": "Badge",
+          "default": "FULL BAG"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pro Chews Bottom CTA",
+      "category": "Landing Page",
+      "blocks": [
+        { "type": "include_item", "settings": { "label": "90 Probiotic Chews", "badge": "FULL BAG" } },
+        { "type": "include_item", "settings": { "label": "Belly Biotics\u2122 System", "badge": "EXCLUSIVE" } },
+        { "type": "include_item", "settings": { "label": "Made in the USA", "badge": "ALWAYS" } },
+        { "type": "include_item", "settings": { "label": "30-Day Refund", "badge": "NO QUESTIONS" } },
+        { "type": "include_item", "settings": { "label": "Skip / Pause / Cancel", "badge": "FROM YOUR ACCOUNT" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
