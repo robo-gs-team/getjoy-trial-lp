@@ -1,0 +1,202 @@
+{%- liquid
+  assign eyebrow = section.settings.eyebrow
+  assign heading = section.settings.heading
+  assign sub = section.settings.sub
+  assign footer = section.settings.footer
+  assign bg_tint = section.settings.bg_tint
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .pc-mech {
+    --pc-orange:#E85F2E; --pc-orange-dk:#D24E20; --pc-orange-soft:#FCEAE0;
+    --pc-forest:#1C5236; --pc-cream:#FBF3E8; --pc-line:#E7DECC;
+    --pc-ink:#3E382B; --pc-muted:#8a8270;
+    background: {{ bg_tint | default: '#FCEAE0' }};
+    padding: 80px 20px;
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+  }
+  .pc-mech-inner { max-width: 1060px; margin: 0 auto; }
+  .pc-mech-head { text-align: center; margin-bottom: 44px; }
+  .pc-mech-eyebrow {
+    font-weight: 800; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--pc-orange); margin: 0 0 14px;
+  }
+  .pc-mech-h2 {
+    font-family: var(--fdr-font-heading, Georgia, serif); font-weight: 900;
+    font-size: clamp(26px, 3.5vw, 38px); color: var(--pc-forest);
+    letter-spacing: -1px; line-height: 1.1; margin: 0 0 14px;
+  }
+  .pc-mech-h2 .pc-tm { font-size: 0.55em; vertical-align: super; line-height: 1; }
+  .pc-mech-sub {
+    font-family: var(--fdr-font-serif, Georgia, serif); font-style: italic;
+    font-size: 15.5px; color: var(--pc-muted); line-height: 1.6;
+    max-width: 620px; margin: 0 auto;
+  }
+
+  .pc-mech-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px;
+    margin-bottom: 36px;
+  }
+  .pc-mech-card {
+    background: #fff; border: 1px solid var(--pc-line);
+    border-radius: 14px; padding: 28px 24px;
+    display: flex; flex-direction: column; gap: 12px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pc-mech-card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(232,95,46,0.10); }
+  .pc-mech-icon {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--pc-orange-soft); color: var(--pc-orange);
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 4px;
+  }
+  .pc-mech-icon svg { width: 22px; height: 22px; }
+  .pc-mech-card-eyebrow {
+    font-weight: 800; font-size: 10px; letter-spacing: 1.4px; text-transform: uppercase;
+    color: var(--pc-orange); margin: 0;
+  }
+  .pc-mech-card-headline {
+    font-family: var(--fdr-font-heading, Georgia, serif); font-weight: 900;
+    font-size: 18px; color: var(--pc-forest); letter-spacing: -0.3px;
+    line-height: 1.25; margin: 0;
+  }
+  .pc-mech-card-body {
+    font-size: 14px; color: var(--pc-muted); line-height: 1.6; margin: 0;
+  }
+  .pc-mech-card-img {
+    width: 100%; height: 120px; object-fit: cover; border-radius: 10px;
+    margin-bottom: 6px;
+  }
+  .pc-mech-card-img-wrap--has-image .pc-mech-icon { display: none; }
+
+  .pc-mech-footer {
+    text-align: center; max-width: 640px; margin: 0 auto;
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-weight: 600; font-size: 14.5px; color: var(--pc-forest);
+    line-height: 1.5;
+  }
+  .pc-mech-footer .pc-tm { font-size: 0.7em; vertical-align: super; }
+
+  @media (max-width: 768px) {
+    .pc-mech { padding: 56px 16px; }
+    .pc-mech-grid { grid-template-columns: 1fr; gap: 14px; }
+    .pc-mech-card { padding: 22px 20px; }
+  }
+</style>
+
+<section class="pc-mech" data-section-id="{{ section.id }}">
+  <div class="pc-mech-inner">
+    <div class="pc-mech-head">
+      {%- if eyebrow != blank -%}<p class="pc-mech-eyebrow">{{ eyebrow }}</p>{%- endif -%}
+      {%- if heading != blank -%}<h2 class="pc-mech-h2">{{ heading }}</h2>{%- endif -%}
+      {%- if sub != blank -%}<p class="pc-mech-sub">{{ sub }}</p>{%- endif -%}
+    </div>
+
+    <div class="pc-mech-grid">
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'layer_card' -%}
+          {%- assign has_image = false -%}
+          {%- if block.settings.image != blank -%}{%- assign has_image = true -%}{%- endif -%}
+          <div class="pc-mech-card{% if has_image %} pc-mech-card-img-wrap--has-image{% endif %}" {{ block.shopify_attributes }}>
+            {%- if has_image -%}
+              <img class="pc-mech-card-img" src="{{ block.settings.image | image_url: width: 600 }}" alt="{{ block.settings.eyebrow | escape }}" loading="lazy">
+            {%- else -%}
+              <div class="pc-mech-icon">
+                {%- case block.settings.icon -%}
+                  {%- when 'probiotic' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="9" r="2.5"/><circle cx="16" cy="14" r="3"/><circle cx="9" cy="17" r="1.8"/><path d="M6 9 4 7M18 14l2-2M9 17l-2 2"/></svg>
+                  {%- when 'postbiotic' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22v-6M2 12h6M22 12h-6M4.93 4.93l4.24 4.24M19.07 19.07l-4.24-4.24M4.93 19.07l4.24-4.24M19.07 4.93l-4.24 4.24"/></svg>
+                  {%- when 'prebiotic' -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C9 6 7 9 7 13a5 5 0 0 0 10 0c0-4-2-7-5-11z"/><path d="M12 22v-9"/></svg>
+                {%- else -%}
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/></svg>
+                {%- endcase -%}
+              </div>
+            {%- endif -%}
+            {%- if block.settings.eyebrow != blank -%}
+              <p class="pc-mech-card-eyebrow">{{ block.settings.eyebrow }}</p>
+            {%- endif -%}
+            {%- if block.settings.headline != blank -%}
+              <h3 class="pc-mech-card-headline">{{ block.settings.headline }}</h3>
+            {%- endif -%}
+            {%- if block.settings.body != blank -%}
+              <p class="pc-mech-card-body">{{ block.settings.body }}</p>
+            {%- endif -%}
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+
+    {%- if footer != blank -%}
+      <p class="pc-mech-footer">{{ footer }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Pro Chews Mechanism",
+  "tag": "section",
+  "class": "section-pc-mech",
+  "settings": [
+    { "type": "header", "content": "Header" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "How One Chew Does the Job of a Shelf" },
+    { "type": "text", "id": "heading", "label": "H2 (use {{tm}} for ™)", "default": "Belly Biotics™: the three layers most chews skip" },
+    { "type": "textarea", "id": "sub", "label": "Sub", "default": "Most probiotic chews stop at one strain. We layer pre, pro, and postbiotic the way the gut actually uses them." },
+    { "type": "header", "content": "Footer" },
+    { "type": "text", "id": "footer", "label": "Footer line", "default": "The same Belly Biotics™ system that's in Get Joy food. Now in a daily chew." },
+    { "type": "header", "content": "Style" },
+    { "type": "color", "id": "bg_tint", "label": "Background tint", "default": "#FCEAE0" }
+  ],
+  "blocks": [
+    {
+      "type": "layer_card",
+      "name": "Layer Card",
+      "limit": 3,
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Built-in icon",
+          "info": "Used if no image is uploaded.",
+          "options": [
+            { "value": "probiotic", "label": "Probiotic (bacteria)" },
+            { "value": "postbiotic", "label": "Postbiotic (spark)" },
+            { "value": "prebiotic", "label": "Prebiotic (leaf)" }
+          ], "default": "probiotic" },
+        { "type": "image_picker", "id": "image", "label": "Card image (optional, overrides icon)" },
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "PROBIOTIC" },
+        { "type": "text", "id": "headline", "label": "Headline (the dose/ingredient line)", "default": "3 billion live CFU" },
+        { "type": "textarea", "id": "body", "label": "Body", "default": "Bacillus coagulans and B. subtilis are spore-formers. They survive your dog's stomach acid and arrive in the gut alive, unlike most yogurt-strain probiotics that die on the way down." }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [
+    {
+      "name": "Pro Chews Mechanism",
+      "category": "Landing Page",
+      "blocks": [
+        { "type": "layer_card", "settings": {
+          "icon": "probiotic",
+          "eyebrow": "PROBIOTIC",
+          "headline": "3 billion live CFU",
+          "body": "Bacillus coagulans and B. subtilis are spore-formers. They survive your dog's stomach acid and arrive in the gut alive, unlike most yogurt-strain probiotics that die on the way down."
+        }},
+        { "type": "layer_card", "settings": {
+          "icon": "postbiotic",
+          "eyebrow": "POSTBIOTIC",
+          "headline": "200mg Saccharomyces cerevisiae",
+          "body": "The part most chews skip. Postbiotics are the active compounds that support a calm inflammatory response and signal the immune system. Your dog gets the benefit even if the live bacteria don't fully colonize."
+        }},
+        { "type": "layer_card", "settings": {
+          "icon": "prebiotic",
+          "eyebrow": "PREBIOTIC",
+          "headline": "Inulin, kelp and organic ginger",
+          "body": "Fiber the good bacteria feed on. Without prebiotics, probiotics don't stick around. With them, the colony grows and holds."
+        }}
+      ]
+    }
+  ]
+}
+{% endschema %}

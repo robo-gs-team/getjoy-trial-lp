@@ -1,0 +1,226 @@
+{%- liquid
+  assign eyebrow = section.settings.eyebrow
+  assign heading = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign cta_label = section.settings.cta_label
+  assign cta_link = section.settings.cta_link
+  assign guarantee_text = section.settings.guarantee_text
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* ── Ingredient Cards (cloned from fdr-trial-16oz-ingredients, orange accents) ── */
+  .pc-ingredients { background: var(--pc-cream, #FBF3E8); padding: 88px 72px 80px; }
+  .pc-ingredients .pc-eyebrow {
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-weight: 800; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--pc-orange, #E85F2E); text-align: center; margin: 0 0 14px;
+  }
+  .pc-ingredients .pc-h2 {
+    font-family: var(--fdr-font-heading, Georgia, serif); font-weight: 900;
+    font-size: clamp(26px, 3.5vw, 38px); color: var(--pc-forest, #1C5236);
+    letter-spacing: -1px; line-height: 1.1; text-align: center; margin: 0 0 12px;
+  }
+  .pc-ingredients .pc-sub {
+    font-family: var(--fdr-font-serif, Georgia, serif); font-style: italic;
+    font-size: 15.5px; color: var(--pc-muted, #8a8270); line-height: 1.6;
+    text-align: center; max-width: 640px; margin: 0 auto 36px;
+  }
+
+  .pc-ingredients__grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+    max-width: 1060px; margin: 0 auto 52px;
+  }
+  .pc-ingredients__card {
+    background: #fff; border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--pc-line, #E7DECC); display: flex; flex-direction: column;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .pc-ingredients__card:hover { transform: translateY(-3px); box-shadow: 0 8px 32px rgba(232,95,46,0.12); }
+  .pc-ingredients__img-wrap {
+    width: 100%; height: 180px; overflow: hidden; background: #EBE7DC;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pc-ingredients__img { width: 100%; height: 100%; object-fit: cover; }
+  .pc-ingredients__img-split { gap: 0; padding: 0; display: grid; grid-template-columns: 1fr 1fr; }
+  .pc-ingredients__img-half {
+    display: block; width: 100%; height: 100%; background-size: cover; background-position: center;
+    background-repeat: no-repeat; background-color: #f7f3ea; flex-shrink: 0;
+  }
+  .pc-ingredients__img-half:first-child { border-right: 1px solid var(--pc-line, #E7DECC); }
+  .pc-ingredients__img-biotics { background: #FCEAE0; }
+  .pc-ingredients__img-biotics .pc-ingredients__img { transform: scale(1.5); transform-origin: center center; }
+  .pc-ingredients__img-none { background: var(--pc-ink, #3E382B); }
+  .pc-ingredients__none-list { display: flex; flex-direction: column; gap: 6px; }
+  .pc-ingredients__none-list span {
+    font-size: 10px; font-weight: 800; letter-spacing: 1px; color: #fff;
+    background: rgba(255,255,255,0.12); padding: 5px 10px; border-radius: 6px;
+    text-transform: uppercase; text-align: center;
+  }
+  .pc-ingredients__body { padding: 16px 18px 20px; flex: 1; }
+  .pc-ingredients__label {
+    font-family: var(--fdr-font-body, system-ui, sans-serif); font-weight: 800;
+    font-size: 10px; letter-spacing: 1.2px; text-transform: uppercase;
+    color: var(--pc-orange, #E85F2E); margin-bottom: 4px;
+  }
+  .pc-ingredients__title {
+    font-family: var(--fdr-font-heading, Georgia, serif); font-weight: 800;
+    font-size: 14px; color: var(--pc-ink, #3E382B); letter-spacing: 0;
+    line-height: 1.3; margin-bottom: 8px;
+  }
+  .pc-ingredients__desc {
+    font-family: var(--fdr-font-body, system-ui, sans-serif); font-size: 12.5px;
+    color: var(--pc-muted, #8a8270); line-height: 1.55;
+  }
+  .pc-ingredients__cta-wrap { text-align: center; }
+  .pc-ingredients .pc-cta-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--pc-orange, #E85F2E); color: #fff;
+    padding: 14px 26px; border-radius: 99px;
+    font-weight: 900; font-size: 14px; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pc-ingredients .pc-cta-pill:hover { background: var(--pc-orange-dk, #D24E20); transform: translateY(-1px); }
+  .pc-ingredients .pc-cta-guarantee {
+    font-size: 12px; color: var(--pc-muted, #8a8270); margin-top: 10px;
+  }
+
+  @media (max-width: 768px) {
+    .pc-ingredients { padding: 52px 20px 60px; }
+    .pc-ingredients__grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+    .pc-ingredients__img-wrap { height: 140px; }
+  }
+  @media (max-width: 480px) {
+    .pc-ingredients__grid { grid-template-columns: 1fr; max-width: 360px; }
+  }
+</style>
+
+<div class="pc-ingredients">
+  {% if eyebrow != blank %}<p class="pc-eyebrow">{{ eyebrow | escape }}</p>{% endif %}
+  {% if heading != blank %}<h2 class="pc-h2">{{ heading }}</h2>{% endif %}
+  {% if subheading != blank %}<p class="pc-sub">{{ subheading | escape }}</p>{% endif %}
+
+  <div class="pc-ingredients__grid">
+    {% for block in section.blocks %}
+      {%- liquid
+        assign card_type = block.settings.card_type
+        assign image_1 = block.settings.image_1
+        assign image_2 = block.settings.image_2
+        assign label = block.settings.label
+        assign title = block.settings.title
+        assign description = block.settings.description
+        assign none_tags = block.settings.none_tags
+      -%}
+      <div class="pc-ingredients__card{% if card_type == 'none' %} pc-ingredients__card-none{% endif %}" {{ block.shopify_attributes }}>
+        {% if card_type == 'split' %}
+          <div class="pc-ingredients__img-wrap pc-ingredients__img-split">
+            {% if image_1 != blank %}<div class="pc-ingredients__img-half" style="background-image:url('{{ image_1 }}')"></div>{% endif %}
+            {% if image_2 != blank %}<div class="pc-ingredients__img-half" style="background-image:url('{{ image_2 }}')"></div>{% endif %}
+          </div>
+        {% elsif card_type == 'single' %}
+          <div class="pc-ingredients__img-wrap{% if block.settings.biotics_style %} pc-ingredients__img-biotics{% endif %}">
+            {% if image_1 != blank %}<img src="{{ image_1 }}" alt="{{ title | escape }}" class="pc-ingredients__img" loading="lazy">{% endif %}
+          </div>
+        {% elsif card_type == 'none' %}
+          <div class="pc-ingredients__img-wrap pc-ingredients__img-none">
+            <div class="pc-ingredients__none-list">
+              {% assign tags = none_tags | split: ',' %}
+              {% for tag in tags %}<span>{{ tag | strip | escape }}</span>{% endfor %}
+            </div>
+          </div>
+        {% endif %}
+        <div class="pc-ingredients__body">
+          {% if label != blank %}<div class="pc-ingredients__label">{{ label | escape }}</div>{% endif %}
+          {% if title != blank %}<div class="pc-ingredients__title">{{ title | escape }}</div>{% endif %}
+          {% if description != blank %}<p class="pc-ingredients__desc">{{ description | escape }}</p>{% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  {% if cta_label != blank %}
+    <div class="pc-ingredients__cta-wrap">
+      <a href="{{ cta_link | default: '#buy-box' }}" class="pc-cta-pill">
+        {{ cta_label | escape }}
+        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      {% if guarantee_text != blank %}<p class="pc-cta-guarantee">{{ guarantee_text | escape }}</p>{% endif %}
+    </div>
+  {% endif %}
+</div>
+
+{% schema %}
+{
+  "name": "Pro Chews Ingredients",
+  "tag": "section",
+  "class": "section-pc-ingredients",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Inside the Chew" },
+    { "type": "inline_richtext", "id": "heading", "label": "Heading", "default": "What's Actually In Every Chew" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Every ingredient is named. No mystery blends, no fillers, no fine print." },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "cta_label", "label": "Button label", "default": "Add to Cart — $25.99" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "30-day money-back guarantee. If your dog won't eat them, we'll refund you." }
+  ],
+  "blocks": [
+    {
+      "type": "ingredient_card",
+      "name": "Ingredient Card",
+      "settings": [
+        { "type": "select", "id": "card_type", "label": "Card type",
+          "options": [
+            { "value": "split", "label": "Split image (two halves)" },
+            { "value": "single", "label": "Single image" },
+            { "value": "none", "label": "Tags only (no image)" }
+          ], "default": "single" },
+        { "type": "text", "id": "image_1", "label": "Image 1 URL (or main image)" },
+        { "type": "text", "id": "image_2", "label": "Image 2 URL (for split cards)" },
+        { "type": "checkbox", "id": "biotics_style", "label": "Biotics scale effect", "default": false,
+          "info": "Scales single image 1.5x with pale orange background" },
+        { "type": "text", "id": "none_tags", "label": "Tags (comma-separated)",
+          "default": "No Corn, No Soy, No Seed Oils, No Byproducts" },
+        { "type": "text", "id": "label", "label": "Category label", "default": "Probiotic Strains" },
+        { "type": "text", "id": "title", "label": "Title", "default": "3 Billion CFU" },
+        { "type": "textarea", "id": "description", "label": "Description",
+          "default": "Bacillus coagulans + B. subtilis, spore-formers chosen to survive stomach acid." }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pro Chews Ingredients",
+      "category": "Landing Page",
+      "blocks": [
+        { "type": "ingredient_card", "settings": {
+          "card_type": "single", "biotics_style": true,
+          "label": "Probiotic Strains",
+          "title": "3 Billion CFU",
+          "description": "3 billion CFU of Bacillus coagulans and B. subtilis. Spore-formers chosen to survive stomach acid, because most yogurt-style probiotics die before they reach the gut."
+        }},
+        { "type": "ingredient_card", "settings": {
+          "card_type": "single", "biotics_style": true,
+          "label": "Postbiotic + L-Glutamine",
+          "title": "200mg Postbiotic, 100mg L-Glutamine",
+          "description": "A 200mg postbiotic plus 100mg L-Glutamine. The postbiotic supports immune signaling. L-Glutamine supports the gut lining itself."
+        }},
+        { "type": "ingredient_card", "settings": {
+          "card_type": "single", "biotics_style": true,
+          "label": "Omega-3 + Botanicals",
+          "title": "Algae DHA, Ginger, Kelp",
+          "description": "Algae-sourced DHA 46mg and EPA 31mg for skin and coat. Organic ginger 60mg to settle the stomach. Kelp 200mg to feed the good bacteria."
+        }},
+        { "type": "ingredient_card", "settings": {
+          "card_type": "none",
+          "none_tags": "No Corn, No Soy, No Seed Oils, No Byproducts",
+          "label": "What's Not In It",
+          "title": "Clean Label",
+          "description": "No corn, wheat, soy, artificial preservatives, seed oils, or animal byproducts. Natural chicken flavor only."
+        }}
+      ]
+    }
+  ]
+}
+{% endschema %}

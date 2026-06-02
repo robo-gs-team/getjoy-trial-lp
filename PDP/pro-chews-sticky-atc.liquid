@@ -1,0 +1,240 @@
+{% comment %}
+  Sticky ATC bar — fixed to bottom of viewport.
+  Hidden when the hero buy-box CTA is visible; shown once user scrolls past it.
+{% endcomment %}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+/* ─── STICKY ATC BAR ─── */
+.pc-atc-bar {
+  position:fixed; bottom:0; left:0; right:0;
+  width:100%; box-sizing:border-box; overflow:hidden;
+  z-index:999;
+  background:var(--fdr-forest, #00230A);
+  border-top:1px solid rgba(255,255,255,0.10);
+  box-shadow:0 -4px 24px rgba(0,0,0,0.20);
+  padding-bottom:env(safe-area-inset-bottom);
+  opacity:0;
+  transform:translateY(100%);
+  transition:opacity .25s ease, transform .25s ease;
+  pointer-events:none;
+}
+.pc-atc-bar.pc-atc-visible { opacity:1; transform:translateY(0); pointer-events:auto; }
+.pc-atc-inner {
+  max-width:1100px; margin:0 auto;
+  padding:0 32px; height:96px;
+  display:flex; align-items:center;
+  justify-content:space-between; gap:16px;
+}
+.pc-atc-left { flex:0 0 auto; display:flex; align-items:center; gap:12px; min-width:0; }
+.pc-atc-spacer { flex:1; }
+.pc-atc-text { min-width:0; }
+.pc-atc-name {
+  font-family:var(--fdr-font-heading); font-weight:900; font-size:14px;
+  color:#fff; white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+}
+.pc-atc-name-price {
+  font-family:var(--fdr-font-heading); font-weight:700; font-size:14px;
+  color:rgba(255,255,255,0.80);
+}
+.pc-atc-desc {
+  font-family:var(--fdr-font-body); font-weight:400; font-size:12px;
+  color:rgba(255,255,255,0.50); white-space:nowrap;
+}
+.pc-atc-btn-wrap {
+  display:flex; flex-direction:column; align-items:center; flex-shrink:0;
+}
+.pc-atc-btn {
+  flex-shrink:0;
+  background:var(--pc-orange, #E85F2E); color:#fff;
+  border:none; border-radius:100px;
+  font-family:var(--fdr-font-heading); font-weight:800;
+  font-size:15px; letter-spacing:0.06em; text-transform:uppercase;
+  padding:16px 40px; white-space:nowrap;
+  cursor:pointer; transition:background .15s ease;
+}
+.pc-atc-btn:hover { background:var(--pc-orange-dk, #D24E20); }
+.pc-atc-btn-m { display:none; }
+
+/* flavor pills */
+.pc-atc-flavors {
+  flex-shrink:0;
+  display:flex; flex-direction:row;
+  align-items:center; gap:6px;
+}
+.pc-atc-fpill {
+  display:inline-flex; align-items:center; gap:5px;
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:100px; padding:5px 10px;
+  font-family:var(--fdr-font-body); font-weight:600;
+  font-size:11px; color:rgba(255,255,255,.55);
+  cursor:pointer; white-space:nowrap;
+  transition:all .15s ease;
+}
+.pc-atc-fpill.active {
+  background:rgba(255,255,255,.15);
+  border-color:rgba(255,255,255,.60);
+  color:#fff;
+}
+.pc-atc-fdot {
+  width:8px; height:8px; border-radius:50%;
+  flex-shrink:0;
+}
+.pc-atc-sub {
+  font-size:10px; color:rgba(255,255,255,0.45);
+  text-align:center; margin:3px 0 0; white-space:nowrap;
+}
+
+@media (max-width:640px) {
+  .pc-atc-inner {
+    height:auto; padding:10px 16px 12px;
+    display:flex; align-items:center;
+    justify-content:space-between; gap:10px;
+    width:100%; box-sizing:border-box;
+  }
+  .pc-atc-left { display:none; }
+  .pc-atc-spacer { display:none; }
+  .pc-atc-flavors {
+    flex-direction:column; gap:5px; flex-shrink:0;
+  }
+  .pc-atc-fpill {
+    font-size:11px; padding:5px 10px; min-width:80px;
+  }
+  .pc-atc-btn-wrap {
+    flex:1; min-width:0; flex-shrink:1;
+  }
+  .pc-atc-btn {
+    width:100%; border-radius:100px;
+    font-size:14px; padding:14px 16px;
+    text-align:center;
+    white-space:normal; line-height:1.25;
+    display:block;
+  }
+  .pc-atc-btn-d { display:none; }
+  .pc-atc-btn-m { display:inline; }
+  .pc-atc-sub { display:none; }
+}
+@media (min-width:641px) and (max-width:960px) {
+  .pc-atc-desc { display:none; }
+}
+</style>
+
+<!-- ════════════════════ STICKY ATC BAR (Pro Chews) ════════════════════ -->
+<div class="pc-atc-bar" id="pcStickyAtcBar">
+  <div class="pc-atc-inner">
+    <div class="pc-atc-left">
+      <div class="pc-atc-text">
+        <div class="pc-atc-name">{{ section.settings.product_name }} &nbsp;<span class="pc-atc-name-price">&middot;&nbsp; {{ section.settings.price_label }}</span></div>
+        <div class="pc-atc-desc">{{ section.settings.descriptor }}</div>
+      </div>
+    </div>
+    <div class="pc-atc-spacer"></div>
+    <div class="pc-atc-btn-wrap">
+      <button class="pc-atc-btn" id="pcStickyScrollBtn" type="button">
+        <span class="pc-atc-btn-d">{{ section.settings.cta_desktop }}</span>
+        <span class="pc-atc-btn-m">{{ section.settings.cta_mobile }}{% if section.settings.cta_mobile_line2 != blank %}<br><span style="font-size:11px;letter-spacing:0.04em;">{{ section.settings.cta_mobile_line2 }}</span>{% endif %}</span>
+      </button>
+      {% if section.settings.sub_text != blank %}<p class="pc-atc-sub">{{ section.settings.sub_text }}</p>{% endif %}
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  var stickyBar = document.getElementById('pcStickyAtcBar');
+  if (!stickyBar) return;
+
+  /* ── Show/hide: hidden while hero ATC CTA (pro-chews-hero #pcCta) is visible ── */
+  var heroCta = document.getElementById('pcCta');
+  if (heroCta && 'IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        stickyBar.classList.toggle('pc-atc-visible', !entry.isIntersecting);
+      });
+    }, { threshold: 0, rootMargin: '0px' });
+    obs.observe(heroCta);
+  } else {
+    /* No hero CTA on page or no IO support — keep bar hidden until user scrolls a bit. */
+    var shown = false;
+    window.addEventListener('scroll', function() {
+      if (!shown && window.scrollY > 600) {
+        stickyBar.classList.add('pc-atc-visible');
+        shown = true;
+      }
+    }, { passive: true });
+  }
+
+  /* ── Click: submit the hero ATC form so AJAX cart drawer opens cleanly ── */
+  var scrollBtn = document.getElementById('pcStickyScrollBtn');
+  if (scrollBtn) {
+    scrollBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var form = document.getElementById('pc-atc-form');
+      if (form) {
+        form.requestSubmit ? form.requestSubmit() : form.submit();
+      } else {
+        var buyBox = document.getElementById('buy-box');
+        (buyBox || document.body).scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Pro Chews Sticky ATC",
+  "settings": [
+    {
+      "type": "text",
+      "id": "product_name",
+      "label": "Product name",
+      "default": "Get Joy Probiotic Chews"
+    },
+    {
+      "type": "text",
+      "id": "price_label",
+      "label": "Price label",
+      "default": "$25.99"
+    },
+    {
+      "type": "text",
+      "id": "descriptor",
+      "label": "Descriptor line",
+      "default": "90 chews · Ships every 4 weeks"
+    },
+    {
+      "type": "text",
+      "id": "cta_desktop",
+      "label": "CTA text (desktop)",
+      "default": "ADD TO CART — $25.99"
+    },
+    {
+      "type": "text",
+      "id": "cta_mobile",
+      "label": "CTA text (mobile, line 1)",
+      "default": "Add — $25.99"
+    },
+    {
+      "type": "text",
+      "id": "cta_mobile_line2",
+      "label": "CTA text (mobile, line 2)",
+      "default": ""
+    },
+    {
+      "type": "text",
+      "id": "sub_text",
+      "label": "Sub-text under CTA",
+      "default": "30-day refund · Cancel anytime"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pro Chews Sticky ATC",
+      "category": "Landing Page"
+    }
+  ]
+}
+{% endschema %}
