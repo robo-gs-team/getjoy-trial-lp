@@ -349,184 +349,6 @@
         "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
       }
     },
-    "fdr_trial_16oz_clinical_AfmQkj": {
-      "type": "fdr-trial-16oz-clinical",
-      "blocks": {
-        "stat_XXeWYz": {
-          "type": "stat",
-          "settings": {
-            "number": "221%",
-            "label": "More likely to have improved breath",
-            "sub_detail": ""
-          }
-        },
-        "stat_mCb4GC": {
-          "type": "stat",
-          "settings": {
-            "number": "165%",
-            "label": "More likely to have reduced anxiety",
-            "sub_detail": ""
-          }
-        },
-        "stat_rjwGFr": {
-          "type": "stat",
-          "settings": {
-            "number": "95%",
-            "label": "More likely to have improved health markers",
-            "sub_detail": ""
-          }
-        },
-        "stat_WkC3QH": {
-          "type": "stat",
-          "settings": {
-            "number": "4.8★",
-            "label": "Average rating across 30,000+ pet parents",
-            "sub_detail": "77% five-star reviews"
-          }
-        }
-      },
-      "block_order": [
-        "stat_XXeWYz",
-        "stat_mCb4GC",
-        "stat_rjwGFr",
-        "stat_WkC3QH"
-      ],
-      "name": "16oz — Clinical",
-      "settings": {
-        "eyebrow": "What the Science Shows",
-        "headline": "Dogs who eat Get Joy are different.",
-        "citation": "*Based on a 60-day in-home study showing health and microbiome benefits from daily probiotic supplementation.",
-        "bridge_text": "These aren’t surface-level changes. They’re what happens when a gut that’s actually working starts doing its job."
-      }
-    },
-    "fdr_trial_16oz_faq_XYwijG": {
-      "type": "fdr-trial-16oz-faq",
-      "blocks": {
-        "faq_item_thdG4q": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How do I transition my dog?",
-            "answer": "<p>Start by mixing a small amount of Get Joy into your dog’s current food. Increase the ratio over 7–10 days. Most dogs make a full switch within two weeks — and most don’t need convincing. Sensitive stomachs? Take it slower. That’s it.</p>"
-          }
-        },
-        "faq_item_kdYWWg": {
-          "type": "faq_item",
-          "settings": {
-            "question": "What if my dog is a picky eater?",
-            "answer": "<p>Freeze Dried Raw is the closest thing to whole, fresh food — which is what dogs actually want. The 221% improvement in breath and the mealtime excitement we see in our 60-day study aren’t coincidences. If your dog genuinely isn’t interested within 30 days, we refund every penny.</p>"
-          }
-        },
-        "faq_item_U6tryk": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Will this work for my dog’s specific issue?",
-            "answer": "<p>Get Joy was built around gut health — because most visible dog health problems (bad breath, dull coat, low energy, joint stiffness, anxiety) trace back to what’s happening in the gut. Belly Biotics™ addresses the root system. The ingredients target the specific symptoms. Most owners notice changes within the first week.</p>"
-          }
-        },
-        "faq_item_LNfH3t": {
-          "type": "faq_item",
-          "settings": {
-            "question": "Is there a subscription or commitment?",
-            "answer": "<p>No subscription, no auto-ship — ever. This is a one-time purchase. Nothing starts after checkout. If you’d like to continue after trying it, you’ll have the option — but it’s entirely your call.</p>"
-          }
-        },
-        "faq_item_dH7XcY": {
-          "type": "faq_item",
-          "settings": {
-            "question": "How is Get Joy different from fresh cooked food like Farmer's?",
-            "answer": "<p>Fresh cooked food reaches your dog’s bowl at 165°F+. Every enzyme and probiotic is destroyed above 118°F. Get Joy is freeze-dried at −40°F — 97% of nutrients intact, probiotics viable, digestive enzymes preserved. Shelf stable. No fridge required.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "faq_item_thdG4q",
-        "faq_item_kdYWWg",
-        "faq_item_U6tryk",
-        "faq_item_LNfH3t",
-        "faq_item_dH7XcY"
-      ],
-      "name": "FDR Trial 16oz FAQ",
-      "settings": {
-        "eyebrow": "Common Questions",
-        "heading": "Everything You Need to Know",
-        "subheading": "The honest answers to what most people ask before trying.",
-        "cta_text": "Try Get Joy — $39",
-        "cta_url": "",
-        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
-      }
-    },
-    "fdr_trial_16oz_ingredients_xLWaxi": {
-      "type": "fdr-trial-16oz-ingredients",
-      "blocks": {
-        "ingredient_card_zeQ47C": {
-          "type": "ingredient_card",
-          "settings": {
-            "card_type": "split",
-            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/BEEF_INGREDIENT.png?v=1774032152",
-            "image_2": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CHICKEN_INGREDIENT_2.png?v=1774032144",
-            "biotics_style": false,
-            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
-            "label": "Protein Source",
-            "title": "USDA Premium Protein",
-            "description": "100% single-protein muscle meat. The only protein in the bag — zero cross-contamination, zero mystery meals."
-          }
-        },
-        "ingredient_card_LUhaiW": {
-          "type": "ingredient_card",
-          "settings": {
-            "card_type": "single",
-            "image_1": "https://getjoyfood.com/cdn/shop/files/Postbiotic.png?v=1751312897&width=320",
-            "image_2": "",
-            "biotics_style": true,
-            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
-            "label": "Gut Support",
-            "title": "Belly Biotics™ Tri-Biotic Blend",
-            "description": "Pre, pro & postbiotics in every bite. Clinically-backed strains that survive digestion and actually work."
-          }
-        },
-        "ingredient_card_7t7Aqe": {
-          "type": "ingredient_card",
-          "settings": {
-            "card_type": "split",
-            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CRANBERRY_INGREDIENT.png?v=1774032163",
-            "image_2": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/CELERY_INGREDIENT_2.png?v=1774032148",
-            "biotics_style": false,
-            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
-            "label": "Whole Foods",
-            "title": "Real Fruit & Vegetables",
-            "description": "Sweet potato, spinach, pumpkin. Named whole foods — not \"fruit/veg blend\" mystery mixes."
-          }
-        },
-        "ingredient_card_fMA4K6": {
-          "type": "ingredient_card",
-          "settings": {
-            "card_type": "none",
-            "image_1": "",
-            "image_2": "",
-            "biotics_style": false,
-            "none_tags": "No Corn, No Soy, No Seed Oils, No Fillers",
-            "label": "What's Not In It",
-            "title": "Zero Fillers. Zero B.S.",
-            "description": "No corn, wheat, soy, artificial preservatives, or seed oils. If you can't pronounce it, it's not here."
-          }
-        }
-      },
-      "block_order": [
-        "ingredient_card_zeQ47C",
-        "ingredient_card_LUhaiW",
-        "ingredient_card_7t7Aqe",
-        "ingredient_card_fMA4K6"
-      ],
-      "name": "16oz — Ingredients",
-      "settings": {
-        "eyebrow": "Nothing to Hide",
-        "heading": "What's Actually In The Bag",
-        "subheading": "Every ingredient is named. No mystery meals, no fillers, no fine print.",
-        "cta_label": "Try Get Joy — $39",
-        "cta_link": "",
-        "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
-      }
-    },
     "fdr_trial_16oz_why_banner_UGpJqp": {
       "type": "fdr-trial-16oz-why-banner",
       "name": "16oz — Why $20",
@@ -538,108 +360,6 @@
         "cta_label": "Try Get Joy — $39",
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
-      }
-    },
-    "fdr_trial_16oz_comparison_EaNCbU": {
-      "type": "fdr-trial-16oz-comparison",
-      "blocks": {
-        "comparison_row_ahHmYM": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "Nutrient Retention",
-            "comp1_value": "~75%",
-            "comp2_value": "~60%",
-            "gj_value": "97%",
-            "gj_has_check": false
-          }
-        },
-        "comparison_row_D6AVky": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "Belly Biotics™ Gut System",
-            "comp1_value": "",
-            "comp2_value": "",
-            "gj_value": "",
-            "gj_has_check": true
-          }
-        },
-        "comparison_row_RiCmMj": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "No Fridge or Freezer",
-            "comp1_value": "Freezer req.",
-            "comp2_value": "Fridge req.",
-            "gj_value": "Shelf Stable",
-            "gj_has_check": false
-          }
-        },
-        "comparison_row_K7WXCe": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "100% USDA Sourced Protein",
-            "comp1_value": "Sometimes",
-            "comp2_value": "Sometimes",
-            "gj_value": "Always",
-            "gj_has_check": false
-          }
-        },
-        "comparison_row_6XbUiV": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "No Fillers or Seed Oils",
-            "comp1_value": "Sometimes",
-            "comp2_value": "Sometimes",
-            "gj_value": "",
-            "gj_has_check": true
-          }
-        },
-        "comparison_row_UBY4qe": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "Works for All Life Stages",
-            "comp1_value": "Sometimes",
-            "comp2_value": "Sometimes",
-            "gj_value": "",
-            "gj_has_check": true
-          }
-        },
-        "comparison_row_CKf4fj": {
-          "type": "comparison_row",
-          "settings": {
-            "feature": "30-Day Money-Back Guarantee",
-            "comp1_value": "",
-            "comp2_value": "",
-            "gj_value": "",
-            "gj_has_check": true
-          }
-        }
-      },
-      "block_order": [
-        "comparison_row_ahHmYM",
-        "comparison_row_D6AVky",
-        "comparison_row_RiCmMj",
-        "comparison_row_K7WXCe",
-        "comparison_row_6XbUiV",
-        "comparison_row_UBY4qe",
-        "comparison_row_CKf4fj"
-      ],
-      "name": "16oz — Comparison",
-      "settings": {
-        "eyebrow": "The Honest Comparison",
-        "heading": "How Get Joy Stacks Up Against the Rest",
-        "subheading": "Not all pet food is made equal. Here’s what actually sets us apart.",
-        "col_comp1_label": "Frozen Raw",
-        "col_comp1_sub": "Primal, Stella & Chewy’s",
-        "col_comp2_label": "Fresh Cooked",
-        "col_comp2_sub": "Farmer’s Dog, Nom Nom",
-        "col_gj_label": "Get Joy",
-        "col_gj_sub": "Freeze Dried Raw",
-        "col_mobile_comp_label": "Other Brands",
-        "col_mobile_gj_label": "Get Joy",
-        "col_mobile_gj_sub": "Freeze Dried",
-        "cta_text": "Try Get Joy — $39",
-        "cta_url": "",
-        "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
       }
     },
     "fdr_trial_16oz_reviews_ygyMBk": {
@@ -996,21 +716,269 @@
         "payoff_right_sub": "first order, from $0.29/day",
         "footnote": "Separate-product prices are illustrative category averages, to be confirmed before publish."
       }
+    },
+    "pro_chews_mechanism": {
+      "type": "pro-chews-mechanism",
+      "blocks": {
+        "layer_probiotic": {
+          "type": "layer_card",
+          "settings": {
+            "icon": "probiotic",
+            "eyebrow": "PROBIOTIC",
+            "headline": "3 billion live CFU",
+            "body": "Bacillus coagulans and B. subtilis are spore-formers. They survive your dog's stomach acid and arrive in the gut alive, unlike most yogurt-strain probiotics that die on the way down."
+          }
+        },
+        "layer_postbiotic": {
+          "type": "layer_card",
+          "settings": {
+            "icon": "postbiotic",
+            "eyebrow": "POSTBIOTIC",
+            "headline": "200mg Saccharomyces cerevisiae",
+            "body": "The part most chews skip. Postbiotics are the active compounds that support a calm inflammatory response and signal the immune system. Your dog gets the benefit even if the live bacteria don't fully colonize."
+          }
+        },
+        "layer_prebiotic": {
+          "type": "layer_card",
+          "settings": {
+            "icon": "prebiotic",
+            "eyebrow": "PREBIOTIC",
+            "headline": "Inulin, kelp and organic ginger",
+            "body": "Fiber the good bacteria feed on. Without prebiotics, probiotics don't stick around. With them, the colony grows and holds."
+          }
+        }
+      },
+      "block_order": [
+        "layer_probiotic",
+        "layer_postbiotic",
+        "layer_prebiotic"
+      ],
+      "name": "Pro Chews Mechanism",
+      "settings": {
+        "eyebrow": "How One Chew Does the Job of a Shelf",
+        "heading": "Belly Biotics™: the three layers most chews skip",
+        "sub": "Most probiotic chews stop at one strain. We layer pre, pro, and postbiotic the way the gut actually uses them.",
+        "footer": "The same Belly Biotics™ system that's in Get Joy food. Now in a daily chew.",
+        "bg_tint": "#FCEAE0"
+      }
+    },
+    "pro_chews_ingredients": {
+      "type": "pro-chews-ingredients",
+      "blocks": {
+        "ing_probiotic": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "single",
+            "biotics_style": true,
+            "label": "Probiotic Strains",
+            "title": "3 Billion CFU",
+            "description": "3 billion CFU of Bacillus coagulans and B. subtilis. Spore-formers chosen to survive stomach acid, because most yogurt-style probiotics die before they reach the gut."
+          }
+        },
+        "ing_postbiotic": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "single",
+            "biotics_style": true,
+            "label": "Postbiotic + L-Glutamine",
+            "title": "200mg Postbiotic, 100mg L-Glutamine",
+            "description": "A 200mg postbiotic plus 100mg L-Glutamine. The postbiotic supports immune signaling. L-Glutamine supports the gut lining itself."
+          }
+        },
+        "ing_omega": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "single",
+            "biotics_style": true,
+            "label": "Omega-3 + Botanicals",
+            "title": "Algae DHA, Ginger, Kelp",
+            "description": "Algae-sourced DHA 46mg and EPA 31mg for skin and coat. Organic ginger 60mg to settle the stomach. Kelp 200mg to feed the good bacteria."
+          }
+        },
+        "ing_clean": {
+          "type": "ingredient_card",
+          "settings": {
+            "card_type": "none",
+            "none_tags": "No Corn, No Soy, No Seed Oils, No Byproducts",
+            "label": "What's Not In It",
+            "title": "Clean Label",
+            "description": "No corn, wheat, soy, artificial preservatives, seed oils, or animal byproducts. Natural chicken flavor only."
+          }
+        }
+      },
+      "block_order": [
+        "ing_probiotic",
+        "ing_postbiotic",
+        "ing_omega",
+        "ing_clean"
+      ],
+      "name": "Pro Chews Ingredients",
+      "settings": {
+        "eyebrow": "Inside the Chew",
+        "heading": "What's Actually In Every Chew",
+        "subheading": "Every ingredient is named. No mystery blends, no fillers, no fine print.",
+        "cta_label": "Add to Cart — $25.99",
+        "guarantee_text": "30-day money-back guarantee. If your dog won't eat them, we'll refund you."
+      }
+    },
+    "pro_chews_comparison": {
+      "type": "pro-chews-comparison",
+      "blocks": {
+        "row_cfu": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Live CFU disclosed",
+            "comp1_value": "Sometimes",
+            "comp2_value": "Usually",
+            "gj_value": "3 billion, listed"
+          }
+        },
+        "row_post": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Postbiotic included",
+            "comp2_value": "Sometimes",
+            "gj_value": "200mg"
+          }
+        },
+        "row_three": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Pre + pro + postbiotic",
+            "comp1_value": "Rare",
+            "comp2_value": "Sometimes",
+            "gj_value": "All 3 layers"
+          }
+        },
+        "row_omega": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Omega-3 (algae)",
+            "gj_value": "DHA 46 + EPA 31"
+          }
+        },
+        "row_gln": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "L-Glutamine for gut lining",
+            "comp2_value": "Rare",
+            "gj_value": "100mg"
+          }
+        },
+        "row_usa": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "Made in USA",
+            "comp1_value": "Varies",
+            "comp2_value": "Usually",
+            "gj_value": "Always"
+          }
+        },
+        "row_grtn": {
+          "type": "comparison_row",
+          "settings": {
+            "feature": "30-day money-back guarantee",
+            "comp1_value": "Sometimes",
+            "comp2_value": "Sometimes",
+            "gj_has_check": true
+          }
+        }
+      },
+      "block_order": [
+        "row_cfu",
+        "row_post",
+        "row_three",
+        "row_omega",
+        "row_gln",
+        "row_usa",
+        "row_grtn"
+      ],
+      "name": "Pro Chews Comparison",
+      "settings": {
+        "eyebrow": "How We Compare",
+        "heading": "Probiotic chews are not all built the same",
+        "subheading": "Most chews are probiotic only. Get Joy carries the full system.",
+        "col_comp1_label": "Most Probiotic Chews",
+        "col_comp2_label": "\"Premium\" Chews",
+        "col_gj_label": "Get Joy",
+        "col_gj_sub": "Probiotic Chews",
+        "col_mobile_comp_label": "Other Chews",
+        "col_mobile_gj_label": "Get Joy",
+        "col_mobile_gj_sub": "Probiotic Chews",
+        "bridge_text": "Most probiotic chews are probiotic only. Get Joy carries the whole system: probiotic, postbiotic, prebiotic, omega, and gut-lining support.",
+        "cta_text": "Add to Cart — $25.99",
+        "guarantee_text": "30-day money-back guarantee. If your dog won't eat them, we'll refund you."
+      }
+    },
+    "pro_chews_faq": {
+      "type": "pro-chews-faq",
+      "blocks": {
+        "faq_results": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How long until I see results?",
+            "answer": "<p>Most owners notice firmer stools and fresher breath within 2 to 4 weeks. Deeper changes like coat and energy take a full month. Probiotics aren't instant, they build over time.</p>"
+          }
+        },
+        "faq_otherfood": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Does my dog need to be off other food or treats?",
+            "answer": "<p>No. The chew is a daily treat on top of whatever your dog already eats. You don't change anything else.</p>"
+          }
+        },
+        "faq_stomach": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Will it upset my dog's stomach at first?",
+            "answer": "<p>Some dogs have looser stools for the first 2 to 3 days as the microbiome shifts. If it lasts longer, drop to half a chew for the first week, then build back up.</p>"
+          }
+        },
+        "faq_howmany": {
+          "type": "faq_item",
+          "settings": {
+            "question": "How many chews per day?",
+            "answer": "<p>1 chew up to 30 lbs, 2 for 31 to 60 lbs, 3 for 61 to 90 lbs, and 4 for dogs over 91 lbs.</p>"
+          }
+        },
+        "faq_different": {
+          "type": "faq_item",
+          "settings": {
+            "question": "Why is Get Joy different from other probiotic chews?",
+            "answer": "<p>Three reasons. 3 billion CFU of spore-forming strains that actually survive stomach acid. A 200mg postbiotic most chews skip entirely. Plus omega-3 and L-Glutamine in the same chew. Most chews are probiotic only.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "faq_results",
+        "faq_otherfood",
+        "faq_stomach",
+        "faq_howmany",
+        "faq_different"
+      ],
+      "name": "Pro Chews FAQ",
+      "settings": {
+        "eyebrow": "Common Questions",
+        "heading": "What probiotic buyers ask first",
+        "subheading": "Straight answers, no marketing fluff.",
+        "cta_text": "Add to Cart — $25.99",
+        "guarantee_text": "30-day money-back guarantee. If your dog won't eat them, we'll refund you."
+      }
     }
   },
   "order": [
     "main",
     "pro_chews_hero",
     "pro_chews_valuestack",
+    "pro_chews_mechanism",
+    "pro_chews_ingredients",
+    "pro_chews_comparison",
+    "pro_chews_faq",
     "fdr_trial_16oz_nph_wLfXjp",
     "fdr_trial_16oz_trust_band_gR8xKL",
     "fdr_trial_16oz_srt_zEaMrj",
     "fdr_trial_16oz_csm_kQmERx",
-    "fdr_trial_16oz_clinical_AfmQkj",
-    "fdr_trial_16oz_faq_XYwijG",
-    "fdr_trial_16oz_ingredients_xLWaxi",
     "fdr_trial_16oz_why_banner_UGpJqp",
-    "fdr_trial_16oz_comparison_EaNCbU",
     "fdr_trial_16oz_reviews_ygyMBk",
     "fdr_trial_16oz_transition_BKrVh3",
     "fdr_trial_16oz_bottom_cta_9Hh3YY",

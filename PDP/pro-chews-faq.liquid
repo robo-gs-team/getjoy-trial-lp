@@ -1,0 +1,174 @@
+{%- liquid
+  assign eyebrow   = section.settings.eyebrow
+  assign heading   = section.settings.heading
+  assign subheading = section.settings.subheading
+  assign cta_text  = section.settings.cta_text
+  assign cta_url   = section.settings.cta_url
+  assign guarantee = section.settings.guarantee_text
+-%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* ── Pro Chews FAQ (cloned from fdr-trial-16oz-faq, orange accents) ── */
+  .pc-faq { background: var(--pc-cream, #FBF3E8); padding: 80px 20px; }
+  .pc-faq .pc-eyebrow {
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-weight: 800; font-size: 12px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--pc-orange, #E85F2E); text-align: center; margin: 0 0 14px;
+  }
+  .pc-faq .pc-h2 {
+    font-family: var(--fdr-font-heading, Georgia, serif); font-weight: 900;
+    font-size: clamp(26px, 3.5vw, 38px); color: var(--pc-forest, #1C5236);
+    letter-spacing: -1px; line-height: 1.1; text-align: center; margin: 0 0 12px;
+  }
+  .pc-faq .pc-sub {
+    font-family: var(--fdr-font-serif, Georgia, serif); font-style: italic;
+    font-size: 15.5px; color: var(--pc-muted, #8a8270); line-height: 1.6;
+    text-align: center; max-width: 640px; margin: 0 auto;
+  }
+  .pc-faq-wrap { max-width: 760px; margin: 40px auto 0; }
+  .pc-faq-item { border-bottom: 1px solid var(--pc-line, #E7DECC); }
+  .pc-faq-item:first-child { border-top: 1px solid var(--pc-line, #E7DECC); }
+  .pc-faq-btn {
+    display: flex; align-items: center; justify-content: space-between;
+    width: 100%; background: none; border: none; padding: 22px 0;
+    font-family: var(--fdr-font-body, system-ui, sans-serif); font-weight: 700;
+    font-size: 15px; color: var(--pc-forest, #1C5236); cursor: pointer; text-align: left;
+  }
+  .pc-faq-chevron { flex-shrink: 0; color: var(--pc-orange, #E85F2E); transition: transform 0.25s ease; }
+  .pc-faq-item.is-open .pc-faq-chevron { transform: rotate(180deg); }
+  .pc-faq-body { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+  .pc-faq-item.is-open .pc-faq-body { max-height: 600px; }
+  .pc-faq-body-inner {
+    padding: 0 0 24px;
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-size: 14px; color: var(--pc-muted, #8a8270); line-height: 1.7;
+  }
+  .pc-faq-cta { text-align: center; margin-top: 40px; }
+  .pc-faq-cta .pc-cta-pill {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--pc-orange, #E85F2E); color: #fff;
+    padding: 14px 26px; border-radius: 99px;
+    font-weight: 900; font-size: 14px; text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+  .pc-faq-cta .pc-cta-pill:hover { background: var(--pc-orange-dk, #D24E20); transform: translateY(-1px); }
+  .pc-faq-guarantee {
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-size: 12px; color: var(--pc-muted, #8a8270); margin-top: 10px;
+    line-height: 1.5; opacity: 0.75;
+  }
+</style>
+
+<div class="pc-faq">
+  {%- if eyebrow != blank -%}<p class="pc-eyebrow">{{ eyebrow }}</p>{%- endif -%}
+  {%- if heading != blank -%}<h2 class="pc-h2">{{ heading }}</h2>{%- endif -%}
+  {%- if subheading != blank -%}<p class="pc-sub">{{ subheading }}</p>{%- endif -%}
+
+  <div class="pc-faq-wrap">
+    {%- for block in section.blocks -%}
+      {%- if block.type == 'faq_item' -%}
+        <div class="pc-faq-item" {{ block.shopify_attributes }}>
+          <button class="pc-faq-btn" type="button" aria-expanded="false">
+            {{ block.settings.question }}
+            <svg class="pc-faq-chevron" width="14" height="8" viewBox="0 0 14 8" fill="none" aria-hidden="true"><path d="M1 1L7 7L13 1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+          <div class="pc-faq-body">
+            <div class="pc-faq-body-inner">{{ block.settings.answer }}</div>
+          </div>
+        </div>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  {%- if cta_text != blank -%}
+    <div class="pc-faq-cta">
+      <a href="{{ cta_url | default: '#buy-box' }}" class="pc-cta-pill">
+        {{ cta_text }}
+        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      {%- if guarantee != blank -%}<p class="pc-faq-guarantee">{{ guarantee }}</p>{%- endif -%}
+    </div>
+  {%- endif -%}
+</div>
+
+<script>
+  (function () {
+    var section = document.currentScript && document.currentScript.previousElementSibling
+      ? document.querySelectorAll('.pc-faq')[document.querySelectorAll('.pc-faq').length - 1]
+      : document.querySelector('.pc-faq');
+    if (!section) return;
+    section.addEventListener('click', function (e) {
+      var btn = e.target.closest('.pc-faq-btn');
+      if (!btn) return;
+      var item = btn.closest('.pc-faq-item');
+      var isOpen = item.classList.contains('is-open');
+      var items = section.querySelectorAll('.pc-faq-item');
+      for (var i = 0; i < items.length; i++) {
+        items[i].classList.remove('is-open');
+        items[i].querySelector('.pc-faq-btn').setAttribute('aria-expanded', 'false');
+      }
+      if (!isOpen) {
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Pro Chews FAQ",
+  "tag": "section",
+  "class": "section-pc-faq",
+  "settings": [
+    { "type": "header", "content": "Content" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Common Questions" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "What probiotic buyers ask first" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Straight answers, no marketing fluff." },
+    { "type": "header", "content": "Button" },
+    { "type": "text", "id": "cta_text", "label": "Button text", "default": "Add to Cart — $25.99" },
+    { "type": "url", "id": "cta_url", "label": "Button link" },
+    { "type": "text", "id": "guarantee_text", "label": "Guarantee text", "default": "30-day money-back guarantee. If your dog won't eat them, we'll refund you." }
+  ],
+  "blocks": [
+    {
+      "type": "faq_item",
+      "name": "FAQ Item",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "Question goes here?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Answer goes here.</p>" }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pro Chews FAQ",
+      "category": "Landing Page",
+      "blocks": [
+        { "type": "faq_item", "settings": {
+          "question": "How long until I see results?",
+          "answer": "<p>Most owners notice firmer stools and fresher breath within 2 to 4 weeks. Deeper changes like coat and energy take a full month. Probiotics aren't instant, they build over time.</p>"
+        }},
+        { "type": "faq_item", "settings": {
+          "question": "Does my dog need to be off other food or treats?",
+          "answer": "<p>No. The chew is a daily treat on top of whatever your dog already eats. You don't change anything else.</p>"
+        }},
+        { "type": "faq_item", "settings": {
+          "question": "Will it upset my dog's stomach at first?",
+          "answer": "<p>Some dogs have looser stools for the first 2 to 3 days as the microbiome shifts. If it lasts longer, drop to half a chew for the first week, then build back up.</p>"
+        }},
+        { "type": "faq_item", "settings": {
+          "question": "How many chews per day?",
+          "answer": "<p>1 chew up to 30 lbs, 2 for 31 to 60 lbs, 3 for 61 to 90 lbs, and 4 for dogs over 91 lbs.</p>"
+        }},
+        { "type": "faq_item", "settings": {
+          "question": "Why is Get Joy different from other probiotic chews?",
+          "answer": "<p>Three reasons. 3 billion CFU of spore-forming strains that actually survive stomach acid. A 200mg postbiotic most chews skip entirely. Plus omega-3 and L-Glutamine in the same chew. Most chews are probiotic only.</p>"
+        }}
+      ]
+    }
+  ]
+}
+{% endschema %}
