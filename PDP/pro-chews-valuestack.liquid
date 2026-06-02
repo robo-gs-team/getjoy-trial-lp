@@ -55,8 +55,8 @@
 <section class="pcvs" data-section-id="{{ section.id }}">
   <div class="pcvs-inner">
     <div class="pcvs-head">
-      <h2 class="pcvs-h2">{{ heading }}</h2>
-      {%- if subheading != blank -%}<div class="pcvs-sub">{{ subheading }}</div>{%- endif -%}
+      <h2 class="pcvs-h2">{{ heading | escape }}</h2>
+      {%- if subheading != blank -%}<div class="pcvs-sub">{{ subheading | escape }}</div>{%- endif -%}
     </div>
 
     <div class="pcvs-card">
@@ -67,9 +67,9 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
             </div>
             <div>
-              <div class="pcvs-name">{{ block.settings.name }}</div>
+              <div class="pcvs-name">{{ block.settings.name | escape }}</div>
               {%- if block.settings.sub_label != blank -%}
-                <div class="pcvs-sub-label">{{ block.settings.sub_label }}</div>
+                <div class="pcvs-sub-label">{{ block.settings.sub_label | escape }}</div>
               {%- endif -%}
             </div>
             <div class="pcvs-price">${{ block.settings.price }}</div>
@@ -79,15 +79,15 @@
 
       <div class="pcvs-total-row">
         <div></div>
-        <div class="pcvs-total-label">{{ separate_label }}</div>
+        <div class="pcvs-total-label">{{ separate_label | escape }}</div>
         <div class="pcvs-total-price">${{ separate_total }}</div>
       </div>
     </div>
 
     <div class="pcvs-payoff">
       <div>
-        <div class="pcvs-payoff-title">{{ payoff_left_title }}</div>
-        {%- if payoff_left_sub != blank -%}<div class="pcvs-payoff-sub">{{ payoff_left_sub }}</div>{%- endif -%}
+        <div class="pcvs-payoff-title">{{ payoff_left_title | escape }}</div>
+        {%- if payoff_left_sub != blank -%}<div class="pcvs-payoff-sub">{{ payoff_left_sub | escape }}</div>{%- endif -%}
       </div>
       <div class="pcvs-payoff-right">
         <div class="pcvs-payoff-price">${{ payoff_right_price }}</div>
@@ -96,7 +96,7 @@
     </div>
 
     {%- if footnote != blank -%}
-      <div class="pcvs-footnote">{{ footnote }}</div>
+      <div class="pcvs-footnote">{{ footnote | escape }}</div>
     {%- endif -%}
   </div>
 </section>

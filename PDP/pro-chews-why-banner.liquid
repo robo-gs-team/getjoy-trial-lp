@@ -4,7 +4,6 @@
   assign body_1 = section.settings.body_1
   assign body_2 = section.settings.body_2
   assign cta_label = section.settings.cta_label
-  assign cta_link = section.settings.cta_link
   assign guarantee_text = section.settings.guarantee_text
 -%}
 
@@ -53,6 +52,8 @@
     margin-left: auto;
     margin-right: auto;
   }
+  .pc-why-banner__cta-wrap { margin-bottom: 10px; }
+
   @media (max-width: 768px) {
     .pc-why-banner { padding: 48px 20px; }
     .pc-why-banner__sub { font-size: 22px; }
@@ -74,7 +75,7 @@
       <p class="pc-why-banner__body">{{ body_2 | escape }}</p>
     {% endif %}
     {% if cta_label != blank %}
-      <div style="margin-bottom: 10px;">
+      <div class="pc-why-banner__cta-wrap">
         <a href="#buy-box" class="fdr-cta-pill fdr-cta-pill--primary">
           {{ cta_label | escape }}
           <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
