@@ -58,10 +58,15 @@
 .pc-lede { font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic; font-size:15.5px; color:var(--pc-muted); line-height:1.6; margin:0 0 14px; }
 .pc-lede p { margin:0 0 10px; }
 .pc-taste { font-size:14px; color:var(--pc-muted); line-height:1.5; margin:0 0 8px; }
-.pc-payoff { background:transparent; border:none; padding:8px 0; margin-bottom:14px; font-size:12.5px; color:var(--pc-forest); line-height:1.4; text-align:left; }
+.pc-payoff {
+  background:var(--pc-forest); border-radius:10px;
+  padding:13px 18px; margin-bottom:16px;
+  display:flex; align-items:center; gap:10px;
+}
+.pc-payoff-icon { font-size:18px; flex-shrink:0; }
+.pc-payoff-text { font-size:13.5px; font-weight:700; color:#fff; line-height:1.35; }
+.pc-payoff-text strong { color:var(--pc-best, #CDEB6B); font-weight:900; }
 .pc-payoff p { margin:0; }
-.pc-payoff strong { color:var(--pc-forest); font-weight:800; }
-@media (min-width:481px) { .pc-payoff { white-space:nowrap; overflow:hidden; text-overflow:ellipsis; } }
 
 /* Plan cards */
 .pc-plan-list { display:flex; flex-direction:column; gap:10px; margin-bottom:14px; }
@@ -198,7 +203,10 @@
       {%- if taste_line != blank -%}<p class="pc-taste">{{ taste_line | escape }}</p>{%- endif -%}
 
       {%- if payoff_line != blank -%}
-        <div class="pc-payoff">{{ payoff_line }}</div>
+        <div class="pc-payoff">
+          <span class="pc-payoff-icon">🐾</span>
+          <div class="pc-payoff-text">{{ payoff_line }}</div>
+        </div>
       {%- endif -%}
 
       {%- comment -%} Plan selector {%- endcomment -%}
