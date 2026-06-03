@@ -228,9 +228,9 @@
         }
       },
       "block_order": [
+        "layer_prebiotic",
         "layer_probiotic",
-        "layer_postbiotic",
-        "layer_prebiotic"
+        "layer_postbiotic"
       ],
       "name": "Pro Chews Mechanism",
       "settings": {
