@@ -118,7 +118,7 @@
             {%- if block.settings.image != blank -%}
               <div class="pc-rv-card-img">
                 <img
-                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  src="{{ block.settings.image }}"
                   alt="{{ block.settings.author | escape }}"
                   loading="lazy"
                   width="300"
@@ -155,7 +155,7 @@
             {%- if block.settings.image != blank -%}
               <div class="pc-rv-card-img">
                 <img
-                  src="{{ block.settings.image | image_url: width: 600 }}"
+                  src="{{ block.settings.image }}"
                   alt=""
                   loading="lazy"
                   width="300"
@@ -281,9 +281,9 @@
           "default": 5
         },
         {
-          "type": "image_picker",
+          "type": "text",
           "id": "image",
-          "label": "Photo"
+          "label": "Photo URL"
         },
         {
           "type": "select",
