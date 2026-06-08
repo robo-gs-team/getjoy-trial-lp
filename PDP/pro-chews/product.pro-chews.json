@@ -106,7 +106,7 @@
         "badge_text": "90 Chews",
         "proof_text": "Trusted by 30,000+ Pet Parents",
         "heading": "Probiotic Chews for Dogs",
-        "lede": "<p>The dog probiotic made by a dog food company. Every chew carries Belly Biotics: 3 billion live CFUs plus a postbiotic, omega-3s, and gut-soothing botanicals. Supports healthy digestion, immune function, and a normal inflammatory response, the way real food intended.</p>",
+        "lede": "<p>The probiotic made by a dog food company. Built around Belly Biotics™ — the same system that’s in the food.</p><ul><li>Firmer stools, less gas — most owners notice within 2–4 weeks</li><li>Calmer itching and skin — the postbiotic reaches where probiotics alone can’t</li><li>Healthier coat from the inside — algae omega-3 at the cell level</li><li>More energy and presence — a settled gut frees up the whole dog</li><li>One chew a day on top of any food, no transition needed</li></ul>",
         "taste_line": "Natural chicken flavor dogs actually want. If yours won't touch them, we'll refund you.",
         "details_text": "Details",
         "payoff_line": "<p>One chew replaces about <strong>$100 of separate supplements</strong>. From about <strong>$0.29 a day</strong>.</p>",
@@ -522,7 +522,7 @@
         "eyebrow": "Real Dogs. Real Results.",
         "heading": "What pet parents are saying",
         "subheading": "From the Get Joy community",
-        "background_color": "tennis",
+        "background_color": "pale",
         "cta_text": "Add to Cart — $25.99",
         "cta_url": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn’t work, it’s completely free."
