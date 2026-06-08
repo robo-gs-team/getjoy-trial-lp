@@ -106,7 +106,7 @@
         "badge_text": "90 Chews",
         "proof_text": "Trusted by 30,000+ Pet Parents",
         "heading": "Probiotic Chews for Dogs",
-        "lede": "<p>The probiotic made by a dog food company. Built around Belly Biotics™ — the same system that’s in the food.</p><ul><li>Firmer stools, less gas — most owners notice within 2–4 weeks</li><li>Calmer itching and skin — the postbiotic reaches where probiotics alone can’t</li><li>Healthier coat from the inside — algae omega-3 at the cell level</li><li>More energy and presence — a settled gut frees up the whole dog</li><li>One chew a day on top of any food, no transition needed</li></ul>",
+        "lede": "<p>A daily soft chew that supports your dog’s digestion, immune system, and coat — from the inside out. One chew does what most owners buy as 3 or 4 separate supplements.</p><ul><li>Firmer stools, less gas — most owners notice within 2–4 weeks</li><li>Less scratching and calmer skin — the anti-inflammatory layer most chews don’t include</li><li>Healthier coat — algae-sourced omega-3 works at the cell level, not just topically</li><li>More energy — when digestion works, everything else works better</li><li>One chew a day on top of any food — no diet change, no transition</li></ul>",
         "taste_line": "Natural chicken flavor dogs actually want. If yours won't touch them, we'll refund you.",
         "details_text": "Details",
         "payoff_line": "<p>One chew replaces about <strong>$100 of separate supplements</strong>. From about <strong>$0.29 a day</strong>.</p>",
@@ -251,6 +251,7 @@
             "biotics_style": true,
             "label": "Probiotic Strains",
             "title": "3 Billion CFU",
+            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/Postbiotic.png?v=1751312897",
             "description": "3 billion CFU of Bacillus coagulans and B. subtilis. Spore-formers chosen to survive stomach acid, because most yogurt-style probiotics die before they reach the gut."
           }
         },
@@ -261,6 +262,7 @@
             "biotics_style": true,
             "label": "Postbiotic + L-Glutamine",
             "title": "200mg Postbiotic, 100mg L-Glutamine",
+            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/postbiotics.png?v=1712867540",
             "description": "A 200mg postbiotic plus 100mg L-Glutamine. The postbiotic supports immune signaling. L-Glutamine supports the gut lining itself."
           }
         },
@@ -271,6 +273,7 @@
             "biotics_style": true,
             "label": "Omega-3 + Botanicals",
             "title": "Algae DHA, Ginger, Kelp",
+            "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/kelp.png?v=1712876388",
             "description": "Algae-sourced DHA 46mg and EPA 31mg for skin and coat. Organic ginger 60mg to settle the stomach. Kelp 200mg to feed the good bacteria."
           }
         },
