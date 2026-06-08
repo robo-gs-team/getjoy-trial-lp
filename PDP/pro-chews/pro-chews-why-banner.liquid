@@ -53,6 +53,10 @@
     margin-right: auto;
   }
   .pc-why-banner__cta-wrap { margin-bottom: 10px; }
+  /* Override shared theme pill — chews page uses orange, not brand green */
+  .pc-why-banner .fdr-cta-pill,
+  .pc-why-banner .fdr-cta-pill--primary { background: #E85F2E !important; color: #fff !important; }
+  .pc-why-banner .fdr-cta-pill:hover { background: #D24E20 !important; }
 
   @media (max-width: 768px) {
     .pc-why-banner { padding: 48px 20px; }
