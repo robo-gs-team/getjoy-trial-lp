@@ -883,20 +883,20 @@ body{ font-size: 17px; }
 
     /* Guarantee */
 .gjf-page .adv1-gs-l1-guarantee{
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(255,255,255,.1);
+      background: var(--gj-cream-dark);
+      border: 1px solid rgba(0,80,5,.15);
       border-radius: 8px;
       padding: 22px 24px; margin: 0 0 24px;
       text-align: center;
     }
 .gjf-page .adv1-gs-l1-guarantee-title{
-      font-family: var(--font-ui); font-size: .72rem; font-weight: 700;
+      font-family: var(--font-ui); font-size: .72rem; font-weight: 800;
       letter-spacing: .14em; text-transform: uppercase;
-      color: rgba(255,255,255,.6); margin-bottom: 8px;
+      color: var(--gj-forest); margin-bottom: 8px;
     }
 .gjf-page .adv1-gs-l1-guarantee p{
       font-family: var(--font-ui); font-size: .85rem;
-      color: rgba(255,255,255,.5); line-height: 1.6;
+      color: rgba(0,80,5,.75); line-height: 1.6;
     }
 
     @media (max-width: 640px) {
@@ -944,21 +944,12 @@ body{ font-size: 17px; }
       .gjf-page .l1-testimonials{ grid-template-columns: 1fr; }
     }
 
-    /* ═══ STICKY ATC BAR ═══════════════════════════════════ */
-    .gjf-sticky-atc {
-      position: fixed; bottom: 0; left: 0; right: 0;
-      background: var(--gj-forest);
-      border-top: 1px solid rgba(255,255,255,0.1);
-      padding: 14px 20px 18px;
-      z-index: 99998;
-      transform: translateY(100%);
-      transition: transform 0.35s ease;
+    /* ═══ INLINE SCROLL CTA (replaces sticky bar) ═══════════ */
+    .gjf-inline-cta {
+      max-width: 560px; margin: 32px auto 8px; padding: 0 16px;
+      text-align: center;
     }
-    .gjf-sticky-atc.visible { transform: translateY(0); }
-    .gjf-sticky-atc-inner {
-      max-width: 560px; margin: 0 auto; text-align: center;
-    }
-    .gjf-sticky-atc-btn {
+    .gjf-inline-cta-btn {
       display: block; width: 100%;
       background: #00CC3B; color: #fff;
       font-family: 'DM Sans', sans-serif;
@@ -967,14 +958,15 @@ body{ font-size: 17px; }
       text-align: center; text-decoration: none;
       padding: 16px 28px;
       border-radius: 100px;
-      margin-bottom: 6px;
-      transition: filter .2s;
+      margin-bottom: 8px;
+      transition: filter .2s, transform .2s;
+      cursor: pointer; border: none;
     }
-    .gjf-sticky-atc-btn:hover { filter: brightness(1.08); }
-    .gjf-sticky-atc-sub {
+    .gjf-inline-cta-btn:hover { filter: brightness(1.08); transform: translateY(-1px); }
+    .gjf-inline-cta-sub {
       font-family: 'DM Sans', sans-serif;
-      font-size: .7rem; color: rgba(255,255,255,0.45);
-      letter-spacing: .04em;
+      font-size: .72rem; color: rgba(0,80,5,0.55);
+      letter-spacing: .03em; margin: 0;
     }
 
     /* ═══ MOBILE RESPONSIVE ═════════════════════════════════ */
@@ -1005,13 +997,6 @@ body{ font-size: 17px; }
       .gjf-page .adv1-gs-l1-offer-box { border-radius: 8px; }
       .gjf-page .founder-close { padding: 22px 18px; }
       .gjf-page .cta-section { padding: 48px 16px; }
-      .gjf-sticky-atc { padding: 12px 16px 20px; }
-      .gjf-sticky-atc-btn { font-size: .84rem; padding: 14px 20px; }
-      /* Add bottom padding to page so sticky bar doesn't cover content */
-      .gjf-page { padding-bottom: 90px; }
-    }
-    @media (min-width: 641px) {
-      .gjf-page { padding-bottom: 90px; }
     }
 
   </style>
@@ -1062,6 +1047,11 @@ body{ font-size: 17px; }
   <img src="https://cdn.shopify.com/s/files/1/0015/5919/9790/files/TOM_COOPER_COUCH.jpg?v=1777472359" alt="Tom Arrix with Cooper, the Golden Retriever who started all of this." style="width:100%;height:clamp(300px,46vw,560px);object-fit:cover;display:block;">
 </div>
 <p class="img-cap">Cooper, the Golden Retriever who started all of this.</p>
+
+<div class="gjf-inline-cta">
+  <a href="#offer" class="gjf-inline-cta-btn">Check Availability →</a>
+  <p class="gjf-inline-cta-sub">Tom's Founder Trial Offer · $19.99 + Free Shipping · 30-Day Guarantee</p>
+</div>
 
 <!-- ══════════════════════════════════════════════════════
      SECTION 01, TOM'S STORY
@@ -1326,6 +1316,11 @@ body{ font-size: 17px; }
   </div>
 </div>
 
+<div class="gjf-inline-cta">
+  <a href="#offer" class="gjf-inline-cta-btn">Check Availability →</a>
+  <p class="gjf-inline-cta-sub">Tom's Founder Trial Offer · $19.99 + Free Shipping · 30-Day Guarantee</p>
+</div>
+
 <div class="col">
   <div class="body reveal">
     <p>I was lucky. I had the resources to spend $300 a month on individual supplements, to consult food scientists, to test and iterate for two years. Most people can't do that. So the goal when I built Get Joy was to make all of it unnecessary. The complete system, in one product, at a fraction of what the protocol costs separately.</p>
@@ -1421,6 +1416,11 @@ body{ font-size: 17px; }
     <p>I don't know exactly why we got that time. The food. The love. The extra walks I took every day because I knew enough not to waste any of them. Probably everything, together.</p>
     <p>What I know is what changed in that bowl. And I built a company around it because I couldn't live with the idea that other dogs were still eating what I'd been feeding Cooper before I understood any of this.</p>
   </div>
+</div>
+
+<div class="gjf-inline-cta">
+  <a href="#offer" class="gjf-inline-cta-btn">Check Availability →</a>
+  <p class="gjf-inline-cta-sub">Tom's Founder Trial Offer · $19.99 + Free Shipping · 30-Day Guarantee</p>
 </div>
 
 <div class="pull-center reveal">
@@ -1671,45 +1671,17 @@ body{ font-size: 17px; }
 </script>
 </div><!-- /.gjf-page -->
 
-<!-- ══ STICKY ATC BAR ══════════════════════════════════════ -->
-<div class="gjf-sticky-atc" id="gjf-atc">
-  <div class="gjf-sticky-atc-inner">
-    <a
-      href="https://getjoyfood.com/products/freeze-dried-raw-meals-fresh-meals-trial-16oz-v1-offer?utm_source=blog&utm_medium=founder-page&utm_campaign=fdr-trial-16oz&utm_content=founder-story"
-      class="gjf-sticky-atc-btn"
-    >
-      Check Availability →
-    </a>
-    <p class="gjf-sticky-atc-sub">Tom's Founder Trial Offer · $19.99 + Free Shipping · 30-Day Guarantee</p>
-  </div>
-</div>
-
 <script>
-  /* Show sticky ATC after scrolling past hero, hide near offer section */
+  /* Smooth scroll for inline #offer CTAs */
   (function() {
-    var atc = document.getElementById('gjf-atc');
-    var offer = document.getElementById('offer');
-    var hero = document.querySelector('.gjf-page .art-header');
-    var shown = false;
-
-    function onScroll() {
-      if (!atc) return;
-      var scrollY = window.pageYOffset || document.documentElement.scrollTop;
-      var heroBottom = hero ? hero.offsetTop + hero.offsetHeight : 400;
-      var offerTop = offer ? offer.getBoundingClientRect().top + scrollY : 999999;
-
-      // Show after passing hero, hide when offer section is in view
-      var nearOffer = offer && offer.getBoundingClientRect().top < window.innerHeight * 1.1;
-
-      if (scrollY > heroBottom && !nearOffer) {
-        atc.classList.add('visible');
-      } else {
-        atc.classList.remove('visible');
-      }
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
+    document.querySelectorAll('a[href="#offer"]').forEach(function(a) {
+      a.addEventListener('click', function(e) {
+        var target = document.getElementById('offer');
+        if (!target) return;
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+    });
   })();
 </script>
 </body>
