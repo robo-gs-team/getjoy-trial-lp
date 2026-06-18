@@ -750,11 +750,11 @@
 
   /* ── Size / feeding data (calibrated from GetJoy feeding guide) ── */
   var SIZES = {
-    s:  { adult: 2,  puppy: 4,  days: { adult: 30, puppy: 15 } },
-    ms: { adult: 4,  puppy: 8,  days: { adult: 30, puppy: 15 } },
-    m:  { adult: 6,  puppy: 12, days: { adult: 29, puppy: 14 } },
-    l:  { adult: 9,  puppy: 16, days: { adult: 30, puppy: 15 } },
-    xl: { adult: 11, puppy: 22, days: { adult: 30, puppy: 15 } }
+    s:  { adult: 2,  puppy: 4,  days: { adult: 33, puppy: 33 }, daysMin: { adult: 23, puppy: 23 }, daysMax: { adult: 43, puppy: 43 } },
+    ms: { adult: 4,  puppy: 8,  days: { adult: 35, puppy: 35 }, daysMin: { adult: 26, puppy: 26 }, daysMax: { adult: 44, puppy: 44 } },
+    m:  { adult: 6,  puppy: 12, days: { adult: 31, puppy: 31 }, daysMin: { adult: 24, puppy: 24 }, daysMax: { adult: 38, puppy: 38 } },
+    l:  { adult: 9,  puppy: 16, days: { adult: 33, puppy: 31 }, daysMin: { adult: 29, puppy: 30 }, daysMax: { adult: 36, puppy: 32 } },
+    xl: { adult: 11, puppy: 22, days: { adult: 31, puppy: 15 }, daysMin: { adult: 27, puppy: null }, daysMax: { adult: 35, puppy: null } }
   };
 
   /* ── Feeding guide data per flavor ── */
@@ -803,7 +803,12 @@
 
     /* Size/days meta */
     var el = document.getElementById('t32SizeMeta');
-    if (el) el.textContent = bags + ' bag' + (bags > 1 ? 's' : '') + ' · lasts your dog ~' + days + ' days';
+    if (el) {
+        var dMin = tier.daysMin && tier.daysMin[state.age];
+        var dMax = tier.daysMax && tier.daysMax[state.age];
+        var rangeText = (dMin && dMax) ? '~' + dMin + '–' + dMax + ' days' : '~' + days + ' days';
+        el.textContent = bags + ' bag' + (bags > 1 ? 's' : '') + ' \xb7 lasts your dog ' + rangeText;
+    }
 
     /* Subscribe card */
     var pNow  = document.getElementById('t32PriceNow');
