@@ -1134,6 +1134,17 @@
   resetTimer();
   render();
 })();
+
+/* Intercept all buy-box anchor links on this page — works even when
+   section liquid files hardcode #buy-box-16oz */
+document.addEventListener('click', function(e) {
+  var a = e.target.closest('a[href="#buy-box-16oz"], a[href="#buy-box-32oz"]');
+  if (a) {
+    e.preventDefault();
+    var target = document.getElementById('buy-box-32oz');
+    if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+});
 </script>
 
 {% schema %}
