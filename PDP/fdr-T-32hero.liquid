@@ -277,7 +277,9 @@
 }
 .t32-size-btn.t32-active { background:var(--fdr-forest); border-color:var(--fdr-forest); color:#fff; }
 .t32-size-btn.t32-disabled { opacity:.35; cursor:not-allowed; pointer-events:none; }
-.t32-size-meta { font-size:12px; color:var(--fdr-muted); margin-bottom:2px; text-align:left; min-height:18px; }
+.t32-size-meta { display:flex; align-items:baseline; gap:6px; margin-bottom:4px; min-height:26px; }
+.t32-size-bags { font-size:20px; font-weight:800; color:var(--fdr-forest); line-height:1; }
+.t32-size-days { font-size:13px; color:var(--fdr-muted); }
 .t32-meal-disc { font-size:10px; color:var(--fdr-muted); opacity:.75; margin-bottom:6px; line-height:1.4; }
 
 /* Feeding guide */
@@ -557,7 +559,10 @@
         <button class="t32-size-btn"             data-size="l"  type="button">50–70<br>lbs</button>
         <button class="t32-size-btn"             data-size="xl" type="button">70+<br>lbs</button>
       </div>
-      <div class="t32-size-meta" id="t32SizeMeta">2 bags · lasts your dog ~27 days</div>
+      <div class="t32-size-meta">
+        <span id="t32SizeBags">2 bags</span>
+        <span id="t32SizeDays">· lasts ~27 days</span>
+      </div>
       <div class="t32-meal-disc">Based on 2 meals/day per our feeding guide for your dog's size</div>
 
       {%- comment -%} Feeding guide toggle {%- endcomment -%}
@@ -802,13 +807,10 @@
     var meals   = days * 2;
 
     /* Size/days meta */
-    var el = document.getElementById('t32SizeMeta');
-    if (el) {
-        var dMin = tier.daysMin && tier.daysMin[state.age];
-        var dMax = tier.daysMax && tier.daysMax[state.age];
-        var rangeText = (dMin && dMax) ? '~' + dMin + '–' + dMax + ' days' : '~' + days + ' days';
-        el.textContent = bags + ' bag' + (bags > 1 ? 's' : '') + ' \xb7 lasts your dog ' + rangeText;
-    }
+    var elBags = document.getElementById('t32SizeBags');
+    var elDays = document.getElementById('t32SizeDays');
+    if (elBags) elBags.textContent = bags + ' bag' + (bags > 1 ? 's' : '');
+    if (elDays) elDays.textContent = '\xb7 lasts ~' + days + ' days';
 
     /* Subscribe card */
     var pNow  = document.getElementById('t32PriceNow');
