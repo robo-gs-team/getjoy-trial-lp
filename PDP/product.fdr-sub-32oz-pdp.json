@@ -146,7 +146,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Shipping, Returns & Our Guarantee",
-            "answer": "<p>16oz bag ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. If your dog tries it and isn\u2019t interested, contact us within 30 days for a full refund, no questions asked. No subscription, no auto-ship. Your call entirely.</p>"
+            "answer": "<p>Ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. Subscribe &amp; Save locks in 50% off your first order and 10% off every refill. Pause, edit, or cancel anytime \u2014 no questions asked. 30-day money-back guarantee on every order.</p>"
           }
         }
       },
@@ -177,7 +177,7 @@
         "show_shipping_price": false,
         "shipping_price": "$20",
         "stock_text": "Low Stock \u2014 Ships within 24 hours",
-        "cta_text": "Try Get Joy \u2014 $20",
+        "cta_text": "Subscribe \u2014 50% Off Today",
         "guarantee_text": "<p><strong>30-Day Money-Back Guarantee</strong></p><p>Not a hit? We refund every penny \u2014 no questions, no hoops, no hassle.</p>",
         "infographic_slide_position": 4,
         "si_eyebrow": "What\u2019s Already in Every Bag",
