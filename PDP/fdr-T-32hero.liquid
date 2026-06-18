@@ -115,7 +115,7 @@
 /* ══════════════════════════════
    RIGHT  —  BUY BOX
 ══════════════════════════════ */
-.t16-buy-col { display:flex; flex-direction:column; justify-content:flex-start; padding:20px 0; overflow-y:auto; position:relative; }
+.t16-buy-col { display:flex; flex-direction:column; justify-content:flex-start; padding:20px 0; overflow-y:auto; }
 
 /* Proof bar */
 .t16-proof-bar { display:flex; align-items:center; gap:10px; flex-wrap:wrap; padding-bottom:0; margin-bottom:12px; }
@@ -476,7 +476,6 @@
 
     {%- comment -%} ===== RIGHT: BUY BOX ===== {%- endcomment -%}
     <div class="t16-buy-col" id="buy-box-32oz">
-      <span id="buy-box-16oz" aria-hidden="true" style="display:block;height:0;pointer-events:none;position:absolute;top:0;"></span>
 
       {%- comment -%} Proof bar {%- endcomment -%}
       <div class="t16-proof-bar">
