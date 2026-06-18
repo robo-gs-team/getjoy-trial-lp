@@ -277,10 +277,12 @@
 }
 .t32-size-btn.t32-active { background:var(--fdr-forest); border-color:var(--fdr-forest); color:#fff; }
 .t32-size-btn.t32-disabled { opacity:.35; cursor:not-allowed; pointer-events:none; }
-.t32-size-meta { display:flex; align-items:baseline; gap:6px; margin-bottom:4px; min-height:26px; }
-.t32-size-bags { font-size:20px; font-weight:800; color:var(--fdr-forest); line-height:1; }
-.t32-size-days { font-size:13px; color:var(--fdr-muted); }
-.t32-meal-disc { font-size:10px; color:var(--fdr-muted); opacity:.75; margin-bottom:6px; line-height:1.4; }
+.t32-result-card { background:rgba(0,80,5,.05); border:1.5px solid rgba(0,80,5,.15); border-radius:10px; padding:12px 14px; margin-bottom:10px; }
+.t32-result-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:.07em; color:var(--fdr-forest); margin-bottom:5px; }
+.t32-result-main { display:flex; align-items:baseline; gap:7px; }
+.t32-size-bags { font-size:22px; font-weight:800; color:var(--fdr-forest); line-height:1; }
+.t32-size-days { font-size:14px; color:var(--fdr-ink); }
+.t32-result-note { font-size:12px; color:var(--fdr-muted); margin-top:6px; line-height:1.4; }
 
 /* Feeding guide */
 .t32-fg-row { margin-bottom:14px; }
@@ -559,11 +561,14 @@
         <button class="t32-size-btn"             data-size="l"  type="button">50–70<br>lbs</button>
         <button class="t32-size-btn"             data-size="xl" type="button">70+<br>lbs</button>
       </div>
-      <div class="t32-size-meta">
-        <span id="t32SizeBags">2 bags</span>
-        <span id="t32SizeDays">· lasts ~27 days</span>
+      <div class="t32-result-card">
+        <div class="t32-result-label">Your result</div>
+        <div class="t32-result-main">
+          <span id="t32SizeBags">2 bags</span>
+          <span id="t32SizeDays">· lasts ~27 days</span>
+        </div>
+        <div class="t32-result-note">Based on 2 meals/day per our feeding guide for your dog's size</div>
       </div>
-      <div class="t32-meal-disc">Based on 2 meals/day per our feeding guide for your dog's size</div>
 
       {%- comment -%} Feeding guide toggle {%- endcomment -%}
       <div class="t32-fg-row">
