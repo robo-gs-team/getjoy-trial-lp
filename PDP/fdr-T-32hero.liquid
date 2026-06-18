@@ -270,6 +270,11 @@
   color:var(--fdr-ink); text-align:center; line-height:1.35; font-family:var(--fdr-font-body);
   transition:background .15s, border-color .15s, color .15s;
 }
+@media(max-width:640px) {
+  .t32-size-row { grid-template-columns:1fr 1fr; gap:8px; }
+  .t32-size-btn { font-size:13px; font-weight:700; padding:14px 8px; }
+  .t32-size-row .t32-size-btn:last-child:nth-child(odd) { grid-column:1 / -1; }
+}
 .t32-size-btn.t32-active { background:var(--fdr-forest); border-color:var(--fdr-forest); color:#fff; }
 .t32-size-btn.t32-disabled { opacity:.35; cursor:not-allowed; pointer-events:none; }
 .t32-size-meta { font-size:12px; color:var(--fdr-muted); margin-bottom:2px; text-align:left; min-height:18px; }
@@ -351,7 +356,6 @@
 .t32-guarantee-sub { font-size:12px; color:#2a5a30; line-height:1.4; font-family:var(--fdr-font-body); }
 
 @media(max-width:480px) {
-  .t32-size-btn { font-size:9px; padding:8px 2px; }
   .t32-flavor-circle { width:46px; height:46px; }
   .t32-flavor-circle img { width:22px; height:22px; }
 }
@@ -547,11 +551,11 @@
         <div class="t16-field-label">{{ size_label }}</div>
       {%- endif -%}
       <div class="t32-size-row">
-        <button class="t32-size-btn t32-active" data-size="s"  type="button">Under<br>20 lbs</button>
-        <button class="t32-size-btn"             data-size="ms" type="button">20–35<br>lbs</button>
-        <button class="t32-size-btn"             data-size="m"  type="button">35–55<br>lbs</button>
-        <button class="t32-size-btn"             data-size="l"  type="button">55–75<br>lbs</button>
-        <button class="t32-size-btn"             data-size="xl" type="button">75+<br>lbs</button>
+        <button class="t32-size-btn t32-active" data-size="s"  type="button">Under<br>15 lbs</button>
+        <button class="t32-size-btn"             data-size="ms" type="button">15–30<br>lbs</button>
+        <button class="t32-size-btn"             data-size="m"  type="button">30–50<br>lbs</button>
+        <button class="t32-size-btn"             data-size="l"  type="button">50–70<br>lbs</button>
+        <button class="t32-size-btn"             data-size="xl" type="button">70+<br>lbs</button>
       </div>
       <div class="t32-size-meta" id="t32SizeMeta">2 bags · lasts your dog ~27 days</div>
       <div class="t32-meal-disc">Based on 2 meals/day per our feeding guide for your dog's size</div>
@@ -746,11 +750,11 @@
 
   /* ── Size / feeding data (calibrated from GetJoy feeding guide) ── */
   var SIZES = {
-    s:  { adult: 2,  puppy: 4,  days: { adult: 27, puppy: 28 } },
-    ms: { adult: 4,  puppy: 8,  days: { adult: 28, puppy: 28 } },
-    m:  { adult: 6,  puppy: 13, days: { adult: 28, puppy: 28 } },
-    l:  { adult: 8,  puppy: 15, days: { adult: 29, puppy: 29 } },
-    xl: { adult: 10, puppy: 22, days: { adult: 30, puppy: 30 } }
+    s:  { adult: 2,  puppy: 4,  days: { adult: 30, puppy: 15 } },
+    ms: { adult: 4,  puppy: 8,  days: { adult: 30, puppy: 15 } },
+    m:  { adult: 6,  puppy: 12, days: { adult: 29, puppy: 14 } },
+    l:  { adult: 9,  puppy: 16, days: { adult: 30, puppy: 15 } },
+    xl: { adult: 11, puppy: 22, days: { adult: 30, puppy: 15 } }
   };
 
   /* ── Feeding guide data per flavor ── */
