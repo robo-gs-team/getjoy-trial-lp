@@ -703,7 +703,7 @@
       {%- endif -%}
       <div class="t16-atc-text">
         <div class="t16-atc-name">{{ product.title }} <span class="t16-atc-name-price" id="t32AtcPrice"></span></div>
-        <div class="t16-atc-desc" id="t32AtcDesc">Subscribe &amp; Save · 50% off first order</div>
+        <div class="t16-atc-desc" id="t32AtcDesc">{{ section.settings.sticky_desc | default: 'Subscribe &amp; Save · 50% off first order' }}</div>
       </div>
     </div>
     <div class="t16-atc-spacer"></div>
@@ -736,6 +736,7 @@
 (function() {
   var SECTION_ID  = {{ section.id | json }};
   var SECTION_SEL = '#shopify-section-' + SECTION_ID + ' ';
+  var STICKY_BTN  = {{ section.settings.sticky_btn_text | default: 'Add to Cart' | json }};
 
   /* ── Liquid-injected data ── */
   var VARIANTS = {};
@@ -835,7 +836,7 @@
     var ctaPrice = state.plan === 'sub' ? first : regular;
     var ctaTxt   = document.getElementById('fdr32ozCtaText');
     var atcTxt   = document.getElementById('t32AtcBtnText');
-    var label    = state.plan === 'sub' ? 'Subscribe · ' + fmt(ctaPrice) : 'Buy Once · ' + fmt(ctaPrice);
+    var label    = STICKY_BTN + ' \xb7 ' + fmt(ctaPrice);
     if (ctaTxt) ctaTxt.textContent = label;
     if (atcTxt) atcTxt.textContent = label;
 
@@ -1231,9 +1232,22 @@
     {
       "type": "text",
       "id": "cta_text",
-      "label": "CTA fallback text",
-      "default": "Subscribe — 50% Off Today",
-      "info": "This is overridden by JS once the selector renders. Shown as a fallback only."
+      "label": "CTA fallback text (SSR only)",
+      "default": "Add to Cart",
+      "info": "Shown before JS loads. JS overrides with sticky_btn_text + price."
+    },
+    {
+      "type": "text",
+      "id": "sticky_btn_text",
+      "label": "CTA button text (hero + sticky bar)",
+      "default": "Add to Cart",
+      "info": "Appended with price automatically, e.g. 'Add to Cart · $29.98'."
+    },
+    {
+      "type": "text",
+      "id": "sticky_desc",
+      "label": "Sticky bar descriptor line",
+      "default": "Subscribe & Save · 50% off first order"
     },
     {
       "type": "header",

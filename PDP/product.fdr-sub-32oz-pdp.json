@@ -975,19 +975,6 @@
         "cta_link": "",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
-    },
-    "fdr_trial_16oz_sticky_atc_PRKU9g": {
-      "type": "fdr-trial-16oz-sticky-atc",
-      "name": "16oz \u2014 Sticky ATC",
-      "settings": {
-        "product_name": "Get Joy 16oz Starter Bag",
-        "price_label": "$20",
-        "descriptor": "Freeze Dried Raw \u00b7 16oz Bag + Free Shipping",
-        "cta_desktop": "TRY GET JOY \u2014 $20 + FREE SHIPPING",
-        "cta_mobile": "Add To Cart \u2014 $2",
-        "cta_mobile_line2": "",
-        "sub_text": "30-day money-back \u00b7 No subscription"
-      }
     }
   },
   "order": [
@@ -1004,7 +991,6 @@
     "fdr_trial_16oz_comparison_EaNCbU",
     "fdr_trial_16oz_reviews_ygyMBk",
     "fdr_trial_16oz_transition_BKrVh3",
-    "fdr_trial_16oz_bottom_cta_9Hh3YY",
-    "fdr_trial_16oz_sticky_atc_PRKU9g"
+    "fdr_trial_16oz_bottom_cta_9Hh3YY"
   ]
 }
