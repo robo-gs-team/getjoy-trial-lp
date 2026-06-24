@@ -123,6 +123,8 @@
 .pc-summary-card { background:#F4F1EA; border:0.5px solid #E7DECC; border-radius:10px; padding:10px 14px; }
 #pc-hero-summary-line { font-size:13px; font-weight:600; color:#3E382B; }
 .pc-summary-sub { font-size:11.5px; color:var(--pc-muted); margin-top:3px; }
+.pc-hero .pc-summary-sub,
+.pc-hero .pc-summary-sub a { color:#8a8270 !important; text-decoration:none !important; }
 
 /* Responsive */
 @media (max-width:980px) {
@@ -266,8 +268,8 @@
             <div class="pc-plan-pricing">
               <div class="pc-best-badge">Best Value</div>
               <div class="pc-price-line">
-                <span class="pc-price-now">${{ sub_first_price }}</span>
-                {%- if sub_compare != blank -%}<span class="pc-price-was">${{ sub_compare }}</span>{%- endif -%}
+                <span class="pc-price-now" id="pc-hero-price-sub">${{ sub_first_price }}</span>
+                {%- if sub_compare != blank -%}<span class="pc-price-was" id="pc-hero-price-sub-was">${{ sub_compare }}</span>{%- endif -%}
               </div>
               <span class="pc-price-meal" id="pc-hero-perday-sub">$0.29/day</span>
             </div>
@@ -286,7 +288,7 @@
             </div>
             <div class="pc-plan-pricing">
               <div class="pc-price-line">
-                <span class="pc-price-now">${{ onetime_price }}</span>
+                <span class="pc-price-now" id="pc-hero-price-once">${{ onetime_price }}</span>
               </div>
               <span class="pc-price-meal" id="pc-hero-perday-once">$0.44/day</span>
             </div>
@@ -336,9 +338,11 @@
 (function() {
   var section = document.querySelector('[data-section-id="{{ section.id }}"]');
   if (!section) return;
-  var SUB_PRICE  = {{ sub_first_price | json }};
-  var ONCE_PRICE = {{ onetime_price | json }};
-  var SUB_PLAN   = {{ selling_plan_id | default: '' | json }};
+  var SUB_PRICE     = {{ sub_first_price | json }};
+  var SUB_REFILL    = {{ sub_refill_price | default: '31.99' | json }};
+  var SUB_COMPARE   = {{ sub_compare | default: '39.99' | json }};
+  var ONCE_PRICE    = {{ onetime_price | json }};
+  var SUB_PLAN      = {{ selling_plan_id | default: '' | json }};
   var CTA_LABEL  = {{ cta_text | default: 'Add to Cart' | json }};
 
   /* Weight tier selector */
@@ -359,6 +363,12 @@
     if (perdaySub) perdaySub.textContent = tier.subPrices.sub_first + '/day';
     var perdayOnce = section.querySelector('#pc-hero-perday-once');
     if (perdayOnce) perdayOnce.textContent = tier.subPrices.once + '/day';
+    var priceSubEl = section.querySelector('#pc-hero-price-sub');
+    if (priceSubEl) priceSubEl.textContent = '$' + (parseFloat(SUB_PRICE) * tier.qty).toFixed(2);
+    var priceSubWasEl = section.querySelector('#pc-hero-price-sub-was');
+    if (priceSubWasEl) priceSubWasEl.textContent = '$' + (parseFloat(SUB_COMPARE) * tier.qty).toFixed(2);
+    var priceOnceEl = section.querySelector('#pc-hero-price-once');
+    if (priceOnceEl) priceOnceEl.textContent = '$' + (parseFloat(ONCE_PRICE) * tier.qty).toFixed(2);
     var qtyInput = section.querySelector('input[name="quantity"]');
     if (qtyInput) qtyInput.value = tier.qty;
   }
