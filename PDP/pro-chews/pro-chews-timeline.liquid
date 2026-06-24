@@ -101,22 +101,28 @@
     text-transform: uppercase;
     margin-bottom: 4px;
   }
-  #pc-timeline .pct-step-eyebrow--neutral { color: #8a8270; }
-  #pc-timeline .pct-step-eyebrow--forest  { color: #9fc4b0; }
+  #pc-timeline .pct-step-eyebrow--neutral { color: #8a8270 !important; }
+  #pc-timeline .pct-step-eyebrow--forest  { color: #9fc4b0 !important; }
   #pc-timeline .pct-step-heading {
     font-size: 15px;
     font-weight: 600;
     margin-bottom: 6px;
     line-height: 1.2;
   }
-  #pc-timeline .pct-step-heading--neutral { color: #3E382B; }
-  #pc-timeline .pct-step-heading--forest  { color: #ffffff; }
+  #pc-timeline .pct-step-heading--neutral,
+  #pc-timeline .pct-step-heading--neutral p { color: #3E382B !important; }
+  #pc-timeline .pct-step-heading--forest,
+  #pc-timeline .pct-step-heading--forest p  { color: #ffffff !important; }
   #pc-timeline .pct-step-body {
     font-size: 13px;
     line-height: 1.6;
   }
-  #pc-timeline .pct-step-body--neutral { color: #8a8270; }
-  #pc-timeline .pct-step-body--forest  { color: #cfe6d8; }
+  #pc-timeline .pct-step-body--neutral,
+  #pc-timeline .pct-step-body--neutral p,
+  #pc-timeline .pct-step-body--neutral a { color: #8a8270 !important; text-decoration: none; }
+  #pc-timeline .pct-step-body--forest,
+  #pc-timeline .pct-step-body--forest p,
+  #pc-timeline .pct-step-body--forest a  { color: #cfe6d8 !important; text-decoration: none; }
   #pc-timeline .pct-sub-close {
     text-align: center;
     max-width: 480px;
@@ -140,6 +146,43 @@
   }
   @media (max-width: 767px) {
     #pc-timeline { padding: 40px 16px; }
+  }
+
+  /* ── Desktop: horizontal 4-column layout ── */
+  @media (min-width: 768px) {
+    #pc-timeline .pct-col {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 0;
+      max-width: 1080px;
+      align-items: start;
+    }
+    #pc-timeline .pct-row {
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+    #pc-timeline .pct-indicator {
+      flex-direction: row;
+      width: 100%;
+      height: 36px;
+      align-items: center;
+      margin-bottom: 12px;
+      flex: none;
+    }
+    #pc-timeline .pct-line {
+      width: auto;
+      height: 2px;
+      flex: 1;
+      margin: 0 0 0 4px;
+    }
+    #pc-timeline .pct-card {
+      width: 100%;
+      margin-bottom: 0;
+    }
+    #pc-timeline .pct-row:not(:last-child) .pct-card {
+      margin-right: 12px;
+    }
   }
 </style>
 
