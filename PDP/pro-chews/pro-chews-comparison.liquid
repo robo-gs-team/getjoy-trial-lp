@@ -133,9 +133,18 @@
     font-family: var(--fdr-font-body, system-ui, sans-serif);
     font-size: 13px; color: var(--pc-muted, #8a8270); margin-top: 12px;
   }
+
+  /* ── Color bleed overrides ── */
+  #pc-comparison .pc-cmp-attr,
+  #pc-comparison .pc-cmp-attr p,
+  #pc-comparison .pc-cmp-attr span { color: #3E382B !important; text-decoration: none !important; }
+  #pc-comparison .pc-cmp-val-comp  { color: #8a8270 !important; }
+  #pc-comparison .pc-cmp-val-gj    { background: #f4f8f5 !important; color: #1C5236 !important; font-weight: 600 !important; }
+  #pc-comparison .pc-cmp-th-gj     { background: #1C5236 !important; color: #ffffff !important; }
+  #pc-comparison a                  { color: inherit !important; text-decoration: none !important; }
 </style>
 
-<div class="pc-cmp">
+<div class="pc-cmp" id="pc-comparison">
   {%- if eyebrow != blank -%}<p class="pc-eyebrow">{{ eyebrow | escape }}</p>{%- endif -%}
   {%- if heading != blank -%}<h2 class="pc-h2">{{ heading | escape }}</h2>{%- endif -%}
   {%- if subheading != blank -%}<p class="pc-sub">{{ subheading | escape }}</p>{%- endif -%}

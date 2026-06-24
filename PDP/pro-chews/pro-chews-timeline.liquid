@@ -155,12 +155,13 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 0;
       max-width: 1080px;
-      align-items: start;
+      align-items: stretch;
     }
     #pc-timeline .pct-row {
       flex-direction: column;
-      align-items: center;
+      align-items: stretch;
       gap: 0;
+      height: 100%;
     }
     #pc-timeline .pct-indicator {
       flex-direction: row;
@@ -179,6 +180,8 @@
     #pc-timeline .pct-card {
       width: 100%;
       margin-bottom: 0;
+      flex: 1;
+      box-sizing: border-box;
     }
     #pc-timeline .pct-row:not(:last-child) .pct-card {
       margin-right: 12px;
