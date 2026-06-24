@@ -241,6 +241,63 @@
         "bg_tint": "#FCEAE0"
       }
     },
+    "pro_chews_experts": {
+      "type": "pro-chews-experts",
+      "blocks": {
+        "expert_fahey": {
+          "type": "expert",
+          "settings": {
+            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/zYs39b4pgK8uW5Kh/3ccc6613723d521310177c17391635420e4a51a1.png",
+            "role_eyebrow": "PHD ANIMAL NUTRITIONIST",
+            "name": "Dr. George C. Fahey Jr.",
+            "credential": "Professor Emeritus, University of Illinois",
+            "statement": "Career focused on digestive health and how the gut processes nutrients — the scientific foundation behind Belly Biotics™."
+          }
+        },
+        "expert_levitzke": {
+          "type": "expert",
+          "settings": {
+            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/CQjvEMncosM4dduj/72c01d1700073cfadedfffd3cc47a1da5cc1c2e2.png",
+            "role_eyebrow": "CO-CHIEF VETERINARIAN",
+            "name": "Dr. Brett Levitzke",
+            "credential": "DVM · Founder, VERG — Brooklyn's first 24/7 animal hospital",
+            "statement": "Focuses on preventative wellness and the role nutrition plays in reducing chronic illness before it starts."
+          }
+        },
+        "expert_peyton": {
+          "type": "expert",
+          "settings": {
+            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/ZsoAgwF00QmVHPaY/dr-jamie.png",
+            "role_eyebrow": "CO-CHIEF VETERINARIAN",
+            "name": "Dr. Jamie L. Peyton",
+            "credential": "DVM · Chancellor's Innovation Award Recipient",
+            "statement": "Advocates for proactive daily wellness habits — the philosophy behind a supplement your dog takes every day, not just when something goes wrong."
+          }
+        },
+        "expert_alsarraf": {
+          "type": "expert",
+          "settings": {
+            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/ReOmxYgld639Wz38/c7e1e2e88db2e2bbf370f5303168f6121d027a0c.png",
+            "role_eyebrow": "VETERINARY ONCOLOGIST",
+            "name": "Dr. Renee Alsarraf",
+            "credential": "DVM · Board-Certified Oncologist · Author, Sit, Stay, Heal",
+            "statement": "20+ years treating dogs with cancer brings a deep, human understanding of what long-term wellness actually looks like."
+          }
+        }
+      },
+      "block_order": [
+        "expert_fahey",
+        "expert_levitzke",
+        "expert_peyton",
+        "expert_alsarraf"
+      ],
+      "settings": {
+        "eyebrow": "FORMULATED WITH EXPERTS",
+        "heading": "The science behind every chew",
+        "subheading": "Get Joy's formulas are shaped by licensed veterinarians and a PhD animal nutritionist. Not a marketing board — a working advisory team.",
+        "bg_color": "#FBF3E8"
+      }
+    },
     "pro_chews_ingredients": {
       "type": "pro-chews-ingredients",
       "blocks": {
@@ -698,6 +755,7 @@
     "pro_chews_hero",
     "pro_chews_valuestack",
     "pro_chews_mechanism",
+    "pro_chews_experts",
     "pro_chews_ingredients",
     "pro_chews_comparison",
     "pro_chews_faq",
