@@ -110,6 +110,20 @@
 .pc-sticky-price { font-size:11px; color:var(--pc-muted); }
 .pc-sticky-btn { background:var(--pc-orange); color:#fff; border:none; padding:12px 18px; border-radius:10px; font-weight:900; font-size:13px; cursor:pointer; font-family:inherit; white-space:nowrap; }
 
+/* Weight tier selector */
+.pc-size-step { margin-bottom:16px; }
+.pc-size-label { font-size:10px; font-weight:800; letter-spacing:2px; text-transform:uppercase; color:var(--pc-muted); margin-bottom:8px; }
+.pc-tier-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:10px; }
+.pc-tier-btn { background:#fff; border:1.5px solid #E7DECC; border-radius:12px; padding:11px 6px; text-align:center; cursor:pointer; font-family:inherit; transition:border-color .18s,background .18s,color .18s; }
+.pc-tier-btn:hover { border-color:#E85F2E; }
+.pc-tier-btn.pc-tier-active { background:#1C5236; border-color:#1C5236; color:#fff; }
+.pc-tier-lbl { display:block; font-size:14px; font-weight:700; line-height:1.2; }
+.pc-tier-sub { display:block; font-size:11px; color:var(--pc-muted); margin-top:1px; }
+.pc-tier-btn.pc-tier-active .pc-tier-sub { color:rgba(255,255,255,.7); }
+.pc-summary-card { background:#F4F1EA; border:0.5px solid #E7DECC; border-radius:10px; padding:10px 14px; }
+#pc-hero-summary-line { font-size:13px; font-weight:600; color:#3E382B; }
+.pc-summary-sub { font-size:11.5px; color:var(--pc-muted); margin-top:3px; }
+
 /* Responsive */
 @media (max-width:980px) {
   .pc-hero-inner { grid-template-columns:1fr; padding:14px 16px; gap:24px; }
@@ -213,6 +227,33 @@
         </div>
       {%- endif -%}
 
+      {%- comment -%} Weight tier selector {%- endcomment -%}
+      <div class="pc-size-step">
+        <div class="pc-size-label">YOUR DOG'S SIZE</div>
+        <div class="pc-tier-grid" id="pcTierGrid">
+          <button type="button" class="pc-tier-btn pc-tier-active" data-tier="0">
+            <span class="pc-tier-lbl">Up to 30</span>
+            <span class="pc-tier-sub">lbs</span>
+          </button>
+          <button type="button" class="pc-tier-btn" data-tier="1">
+            <span class="pc-tier-lbl">31–60</span>
+            <span class="pc-tier-sub">lbs</span>
+          </button>
+          <button type="button" class="pc-tier-btn" data-tier="2">
+            <span class="pc-tier-lbl">61–90</span>
+            <span class="pc-tier-sub">lbs</span>
+          </button>
+          <button type="button" class="pc-tier-btn" data-tier="3">
+            <span class="pc-tier-lbl">91+</span>
+            <span class="pc-tier-sub">lbs</span>
+          </button>
+        </div>
+        <div class="pc-summary-card">
+          <div id="pc-hero-summary-line">1 chew/day · one bag lasts 90 days</div>
+          <div class="pc-summary-sub">Based on our feeding guide for your dog's size.</div>
+        </div>
+      </div>
+
       {%- comment -%} Plan selector {%- endcomment -%}
       <div class="pc-plan-list">
         <div class="pc-plan-card pc-is-active" id="pcSubCard" data-plan="sub" onclick="pcSetPlan('sub', this)">
@@ -228,7 +269,7 @@
                 <span class="pc-price-now">${{ sub_first_price }}</span>
                 {%- if sub_compare != blank -%}<span class="pc-price-was">${{ sub_compare }}</span>{%- endif -%}
               </div>
-              <span class="pc-price-meal">{{ per_day_line | escape }}</span>
+              <span class="pc-price-meal" id="pc-hero-perday-sub">$0.29/day</span>
             </div>
           </div>
           {%- if sub_fine_print != blank -%}
@@ -247,6 +288,7 @@
               <div class="pc-price-line">
                 <span class="pc-price-now">${{ onetime_price }}</span>
               </div>
+              <span class="pc-price-meal" id="pc-hero-perday-once">$0.44/day</span>
             </div>
           </div>
         </div>
@@ -298,6 +340,34 @@
   var ONCE_PRICE = {{ onetime_price | json }};
   var SUB_PLAN   = {{ selling_plan_id | default: '' | json }};
   var CTA_LABEL  = {{ cta_text | default: 'Add to Cart' | json }};
+
+  /* Weight tier selector */
+  var TIERS = [
+    { label: '1 chew/day · one bag lasts 90 days', qty: 1, subPrices: { sub_first: '$0.29', sub_refill: '$0.36', once: '$0.44' } },
+    { label: '2 chews/day · one bag lasts 45 days', qty: 2, subPrices: { sub_first: '$0.58', sub_refill: '$0.71', once: '$0.89' } },
+    { label: '3 chews/day · one bag lasts 30 days', qty: 3, subPrices: { sub_first: '$0.87', sub_refill: '$1.07', once: '$1.33' } },
+    { label: '4 chews/day · one bag lasts 23 days', qty: 4, subPrices: { sub_first: '$1.13', sub_refill: '$1.39', once: '$1.74' } }
+  ];
+
+  function pcSetTier(idx) {
+    var tier = TIERS[idx];
+    var tierBtns = section.querySelectorAll('.pc-tier-btn');
+    tierBtns.forEach(function(btn, i) { btn.classList.toggle('pc-tier-active', i === idx); });
+    var summaryLine = section.querySelector('#pc-hero-summary-line');
+    if (summaryLine) summaryLine.textContent = tier.label;
+    var perdaySub = section.querySelector('#pc-hero-perday-sub');
+    if (perdaySub) perdaySub.textContent = tier.subPrices.sub_first + '/day';
+    var perdayOnce = section.querySelector('#pc-hero-perday-once');
+    if (perdayOnce) perdayOnce.textContent = tier.subPrices.once + '/day';
+    var qtyInput = section.querySelector('input[name="quantity"]');
+    if (qtyInput) qtyInput.value = tier.qty;
+  }
+
+  section.querySelectorAll('.pc-tier-btn').forEach(function(btn, i) {
+    btn.addEventListener('click', function() { pcSetTier(i); });
+  });
+
+  pcSetTier(0);
 
   /* Plan selector */
   window.pcSetPlan = function(plan, el) {
