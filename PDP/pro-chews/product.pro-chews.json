@@ -247,7 +247,6 @@
         "expert_fahey": {
           "type": "expert",
           "settings": {
-            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/zYs39b4pgK8uW5Kh/3ccc6613723d521310177c17391635420e4a51a1.png",
             "role_eyebrow": "PHD ANIMAL NUTRITIONIST",
             "name": "Dr. George C. Fahey Jr.",
             "credential": "Professor Emeritus, University of Illinois",
@@ -257,7 +256,6 @@
         "expert_levitzke": {
           "type": "expert",
           "settings": {
-            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/CQjvEMncosM4dduj/72c01d1700073cfadedfffd3cc47a1da5cc1c2e2.png",
             "role_eyebrow": "CO-CHIEF VETERINARIAN",
             "name": "Dr. Brett Levitzke",
             "credential": "DVM · Founder, VERG — Brooklyn's first 24/7 animal hospital",
@@ -267,7 +265,6 @@
         "expert_peyton": {
           "type": "expert",
           "settings": {
-            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/ZsoAgwF00QmVHPaY/dr-jamie.png",
             "role_eyebrow": "CO-CHIEF VETERINARIAN",
             "name": "Dr. Jamie L. Peyton",
             "credential": "DVM · Chancellor's Innovation Award Recipient",
@@ -277,7 +274,6 @@
         "expert_alsarraf": {
           "type": "expert",
           "settings": {
-            "photo": "https://cdn.instant.so/sites/ZRWeYY3HyKldJnvR/assets/ReOmxYgld639Wz38/c7e1e2e88db2e2bbf370f5303168f6121d027a0c.png",
             "role_eyebrow": "VETERINARY ONCOLOGIST",
             "name": "Dr. Renee Alsarraf",
             "credential": "DVM · Board-Certified Oncologist · Author, Sit, Stay, Heal",
