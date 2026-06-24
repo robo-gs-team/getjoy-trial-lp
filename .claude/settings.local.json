@@ -33,7 +33,8 @@
       "Bash(node build-image-doc.js)",
       "Bash(npm install docx)",
       "Skill(commit-commands:commit-push-pr)",
-      "Skill(commit-commands:commit-push-pr:*)"
+      "Skill(commit-commands:commit-push-pr:*)",
+      "mcp__ClickUp__clickup_filter_tasks"
     ]
   }
 }

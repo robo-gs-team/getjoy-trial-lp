@@ -1,4 +1,5 @@
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" media="print" onload="this.media='all'">
 {{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
 
 <style>
@@ -19,6 +20,9 @@
     display:flex; align-items:center; justify-content:center;
   }
   .pc-trust-band__icon svg { width:20px; height:20px; }
+  .pc-trust-band__fa-icon {
+    font-size:18px; color:#fff; width:20px; text-align:center; flex-shrink:0;
+  }
   .pc-trust-band__label {
     font-family:var(--fdr-font-body);
     font-size:12.5px; font-weight:700;
@@ -65,14 +69,17 @@
     <div class="pc-trust-band__inner"{% if i == 2 %} aria-hidden="true"{% endif %}>
       {% for block in section.blocks %}
         {%- liquid
-          assign label = block.settings.label
-          assign icon_svg = block.settings.icon_svg
+          assign label      = block.settings.label
+          assign icon_class = block.settings.icon_class
+          assign icon_svg   = block.settings.icon_svg
           assign hide_mobile = block.settings.hide_mobile
         -%}
         <div class="pc-trust-band__cell{% if hide_mobile %} pc-trust-band__cell--hide-mobile{% endif %}" {{ block.shopify_attributes }}>
-          {% if icon_svg != blank %}
+          {%- if icon_class != blank -%}
+            <i class="{{ icon_class | escape }} pc-trust-band__fa-icon" aria-hidden="true"></i>
+          {%- elsif icon_svg != blank -%}
             <div class="pc-trust-band__icon">{{ icon_svg }}</div>
-          {% endif %}
+          {%- endif -%}
           <span class="pc-trust-band__label">{{ label | escape }}</span>
         </div>
       {% endfor %}
@@ -110,10 +117,17 @@
           "default": "Crafted in the USA"
         },
         {
+          "type": "text",
+          "id": "icon_class",
+          "label": "FontAwesome icon class",
+          "info": "e.g. fa-solid fa-flag — browse at fontawesome.com/icons (free only)",
+          "default": "fa-solid fa-flag"
+        },
+        {
           "type": "textarea",
           "id": "icon_svg",
-          "label": "Icon SVG code",
-          "info": "Paste inline SVG markup for the icon"
+          "label": "Icon SVG fallback",
+          "info": "Used only if FontAwesome class above is blank. Legacy field."
         },
         {
           "type": "checkbox",
@@ -133,29 +147,28 @@
           "type": "trust_item",
           "settings": {
             "label": "Made in the USA",
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\"><path d=\"M11 2C7.69 2 5 4.69 5 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S9.62 5.5 11 5.5s2.5 1.12 2.5 2.5S12.38 10.5 11 10.5z\" fill=\"#fff\"/></svg>"
+            "icon_class": "fa-solid fa-flag"
           }
         },
         {
           "type": "trust_item",
           "settings": {
-            "label": "3 billion live CFU, plus a postbiotic",
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"2.2\"/><circle cx=\"15\" cy=\"13\" r=\"2.6\"/><circle cx=\"8\" cy=\"15\" r=\"1.6\"/></svg>"
+            "label": "3 Billion Live CFU",
+            "icon_class": "fa-solid fa-bacteria"
           }
         },
         {
           "type": "trust_item",
           "settings": {
-            "label": "All life stages, puppy through senior",
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path fill=\"#fff\" d=\"M15.86,13.78c-1.94-2.18-2.08-4.28-4.86-4.28s-2.92,2.1-4.86,4.28c-1.83,2.06-3.64,2.62-3.64,5.07s1.77,3.15,3.86,3.15,2.67-1,4.64-1,2.56,1,4.64,1,3.86-.69,3.86-3.15-1.81-3.01-3.64-5.07Z\"/></svg>"
+            "label": "All Life Stages",
+            "icon_class": "fa-solid fa-paw"
           }
         },
         {
           "type": "trust_item",
           "settings": {
-            "label": "NASC-quality ingredients",
-            "hide_mobile": true,
-            "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 1l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L11 16l-5.8 3 1.1-6.5L1.6 7.8l6.5-.9z\"/></svg>"
+            "label": "Belly Biotics™",
+            "icon_class": "fa-solid fa-seedling"
           }
         }
       ]

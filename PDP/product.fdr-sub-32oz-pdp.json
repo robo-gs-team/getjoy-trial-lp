@@ -146,7 +146,7 @@
           "type": "faq_item",
           "settings": {
             "question": "Shipping, Returns & Our Guarantee",
-            "answer": "<p>16oz bag ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. If your dog tries it and isn\u2019t interested, contact us within 30 days for a full refund, no questions asked. No subscription, no auto-ship. Your call entirely.</p>"
+            "answer": "<p>Ships free \u2014 no shipping charge at checkout. Orders typically arrive within 5\u20137 business days. Subscribe &amp; Save locks in 50% off your first order and 10% off every refill. Pause, edit, or cancel anytime \u2014 no questions asked. 30-day money-back guarantee on every order.</p>"
           }
         }
       },
@@ -177,7 +177,8 @@
         "show_shipping_price": false,
         "shipping_price": "$20",
         "stock_text": "Low Stock \u2014 Ships within 24 hours",
-        "cta_text": "Try Get Joy \u2014 $20",
+        "cta_text": "Subscribe \u2014 50% Off Today",
+        "selling_plan_id": "1502642222",
         "guarantee_text": "<p><strong>30-Day Money-Back Guarantee</strong></p><p>Not a hit? We refund every penny \u2014 no questions, no hoops, no hassle.</p>",
         "infographic_slide_position": 4,
         "si_eyebrow": "What\u2019s Already in Every Bag",
@@ -460,8 +461,8 @@
         "close_line_2": "Get Joy is what happens when you stop choosing.",
         "close_bold": "Every single category. One bag. ~$92 a month.",
         "disclaimer": "Supplement prices based on average retail cost of leading branded products at standard dosages (Amazon, Chewy, brand direct \u2014 March 2026). Get Joy subscription reflects average recurring subscriber order value. Individual prices may vary.",
-        "cta_text": "Try Get Joy \u2014 $20",
-        "cta_url": "",
+        "cta_text": "Try Get Joy",
+        "cta_url": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
     },
@@ -566,8 +567,8 @@
         "eyebrow": "Common Questions",
         "heading": "Everything You Need to Know",
         "subheading": "The honest answers to what most people ask before trying.",
-        "cta_text": "Try Get Joy \u2014 $20",
-        "cta_url": "",
+        "cta_text": "Try Get Joy",
+        "cta_url": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
     },
@@ -638,8 +639,8 @@
         "eyebrow": "Nothing to Hide",
         "heading": "What's Actually In The Bag",
         "subheading": "Every ingredient is named. No mystery meals, no fillers, no fine print.",
-        "cta_label": "Try Get Joy \u2014 $20",
-        "cta_link": "",
+        "cta_label": "Try Get Joy",
+        "cta_link": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
     },
@@ -647,12 +648,12 @@
       "type": "fdr-trial-16oz-why-banner",
       "name": "16oz \u2014 Why $20",
       "settings": {
-        "heading": "Why Only $20?",
-        "subheading": "That's $25 off. Shipping's on us. Here's why.",
+        "heading": "Why Subscribe?",
+        "subheading": "50% off your first order. Free shipping. Here's why.",
         "body_1": "A full 16oz bag is enough for your dog to feel, enjoy, and for you to see the difference.",
         "body_2": "Most dogs that try it don't go back. So we'd \nrather you judge it than pitch it to you. One \norder. No subscription starts. Your dog decides.",
-        "cta_label": "Try Get Joy \u2014 $20",
-        "cta_link": "",
+        "cta_label": "Try Get Joy",
+        "cta_link": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
     },
@@ -753,8 +754,8 @@
         "col_mobile_comp_label": "Other Brands",
         "col_mobile_gj_label": "Get Joy",
         "col_mobile_gj_sub": "Freeze Dried",
-        "cta_text": "Try Get Joy \u2014 $20",
-        "cta_url": "",
+        "cta_text": "Try Get Joy",
+        "cta_url": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
     },
@@ -854,8 +855,8 @@
         "heading": "Even the Pickiest Dogs Love It",
         "subheading": "From dog companions who made the switch",
         "background_color": "tennis",
-        "cta_text": "Try Get Joy \u2014 $20",
-        "cta_url": "",
+        "cta_text": "Try Get Joy",
+        "cta_url": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn\u2019t work, it\u2019s completely free."
       }
     },
@@ -909,8 +910,8 @@
         "eyebrow": "Making the Switch",
         "heading": "How to Feed Get Joy",
         "subheading": "Switching from kibble? Follow this simple 7-day plan \u2014 your dog's gut will thank you.",
-        "cta_label": "Try Get Joy \u2014 $20",
-        "cta_link": "",
+        "cta_label": "Try Get Joy",
+        "cta_link": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
       }
     },
@@ -964,28 +965,15 @@
       "settings": {
         "left_eyebrow": "Final Offer",
         "left_heading": "Your Dog Decides. Risk Free.",
-        "left_sub": "One full bag. One taste test. A $20 bet that could give you more years of the unconditional love only dogs give.",
+        "left_sub": "One full bag. One taste test. A bet that could give you more years of the unconditional love only dogs give.",
         "stack_title": "What's Included",
         "stack_value_label": "$35 value \u2014 $25 off + free shipping",
         "was_price": "$35",
-        "now_price": "$20",
+        "now_price": "$59.95",
         "price_unit": "free shipping",
-        "cta_label": "Try Get Joy \u2014 $20",
-        "cta_link": "",
+        "cta_label": "Try Get Joy",
+        "cta_link": "#buy-box-32oz",
         "guarantee_text": "30-day money-back guarantee. If it doesn't work, it's completely free."
-      }
-    },
-    "fdr_trial_16oz_sticky_atc_PRKU9g": {
-      "type": "fdr-trial-16oz-sticky-atc",
-      "name": "16oz \u2014 Sticky ATC",
-      "settings": {
-        "product_name": "Get Joy 16oz Starter Bag",
-        "price_label": "$20",
-        "descriptor": "Freeze Dried Raw \u00b7 16oz Bag + Free Shipping",
-        "cta_desktop": "TRY GET JOY \u2014 $20 + FREE SHIPPING",
-        "cta_mobile": "Add To Cart \u2014 $2",
-        "cta_mobile_line2": "",
-        "sub_text": "30-day money-back \u00b7 No subscription"
       }
     }
   },
@@ -1003,7 +991,6 @@
     "fdr_trial_16oz_comparison_EaNCbU",
     "fdr_trial_16oz_reviews_ygyMBk",
     "fdr_trial_16oz_transition_BKrVh3",
-    "fdr_trial_16oz_bottom_cta_9Hh3YY",
-    "fdr_trial_16oz_sticky_atc_PRKU9g"
+    "fdr_trial_16oz_bottom_cta_9Hh3YY"
   ]
 }
