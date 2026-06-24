@@ -250,9 +250,9 @@
             "card_type": "single",
             "biotics_style": true,
             "label": "Probiotic Strains",
-            "title": "3 Billion CFU",
+            "title": "3 Billion CFU - Delivered Alive",
             "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/Postbiotic.png?v=1751312897",
-            "description": "3 billion CFU of Bacillus coagulans and B. subtilis. Spore-formers chosen to survive stomach acid, because most yogurt-style probiotics die before they reach the gut."
+            "description": "Bacillus coagulans and B. subtilis are spore-formers. They survive your dog's stomach acid and arrive in the gut intact, unlike most yogurt-strain probiotics that die on the way down."
           }
         },
         "ing_postbiotic": {
@@ -261,9 +261,9 @@
             "card_type": "single",
             "biotics_style": true,
             "label": "Postbiotic + L-Glutamine",
-            "title": "200mg Postbiotic, 100mg L-Glutamine",
+            "title": "200mg Postbiotic - The Part Most Chews Skip",
             "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/postbiotics.png?v=1712867540",
-            "description": "A 200mg postbiotic plus 100mg L-Glutamine. The postbiotic supports immune signaling. L-Glutamine supports the gut lining itself."
+            "description": "Saccharomyces cerevisiae fermentation product. Postbiotics are the active compounds that support a calm inflammatory response and signal the immune system. Your dog gets the benefit even before the live bacteria fully colonize."
           }
         },
         "ing_omega": {
@@ -272,9 +272,9 @@
             "card_type": "single",
             "biotics_style": true,
             "label": "Omega-3 + Botanicals",
-            "title": "Algae DHA, Ginger, Kelp",
+            "title": "L-Glutamine + Algae Omega-3",
             "image_1": "https://cdn.shopify.com/s/files/1/0015/5919/9790/files/kelp.png?v=1712876388",
-            "description": "Algae-sourced DHA 46mg and EPA 31mg for skin and coat. Organic ginger 60mg to settle the stomach. Kelp 200mg to feed the good bacteria."
+            "description": "100mg L-Glutamine supports the gut lining itself, not just the bacteria inside it. Algae-sourced DHA and EPA work at the cell level for skin and coat, not just topically."
           }
         },
         "ing_clean": {
@@ -283,8 +283,8 @@
             "card_type": "none",
             "none_tags": "No Corn, No Soy, No Seed Oils, No Byproducts",
             "label": "What's Not In It",
-            "title": "Clean Label",
-            "description": "No corn, wheat, soy, artificial preservatives, seed oils, or animal byproducts. Natural chicken flavor only."
+            "title": "Natural Chicken Flavor - Dogs Actually Eat It",
+            "description": "Most dogs take it straight from your hand. If yours won't touch it, we'll refund you. No artificial flavors, no corn, wheat, soy, or seed oils."
           }
         }
       },
@@ -472,28 +472,28 @@
         "trust_usa": {
           "type": "trust_item",
           "settings": {
-            "label": "Made in the USA",
+            "label": "Made in the USA - NASC-quality ingredients, manufactured to GMP standards",
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\"><path d=\"M11 2C7.69 2 5 4.69 5 8c0 4.5 6 12 6 12s6-7.5 6-12c0-3.31-2.69-6-6-6zm0 8.5c-1.38 0-2.5-1.12-2.5-2.5S9.62 5.5 11 5.5s2.5 1.12 2.5 2.5S12.38 10.5 11 10.5z\" fill=\"#fff\"/></svg>"
           }
         },
         "trust_cfu": {
           "type": "trust_item",
           "settings": {
-            "label": "3 billion live CFU, plus a postbiotic",
+            "label": "3 Billion Live CFU - Plus a 200mg postbiotic, the part most chews skip",
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8\" r=\"2.2\"/><circle cx=\"15\" cy=\"13\" r=\"2.6\"/><circle cx=\"8\" cy=\"15\" r=\"1.6\"/></svg>"
           }
         },
         "trust_stages": {
           "type": "trust_item",
           "settings": {
-            "label": "All life stages, puppy through senior",
+            "label": "All Life Stages - Puppy through senior, one daily chew",
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\"><path fill=\"#fff\" d=\"M15.86,13.78c-1.94-2.18-2.08-4.28-4.86-4.28s-2.92,2.1-4.86,4.28c-1.83,2.06-3.64,2.62-3.64,5.07s1.77,3.15,3.86,3.15,2.67-1,4.64-1,2.56,1,4.64,1,3.86-.69,3.86-3.15-1.81-3.01-3.64-5.07Z\"/></svg>"
           }
         },
         "trust_nasc": {
           "type": "trust_item",
           "settings": {
-            "label": "NASC-quality ingredients",
+            "label": "Belly Biotics™ - The same pre, pro and postbiotic system that's in Get Joy food",
             "hide_mobile": true,
             "icon_svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 22 22\" fill=\"none\" stroke=\"#fff\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M11 1l2.9 5.9 6.5.9-4.7 4.6 1.1 6.5L11 16l-5.8 3 1.1-6.5L1.6 7.8l6.5-.9z\"/></svg>"
           }
