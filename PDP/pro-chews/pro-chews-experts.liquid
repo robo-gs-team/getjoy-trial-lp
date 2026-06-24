@@ -134,12 +134,10 @@
   <div class="pce-grid">
     {%- for block in section.blocks -%}
       {%- if block.type == 'expert' -%}
-        {%- assign photo = block.settings.photo -%}
-        {%- assign photo_src = photo | image_url: width: 400 -%}
         <div class="pce-card" {{ block.shopify_attributes }}>
-          {%- if photo != blank -%}
+          {%- if block.settings.photo != blank -%}
             <img class="pce-photo"
-                 src="{{ photo_src | default: photo }}"
+                 src="{{ block.settings.photo | image_url: width: 400 }}"
                  alt="{{ block.settings.name | escape }}"
                  loading="lazy"
                  width="400"
