@@ -196,6 +196,60 @@
         "footnote": "Separate-product prices are illustrative category averages, to be confirmed before publish."
       }
     },
+    "pro_chews_timeline": {
+      "type": "pro-chews-timeline",
+      "blocks": {
+        "step_1": {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 1–3",
+            "step_heading": "The chew goes in",
+            "step_body": "Your dog gets a daily chew and usually loves it. The strains begin their work. No visible change yet — the foundation is being laid.",
+            "step_style": "neutral"
+          }
+        },
+        "step_2": {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 4–14",
+            "step_heading": "Things start moving",
+            "step_body": "Firmer, more regular stools are usually the first thing owners notice. Less gas. The gut is shifting toward the Belly Biotics™ strains.",
+            "step_style": "neutral"
+          }
+        },
+        "step_3": {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 15–30",
+            "step_heading": "It settles in",
+            "step_body": "Digestion steadies. Many owners mention fresher breath in this window. The daily habit is set.",
+            "step_style": "neutral"
+          }
+        },
+        "step_4": {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAY 30+",
+            "step_heading": "The full picture",
+            "step_body": "A more stable gut. Owners tracking skin, coat, or seasonal comfort tend to notice changes here. This is why the routine is built around months, not days.",
+            "step_style": "forest"
+          }
+        }
+      },
+      "block_order": [
+        "step_1",
+        "step_2",
+        "step_3",
+        "step_4"
+      ],
+      "settings": {
+        "eyebrow": "WHAT TO EXPECT",
+        "heading": "Probiotics build over time. Here's the typical arc.",
+        "subheading": "Every dog is different, but this is the pattern most owners describe.",
+        "sub_close_text": "Most owners give it a full 90-day routine. That's three bags for a small dog, and it's why subscribing costs less than buying one at a time.",
+        "compliance_text": "Individual results vary. Get Joy chews support healthy digestion, immune function, and a normal inflammatory response. They are not a treatment for any condition."
+      }
+    },
     "pro_chews_mechanism": {
       "type": "pro-chews-mechanism",
       "blocks": {
@@ -754,6 +808,7 @@
     "main",
     "pro_chews_hero",
     "pro_chews_valuestack",
+    "pro_chews_timeline",
     "pro_chews_mechanism",
     "pro_chews_experts",
     "pro_chews_ingredients",

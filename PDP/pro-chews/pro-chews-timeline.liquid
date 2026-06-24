@@ -1,0 +1,323 @@
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* ─── PRO CHEWS TIMELINE ─── */
+  #pc-timeline {
+    background: #FBF3E8;
+    padding: 56px 24px;
+  }
+  #pc-timeline .pct-header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 36px;
+  }
+  #pc-timeline .pct-eyebrow {
+    font-family: var(--fdr-font-body, system-ui, sans-serif);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #E85F2E;
+    margin-bottom: 6px;
+  }
+  #pc-timeline .pct-h2 {
+    font-family: var(--fdr-font-heading, Georgia, serif);
+    font-size: clamp(22px, 3.5vw, 28px);
+    font-weight: 900;
+    color: #1C5236;
+    line-height: 1.15;
+    margin: 0 0 10px;
+  }
+  #pc-timeline .pct-sub {
+    font-family: var(--fdr-font-serif, Georgia, serif);
+    font-style: italic;
+    font-size: 15.5px;
+    color: #8a8270;
+    line-height: 1.6;
+    margin: 0;
+  }
+  #pc-timeline .pct-col {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+  #pc-timeline .pct-row {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+  }
+  #pc-timeline .pct-indicator {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 48px;
+    flex: none;
+  }
+  #pc-timeline .pct-num {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 500;
+    flex: none;
+  }
+  #pc-timeline .pct-num--neutral {
+    background: #FBF3E8;
+    border: 2px solid #E7DECC;
+    color: #8a8270;
+  }
+  #pc-timeline .pct-num--forest {
+    background: #1C5236;
+    border: 2px solid #1C5236;
+    color: #ffffff;
+  }
+  #pc-timeline .pct-line {
+    width: 2px;
+    background: #E7DECC;
+    flex: 1;
+    margin: 4px 0;
+  }
+  #pc-timeline .pct-card {
+    flex: 1;
+    border-radius: 12px;
+    padding: 16px 18px;
+    margin-bottom: 10px;
+  }
+  #pc-timeline .pct-card--neutral {
+    background: #ffffff;
+    border: 0.5px solid #E7DECC;
+  }
+  #pc-timeline .pct-card--forest {
+    background: #1C5236;
+    border: none;
+    margin-bottom: 0;
+  }
+  #pc-timeline .pct-step-eyebrow {
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  #pc-timeline .pct-step-eyebrow--neutral { color: #8a8270; }
+  #pc-timeline .pct-step-eyebrow--forest  { color: #9fc4b0; }
+  #pc-timeline .pct-step-heading {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+  #pc-timeline .pct-step-heading--neutral { color: #3E382B; }
+  #pc-timeline .pct-step-heading--forest  { color: #ffffff; }
+  #pc-timeline .pct-step-body {
+    font-size: 13px;
+    line-height: 1.6;
+  }
+  #pc-timeline .pct-step-body--neutral { color: #8a8270; }
+  #pc-timeline .pct-step-body--forest  { color: #cfe6d8; }
+  #pc-timeline .pct-sub-close {
+    text-align: center;
+    max-width: 480px;
+    margin: 20px auto 0;
+    background: #FCEAE0;
+    border-radius: 10px;
+    padding: 14px 20px;
+    font-size: 13px;
+    font-weight: 500;
+    color: #3E382B;
+    line-height: 1.5;
+  }
+  #pc-timeline .pct-compliance {
+    text-align: center;
+    max-width: 480px;
+    margin: 12px auto 0;
+    font-size: 11px;
+    color: #8a8270;
+    line-height: 1.5;
+    font-style: italic;
+  }
+  @media (max-width: 767px) {
+    #pc-timeline { padding: 40px 16px; }
+  }
+</style>
+
+<div id="pc-timeline">
+
+  <div class="pct-header">
+    {%- if section.settings.eyebrow != blank -%}
+      <p class="pct-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+    {%- endif -%}
+    {%- if section.settings.heading != blank -%}
+      <h2 class="pct-h2">{{ section.settings.heading | escape }}</h2>
+    {%- endif -%}
+    {%- if section.settings.subheading != blank -%}
+      <p class="pct-sub">{{ section.settings.subheading | escape }}</p>
+    {%- endif -%}
+  </div>
+
+  <div class="pct-col">
+    {%- assign total_blocks = section.blocks.size -%}
+    {%- for block in section.blocks -%}
+      {%- assign style = block.settings.step_style | default: 'neutral' -%}
+      {%- assign is_last = false -%}
+      {%- if forloop.last -%}{%- assign is_last = true -%}{%- endif -%}
+      <div class="pct-row" {{ block.shopify_attributes }}>
+        <div class="pct-indicator">
+          <div class="pct-num pct-num--{{ style }}">{{ forloop.index }}</div>
+          {%- unless is_last -%}
+            <div class="pct-line"></div>
+          {%- endunless -%}
+        </div>
+        <div class="pct-card pct-card--{{ style }}">
+          {%- if block.settings.step_eyebrow != blank -%}
+            <p class="pct-step-eyebrow pct-step-eyebrow--{{ style }}">{{ block.settings.step_eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.step_heading != blank -%}
+            <p class="pct-step-heading pct-step-heading--{{ style }}">{{ block.settings.step_heading | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.step_body != blank -%}
+            <p class="pct-step-body pct-step-body--{{ style }}">{{ block.settings.step_body | replace: '™', '<sup>™</sup>' }}</p>
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+
+  {%- if section.settings.sub_close_text != blank -%}
+    <div class="pct-sub-close">{{ section.settings.sub_close_text | escape }}</div>
+  {%- endif -%}
+
+  <p class="pct-compliance">{{ section.settings.compliance_text | escape }}</p>
+
+</div>
+
+{% schema %}
+{
+  "name": "Pro Chews Timeline",
+  "tag": "section",
+  "class": "section-pc-timeline",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section Header"
+    },
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow",
+      "default": "WHAT TO EXPECT"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Probiotics build over time. Here's the typical arc."
+    },
+    {
+      "type": "text",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Every dog is different, but this is the pattern most owners describe."
+    },
+    {
+      "type": "header",
+      "content": "Footer Copy"
+    },
+    {
+      "type": "text",
+      "id": "sub_close_text",
+      "label": "Subscription close strip",
+      "default": "Most owners give it a full 90-day routine. That's three bags for a small dog, and it's why subscribing costs less than buying one at a time."
+    },
+    {
+      "type": "text",
+      "id": "compliance_text",
+      "label": "Compliance footnote",
+      "info": "Required — always renders.",
+      "default": "Individual results vary. Get Joy chews support healthy digestion, immune function, and a normal inflammatory response. They are not a treatment for any condition."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "step",
+      "name": "Timeline Step",
+      "settings": [
+        {
+          "type": "text",
+          "id": "step_eyebrow",
+          "label": "Time eyebrow",
+          "default": "DAYS 1–3"
+        },
+        {
+          "type": "text",
+          "id": "step_heading",
+          "label": "Heading",
+          "default": "The chew goes in"
+        },
+        {
+          "type": "textarea",
+          "id": "step_body",
+          "label": "Body",
+          "default": "Your dog gets a daily chew and usually loves it."
+        },
+        {
+          "type": "select",
+          "id": "step_style",
+          "label": "Card style",
+          "options": [
+            { "value": "neutral", "label": "Cream (neutral)" },
+            { "value": "forest", "label": "Forest green (close)" }
+          ],
+          "default": "neutral"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Pro Chews Timeline",
+      "category": "Landing Page",
+      "blocks": [
+        {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 1–3",
+            "step_heading": "The chew goes in",
+            "step_body": "Your dog gets a daily chew and usually loves it. The strains begin their work. No visible change yet — the foundation is being laid.",
+            "step_style": "neutral"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 4–14",
+            "step_heading": "Things start moving",
+            "step_body": "Firmer, more regular stools are usually the first thing owners notice. Less gas. The gut is shifting toward the Belly Biotics™ strains.",
+            "step_style": "neutral"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAYS 15–30",
+            "step_heading": "It settles in",
+            "step_body": "Digestion steadies. Many owners mention fresher breath in this window. The daily habit is set.",
+            "step_style": "neutral"
+          }
+        },
+        {
+          "type": "step",
+          "settings": {
+            "step_eyebrow": "DAY 30+",
+            "step_heading": "The full picture",
+            "step_body": "A more stable gut. Owners tracking skin, coat, or seasonal comfort tend to notice changes here. This is why the routine is built around months, not days.",
+            "step_style": "forest"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
