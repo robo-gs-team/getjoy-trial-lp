@@ -1,0 +1,736 @@
+{%- comment -%}
+  Pro Chews — Tom's Founder Letter
+  Chews adaptation of the food page's toms-founder-letter. Re-skinned to the
+  chews branding system: orange (#E85F2E) action states, forest identity, scoped
+  CSS, no inherited food claims, no real food-customer testimonials.
+  Narrative = the supplement-stack problem. No Cooper/lymphoma/18-month arc.
+{%- endcomment -%}
+
+{{ 'fdr-trial-pdp.css' | asset_url | stylesheet_tag }}
+
+<style>
+  /* ─── PRO CHEWS FOUNDER LETTER ─── */
+  #pc-letter {
+    --pcl-orange:#E85F2E; --pcl-orange-dk:#D24E20;
+    --pcl-forest:#1C5236; --pcl-cream:#FBF3E8;
+    --pcl-ink:#3E382B; --pcl-muted:#8a8270; --pcl-line:#E7DECC;
+    background:var(--pcl-cream);
+    font-family:var(--fdr-font-body, system-ui, sans-serif);
+    padding:0 0 8px;
+  }
+  #pc-letter .pcl-wrap { max-width:720px; margin:0 auto; padding:0 24px; }
+
+  /* Header */
+  #pc-letter .pcl-header { text-align:center; padding:56px 0 8px; }
+  #pc-letter .pcl-eyebrow {
+    font-family:var(--fdr-font-body, system-ui, sans-serif);
+    font-size:12px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+    color:var(--pcl-orange); margin:0 0 10px;
+  }
+  #pc-letter .pcl-meta {
+    font-size:12px; font-weight:600; color:var(--pcl-muted);
+    letter-spacing:.04em; margin:0 0 18px;
+  }
+  #pc-letter .pcl-meta span { color:var(--pcl-orange); }
+  #pc-letter .pcl-h1 {
+    font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900;
+    font-size:clamp(30px, 5vw, 46px); color:var(--pcl-forest);
+    letter-spacing:-1px; line-height:1.08; margin:0 0 14px;
+  }
+  #pc-letter .pcl-h1-sub {
+    font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic;
+    font-size:clamp(18px, 2.6vw, 23px); color:var(--pcl-muted);
+    line-height:1.4; margin:0 0 22px;
+  }
+  #pc-letter .pcl-dek {
+    font-size:16px; color:var(--pcl-ink); line-height:1.6;
+    max-width:600px; margin:0 auto 28px;
+  }
+  #pc-letter .pcl-hero-img { margin:0 0 6px; border-radius:14px; overflow:hidden; }
+  #pc-letter .pcl-hero-img img { width:100%; height:auto; display:block; }
+  #pc-letter .pcl-hero-cap {
+    font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic;
+    font-size:13px; color:var(--pcl-muted); text-align:center; margin:10px 0 0;
+  }
+
+  /* Chapter */
+  #pc-letter .pcl-chapter { padding:40px 0 8px; border-top:1px solid var(--pcl-line); margin-top:36px; }
+  #pc-letter .pcl-chapter:first-of-type { border-top:none; margin-top:8px; }
+  #pc-letter .pcl-ch-eyebrow {
+    font-size:11px; font-weight:800; letter-spacing:2px; text-transform:uppercase;
+    color:var(--pcl-orange); margin:0 0 12px;
+  }
+  #pc-letter .pcl-ch-h2 {
+    font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900;
+    font-size:clamp(24px, 3.4vw, 32px); color:var(--pcl-forest);
+    letter-spacing:-.5px; line-height:1.15; margin:0 0 20px;
+  }
+  #pc-letter .pcl-ch-h2 em {
+    display:block; font-family:var(--fdr-font-serif, Georgia, serif);
+    font-style:italic; font-weight:400; font-size:.74em;
+    color:var(--pcl-muted); letter-spacing:0; margin-top:6px;
+  }
+  #pc-letter .pcl-body { font-size:16px; color:var(--pcl-ink); line-height:1.72; }
+  #pc-letter .pcl-body p { margin:0 0 18px; }
+  #pc-letter .pcl-body strong { color:var(--pcl-forest); font-weight:700; }
+  #pc-letter .pcl-body em { font-style:italic; color:var(--pcl-muted); }
+  #pc-letter .pcl-body sup { font-size:.62em; }
+  #pc-letter .pcl-body ul { list-style:none; padding:0; margin:6px 0 18px; }
+  #pc-letter .pcl-body ul li { position:relative; padding:0 0 13px 30px; line-height:1.6; }
+  #pc-letter .pcl-body ul li:last-child { padding-bottom:0; }
+  #pc-letter .pcl-body ul li::before {
+    content:'\2713'; position:absolute; left:0; top:1px;
+    color:var(--pcl-orange); font-weight:900; font-size:15px;
+  }
+
+  /* Pull quote */
+  #pc-letter .pcl-quote {
+    margin:8px 0 24px; padding:22px 26px;
+    background:#fff; border-left:4px solid var(--pcl-orange);
+    border-radius:0 12px 12px 0;
+  }
+  #pc-letter .pcl-quote-text {
+    font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic;
+    font-size:19px; color:var(--pcl-forest); line-height:1.45; margin:0 0 10px;
+  }
+  #pc-letter .pcl-quote-by {
+    font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.06em;
+    color:var(--pcl-muted);
+  }
+
+  /* Cost table */
+  #pc-letter .pcl-cost {
+    margin:6px 0 24px; border-radius:14px; overflow:hidden;
+    border:1.5px solid var(--pcl-line); background:#fff;
+  }
+  #pc-letter .pcl-cost-table { width:100%; border-collapse:collapse; }
+  #pc-letter .pcl-cost-table th {
+    background:var(--pcl-forest); color:#fff; text-align:left;
+    font-size:11px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+    padding:12px 16px;
+  }
+  #pc-letter .pcl-cost-table th:last-child { text-align:right; }
+  #pc-letter .pcl-cost-table td {
+    padding:13px 16px; font-size:14px; color:var(--pcl-ink);
+    border-bottom:1px solid var(--pcl-line); vertical-align:top;
+  }
+  #pc-letter .pcl-cost-table tr:nth-child(even) td { background:rgba(252,234,224,.4); }
+  #pc-letter .pcl-cost-why {
+    font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic;
+    color:var(--pcl-muted); font-size:13px; line-height:1.45;
+  }
+  #pc-letter .pcl-cost-price { text-align:right; white-space:nowrap; font-weight:700; color:var(--pcl-forest); }
+  #pc-letter .pcl-cost-table tr.pcl-cost-total td {
+    background:rgba(28,82,54,.06) !important; font-weight:800; color:var(--pcl-forest);
+    border-top:2px solid var(--pcl-line);
+  }
+  #pc-letter .pcl-cost-table tr.pcl-cost-gj td {
+    background:#1C5236 !important; color:#fff; font-weight:800;
+    border-bottom:none;
+  }
+  #pc-letter .pcl-cost-table tr.pcl-cost-gj .pcl-cost-price { color:#CDEB6B; }
+
+  /* Founder's trial callout */
+  #pc-letter .pcl-offer {
+    margin:6px 0 22px; padding:22px 26px; text-align:center;
+    background:#FCEAE0; border:1px solid var(--pcl-line); border-radius:12px;
+  }
+  #pc-letter .pcl-offer-quote {
+    font-family:var(--fdr-font-serif, Georgia, serif); font-style:italic;
+    font-size:17px; color:var(--pcl-forest); line-height:1.5; margin:0 0 10px;
+  }
+  #pc-letter .pcl-offer-price {
+    font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900;
+    font-size:30px; color:var(--pcl-orange); line-height:1; margin:0 0 8px;
+  }
+  #pc-letter .pcl-offer-save { font-size:13px; font-weight:700; color:var(--pcl-forest); }
+  #pc-letter .pcl-footnote {
+    font-size:11.5px; font-style:italic; color:var(--pcl-muted);
+    line-height:1.5; margin:0 0 24px;
+  }
+
+  /* Build / closing bullets */
+  #pc-letter .pcl-bullets { list-style:none; padding:0; margin:6px 0 24px; }
+  #pc-letter .pcl-bullets li {
+    position:relative; padding:0 0 16px 30px; font-size:15.5px;
+    color:var(--pcl-ink); line-height:1.6;
+  }
+  #pc-letter .pcl-bullets li:last-child { padding-bottom:0; }
+  #pc-letter .pcl-bullets li::before {
+    content:'\2713'; position:absolute; left:0; top:1px;
+    color:var(--pcl-orange); font-weight:900; font-size:15px;
+  }
+  #pc-letter .pcl-bullets strong { color:var(--pcl-forest); font-weight:800; }
+  #pc-letter .pcl-bullets sup { font-size:.62em; }
+
+  /* Proof stat */
+  #pc-letter .pcl-stat {
+    margin:6px 0 24px; padding:30px 26px; text-align:center;
+    background:var(--pcl-forest); border-radius:14px;
+  }
+  #pc-letter .pcl-stat-num {
+    font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900;
+    font-size:clamp(52px, 9vw, 76px); color:#CDEB6B; line-height:.9;
+    letter-spacing:-2px; margin:0 0 10px;
+  }
+  #pc-letter .pcl-stat-label {
+    font-size:14px; color:rgba(255,255,255,.85); line-height:1.5;
+    max-width:420px; margin:0 auto;
+  }
+  #pc-letter .pcl-stat-label sup { font-size:.62em; }
+
+  /* Mini timeline */
+  #pc-letter .pcl-timeline { margin:6px 0 24px; }
+  #pc-letter .pcl-tl-row {
+    display:flex; gap:16px; padding:0 0 18px;
+  }
+  #pc-letter .pcl-tl-row:last-child { padding-bottom:0; }
+  #pc-letter .pcl-tl-marker { flex:none; display:flex; flex-direction:column; align-items:center; }
+  #pc-letter .pcl-tl-dot {
+    width:14px; height:14px; border-radius:50%;
+    background:var(--pcl-orange); flex:none; margin-top:5px;
+  }
+  #pc-letter .pcl-tl-line { width:2px; flex:1; background:var(--pcl-line); margin-top:4px; }
+  #pc-letter .pcl-tl-row:last-child .pcl-tl-line { display:none; }
+  #pc-letter .pcl-tl-time {
+    font-size:12px; font-weight:800; letter-spacing:.05em; text-transform:uppercase;
+    color:var(--pcl-orange); margin:0 0 4px;
+  }
+  #pc-letter .pcl-tl-text { font-size:14.5px; color:var(--pcl-ink); line-height:1.55; margin:0; }
+
+  /* Signature */
+  #pc-letter .pcl-sign {
+    margin:24px 0 0; padding:20px 0 0; border-top:1px solid var(--pcl-line);
+    font-size:14px; font-weight:700; color:var(--pcl-forest);
+  }
+
+  /* Repeating CTA bar */
+  #pc-letter .pcl-cta { text-align:center; margin:28px 0 8px; }
+  #pc-letter .pcl-cta-btn {
+    display:inline-flex; align-items:center; gap:10px;
+    background:var(--pcl-orange); border-radius:99px;
+    padding:16px 34px; text-decoration:none;
+    font-family:var(--fdr-font-heading, Georgia, serif);
+    font-weight:900; font-size:16px;
+    transition:background .2s, transform .2s;
+  }
+  #pc-letter .pcl-cta-btn:hover { background:var(--pcl-orange-dk); transform:translateY(-1px); }
+  #pc-letter .pcl-cta-sub { font-size:12.5px; color:var(--pcl-muted); margin:10px 0 0; }
+
+  /* Closing offer card */
+  #pc-letter .pcl-close {
+    padding:48px 0 12px; border-top:1px solid var(--pcl-line); margin-top:36px;
+  }
+  #pc-letter .pcl-close-eyebrow {
+    text-align:center; font-size:11px; font-weight:800; letter-spacing:2px;
+    text-transform:uppercase; color:var(--pcl-orange); margin:0 0 12px;
+  }
+  #pc-letter .pcl-close-h2 {
+    font-family:var(--fdr-font-heading, Georgia, serif); font-weight:900;
+    font-size:clamp(28px, 4vw, 40px); color:var(--pcl-forest);
+    text-align:center; letter-spacing:-1px; line-height:1.1; margin:0 0 8px;
+  }
+  #pc-letter .pcl-close-sub {
+    text-align:center; font-size:14px; font-weight:700; color:var(--pcl-orange);
+    letter-spacing:.04em; margin:0 0 20px;
+  }
+  #pc-letter .pcl-close-intro {
+    font-size:15.5px; color:var(--pcl-ink); line-height:1.65; text-align:center;
+    max-width:600px; margin:0 auto 24px;
+  }
+  #pc-letter .pcl-close-intro sup { font-size:.62em; }
+  #pc-letter .pcl-close-price {
+    text-align:center; font-family:var(--fdr-font-heading, Georgia, serif);
+    font-weight:900; font-size:22px; color:var(--pcl-forest); margin:0 0 4px;
+  }
+  #pc-letter .pcl-close-price-sub { text-align:center; font-size:13px; color:var(--pcl-muted); margin:0 0 22px; }
+
+  /* Value table */
+  #pc-letter .pcl-value {
+    margin:6px 0 22px; border-radius:14px; overflow:hidden;
+    border:1.5px solid var(--pcl-line); background:#fff;
+  }
+  #pc-letter .pcl-value-head {
+    background:var(--pcl-forest); color:#fff; padding:12px 18px;
+    display:flex; justify-content:space-between; align-items:center;
+    font-size:12px; font-weight:800; letter-spacing:.06em; text-transform:uppercase;
+  }
+  #pc-letter .pcl-value-head .pcl-value-head-val { color:#CDEB6B; }
+  #pc-letter .pcl-value-row {
+    display:flex; align-items:flex-start; gap:12px; padding:13px 18px;
+    border-bottom:1px solid var(--pcl-line);
+  }
+  #pc-letter .pcl-value-row:last-child { border-bottom:none; }
+  #pc-letter .pcl-value-chk {
+    width:20px; height:20px; flex:none; border-radius:50%;
+    background:var(--pcl-orange); color:#fff; font-size:11px; font-weight:900;
+    display:flex; align-items:center; justify-content:center; margin-top:1px;
+  }
+  #pc-letter .pcl-value-main { flex:1; min-width:0; }
+  #pc-letter .pcl-value-item { font-size:14.5px; font-weight:800; color:var(--pcl-forest); line-height:1.3; }
+  #pc-letter .pcl-value-item sup { font-size:.62em; }
+  #pc-letter .pcl-value-desc { font-size:12.5px; color:var(--pcl-muted); line-height:1.45; margin-top:2px; }
+  #pc-letter .pcl-value-amt {
+    flex:none; font-size:11px; font-weight:800; letter-spacing:.04em;
+    color:var(--pcl-forest); background:rgba(28,82,54,.08);
+    padding:4px 10px; border-radius:99px; white-space:nowrap; margin-top:1px;
+  }
+
+  @media (max-width:600px) {
+    #pc-letter .pcl-cost-why { display:none; }
+    #pc-letter .pcl-cost-table td, #pc-letter .pcl-cost-table th { padding:11px 12px; }
+  }
+</style>
+
+{%- comment -%} ── Reusable CTA bar markup is rendered per-block where show_cta is on ── {%- endcomment -%}
+
+<div id="pc-letter">
+  <div class="pcl-wrap">
+
+    {%- comment -%} ── Page header ── {%- endcomment -%}
+    <div class="pcl-header">
+      {%- if section.settings.eyebrow != blank -%}
+        <p class="pcl-eyebrow">{{ section.settings.eyebrow | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.meta_line != blank -%}
+        <p class="pcl-meta">{{ section.settings.meta_line }}</p>
+      {%- endif -%}
+      {%- if section.settings.h1 != blank -%}
+        <h1 class="pcl-h1">{{ section.settings.h1 | escape }}</h1>
+      {%- endif -%}
+      {%- if section.settings.h1_sub != blank -%}
+        <p class="pcl-h1-sub">{{ section.settings.h1_sub | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.dek != blank -%}
+        <p class="pcl-dek">{{ section.settings.dek | escape }}</p>
+      {%- endif -%}
+      {%- if section.settings.hero_image != blank -%}
+        <div class="pcl-hero-img">
+          <img src="{{ section.settings.hero_image | image_url: width: 1200 }}" alt="{{ section.settings.byline | escape }}" loading="eager" width="1200">
+        </div>
+        {%- if section.settings.hero_caption != blank -%}
+          <p class="pcl-hero-cap">{{ section.settings.hero_caption | escape }}</p>
+        {%- endif -%}
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} ── Body blocks ── {%- endcomment -%}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+
+      {%- when 'chapter' -%}
+        <div class="pcl-chapter" {{ block.shopify_attributes }}>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="pcl-ch-eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="pcl-ch-h2">{{ block.settings.heading | escape }}{% if block.settings.heading_em != blank %}<em>{{ block.settings.heading_em | escape }}</em>{% endif %}</h2>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <div class="pcl-body">{{ block.settings.body | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+          {%- if block.settings.quote_text != blank -%}
+            <div class="pcl-quote">
+              <p class="pcl-quote-text">&ldquo;{{ block.settings.quote_text | escape }}&rdquo;</p>
+              {%- if block.settings.quote_by != blank -%}
+                <p class="pcl-quote-by">{{ block.settings.quote_by | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          {%- if block.settings.body_after != blank -%}
+            <div class="pcl-body">{{ block.settings.body_after | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+          {%- if block.settings.show_cta -%}
+            <div class="pcl-cta">
+              <a href="{{ section.settings.cta_url | default: '#buy-box' }}" class="pcl-cta-btn" style="color:#ffffff !important;">
+                <span style="color:#ffffff !important;">{{ section.settings.cta_text | escape }}</span>
+                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              {%- if section.settings.cta_sub != blank -%}
+                <p class="pcl-cta-sub">{{ section.settings.cta_sub | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+      {%- when 'cost_table' -%}
+        <div class="pcl-chapter" {{ block.shopify_attributes }}>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="pcl-ch-eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="pcl-ch-h2">{{ block.settings.heading | escape }}{% if block.settings.heading_em != blank %}<em>{{ block.settings.heading_em | escape }}</em>{% endif %}</h2>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <div class="pcl-body">{{ block.settings.body | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+
+          <div class="pcl-cost">
+            <table class="pcl-cost-table">
+              <thead>
+                <tr>
+                  <th>{{ block.settings.col1_head | escape }}</th>
+                  <th class="pcl-cost-why-head">{{ block.settings.col2_head | escape }}</th>
+                  <th>{{ block.settings.col3_head | escape }}</th>
+                </tr>
+              </thead>
+              <tbody>
+                {%- for i in (1..5) -%}
+                  {%- assign lk = 'row' | append: i | append: '_label' -%}
+                  {%- assign wk = 'row' | append: i | append: '_why' -%}
+                  {%- assign ck = 'row' | append: i | append: '_cost' -%}
+                  {%- if block.settings[lk] != blank -%}
+                    <tr>
+                      <td>{{ block.settings[lk] | escape }}</td>
+                      <td class="pcl-cost-why">{{ block.settings[wk] | escape }}</td>
+                      <td class="pcl-cost-price">{{ block.settings[ck] | escape }}</td>
+                    </tr>
+                  {%- endif -%}
+                {%- endfor -%}
+                {%- if block.settings.total_label != blank -%}
+                  <tr class="pcl-cost-total">
+                    <td>{{ block.settings.total_label | escape }}</td>
+                    <td class="pcl-cost-why"></td>
+                    <td class="pcl-cost-price">{{ block.settings.total_cost | escape }}</td>
+                  </tr>
+                {%- endif -%}
+                {%- if block.settings.gj_label != blank -%}
+                  <tr class="pcl-cost-gj">
+                    <td>{{ block.settings.gj_label | escape }}</td>
+                    <td class="pcl-cost-why"></td>
+                    <td class="pcl-cost-price">{{ block.settings.gj_cost | escape }}</td>
+                  </tr>
+                {%- endif -%}
+              </tbody>
+            </table>
+          </div>
+
+          {%- if block.settings.offer_quote != blank -%}
+            <div class="pcl-offer">
+              <p class="pcl-offer-quote">&ldquo;{{ block.settings.offer_quote | escape }}&rdquo;</p>
+              {%- if block.settings.offer_price != blank -%}
+                <p class="pcl-offer-price">{{ block.settings.offer_price | escape }}</p>
+              {%- endif -%}
+              {%- if block.settings.offer_save != blank -%}
+                <p class="pcl-offer-save">{{ block.settings.offer_save | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+
+          {%- if block.settings.footnote != blank -%}
+            <p class="pcl-footnote">{{ block.settings.footnote | escape }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.body_after != blank -%}
+            <div class="pcl-body">{{ block.settings.body_after | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.show_cta -%}
+            <div class="pcl-cta">
+              <a href="{{ section.settings.cta_url | default: '#buy-box' }}" class="pcl-cta-btn" style="color:#ffffff !important;">
+                <span style="color:#ffffff !important;">{{ section.settings.cta_text | escape }}</span>
+                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              {%- if section.settings.cta_sub != blank -%}
+                <p class="pcl-cta-sub">{{ section.settings.cta_sub | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+      {%- when 'proof' -%}
+        <div class="pcl-chapter" {{ block.shopify_attributes }}>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="pcl-ch-eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="pcl-ch-h2">{{ block.settings.heading | escape }}{% if block.settings.heading_em != blank %}<em>{{ block.settings.heading_em | escape }}</em>{% endif %}</h2>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <div class="pcl-body">{{ block.settings.body | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+
+          <div class="pcl-stat">
+            {%- if block.settings.stat_num != blank -%}
+              <p class="pcl-stat-num">{{ block.settings.stat_num | escape }}</p>
+            {%- endif -%}
+            {%- if block.settings.stat_label != blank -%}
+              <p class="pcl-stat-label">{{ block.settings.stat_label | replace: '™', '<sup>™</sup>' }}</p>
+            {%- endif -%}
+          </div>
+
+          {%- if block.settings.body_after != blank -%}
+            <div class="pcl-body">{{ block.settings.body_after | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+
+          <div class="pcl-timeline">
+            {%- for i in (1..4) -%}
+              {%- assign tk = 'step' | append: i | append: '_time' -%}
+              {%- assign xk = 'step' | append: i | append: '_text' -%}
+              {%- if block.settings[tk] != blank or block.settings[xk] != blank -%}
+                <div class="pcl-tl-row">
+                  <div class="pcl-tl-marker">
+                    <div class="pcl-tl-dot"></div>
+                    <div class="pcl-tl-line"></div>
+                  </div>
+                  <div class="pcl-tl-content">
+                    {%- if block.settings[tk] != blank -%}<p class="pcl-tl-time">{{ block.settings[tk] | escape }}</p>{%- endif -%}
+                    {%- if block.settings[xk] != blank -%}<p class="pcl-tl-text">{{ block.settings[xk] | escape }}</p>{%- endif -%}
+                  </div>
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          {%- if block.settings.show_cta -%}
+            <div class="pcl-cta">
+              <a href="{{ section.settings.cta_url | default: '#buy-box' }}" class="pcl-cta-btn" style="color:#ffffff !important;">
+                <span style="color:#ffffff !important;">{{ section.settings.cta_text | escape }}</span>
+                <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              {%- if section.settings.cta_sub != blank -%}
+                <p class="pcl-cta-sub">{{ section.settings.cta_sub | escape }}</p>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+        </div>
+
+      {%- when 'signoff' -%}
+        <div class="pcl-chapter" {{ block.shopify_attributes }}>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="pcl-ch-eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="pcl-ch-h2">{{ block.settings.heading | escape }}{% if block.settings.heading_em != blank %}<em>{{ block.settings.heading_em | escape }}</em>{% endif %}</h2>
+          {%- endif -%}
+          {%- if block.settings.body != blank -%}
+            <div class="pcl-body">{{ block.settings.body | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+          {%- if block.settings.sign != blank -%}
+            <p class="pcl-sign">{{ block.settings.sign }}</p>
+          {%- endif -%}
+        </div>
+
+      {%- when 'closing_offer' -%}
+        <div class="pcl-close" {{ block.shopify_attributes }}>
+          {%- if block.settings.eyebrow != blank -%}
+            <p class="pcl-close-eyebrow">{{ block.settings.eyebrow | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.heading != blank -%}
+            <h2 class="pcl-close-h2">{{ block.settings.heading | escape }}</h2>
+          {%- endif -%}
+          {%- if block.settings.sub != blank -%}
+            <p class="pcl-close-sub">{{ block.settings.sub | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.intro != blank -%}
+            <p class="pcl-close-intro">{{ block.settings.intro | replace: '™', '<sup>™</sup>' }}</p>
+          {%- endif -%}
+
+          {%- if block.settings.bullets != blank -%}
+            <div class="pcl-body">{{ block.settings.bullets | replace: '™', '<sup>™</sup>' }}</div>
+          {%- endif -%}
+
+          {%- if block.settings.price_line != blank -%}
+            <p class="pcl-close-price">{{ block.settings.price_line | escape }}</p>
+          {%- endif -%}
+          {%- if block.settings.price_sub != blank -%}
+            <p class="pcl-close-price-sub">{{ block.settings.price_sub | escape }}</p>
+          {%- endif -%}
+
+          <div class="pcl-value">
+            <div class="pcl-value-head">
+              <span>{{ block.settings.value_head | escape }}</span>
+              <span class="pcl-value-head-val">{{ block.settings.value_head_amt | escape }}</span>
+            </div>
+            {%- for i in (1..5) -%}
+              {%- assign ik = 'val' | append: i | append: '_item' -%}
+              {%- assign dk = 'val' | append: i | append: '_desc' -%}
+              {%- assign ak = 'val' | append: i | append: '_amt' -%}
+              {%- if block.settings[ik] != blank -%}
+                <div class="pcl-value-row">
+                  <div class="pcl-value-chk">&#10003;</div>
+                  <div class="pcl-value-main">
+                    <div class="pcl-value-item">{{ block.settings[ik] | replace: '™', '<sup>™</sup>' }}</div>
+                    {%- if block.settings[dk] != blank -%}<div class="pcl-value-desc">{{ block.settings[dk] | escape }}</div>{%- endif -%}
+                  </div>
+                  {%- if block.settings[ak] != blank -%}<div class="pcl-value-amt">{{ block.settings[ak] | escape }}</div>{%- endif -%}
+                </div>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+
+          <div class="pcl-cta">
+            <a href="{{ section.settings.cta_url | default: '#buy-box' }}" class="pcl-cta-btn" style="color:#ffffff !important;">
+              <span style="color:#ffffff !important;">{{ block.settings.cta_label | escape }}</span>
+              <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            {%- if block.settings.cta_sub != blank -%}
+              <p class="pcl-cta-sub">{{ block.settings.cta_sub | escape }}</p>
+            {%- endif -%}
+          </div>
+        </div>
+
+      {%- endcase -%}
+    {%- endfor -%}
+
+    {%- comment -%} ── Compliance footer (required, always renders) ── {%- endcomment -%}
+    <p class="pcl-footnote" style="text-align:center; margin:32px 0 8px;">{{ section.settings.compliance_text }}</p>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Pro Chews Founder Letter",
+  "tag": "section",
+  "class": "section-pc-letter",
+  "settings": [
+    { "type": "header", "content": "Page Header" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Founder's Letter" },
+    { "type": "inline_richtext", "id": "meta_line", "label": "Meta line", "default": "5 min read · A Personal Letter From Tom Arrix · <span>Founder & CEO</span>" },
+    { "type": "text", "id": "byline", "label": "Byline (image alt)", "default": "Tom Arrix, Founder & CEO of Get Joy" },
+    { "type": "text", "id": "h1", "label": "H1", "default": "I was spending $340 a month on 7 different bottles." },
+    { "type": "text", "id": "h1_sub", "label": "H1 italic sub", "default": "Then I built the one chew that replaced all of them." },
+    { "type": "textarea", "id": "dek", "label": "Dek", "default": "What happened when a dog dad got tired of managing a pharmacy on his kitchen counter, and what he built because of it." },
+    { "type": "image_picker", "id": "hero_image", "label": "Hero image" },
+    { "type": "text", "id": "hero_caption", "label": "Hero caption", "default": "Tom reaching for the chew bag, past a counter of bottles." },
+    { "type": "header", "content": "Repeating CTA" },
+    { "type": "text", "id": "cta_text", "label": "CTA button text", "default": "Check Availability" },
+    { "type": "text", "id": "cta_sub", "label": "CTA sub-line", "default": "Tom's Probiotic Chews Trial · $25.99 · 30-Day Guarantee" },
+    { "type": "url", "id": "cta_url", "label": "CTA link" },
+    { "type": "header", "content": "Compliance" },
+    { "type": "textarea", "id": "compliance_text", "label": "Compliance footer", "info": "Required — always renders.", "default": "Individual results may vary. This content does not constitute veterinary advice. Tom's account reflects his personal experience managing a multi-supplement routine. Get Joy chews support healthy digestion, immune function, and a normal inflammatory response. They are not a treatment for any condition. Based on a 60-day in-home study on daily probiotic supplementation. These statements have not been evaluated by the FDA." }
+  ],
+  "blocks": [
+    {
+      "type": "chapter",
+      "name": "Chapter",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "text", "id": "heading_em", "label": "Heading italic line" },
+        { "type": "richtext", "id": "body", "label": "Body" },
+        { "type": "header", "content": "Optional pull quote" },
+        { "type": "textarea", "id": "quote_text", "label": "Pull quote" },
+        { "type": "text", "id": "quote_by", "label": "Pull quote attribution" },
+        { "type": "richtext", "id": "body_after", "label": "Body after quote" },
+        { "type": "checkbox", "id": "show_cta", "label": "Show CTA after this chapter", "default": true }
+      ]
+    },
+    {
+      "type": "cost_table",
+      "name": "Cost Table",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "text", "id": "heading_em", "label": "Heading italic line" },
+        { "type": "richtext", "id": "body", "label": "Intro body" },
+        { "type": "header", "content": "Table columns" },
+        { "type": "text", "id": "col1_head", "label": "Column 1 head", "default": "What I was buying" },
+        { "type": "text", "id": "col2_head", "label": "Column 2 head", "default": "Why I told myself I needed it" },
+        { "type": "text", "id": "col3_head", "label": "Column 3 head", "default": "Monthly cost" },
+        { "type": "header", "content": "Rows (up to 5)" },
+        { "type": "text", "id": "row1_label", "label": "Row 1 label" },
+        { "type": "text", "id": "row1_why", "label": "Row 1 why" },
+        { "type": "text", "id": "row1_cost", "label": "Row 1 cost" },
+        { "type": "text", "id": "row2_label", "label": "Row 2 label" },
+        { "type": "text", "id": "row2_why", "label": "Row 2 why" },
+        { "type": "text", "id": "row2_cost", "label": "Row 2 cost" },
+        { "type": "text", "id": "row3_label", "label": "Row 3 label" },
+        { "type": "text", "id": "row3_why", "label": "Row 3 why" },
+        { "type": "text", "id": "row3_cost", "label": "Row 3 cost" },
+        { "type": "text", "id": "row4_label", "label": "Row 4 label" },
+        { "type": "text", "id": "row4_why", "label": "Row 4 why" },
+        { "type": "text", "id": "row4_cost", "label": "Row 4 cost" },
+        { "type": "text", "id": "row5_label", "label": "Row 5 label" },
+        { "type": "text", "id": "row5_why", "label": "Row 5 why" },
+        { "type": "text", "id": "row5_cost", "label": "Row 5 cost" },
+        { "type": "header", "content": "Total rows" },
+        { "type": "text", "id": "total_label", "label": "Stack total label" },
+        { "type": "text", "id": "total_cost", "label": "Stack total cost" },
+        { "type": "text", "id": "gj_label", "label": "Get Joy row label" },
+        { "type": "text", "id": "gj_cost", "label": "Get Joy row cost" },
+        { "type": "header", "content": "Founder's trial callout" },
+        { "type": "textarea", "id": "offer_quote", "label": "Callout quote" },
+        { "type": "text", "id": "offer_price", "label": "Callout price" },
+        { "type": "text", "id": "offer_save", "label": "Callout savings line" },
+        { "type": "textarea", "id": "footnote", "label": "Footnote (placeholder pricing disclaimer)" },
+        { "type": "richtext", "id": "body_after", "label": "Body after table" },
+        { "type": "checkbox", "id": "show_cta", "label": "Show CTA after this section", "default": true }
+      ]
+    },
+    {
+      "type": "proof",
+      "name": "Proof + Timeline",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "text", "id": "heading_em", "label": "Heading italic line" },
+        { "type": "richtext", "id": "body", "label": "Body before stat" },
+        { "type": "header", "content": "Proof stat" },
+        { "type": "text", "id": "stat_num", "label": "Stat number", "default": "95%" },
+        { "type": "textarea", "id": "stat_label", "label": "Stat label" },
+        { "type": "richtext", "id": "body_after", "label": "Body after stat" },
+        { "type": "header", "content": "Timeline (up to 4 steps)" },
+        { "type": "text", "id": "step1_time", "label": "Step 1 time" },
+        { "type": "textarea", "id": "step1_text", "label": "Step 1 text" },
+        { "type": "text", "id": "step2_time", "label": "Step 2 time" },
+        { "type": "textarea", "id": "step2_text", "label": "Step 2 text" },
+        { "type": "text", "id": "step3_time", "label": "Step 3 time" },
+        { "type": "textarea", "id": "step3_text", "label": "Step 3 text" },
+        { "type": "text", "id": "step4_time", "label": "Step 4 time" },
+        { "type": "textarea", "id": "step4_text", "label": "Step 4 text" },
+        { "type": "checkbox", "id": "show_cta", "label": "Show CTA after this section", "default": true }
+      ]
+    },
+    {
+      "type": "signoff",
+      "name": "Sign-off",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading" },
+        { "type": "text", "id": "heading_em", "label": "Heading italic line" },
+        { "type": "richtext", "id": "body", "label": "Body" },
+        { "type": "inline_richtext", "id": "sign", "label": "Signature line" }
+      ]
+    },
+    {
+      "type": "closing_offer",
+      "name": "Closing Offer",
+      "settings": [
+        { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+        { "type": "text", "id": "heading", "label": "Heading", "default": "One Chew. The Whole Stack." },
+        { "type": "text", "id": "sub", "label": "Sub", "default": "Replaces 5 Supplements · A $100+/mo Value" },
+        { "type": "textarea", "id": "intro", "label": "Intro" },
+        { "type": "richtext", "id": "bullets", "label": "Bullets (use a list)" },
+        { "type": "text", "id": "price_line", "label": "Price line", "default": "90-Chew Bag: $25.99 + Free Shipping" },
+        { "type": "text", "id": "price_sub", "label": "Price sub", "default": "35% off first order" },
+        { "type": "header", "content": "Value table" },
+        { "type": "text", "id": "value_head", "label": "Value table head", "default": "What's In Every Bag" },
+        { "type": "text", "id": "value_head_amt", "label": "Value table head amount", "default": "$100+ Value" },
+        { "type": "text", "id": "val1_item", "label": "Item 1" },
+        { "type": "text", "id": "val1_desc", "label": "Item 1 desc" },
+        { "type": "text", "id": "val1_amt", "label": "Item 1 value" },
+        { "type": "text", "id": "val2_item", "label": "Item 2" },
+        { "type": "text", "id": "val2_desc", "label": "Item 2 desc" },
+        { "type": "text", "id": "val2_amt", "label": "Item 2 value" },
+        { "type": "text", "id": "val3_item", "label": "Item 3" },
+        { "type": "text", "id": "val3_desc", "label": "Item 3 desc" },
+        { "type": "text", "id": "val3_amt", "label": "Item 3 value" },
+        { "type": "text", "id": "val4_item", "label": "Item 4" },
+        { "type": "text", "id": "val4_desc", "label": "Item 4 desc" },
+        { "type": "text", "id": "val4_amt", "label": "Item 4 value" },
+        { "type": "text", "id": "val5_item", "label": "Item 5" },
+        { "type": "text", "id": "val5_desc", "label": "Item 5 desc" },
+        { "type": "text", "id": "val5_amt", "label": "Item 5 value" },
+        { "type": "header", "content": "Button" },
+        { "type": "text", "id": "cta_label", "label": "Button label", "default": "Try Get Joy Probiotic Chews — $25.99" },
+        { "type": "text", "id": "cta_sub", "label": "Button sub", "default": "Free shipping · 30-Day Money-Back Guarantee" }
+      ]
+    }
+  ],
+  "presets": [
+    { "name": "Pro Chews Founder Letter", "category": "Landing Page" }
+  ]
+}
+{% endschema %}

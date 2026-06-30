@@ -1,0 +1,220 @@
+{
+  "sections": {
+    "pc_letter": {
+      "type": "pro-chews-founder-letter",
+      "blocks": {
+        "ch_story": {
+          "type": "chapter",
+          "settings": {
+            "eyebrow": "The Story",
+            "heading": "The morning I counted the bottles.",
+            "heading_em": "And did the math I'd been avoiding.",
+            "body": "<p>I built Get Joy because of Cooper. That part of the story you may already know. What I haven't told as often is what happened after, once the food was solved and I thought the hard part was over.</p><p>It wasn't. Because the food handled the meals. It didn't handle everything else I'd been told Cooper needed on top of it.</p><p>A probiotic, because his gut needed support. A joint supplement, because the whole body was under stress. Fish oil, because every protocol mentioned inflammation. A digestive enzyme, because his stomach kept acting up between meals. A skin and coat supplement, because his coat had gone dull and I assumed it was separate from the food entirely.</p><p>Five different bottles. Five different schedules. Some you give with food, some you don't, some you have to remember twice a day.</p>",
+            "quote_text": "I built the food to solve one problem. I didn't realize I'd just created five more.",
+            "quote_by": "Tom Arrix, Founder & CEO",
+            "body_after": "<p>I was managing it like a part-time job. And I started wondering whether anyone else was doing the same thing, or whether I'd just made my life harder than it needed to be.</p>",
+            "show_cta": true
+          }
+        },
+        "ct_discovery": {
+          "type": "cost_table",
+          "settings": {
+            "eyebrow": "The Discovery",
+            "heading": "I had a counter full of bottles.",
+            "heading_em": "And most of them were trying to do one job.",
+            "body": "<p>I laid everything out one morning, actually laid it out, the way you do when something's bothering you and you can't say exactly what. Five bottles. Some half-empty. One I'd forgotten I'd bought twice.</p><p>Here's what each one actually cost me, and what I told myself it was for.</p>",
+            "col1_head": "What I was buying",
+            "col2_head": "Why I told myself I needed it",
+            "col3_head": "Monthly cost",
+            "row1_label": "Probiotic supplement",
+            "row1_why": "His gut needs live bacteria. This was the starting point.",
+            "row1_cost": "$25–35/mo",
+            "row2_label": "Postbiotic / digestive support",
+            "row2_why": "I kept reading that probiotics alone weren't enough.",
+            "row2_cost": "$20–30/mo",
+            "row3_label": "Fish oil / Omega-3",
+            "row3_why": "Every protocol mentioned inflammation. This was supposed to help.",
+            "row3_cost": "$20–30/mo",
+            "row4_label": "Prebiotic fiber",
+            "row4_why": "Apparently the bacteria need something to eat too.",
+            "row4_cost": "$15–20/mo",
+            "row5_label": "Skin & coat supplement",
+            "row5_why": "His coat had gone dull. I assumed it was unrelated to the gut.",
+            "row5_cost": "$20–30/mo",
+            "total_label": "The full stack, bought separately",
+            "total_cost": "~$100–145/mo",
+            "gj_label": "Get Joy Probiotic Chews (subscription)",
+            "gj_cost": "~$32/mo",
+            "offer_quote": "One bag. See what changes in your dog. That's all I'm asking.",
+            "offer_price": "$25.99",
+            "offer_save": "Annual savings: $800+ per year when switching from the separate stack to one chew.",
+            "footnote": "Stack prices based on average retail cost of comparable standalone supplements at standard dosages. Get Joy reflects subscription price. Individual prices may vary. Figures are placeholders pending category-average confirmation before publish.",
+            "body_after": "<p>Around this time I called the same food scientist I'd worked with on the original formula. I described the stack, what I was buying, why I thought I still needed all of it. He asked me a question I hadn't actually thought through:</p><p><em>\"Are any of these actually working together, or are they just sitting in the same dog?\"</em></p><p>I didn't have a good answer. I'd been buying based on what each bottle claimed to do on its own. Nobody had ever asked whether a probiotic without the right prebiotic substrate even survives long enough to matter. Or whether the postbiotic layer, the part that actually does the work probiotics get credit for, was in any of these bottles at all.</p><p>It wasn't. Not in any of them.</p>",
+            "show_cta": true
+          }
+        },
+        "ch_build": {
+          "type": "chapter",
+          "settings": {
+            "eyebrow": "The Build",
+            "heading": "I stopped buying pieces.",
+            "heading_em": "And started asking what a complete system actually looked like.",
+            "body": "<p>The honest answer was that I'd been buying ingredients, not a system. A probiotic supplement introduces bacteria. It doesn't feed them, and it doesn't do anything with what they produce once they're established. I was paying five times for one outcome that none of the five bottles were actually built to deliver together.</p><p>So I went back with a different question. Not \"what else do I add,\" but \"what would one chew look like if it carried the whole system instead of one piece of it.\"</p><p>The answer needed three things present at once, the same architecture we'd already built into the food, just now in something you could hand your dog in ten seconds instead of measuring into a bowl twice a day.</p><ul><li><strong>Probiotic.</strong> Bacillus coagulans and B. subtilis, spore-forming strains that survive stomach acid and arrive in the gut alive, where most strains die in the bottle or on the way down.</li><li><strong>Postbiotic.</strong> 200mg, the layer almost nobody else includes. This is the part that does the work probiotics get credit for. Skip it, and you're paying for half a system.</li><li><strong>Prebiotic.</strong> Inulin and kelp, food for the bacteria you just introduced. Without it, the colony you paid for doesn't hold.</li><li><strong>L-Glutamine.</strong> 100mg, support for the gut lining itself, not just what's living on top of it.</li><li><strong>Omega-3.</strong> Algae-sourced DHA and EPA, the same category I'd been buying as a separate bottle, now in the same chew.</li></ul><p>We built it on the same Belly Biotics™ system that's already in the food. Same trademark, same logic, in something built for a different job: not a meal, a daily habit that doesn't require five separate ones next to it.</p>",
+            "show_cta": true
+          }
+        },
+        "pr_proof": {
+          "type": "proof",
+          "settings": {
+            "eyebrow": "The Proof",
+            "heading": "What I actually watched change.",
+            "heading_em": "And what I won't claim it did.",
+            "body": "<p>I'm careful with this part, because I've seen what happens when a company overpromises on a supplement, and I don't want to be that company.</p><p>What I'll tell you is what we measured. In a 60-day in-home study on daily probiotic supplementation with Belly Biotics™, the dogs in the study were 95% more likely to show improved health markers compared to the period before.</p>",
+            "stat_num": "95%",
+            "stat_label": "more likely to show improved health markers, in a 60-day in-home study on daily Belly Biotics™ supplementation.",
+            "body_after": "<p>I'm not telling you a chew fixes everything. I'm telling you what showed up when we measured it, and what I watched in my own routine once I stopped juggling five bottles and started giving one chew a day.</p><p><strong>What customers typically notice, and when:</strong></p>",
+            "step1_time": "Days 1–3",
+            "step1_text": "The chew goes in. No visible change yet. The strains are getting established.",
+            "step2_time": "Days 4–14",
+            "step2_text": "Things start moving. Firmer, more regular stools are usually the first thing owners notice.",
+            "step3_time": "Days 15–30",
+            "step3_text": "It settles in. Digestion steadies. Many owners mention fresher breath in this window.",
+            "step4_time": "Day 30+",
+            "step4_text": "The full picture. A more stable gut. This is why the routine is built around months, not days, same as it was with the food.",
+            "show_cta": true
+          }
+        },
+        "so_signoff": {
+          "type": "signoff",
+          "settings": {
+            "eyebrow": "Before You Move On",
+            "heading": "You're already doing more",
+            "heading_em": "than most dog owners ever will.",
+            "body": "<p>If you've read this far, you're the kind of owner who actually reads labels, who's already supplementing, who's already trying. That's not most people. Most people buy whatever's on the shelf at the pet store and move on.</p><p>You didn't. So I'm not going to pitch you on switching brands. I'm going to ask you to look at what you're currently giving your dog, the gut support, the omega, the joint or skin supplement if you have one, and add up what it's actually costing you. Not just in dollars. In bottles you have to remember, doses you have to track, refills you have to reorder on five different schedules.</p><p>That's the math I did at my own kitchen counter. It's the same math that led me to build this.</p><p><strong>From Tom Arrix · Founder & CEO, Get Joy</strong></p><p>I've set up a trial offer through this page. Not because I need another sale, because I think if you try one bag, you'll understand why I stopped buying five things and built one.</p>",
+            "sign": "Tom"
+          }
+        },
+        "co_close": {
+          "type": "closing_offer",
+          "settings": {
+            "eyebrow": "Get Joy Probiotic Chews",
+            "heading": "One Chew. The Whole Stack.",
+            "sub": "Replaces 5 Supplements · A $100+/mo Value",
+            "intro": "Probiotic. Postbiotic. Prebiotic. Omega. Gut-lining support. Most owners buy all of it separately. Get Joy built Belly Biotics™, plus L-Glutamine and algae omega-3, into one daily chew.",
+            "bullets": "<ul><li>3 billion CFU, spore-forming strains that survive stomach acid and reach the gut alive</li><li>200mg postbiotic, the layer most chews skip entirely, built in not added after</li><li>L-Glutamine for the gut lining itself, not just what's living on top of it</li><li>Algae-sourced DHA + EPA, the same omega-3 most owners buy as a separate bottle</li><li>Natural chicken flavor dogs actually take, no transition required</li></ul>",
+            "price_line": "90-Chew Bag: $25.99 + Free Shipping",
+            "price_sub": "35% off first order. A full bag, enough to see what one chew does instead of five.",
+            "value_head": "What's In Every Bag",
+            "value_head_amt": "$100+ Value",
+            "val1_item": "90 Probiotic Chews",
+            "val1_desc": "Full bag, a real 90-day routine for a small dog",
+            "val1_amt": "$40 VALUE",
+            "val2_item": "Belly Biotics™ Complete System",
+            "val2_desc": "Pre, pro + postbiotics built in, not sprinkled on top",
+            "val2_amt": "$35 VALUE",
+            "val3_item": "L-Glutamine + Omega-3",
+            "val3_desc": "Gut lining + skin/coat support, usually sold separately",
+            "val3_amt": "$25 VALUE",
+            "val4_item": "Free Shipping",
+            "val4_desc": "Free tracked US shipping",
+            "val4_amt": "$10 VALUE",
+            "val5_item": "30-Day Money-Back Guarantee",
+            "val5_desc": "Your dog doesn't love it? Full refund. No hoops.",
+            "val5_amt": "INCLUDED",
+            "cta_label": "Try Get Joy Probiotic Chews — $25.99",
+            "cta_sub": "Free shipping · 30-Day Money-Back Guarantee"
+          }
+        }
+      },
+      "block_order": [
+        "ch_story",
+        "ct_discovery",
+        "ch_build",
+        "pr_proof",
+        "so_signoff",
+        "co_close"
+      ],
+      "settings": {
+        "eyebrow": "Founder's Letter",
+        "meta_line": "5 min read · A Personal Letter From Tom Arrix · <span>Founder & CEO</span>",
+        "byline": "Tom Arrix, Founder & CEO of Get Joy",
+        "h1": "I was spending $340 a month on 7 different bottles.",
+        "h1_sub": "Then I built the one chew that replaced all of them.",
+        "dek": "What happened when a dog dad got tired of managing a pharmacy on his kitchen counter, and what he built because of it.",
+        "hero_caption": "Tom reaching for the chew bag, past a counter of bottles.",
+        "cta_text": "Check Availability",
+        "cta_sub": "Tom's Probiotic Chews Trial · $25.99 · 30-Day Guarantee",
+        "cta_url": "",
+        "compliance_text": "Individual results may vary. This content does not constitute veterinary advice. Tom's account reflects his personal experience managing a multi-supplement routine. Get Joy chews support healthy digestion, immune function, and a normal inflammatory response. They are not a treatment for any condition. Based on a 60-day in-home study on daily probiotic supplementation. These statements have not been evaluated by the FDA."
+      }
+    },
+    "pc_letter_reviews": {
+      "type": "pro-chews-reviews",
+      "blocks": {
+        "rv_marissa": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "",
+            "image_position": "center center",
+            "title": "Firmer poops within a week. I didn't think a chew could do that.",
+            "text": "My Goldendoodle Cooper has had loose stools since we got him. Tried three different foods before this. Within a week of the daily chew his stools were actually formed. My vet was shocked when I told her.",
+            "author": "Marissa T., Goldendoodle owner"
+          }
+        },
+        "rv_devon": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "",
+            "image_position": "center center",
+            "title": "My senior dog finally has energy again.",
+            "text": "Biscuit is 11 and a Cavalier King Charles. I started the chews more for her stomach but the difference in her energy after about a month surprised all of us. She's playing with toys again.",
+            "author": "Devon R., Cavalier King Charles Spaniel owner"
+          }
+        },
+        "rv_tom": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "",
+            "image_position": "center center",
+            "title": "Skeptical at first, my vet approved after.",
+            "text": "I don't usually trust supplement marketing. My Australian Shepherd has IBD and I checked with our vet before switching anything. She actually said the ingredient list looked solid. Three months in, fewer flare-ups.",
+            "author": "Tom W., Australian Shepherd owner"
+          }
+        },
+        "rv_janelle": {
+          "type": "review",
+          "settings": {
+            "stars": 5,
+            "image": "",
+            "image_position": "center center",
+            "title": "Our rescue's gut needed this more than we knew.",
+            "text": "We adopted our Pit mix Daisy with a history of food insecurity and her digestion was rough the first year. These chews have been the most consistent thing we've found. Her coat looks better too, which we didn't expect.",
+            "author": "Janelle F., Pit Bull mix owner"
+          }
+        }
+      },
+      "block_order": [
+        "rv_marissa",
+        "rv_devon",
+        "rv_tom",
+        "rv_janelle"
+      ],
+      "settings": {
+        "eyebrow": "Real Dogs. Real Results.",
+        "heading": "What pet parents are saying",
+        "subheading": "From the Get Joy community",
+        "background_color": "pale",
+        "cta_text": "Try Get Joy Probiotic Chews — $25.99",
+        "cta_url": "",
+        "guarantee_text": "30-Day Money-Back Guarantee. If your dog doesn't respond, Get Joy refunds the order in full. No return shipping required."
+      }
+    }
+  },
+  "order": [
+    "pc_letter",
+    "pc_letter_reviews"
+  ]
+}
