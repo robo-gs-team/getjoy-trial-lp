@@ -78,21 +78,21 @@
           "type": "accordion",
           "settings": {
             "title": "Ingredients & What's Inside",
-            "body": "<p>3 billion CFUs (Bacillus coagulans, B. subtilis), a 200mg postbiotic (Saccharomyces cerevisiae), algae omega-3 (DHA 46mg / EPA 31mg), L-Glutamine 100mg, organic ginger 60mg, kelp 200mg, inulin. Natural chicken flavor. Made in the USA. The same Belly Biotics™ family that goes into Get Joy food.</p>"
+            "body": "<p><strong>Belly Biotics™ Probiotic Blend (3B CFU):</strong> Bacillus coagulans 1.5B CFU, Bacillus subtilis 1.5B CFU — the two strains with the most peer-reviewed research for dogs.</p><p><strong>Postbiotic:</strong> Saccharomyces cerevisiae fermentate 200mg — the part most chews skip. Postbiotics are the finished output of fermentation; they work even if live probiotics don't survive digestion.</p><p><strong>Gut-lining & inflammation support:</strong> L-Glutamine 100mg (rebuilds the gut wall), algae-sourced omega-3 (DHA 46mg / EPA 31mg), organic ginger 60mg.</p><p><strong>Prebiotic fiber:</strong> Inulin + kelp 200mg — food for the good bacteria already in the gut.</p><p><strong>Flavor:</strong> Natural chicken only. No corn, wheat, soy, seed oils, or animal byproducts. Every ingredient is named on the label. Made in the USA in an NASC-certified facility.</p>"
           }
         },
         "accordion_use": {
           "type": "accordion",
           "settings": {
-            "title": "How to use",
-            "body": "<p>A daily treat, not a diet change. No transition, no mixing. 1 chew/day up to 30 lbs, scaling to 4 for dogs over 91 lbs.</p>"
+            "title": "How to Use",
+            "body": "<p>Give one chew daily as a treat — straight from your hand or on top of food. No mixing, no transition period, no diet change required.</p><p><strong>Daily feeding guide by weight:</strong></p><ul><li>Up to 30 lbs — 1 chew/day (bag lasts 90 days)</li><li>31–60 lbs — 2 chews/day (bag lasts 45 days)</li><li>61–90 lbs — 3 chews/day (bag lasts 30 days)</li><li>91+ lbs — 4 chews/day (bag lasts ~23 days)</li></ul><p>Most dogs take them like a treat. If your dog is picky, break the chew in half and hide it in a spoonful of food for the first few days. Digestive improvements are usually noticeable by day 7–14; skin and coat benefits typically show after 30+ days of consistent use.</p>"
           }
         },
         "accordion_ship": {
           "type": "accordion",
           "settings": {
             "title": "Shipping, Returns & Our Guarantee",
-            "body": "<p>Made in the USA. Backed by our 30-day money-back guarantee. If your dog won't eat them, we'll refund you.</p>"
+            "body": "<p><strong>Shipping:</strong> Orders ship within 24 hours, Monday–Friday. Standard delivery arrives in 3–5 business days. Free shipping on all US orders.</p><p><strong>Subscriptions:</strong> Ships every 4 weeks on your schedule. Skip, pause, or cancel anytime directly from your account — no calls, no cancellation fees, no hoops. You can also change your flavor or update the ship date from the same dashboard.</p><p><strong>30-Day Money-Back Guarantee:</strong> If your dog won't eat the chews, or you don't notice any change in 30 days, contact us and we'll refund your first order in full — no questions asked, no return required. We stand behind the formula.</p><p><strong>Made in the USA</strong> in an NASC-certified facility. Lot-tested for purity and potency before shipment.</p>"
           }
         }
       },
@@ -115,8 +115,8 @@
         "sub_compare": "39.99",
         "onetime_price": "39.99",
         "per_day_line": "from about $0.29/day",
-        "sub_eyebrow": "35% off your first order, then 20% off every refill",
-        "sub_fine_print": "Ships every 4 weeks. Skip, pause, or cancel anytime, right from your account. Refills $31.99.",
+        "sub_eyebrow": "35% off first order · 20% off every refill",
+        "sub_fine_print": "Ships every 4 weeks · Skip or cancel anytime",
         "onetime_eyebrow": "Try it once, no commitment",
         "stock_text": "Low Stock — Ships within 24 hours",
         "cta_text": "Add to Cart",
