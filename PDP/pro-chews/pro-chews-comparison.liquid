@@ -244,9 +244,9 @@
 
   {%- if cta_text != blank -%}
     <div class="pc-cmp-cta">
-      <a href="{{ cta_url | default: '#buy-box' }}" class="pc-cta-pill">
-        {{ cta_text | escape }}
-        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <a href="{{ cta_url | default: '#buy-box' }}" class="pc-cta-pill" style="color:#ffffff !important;">
+        <span style="color:#ffffff !important;">{{ cta_text | escape }}</span>
+        <svg width="18" height="13" viewBox="0 0 18 13" fill="none" aria-hidden="true"><path d="M1 6.5H17M17 6.5L11 1M17 6.5L11 12" stroke="#ffffff" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </a>
       {%- if guarantee != blank -%}<p class="pc-cmp-guarantee">{{ guarantee | escape }}</p>{%- endif -%}
     </div>
